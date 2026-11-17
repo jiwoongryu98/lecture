@@ -1,40 +1,51 @@
-import { Heading, reveal, type SlideProps } from '../components/kit';
+import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
 import './052.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "career-portfolio",
-  "title": "포트폴리오에 문제·실행·검증을 담습니다",
+  "id": "career-domain",
+  "title": "문제를 정의하는 능력이 더 중요해집니다",
   "section": "3부 · 경험을 연결하다",
   "maxStep": 2,
-  "subsection": "포트폴리오"
+  "subsection": "역할의 변화"
 } satisfies SlideMetadata;
 
 export default function Slide052({ step, instant }: SlideProps) {
-  return <div className="industry-content career-s03">
-    <Heading eyebrow="포트폴리오 / 앞에서 배운 역량을 한눈에">포트폴리오에 문제·실행·검증을 담습니다</Heading>
-    <div className="c03-composition">
-      <svg viewBox="0 0 1100 390" role="img" aria-label="포트폴리오에 문제 정의, 실행 설계, 검증 근거를 연결하고, 자신이 맡은 일과 결과를 보여 준다.">
-        <rect className="c03-paper-back" x="403" y="32" width="294" height="153" rx="9" transform="rotate(4 550 110)" />
-        <rect className="c03-paper" x="400" y="24" width="300" height="153" rx="9" />
-        <path className="c03-paper-line" d="M400 58H700" />
-        <circle className="c03-dot" cx="421" cy="41" r="3" /><circle className="c03-dot" cx="434" cy="41" r="3" /><circle className="c03-dot" cx="447" cy="41" r="3" />
-        <text className="c03-output" x="550" y="109" textAnchor="middle">포트폴리오</text>
-        <text className="c03-output-detail" x="550" y="145" textAnchor="middle">내가 맡은 일과 결과</text>
-        <g style={reveal(step >= 1, instant, 'none')} aria-hidden={step < 1}>
-          <path className="c03-branch" d="M550 188V216M190 251V229Q190 216 203 216H550M550 216V251M550 216H897Q910 216 910 229V251" />
-          <circle className="c03-blue-dot" cx="190" cy="256" r="5" />
-          <circle className="c03-green-dot" cx="550" cy="256" r="5" />
-          <text className="c03-label c03-blue" x="190" y="304" textAnchor="middle">문제 정의</text>
-          <text className="c03-detail" x="190" y="342" textAnchor="middle">왜 이 문제를 골랐나?</text>
-          <text className="c03-label c03-green" x="550" y="304" textAnchor="middle">실행 설계</text>
-          <text className="c03-detail" x="550" y="342" textAnchor="middle">어떤 도구·방법을 썼나?</text>
-          <circle className="c03-amber-dot" cx="910" cy="256" r="5" />
-          <text className="c03-label c03-amber" x="910" y="304" textAnchor="middle">검증 근거</text>
-          <text className="c03-detail" x="910" y="342" textAnchor="middle">무엇으로 확인했나?</text>
-        </g>
+  const showDefinition = step >= 1;
+  const showCriteria = step >= 2;
+
+  return <div className="industry-content career-s05">
+    <Heading eyebrow="역할의 변화 / 무엇을 풀 것인가" subtitle="실행이 쉬워질수록, 풀어야 할 문제를 정확히 정하는 일이 중요합니다.">문제를 정의하는 능력이 더 중요해집니다</Heading>
+
+    <div className="c05-composition">
+      <div className="c05-possibilities">
+        <p className="c05-label">넓어진 실행 범위</p>
+        <h2>AI로 무엇을<br />만들 수 있을까?</h2>
+        <p className="c05-examples">코드 · 문서 · 화면 · 자동화</p>
+      </div>
+
+      <svg className="c05-arrow" viewBox="0 0 80 60" aria-hidden="true" style={reveal(showDefinition, instant, 'none')}>
+        <path d="M7 30H69M53 14L69 30L53 46" />
       </svg>
+
+      <div className="c05-answer">
+        <ReferenceLink to="곡성 명대사" className="c05-meme" style={reveal(!showDefinition, instant, 'none')} aria-hidden={showDefinition}>
+          <img src="/slides/052/what-matters-meme.jpg" width="300" height="171" alt="곡성에서 아버지를 바라보는 김환희" />
+          <span>뭣이 중헌디?</span>
+        </ReferenceLink>
+        <section className="c05-definition" aria-label="문제 정의에서 답할 질문" style={reveal(showDefinition, instant, 'translateY(6px)')} aria-hidden={!showDefinition}>
+          <header><p className="c05-label">무엇을 해결해야 할까?</p><h2>문제 정의</h2></header>
+          <dl>
+            <div><dt>대상과 불편</dt><dd>누가, 어떤 불편을 겪는가?</dd></div>
+            <div><dt>원하는 변화</dt><dd>무엇이 달라져야 하는가?</dd></div>
+            <div className="c05-criteria" style={reveal(showCriteria, instant, 'translateY(5px)')} aria-hidden={!showCriteria}><dt>확인 기준</dt><dd>어떤 결과로 확인할 것인가?</dd></div>
+          </dl>
+        </section>
+      </div>
     </div>
-    <p className="c03-takeaway" style={reveal(step >= 2, instant, 'translateY(5px)')} aria-hidden={step < 2}>작업 중 남긴 <strong>선택 이유 · 내 역할 · 확인 자료</strong>를 결과물과 함께 보여줍니다.</p>
+
+    <p className="c05-takeaway" style={reveal(showCriteria, instant, 'translateY(6px)')} aria-hidden={!showCriteria}>
+      AI와 실행할 방향을 정하는 역량, <strong>문제 정의 능력</strong>이 중요해집니다.
+    </p>
   </div>;
 }

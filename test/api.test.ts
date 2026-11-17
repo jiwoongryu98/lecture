@@ -155,7 +155,7 @@ it('serves the matching speaker notes only to an authenticated presenter', async
     expect(response.headers.get('Cache-Control')).toBe('no-store');
   }
   const headers = { Cookie: 'presenter_key=test-presenter-key' };
-  for (const index of [1, 48, 60]) {
+  for (const index of [1, 48, 49, 50, 51, 63]) {
     const response = await exports.default.fetch(base + '/notes/' + index, { headers });
     expect(response.headers.get('Cache-Control')).toBe('no-store');
     if (response.status === 404) {

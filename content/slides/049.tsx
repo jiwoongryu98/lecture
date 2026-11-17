@@ -1,51 +1,56 @@
+import { CareerDomainNav } from '../components/CareerDomainNav';
 import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
-import './049.css';
 import type { SlideMetadata } from '../../shared/presentation';
+import './049.css';
 
 export const metadata = {
-  "id": "career-domain",
-  "title": "문제를 정의하는 능력이 더 중요해집니다",
-  "section": "3부 · 경험을 연결하다",
-  "maxStep": 2,
-  "subsection": "역할의 변화"
+  id: 'career-product-experience',
+  title: '제품은 사용자의 문제를 끝까지 해결합니다',
+  section: '3부 · 경험을 연결하다',
+  subsection: '영역별 역량',
+  maxStep: 2,
 } satisfies SlideMetadata;
 
 export default function Slide049({ step, instant }: SlideProps) {
-  const showDefinition = step >= 1;
-  const showCriteria = step >= 2;
+  return <div className="industry-content career-domain-slide career-product-experience">
+    <Heading eyebrow="영역별 역량 / 하고 싶은 일에 따라, 준비할 경험도 다릅니다">제품은 사용자의 문제를 끝까지 해결합니다</Heading>
+    <CareerDomainNav active="product" />
 
-  return <div className="industry-content career-s05">
-    <Heading eyebrow="역할의 변화 / 무엇을 풀 것인가" subtitle="실행이 쉬워질수록, 풀어야 할 문제를 정확히 정하는 일이 중요합니다.">문제를 정의하는 능력이 더 중요해집니다</Heading>
-
-    <div className="c05-composition">
-      <div className="c05-possibilities">
-        <p className="c05-label">넓어진 실행 범위</p>
-        <h2>AI로 무엇을<br />만들 수 있을까?</h2>
-        <p className="c05-examples">코드 · 문서 · 화면 · 자동화</p>
+    <div className="career-product-layout">
+      <div className="career-product-loop" aria-label="사용자의 업무에 AI 기능을 연결하고, 피드백으로 개선하는 과정">
+        <div className="career-product-user">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47" /><circle className="person" cx="50" cy="36" r="12" /><path className="person" d="M25 73C25 48 75 48 75 73" /></svg>
+          <h2>사용자</h2>
+          <p>어떤 일이 불편한가?</p>
+        </div>
+        <svg className="career-product-connect" viewBox="0 0 70 36" aria-hidden="true"><path d="M3 18H62M51 7L62 18L51 29" /></svg>
+        <div className="career-product-service">
+          <div className="career-product-window" aria-hidden="true"><i /><i /><i /></div>
+          <p className="career-product-service-label">실제로 쓰는 서비스</p>
+          <h2>AI 기능 + 기존 시스템</h2>
+          <div className="career-product-workflow"><span>입력</span><span aria-hidden="true">→</span><span>처리</span><span aria-hidden="true">→</span><span>확인</span></div>
+          <p className="career-product-underneath">데이터 · 권한 · 오류 처리</p>
+        </div>
+        <div className="career-product-feedback" style={reveal(step >= 1, instant, 'none')} aria-hidden={step < 1}>
+          <svg viewBox="0 0 600 78" aria-hidden="true"><path d="M408 3V40Q408 60 388 60H88Q68 60 68 40V5M58 15L68 5L78 15" /></svg>
+          <p>사용 피드백 → 개선</p>
+        </div>
       </div>
 
-      <svg className="c05-arrow" viewBox="0 0 80 60" aria-hidden="true" style={reveal(showDefinition, instant, 'none')}>
-        <path d="M7 30H69M53 14L69 30L53 46" />
-      </svg>
-
-      <div className="c05-answer">
-        <ReferenceLink to="곡성 명대사" className="c05-meme" style={reveal(!showDefinition, instant, 'none')} aria-hidden={showDefinition}>
-          <img src="/slides/049/what-matters-meme.jpg" width="300" height="171" alt="곡성에서 아버지를 바라보는 김환희" />
-          <span>뭣이 중헌디?</span>
-        </ReferenceLink>
-        <section className="c05-definition" aria-label="문제 정의에서 답할 질문" style={reveal(showDefinition, instant, 'translateY(6px)')} aria-hidden={!showDefinition}>
-          <header><p className="c05-label">무엇을 해결해야 할까?</p><h2>문제 정의</h2></header>
-          <dl>
-            <div><dt>대상과 불편</dt><dd>누가, 어떤 불편을 겪는가?</dd></div>
-            <div><dt>원하는 변화</dt><dd>무엇이 달라져야 하는가?</dd></div>
-            <div className="c05-criteria" style={reveal(showCriteria, instant, 'translateY(5px)')} aria-hidden={!showCriteria}><dt>확인 기준</dt><dd>어떤 결과로 확인할 것인가?</dd></div>
-          </dl>
-        </section>
-      </div>
+      <section className="career-domain-foundation" style={reveal(step >= 1, instant, 'translateY(8px)')} aria-hidden={step < 1}>
+        <p className="career-domain-label">더 깊게 배울 기반</p>
+        <h2>제품 감각<br />+ 소프트웨어 기본기</h2>
+        <ul>
+          <li>사용자 · 업무 흐름</li>
+          <li>API · 데이터 · 권한</li>
+          <li>테스트 · 배포 · 운영</li>
+        </ul>
+        <p className="career-product-example">1부의 사례 <ReferenceLink to="Zoom AI Companion">Zoom AI Companion ↗</ReferenceLink></p>
+      </section>
     </div>
 
-    <p className="c05-takeaway" style={reveal(showCriteria, instant, 'translateY(6px)')} aria-hidden={!showCriteria}>
-      AI와 실행할 방향을 정하는 역량, <strong>문제 정의 능력</strong>이 중요해집니다.
-    </p>
+    <div className="career-domain-evidence" style={reveal(step >= 2, instant, 'translateY(6px)')} aria-hidden={step < 2}>
+      <span>역량을 보여 줄 경험</span><p><strong>배포한 서비스</strong> · 사용자 피드백 · 개선 기록</p>
+    </div>
   </div>;
 }

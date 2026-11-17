@@ -33,7 +33,7 @@ test('slide fullscreen fills the available screen, keeps navigation, and restore
     localStorage.setItem('questions-expanded', 'true');
     localStorage.setItem('slide-menu-expanded', 'true');
   });
-  await page.goto('/?index=59&step=2');
+  await page.goto('/?index=62&step=2');
   const button = page.getByRole('button', { name: '슬라이드 전체 화면', exact: true, includeHidden: true });
   const menu = page.getByRole('navigation', { name: '슬라이드 목차' });
   const questions = page.getByRole('complementary', { name: '질문 게시판' });
@@ -60,10 +60,10 @@ test('slide fullscreen fills the available screen, keeps navigation, and restore
     await expect(page.locator('.stage')).toHaveCSS('background-color', 'rgb(0, 0, 0)');
     if (viewport === originalViewport) await testInfo.attach('slide-fullscreen', { body: await page.screenshot(), contentType: 'image/png' });
     await page.keyboard.press('ArrowRight');
-    await expect(page.locator('article.slide')).toHaveAttribute('data-index', '60');
+    await expect(page.locator('article.slide')).toHaveAttribute('data-index', '63');
     await expect.poll(() => page.evaluate(() => document.fullscreenElement?.className)).toBe('stage');
     await page.keyboard.press('ArrowLeft');
-    await expect(page.locator('article.slide')).toHaveAttribute('data-index', '59');
+    await expect(page.locator('article.slide')).toHaveAttribute('data-index', '62');
     await page.keyboard.press('Escape');
     await expect.poll(() => page.evaluate(() => !!document.fullscreenElement)).toBe(false);
     await expect(button).toHaveAttribute('aria-pressed', 'false');

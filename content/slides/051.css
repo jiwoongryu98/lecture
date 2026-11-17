@@ -1,24 +1,13 @@
-.career-s01 .industry-heading h1 { font-size: 3.3cqw; }
-.career-s01 .c01-composition { flex: 1; min-height: 0; display: flex; align-items: center; margin-top: .9cqw; }
-.career-s01 .c01-composition svg { display: block; width: 100%; height: 29cqw; overflow: visible; }
-.career-s01 .c01-screen rect { fill: #f3f7f3; stroke: #a9bfae; stroke-width: 2; }
-.career-s01 .c01-screen > path { fill: none; stroke: #b8ccbf; stroke-width: 1.8; }
-.career-s01 .c01-screen circle { fill: #a9bfae; }
-.career-s01 .c01-screen .c01-screen-ink { stroke: #8ea99a; stroke-width: 4; stroke-linecap: round; }
-.career-s01 .c01-code rect { fill: #edf2f7; stroke: #b4c3d4; stroke-width: 2; }
-.career-s01 .c01-code path { fill: none; stroke: #7791b1; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
-.career-s01 .c01-document > path { fill: #fffefa; stroke: #bdc7b7; stroke-width: 2; stroke-linejoin: round; }
-.career-s01 .c01-document .c01-document-ink { fill: none; stroke: #a2ad98; stroke-width: 3.2; stroke-linecap: round; }
-.career-s01 .c01-outputs-label { fill: var(--muted); font-size: 27px; font-weight: 550; letter-spacing: -.8px; }
-.career-s01 .c01-origin { fill: #9bb7a6; }
-.career-s01 .c01-route-guide { fill: none; stroke: #d4dfd7; stroke-width: 2.5; stroke-dasharray: 6 8; }
-.career-s01 .c01-option-end { fill: #c6d5cb; }
-.career-s01 .c01-options-label { fill: #91a298; font-size: 23px; letter-spacing: -.6px; }
-.career-s01 .c01-chosen-route { fill: none; stroke: var(--green); stroke-width: 3.5; }
-.career-s01 .c01-flag-pole { fill: none; stroke: var(--green); stroke-width: 3.5; stroke-linecap: round; }
-.career-s01 .c01-flag { fill: #d8ebdf; stroke: var(--green); stroke-width: 2.5; stroke-linejoin: round; }
-.career-s01 .c01-goal-label { fill: var(--green); font-size: 34px; font-weight: 750; letter-spacing: -1.2px; }
-.career-s01 .c01-goal-question { fill: var(--ink); font-size: 26px; font-weight: 550; letter-spacing: -.8px; }
-.career-s01 .c01-choice-label { fill: var(--green); font-size: 27px; font-weight: 650; letter-spacing: -.9px; }
-.career-s01 .c01-takeaway { margin: .7cqw 0 .3cqw; color: var(--ink); font-size: 1.5cqw; line-height: 1.6; letter-spacing: -.035em; }
-.career-s01 .c01-takeaway strong { color: var(--green); font-weight: 750; }
+.career-infra-experience { --domain-color: var(--amber); }
+.career-infra-experience .industry-heading h1 { font-size: 3.15cqw; }
+.career-infra-layout { flex: 1; min-height: 0; display: grid; grid-template-columns: 44cqw 1fr; align-items: center; gap: 4cqw; padding: 1.4cqw 1.5cqw; }
+.career-infra-question h2 { font-size: 2.4cqw; line-height: 1.55; letter-spacing: -.045em; font-weight: 650; margin: 0; }
+.career-infra-observe { display: flex; gap: 1.6cqw; align-items: center; margin-top: 2cqw; }
+.career-infra-observe svg { width: 8cqw; flex-shrink: 0; fill: #f6f0e5; stroke: #b98b4e; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.career-infra-chip-code { fill: none; stroke-width: 2.5; }
+.career-infra-observe p { margin: 0; color: var(--muted); font-size: 1.4cqw; line-height: 1.7; }
+.career-infra-observe strong { color: var(--ink); font-weight: 600; }
+.career-infra-condition { margin: 1.8cqw 0 0; color: var(--amber); font-size: 1.1cqw; line-height: 1.5; }
+.career-infra-skills { padding: 2cqw 2.3cqw; border-left: .25cqw solid #c8a268; background: #f8f3e9; }
+.career-infra-skills h2 { font-size: 2.25cqw; margin-bottom: 1.4cqw; }
+.career-infra-skills ul { font-size: 1.25cqw; line-height: 2.3; }

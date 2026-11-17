@@ -1,71 +1,52 @@
-import { Heading, reveal, type SlideProps } from '../components/kit';
-import './051.css';
+import { CareerDomainNav } from '../components/CareerDomainNav';
+import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
 import type { SlideMetadata } from '../../shared/presentation';
+import './051.css';
 
+// Performance measurement background: https://docs.vllm.ai/en/latest/benchmarking/
+// https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/
 export const metadata = {
-  "id": "career-goals",
-  "title": "포트폴리오는 문제 선택에서 시작합니다",
-  "section": "3부 · 경험을 연결하다",
-  "maxStep": 2,
-  "subsection": "포트폴리오"
+  id: 'career-infrastructure-experience',
+  title: '인프라는 시스템을 이해하고 병목을 줄입니다',
+  section: '3부 · 경험을 연결하다',
+  subsection: '영역별 역량',
+  maxStep: 2,
 } satisfies SlideMetadata;
 
 export default function Slide051({ step, instant }: SlideProps) {
-  const goal = step >= 1;
-  const judgment = step >= 2;
+  return <div className="industry-content career-domain-slide career-infra-experience">
+    <Heading eyebrow="영역별 역량 / AI 컴퓨팅·인프라">인프라는 시스템을 이해하고 병목을 줄입니다</Heading>
+    <CareerDomainNav active="infra" />
 
-  return <div className="industry-content career-s01">
-    <Heading eyebrow="포트폴리오 / 목표와 문제 선택">포트폴리오는 문제 선택에서 시작합니다</Heading>
+    <div className="career-infra-layout">
+      <section className="career-infra-question">
+        <p className="career-domain-label">시스템을 보는 질문</p>
+        <h2>시간은 어디에 쓰이고,<br />자원은 어떻게 움직일까?</h2>
+        <div className="career-infra-observe">
+          <svg viewBox="0 0 96 96" aria-hidden="true">
+            <rect x="24" y="24" width="48" height="48" rx="5" />
+            <path d="M36 24V12M48 24V12M60 24V12M36 72V84M48 72V84M60 72V84M24 36H12M24 48H12M24 60H12M72 36H84M72 48H84M72 60H84" />
+            <path className="career-infra-chip-code" d="M42 39L33 48L42 57M54 39L63 48L54 57" />
+          </svg>
+          <p><strong>실행을 측정하고</strong><br />병목의 원인을 찾습니다.</p>
+        </div>
+        <p className="career-infra-condition" style={reveal(step >= 2, instant, 'none')} aria-hidden={step < 2}>측정 조건 명시 · 정확성 유지</p>
+      </section>
 
-    <div className="c01-composition">
-      <svg viewBox="0 0 1100 360" role="img" aria-label="다양한 코드와 문서, 화면을 만들 수 있을 때, 풀고 싶은 문제를 정해 방향을 선택하는 모습">
-        <defs>
-          <marker id="career-s01-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-            <path d="M2 1L8 5L2 9" fill="none" stroke="#177c68" strokeWidth="1.8" />
-          </marker>
-        </defs>
-
-        <g className="c01-outputs">
-          <g className="c01-screen" transform="translate(85 47)">
-            <rect width="218" height="124" rx="12" />
-            <path d="M0 31H218" />
-            <circle cx="17" cy="16" r="3" />
-            <circle cx="29" cy="16" r="3" />
-            <circle cx="41" cy="16" r="3" />
-            <path className="c01-screen-ink" d="M23 56H126M23 76H159M23 96H113" />
-          </g>
-          <g className="c01-code" transform="translate(94 207)">
-            <rect width="218" height="85" rx="11" />
-            <path d="M45 28L29 43L45 58M89 28L105 43L89 58M73 22L61 64M129 36H180M129 53H161" />
-          </g>
-          <g className="c01-document" transform="translate(245 107) rotate(6 49 70)">
-            <path d="M0 0H65L96 31V137H0ZM65 0V31H96" />
-            <path className="c01-document-ink" d="M20 54H76M20 75H63M20 96H76M20 117H51" />
-          </g>
-        </g>
-        <text className="c01-outputs-label" x="213" y="337" textAnchor="middle">코드·문서·화면</text>
-
-        <circle className="c01-origin" cx="385" cy="181" r="8" />
-        <path className="c01-route-guide" d="M397 181C530 181 651 144 829 144M397 181C529 181 654 285 829 285" />
-        <circle className="c01-option-end" cx="840" cy="285" r="7" />
-        <text className="c01-options-label" x="653" y="325" textAnchor="middle">넓어진 선택의 범위</text>
-
-        <g style={reveal(goal, instant, 'none')} aria-hidden={!goal}>
-          <path className="c01-chosen-route" d="M397 181C530 181 651 144 829 144" markerEnd="url(#career-s01-arrow)" />
-          <path className="c01-flag-pole" d="M871 66V185M846 186H896" />
-          <path className="c01-flag" d="M871 67L946 82L871 112Z" />
-          <text className="c01-goal-label" x="892" y="228" textAnchor="middle">풀고 싶은 문제</text>
-          <text className="c01-goal-question" x="892" y="267" textAnchor="middle">누구의 문제인가?</text>
-        </g>
-
-        <g style={reveal(judgment, instant, 'translateY(6px)')} aria-hidden={!judgment}>
-          <text className="c01-choice-label" x="600" y="103" textAnchor="middle">먼저 방향을 정합니다</text>
-        </g>
-      </svg>
+      <section className="career-domain-foundation career-infra-skills" style={reveal(step >= 1, instant, 'translateY(8px)')} aria-hidden={step < 1}>
+        <p className="career-domain-label">더 깊게 배울 기반</p>
+        <h2>로우레벨·시스템 지식</h2>
+        <ul>
+          <li>C/C++ · <ReferenceLink to="CUDA">CUDA</ReferenceLink> · 컴파일러</li>
+          <li>메모리 · 병렬 처리</li>
+          <li>운영체제 · 네트워크 · 분산 시스템</li>
+          <li>컴퓨터 구조 · 반도체 설계</li>
+        </ul>
+      </section>
     </div>
 
-    <p className="c01-takeaway" style={reveal(judgment, instant, 'translateY(6px)')} aria-hidden={!judgment}>
-      포트폴리오에는 <strong>누구의 문제를 왜 골랐는지</strong> 담습니다.
-    </p>
+    <div className="career-domain-evidence" style={reveal(step >= 2, instant, 'translateY(6px)')} aria-hidden={step < 2}>
+      <span>역량을 보여 줄 경험</span><p>병목 분석 · <strong>개선 전후 측정</strong> · 테스트 기록</p>
+    </div>
   </div>;
 }

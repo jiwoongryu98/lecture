@@ -1,54 +1,49 @@
+import { CareerDomainNav } from '../components/CareerDomainNav';
 import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
-import './050.css';
 import type { SlideMetadata } from '../../shared/presentation';
+import './050.css';
 
+// Training/evaluation background: https://huggingface.co/docs/transformers/training
+// https://docs.pytorch.org/tutorials/beginner/basics/optimization_tutorial.html
 export const metadata = {
-  "id": "career-contribution",
-  "title": "어떻게 만들고 검증할지 구체화합니다",
-  "section": "3부 · 경험을 연결하다",
-  "maxStep": 2,
-  "subsection": "역할의 변화"
+  id: 'career-model-experience',
+  title: '모델은 실험으로 개선을 입증합니다',
+  section: '3부 · 경험을 연결하다',
+  subsection: '영역별 역량',
+  maxStep: 2,
 } satisfies SlideMetadata;
 
 export default function Slide050({ step, instant }: SlideProps) {
-  const showWork = step >= 1;
-  const showTests = step >= 2;
+  return <div className="industry-content career-domain-slide career-model-experience">
+    <Heading eyebrow="영역별 역량 / AI 모델 개발">모델은 실험으로 개선을 입증합니다</Heading>
+    <CareerDomainNav active="model" />
 
-  return <div className="industry-content career-s06">
-    <Heading eyebrow="문제 정의에서 실행으로 / 기술 선택 · 작업 분해 · 테스트">어떻게 만들고 검증할지 구체화합니다</Heading>
-
-    <div className="c06-composition">
-      <section className="c06-plan" aria-label="정의한 문제를 바탕으로 작성할 실행 계획">
-        <header className="c06-plan-header"><h2>실행 계획</h2><p>웹서비스 개발 도구는 선택 예시</p></header>
-
-        <div className="c06-row c06-tools">
-          <div className="c06-question"><p>기술 선택</p><h3>무엇으로 만들까?</h3></div>
-          <div className="c06-answer">
-            <p><ReferenceLink to="React">React</ReferenceLink> <span>화면</span><b>·</b><ReferenceLink to="FastAPI">FastAPI</ReferenceLink> <span>API</span></p>
-            <p className="c06-detail">요구사항에 맞는 라이브러리·프레임워크와 선택 이유</p>
-          </div>
+    <div className="career-model-layout">
+      <div className="career-model-experiment">
+        <p className="career-model-data">같은 평가 데이터<span>학습 데이터와 분리</span></p>
+        <svg className="career-model-fork" viewBox="0 0 600 58" aria-hidden="true"><path d="M300 1V22H145V51M300 22H455V51M137 43L145 51L153 43M447 43L455 51L463 43" /></svg>
+        <div className="career-model-pair">
+          <section><p>비교의 출발점</p><h2>기준 모델</h2></section>
+          <section><p>가설을 반영</p><h2>변경 모델</h2></section>
         </div>
+        <svg className="career-model-join" viewBox="0 0 600 48" aria-hidden="true"><path d="M145 1V20H300M455 1V20H300V42M292 34L300 42L308 34" /></svg>
+        <p className="career-model-question">무엇이 좋아졌고,<br /><strong>어디서 틀렸나?</strong></p>
+      </div>
 
-        <div className="c06-row c06-work" style={reveal(showWork, instant, 'translateY(6px)')} aria-hidden={!showWork}>
-          <div className="c06-question"><p>작업 분해</p><h3>어떤 순서로 만들까?</h3></div>
-          <div className="c06-answer">
-            <p className="c06-flow">입력·화면 <span>→</span> 처리·API <span>→</span> 결과 표시</p>
-            <p className="c06-detail">핵심 흐름부터 샘플로 연결</p>
-          </div>
-        </div>
-
-        <div className="c06-row c06-tests" style={reveal(showTests, instant, 'translateY(6px)')} aria-hidden={!showTests}>
-          <div className="c06-question"><p>테스트 설계</p><h3>어떻게 확인할까?</h3></div>
-          <div className="c06-answer">
-            <p><ReferenceLink to="Vitest">Vitest</ReferenceLink> <span>로직</span><b>·</b><ReferenceLink to="Playwright">Playwright</ReferenceLink> <span>사용자 흐름</span></p>
-            <p className="c06-detail">정상·오류·예외 조건과 기대 결과 정의</p>
-          </div>
-        </div>
+      <section className="career-domain-foundation" style={reveal(step >= 1, instant, 'translateY(8px)')} aria-hidden={step < 1}>
+        <p className="career-domain-label">더 깊게 배울 기반</p>
+        <h2>머신러닝·통계<br />+ 연구·실험 역량</h2>
+        <ul>
+          <li>데이터 분석 · 품질 관리</li>
+          <li>학습 · 평가 · 오류 분석</li>
+          <li>논문 이해 · 가설 검증</li>
+        </ul>
+        <p className="career-model-tools"><ReferenceLink to="PyTorch">PyTorch</ReferenceLink> · <ReferenceLink to="Hugging Face Transformers">Hugging Face Transformers</ReferenceLink></p>
       </section>
     </div>
 
-    <p className="c06-takeaway" style={reveal(showTests, instant, 'translateY(5px)')} aria-hidden={!showTests}>
-      도구 선택부터 작업 순서와 테스트까지, <strong>AI와 함께 실행 계획을 구체화합니다.</strong>
-    </p>
+    <div className="career-domain-evidence" style={reveal(step >= 2, instant, 'translateY(6px)')} aria-hidden={step < 2}>
+      <span>역량을 보여 줄 경험</span><p>기준 모델 비교 · 실패 분석 · <strong>재현 가능한 실험</strong></p>
+    </div>
   </div>;
 }

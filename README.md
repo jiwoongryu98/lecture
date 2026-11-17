@@ -29,24 +29,26 @@ and connect their existing experience to meaningful projects and career choices.
 | --- | --- |
 | 1. 산업을 읽다 | AI history and the industry map: products and AX, models, and infrastructure |
 | 2. 실무를 만나다 | Agent tools, practical automation, making samples, validation, and improving how we use AI |
-| 3. 경험을 연결하다 | Changing roles → portfolio goals and evidence → open source → resumes → AI interview practice → continuous learning and adaptation |
+| 3. 경험을 연결하다 | Changing roles → domain-specific skills and experience → portfolio goals and evidence → open source → resumes → AI interview practice → continuous learning and adaptation |
 
 The three-hour format is a five-minute opening, three sessions of **40 minutes of
 presentation + 10 minutes of Q&A**, two ten-minute breaks, and a five-minute closing.
-The current deck contains 60 slides, including the opening and session Q&As.
+The current deck contains 63 slides, including the opening and session Q&As.
 
 Session 3 uses the same experience records throughout portfolio, resume, and
 interview preparation. Its presentation time is divided as follows:
 
 | Slides | Topic | Minutes |
 | --- | --- | --- |
-| 048–050 | 역할의 변화: overlapping responsibilities, problem definition, and execution planning | 10 |
-| 051–052 | 포트폴리오: choosing a problem and summarizing problem definition, execution, and validation evidence | 6 |
-| 053–054 | 오픈소스: real requirements, contributing, testing evidence, and the community review loop | 4 |
-| 055–057 | 이력서: hiring-side AI, AI-assisted resume drafting and editing, and LaTeX/PDF | 12 |
-| 058 | 면접: AI mock interviews with follow-up questions and feedback | 5 |
-| 059 | 학습: learning quickly and continuously, trying new approaches, and adapting to change | 3 |
-| 060 | Q&A | 10 |
+| 048 | 역할의 변화: overlapping responsibilities | 3 |
+| 049–051 | 영역별 역량: product development, model experiments, and computing/infrastructure experience | 7 |
+| 052–053 | 문제 정의와 실행 계획: choosing a problem and planning implementation and validation | 6 |
+| 054–055 | 포트폴리오: connecting the problem, execution, and validation evidence | 5 |
+| 056–057 | 오픈소스: real requirements, testing evidence, and the community review loop | 4 |
+| 058–060 | 이력서: hiring-side AI, AI-assisted drafting and editing, and LaTeX/PDF | 8 |
+| 061 | 면접: AI mock interviews with follow-up questions and feedback | 5 |
+| 062 | 학습: learning continuously and adapting to change | 2 |
+| 063 | Q&A | 10 |
 
 ### Teaching principles
 

@@ -3,45 +3,45 @@ import './059.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "career-learning",
-  "title": "빠르게 배우고, 유연하게 적응합니다",
+  "id": "career-resume",
+  "title": "AI와 함께 이력서를 만듭니다",
   "section": "3부 · 경험을 연결하다",
   "maxStep": 2,
-  "subsection": "학습"
+  "subsection": "이력서"
 } satisfies SlideMetadata;
 
 export default function Slide059({ step, instant }: SlideProps) {
-  const learn = step >= 1;
-  const adapt = step >= 2;
+  const showRequest = step >= 1;
+  const showCheck = step >= 2;
 
-  return <div className="industry-content career-s17">
-    <Heading eyebrow="계속 배우기 / 변화에 맞춰 생각과 행동 바꾸기" subtitle="기술과 세상이 빠르게 바뀌는 만큼, 배우고 일하는 방식도 계속 바꿉니다.">빠르게 배우고, 유연하게 적응합니다</Heading>
+  return <div className="industry-content career-resume-ai">
+    <Heading eyebrow="AI로 이력서·자기소개서 작성 / 자료 제공 → 초안·편집 → 사실 확인">AI와 함께 이력서를 만듭니다</Heading>
 
-    <div className="c17-landscape">
-      <figure className="c17-meme">
-        <a href="https://image.fmkorea.com/files/attach/new/20201116/486616/1159261946/3203600963/40d09f18af1d4f14297acb994d63f0b6.jpeg"
-          target="_blank" rel="noopener noreferrer" title="이미지 원본 · 새 탭에서 열기">
-          <img src="/slides/059/excel-functions-meme.jpeg" width="780" height="700"
-            alt="엑셀 함수를 쓰지 말고 익숙한 수작업과 아날로그 방식을 사용하라고 권하는 메시지를 담은 인터넷 밈" />
-        </a>
-      </figure>
+    <div className="crai-layout">
+      <aside className="crai-materials" aria-label="AI에게 제공할 이력서 작성 자료">
+        <p className="crai-materials-label">함께 제공할 자료</p>
+        <section className="crai-source crai-role"><p>지원할 직무</p><h2>채용 공고</h2><span>업무 · 역량 · 지원 조건</span></section>
+        <section className="crai-source crai-record"><p>실제로 한 일</p><h2>내 경험 기록</h2><span>내 역할 · 선택 · 확인 자료</span></section>
+      </aside>
 
-      <div className="c17-learning">
-        <h2>익숙한 방식도<br />다시 살펴봅니다</h2>
-        <ol className="c17-actions">
-          <li><span aria-hidden="true">01</span><div><h3>변화를 살피고</h3><p>기술 · 일 · 사회가 어떻게 바뀌는지</p></div></li>
-          <li className="c17-learn" style={reveal(learn, instant, 'translateY(6px)')} aria-hidden={!learn}>
-            <span aria-hidden="true">02</span><div><h3>빠르게 배우고</h3><p>AI로 이해하고, 직접 연습하기</p></div>
-          </li>
-          <li className="c17-adapt" style={reveal(adapt, instant, 'translateY(6px)')} aria-hidden={!adapt}>
-            <span aria-hidden="true">03</span><div><h3>써 보고 조정합니다</h3><p>새 근거에 맞춰 생각과 방식 바꾸기</p></div>
-          </li>
-        </ol>
-      </div>
+      <svg className="crai-feed" viewBox="0 0 80 80" aria-hidden="true" style={reveal(showRequest, instant, 'none')}><path d="M9 40H68M49 21L68 40L49 59" /></svg>
+
+      <section className="crai-sheet" aria-label="AI와 이력서를 작성하고 확인하는 방법">
+        <header className="crai-sheet-header"><p>AI와 이력서·자기소개서 편집</p><span>요청 예시</span></header>
+        <p className="crai-empty" style={reveal(!showRequest, instant, 'none')} aria-hidden={showRequest}>공고와 기록을 함께 제공해<br />지원 직무에 맞춰 작성합니다.</p>
+
+        <div className="crai-request" style={reveal(showRequest, instant, 'translateY(6px)')} aria-hidden={!showRequest}>
+          <p className="crai-label">AI에게 요청</p>
+          <p className="crai-request-copy">공고에 맞는 경험을 골라<br />내 역할과 결과를 명확하고 간결하게 써 주세요.<br />빠진 정보는 질문해 주세요.</p>
+        </div>
+
+        <div className="crai-check" style={reveal(showCheck, instant, 'translateY(6px)')} aria-hidden={!showCheck}>
+          <p className="crai-label">초안을 받은 뒤, 내가 확인</p>
+          <p>내 역할 · 숫자 · 성과 · 기간을<br /><strong>원래 기록과 대조합니다.</strong></p>
+        </div>
+      </section>
     </div>
 
-    <p className="c17-takeaway" style={reveal(adapt, instant, 'translateY(5px)')} aria-hidden={!adapt}>
-      빠르게 배우고 꾸준히 시도하며, <strong>변화에 맞춰 생각과 행동을 조정합니다.</strong>
-    </p>
+    <p className="crai-takeaway" style={reveal(showCheck, instant, 'translateY(5px)')} aria-hidden={!showCheck}>이력서·자기소개서는 <strong>핵심이 바로 읽히도록 명확하고 간결하게</strong> 씁니다.</p>
   </div>;
 }

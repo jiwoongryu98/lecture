@@ -1,62 +1,40 @@
-import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
+import { Heading, reveal, type SlideProps } from '../components/kit';
 import './055.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "career-hiring-ai",
-  "title": "채용하는 쪽도 AI를 활용합니다",
+  "id": "career-portfolio",
+  "title": "포트폴리오에 문제·실행·검증을 담습니다",
   "section": "3부 · 경험을 연결하다",
   "maxStep": 2,
-  "subsection": "이력서"
+  "subsection": "포트폴리오"
 } satisfies SlideMetadata;
 
-const sourceUrl = 'https://business.linkedin.com/content/dam/lem/business/en/hire/hiring-assistant/hiring-assistant-data-compliance-white-paper-ai-flow-diagram.pdf#page=19';
-
 export default function Slide055({ step, instant }: SlideProps) {
-  const showInputs = step >= 1;
-  const showAdvice = step >= 2;
-
-  return <div className="industry-content career-s14">
-    <Heading eyebrow="이력서 준비 / 채용 측의 AI 활용" subtitle={<><ReferenceLink to="LinkedIn Hiring Assistant">LinkedIn Hiring Assistant</ReferenceLink> · 실제 제품 사례</>}>
-      채용하는 쪽도 AI를 활용합니다
-    </Heading>
-
-    <div className="c14-case">
-      <figure className="c14-source">
-        <a href={sourceUrl} target="_blank" rel="noreferrer" aria-label="LinkedIn Hiring Assistant 공식 자료 19쪽 열기">
-          <img src="/slides/055/linkedin-hiring-assistant-flow.png" alt="LinkedIn 공식 자료의 Hiring Assistant 데이터 흐름도 원본" />
-        </a>
-        <figcaption><span>공식 자료 · 19쪽</span><a href={sourceUrl} target="_blank" rel="noreferrer">원문 보기 ↗</a></figcaption>
-      </figure>
-
-      <div className="c14-explanation">
-        <svg viewBox="0 0 850 350" role="img" aria-label="후보자 정보를 AI의 후보 평가 지원에 활용하는 흐름">
-          <defs>
-            <marker id="career-s14-arrow" viewBox="0 0 10 10" markerWidth="8" markerHeight="8" refX="8" refY="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#72928b" strokeWidth="1.7" /></marker>
-          </defs>
-          <g className="c14-inputs" style={reveal(showInputs, instant, 'translateY(6px)')} aria-hidden={!showInputs}>
-            <path d="M33 26 H329 L370 67 V321 H33 Z" fill="#fffdf7" stroke="#b7c9bd" strokeWidth="2" />
-            <path d="M329 26 V67 H370" fill="none" stroke="#b7c9bd" strokeWidth="2" />
-            <text className="c14-paper-title" x="61" y="77">평가에 활용하는 정보</text>
-            <path d="M61 95 H339" stroke="#d9e2df" />
-            <text x="62" y="143">LinkedIn 프로필</text>
-            <text x="62" y="190">공개 이력서</text>
-            <text x="62" y="237">사전 질문 응답</text>
-            <text x="62" y="284">채용 메모</text>
-            <path d="M396 175 H520" fill="none" stroke="#72928b" strokeWidth="3" markerEnd="url(#career-s14-arrow)" />
-          </g>
-          <circle cx="669" cy="175" r="119" fill="#e9f1eb" stroke="#a4beb0" strokeWidth="2" />
-          <text className="c14-ai-label" x="669" y="145" textAnchor="middle">AI</text>
-          <text className="c14-ai-title" x="669" y="192" textAnchor="middle">후보 평가 지원</text>
-        </svg>
-        <p className="c14-scope" style={reveal(showInputs, instant, 'translateY(4px)')} aria-hidden={!showInputs}>
-          공식 자료의 평가 입력 요약 · 해당 자료가 있을 때 활용
-        </p>
-      </div>
+  return <div className="industry-content career-s03">
+    <Heading eyebrow="포트폴리오 / 앞에서 배운 역량을 한눈에">포트폴리오에 문제·실행·검증을 담습니다</Heading>
+    <div className="c03-composition">
+      <svg viewBox="0 0 1100 390" role="img" aria-label="포트폴리오에 문제 정의, 실행 설계, 검증 근거를 연결하고, 자신이 맡은 일과 결과를 보여 준다.">
+        <rect className="c03-paper-back" x="403" y="32" width="294" height="153" rx="9" transform="rotate(4 550 110)" />
+        <rect className="c03-paper" x="400" y="24" width="300" height="153" rx="9" />
+        <path className="c03-paper-line" d="M400 58H700" />
+        <circle className="c03-dot" cx="421" cy="41" r="3" /><circle className="c03-dot" cx="434" cy="41" r="3" /><circle className="c03-dot" cx="447" cy="41" r="3" />
+        <text className="c03-output" x="550" y="109" textAnchor="middle">포트폴리오</text>
+        <text className="c03-output-detail" x="550" y="145" textAnchor="middle">내가 맡은 일과 결과</text>
+        <g style={reveal(step >= 1, instant, 'none')} aria-hidden={step < 1}>
+          <path className="c03-branch" d="M550 188V216M190 251V229Q190 216 203 216H550M550 216V251M550 216H897Q910 216 910 229V251" />
+          <circle className="c03-blue-dot" cx="190" cy="256" r="5" />
+          <circle className="c03-green-dot" cx="550" cy="256" r="5" />
+          <text className="c03-label c03-blue" x="190" y="304" textAnchor="middle">문제 정의</text>
+          <text className="c03-detail" x="190" y="342" textAnchor="middle">왜 이 문제를 골랐나?</text>
+          <text className="c03-label c03-green" x="550" y="304" textAnchor="middle">실행 설계</text>
+          <text className="c03-detail" x="550" y="342" textAnchor="middle">어떤 도구·방법을 썼나?</text>
+          <circle className="c03-amber-dot" cx="910" cy="256" r="5" />
+          <text className="c03-label c03-amber" x="910" y="304" textAnchor="middle">검증 근거</text>
+          <text className="c03-detail" x="910" y="342" textAnchor="middle">무엇으로 확인했나?</text>
+        </g>
+      </svg>
     </div>
-
-    <p className="c14-advice" style={reveal(showAdvice, instant, 'translateY(6px)')} aria-hidden={!showAdvice}>
-      <span>지원자가 정리할 것</span><strong>실제 경험 · 맡은 역할 · 확인할 근거</strong>
-    </p>
+    <p className="c03-takeaway" style={reveal(step >= 2, instant, 'translateY(5px)')} aria-hidden={step < 2}>작업 중 남긴 <strong>선택 이유 · 내 역할 · 확인 자료</strong>를 결과물과 함께 보여줍니다.</p>
   </div>;
 }

@@ -1,20 +1,27 @@
-.career-s13 .industry-heading h1 { font-size: 3.25cqw; }
-.career-s13 .c13-workbench { flex: 1; min-height: 0; display: grid; grid-template-columns: 39cqw 33cqw; justify-content: space-between; align-items: start; gap: 5cqw; margin-top: 1.2cqw; }
-.career-s13 .c13-section-label { margin: 0 0 .75cqw; color: var(--green); font-size: 1.25cqw; font-weight: 700; line-height: 1.5; letter-spacing: -.035em; }
-.career-s13 .c13-source-page { border: 1px solid #d4ded8; background: #f3f5f0; padding: 1.3cqw; border-radius: .25cqw; }
-.career-s13 .c13-file-label { margin: 0 0 1.2cqw; color: var(--muted); font-size: 1cqw; line-height: 1.5; }
-.career-s13 .c13-source-page pre { margin: 0; padding: .4cqw .7cqw; color: var(--ink); font-size: 1.25cqw; line-height: 1.8; letter-spacing: -.04em; white-space: pre-wrap; }
-.career-s13 .c13-source-page code { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; }
-.career-s13 .c13-source-page .c13-project-code { border-left: 3px solid transparent; margin-top: 1cqw; }
-.career-s13 .c13-source-explanation { margin: .7cqw 0 0; color: var(--muted); font-size: 1.05cqw; line-height: 1.5; }
-.career-s13 .c13-instruction { margin: 1.05cqw 0 0; color: var(--green); font-size: 1.4cqw; font-weight: 600; line-height: 1.6; letter-spacing: -.04em; }
-.career-s13 .c13-output { margin: 0; }
-.career-s13 .c13-pdf-crop { position: relative; width: 100%; height: 28.7cqw; overflow: hidden; background: #fff; border: 1px solid #d6ddd6; box-shadow: .35cqw .45cqw 1.05cqw #22354a0b; }
-.career-s13 .c13-pdf-crop img { display: block; width: 100%; height: auto; }
-.career-s13 .c13-project-highlight { position: absolute; top: 14.25cqw; left: 2.8cqw; right: 2.8cqw; height: 5cqw; border-left: 3px solid #8bb19a; background: #177c6810; pointer-events: none; }
-.career-s13 .c13-output-caption { margin: .5cqw 0 0; color: var(--muted); font-size: 1cqw; line-height: 1.5; }
-.career-s13 .c13-footer { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5cqw; margin-top: .7cqw; padding-top: .8cqw; border-top: 1px solid var(--line); }
-.career-s13 .c13-footer p { margin: 0; color: var(--ink); font-size: 1.25cqw; line-height: 1.5; }
-.career-s13 .c13-footer strong { color: var(--green); font-weight: 700; }
-.career-s13 .c13-footer nav { display: flex; gap: 1.7cqw; }
-.career-s13 .c13-footer a { color: var(--green); font-size: 1.1cqw; line-height: 1.5; text-underline-offset: .2em; text-decoration-color: #b6cfc0; }
+.career-contribution-flow .industry-heading h1 { font-size: 3.3cqw; }
+.career-contribution-flow .oss-flow-composition { flex: 1; min-height: 0; display: grid; align-items: center; margin-top: .8cqw; }
+.career-contribution-flow .oss-flow-composition > * { grid-area: 1 / 1; }
+.career-contribution-flow .oss-flow-meme { display: block; width: 55.7cqw; justify-self: center; border-radius: .5cqw; overflow: hidden; }
+.career-contribution-flow .oss-flow-meme img { display: block; width: 100%; height: auto; }
+.career-contribution-flow .oss-flow-composition svg { display: block; width: 100%; height: 29.7cqw; overflow: visible; }
+.career-contribution-flow .oss-flow-phase { fill: var(--muted); font-size: 21px; font-weight: 650; }
+.career-contribution-flow .oss-flow-rail { fill: none; stroke: #d4e0d7; stroke-width: 2; }
+.career-contribution-flow .oss-flow-number-bg { fill: #f0f5ef; stroke: #b2c8b8; stroke-width: 1.5; }
+.career-contribution-flow .oss-flow-number { fill: var(--green); font-size: 22px; font-weight: 700; }
+.career-contribution-flow .oss-flow-title { fill: var(--ink); font-size: 25px; font-weight: 700; letter-spacing: -.7px; }
+.career-contribution-flow .oss-flow-green { fill: var(--green); }
+.career-contribution-flow .oss-flow-detail { fill: var(--muted); font-size: 19px; letter-spacing: -.35px; }
+.career-contribution-flow .oss-flow-small { fill: var(--muted); font-size: 17px; letter-spacing: -.3px; }
+.career-contribution-flow .oss-flow-forward { fill: none; stroke: #7eaa93; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.career-contribution-flow .oss-flow-paper { fill: #fbfdf8; stroke: #b0c6b6; stroke-width: 1.7; }
+.career-contribution-flow .oss-flow-paper-rule { fill: none; stroke: #d1ded4; stroke-width: 1.5; }
+.career-contribution-flow .oss-flow-paper-dot { fill: #b0c6b6; }
+.career-contribution-flow .oss-flow-pr { fill: var(--green); font-size: 42px; font-weight: 750; }
+.career-contribution-flow .oss-flow-paper-ink { fill: none; stroke: #bed1c3; stroke-width: 3; stroke-linecap: round; }
+.career-contribution-flow .oss-flow-review-number { fill: #e6f0e8; stroke: #9bbba7; }
+.career-contribution-flow .oss-flow-approval { fill: var(--green); font-size: 21px; font-weight: 650; letter-spacing: -.5px; }
+.career-contribution-flow .oss-flow-return { fill: none; stroke: #9bb5a4; stroke-width: 2; stroke-dasharray: 5 7; stroke-linecap: round; stroke-linejoin: round; }
+.career-contribution-flow .oss-flow-footer { display: flex; align-items: baseline; justify-content: space-between; gap: 2cqw; border-top: 1px solid var(--line); padding-top: 1cqw; margin: .7cqw 0 .3cqw; }
+.career-contribution-flow .oss-flow-footer p { margin: 0; font-size: 1.4cqw; line-height: 1.6; letter-spacing: -.035em; }
+.career-contribution-flow .oss-flow-footer strong { color: var(--green); }
+.career-contribution-flow .oss-flow-footer > a { flex-shrink: 0; color: var(--muted); font-size: .9cqw; line-height: 1.5; }

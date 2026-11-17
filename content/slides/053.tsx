@@ -3,62 +3,52 @@ import './053.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "career-open-source",
-  "title": "무엇을 만들지 막막하다면, 오픈소스에 기여해 보세요",
+  "id": "career-contribution",
+  "title": "어떻게 만들고 검증할지 구체화합니다",
   "section": "3부 · 경험을 연결하다",
   "maxStep": 2,
-  "subsection": "오픈소스"
+  "subsection": "역할의 변화"
 } satisfies SlideMetadata;
 
 export default function Slide053({ step, instant }: SlideProps) {
-  const guide = step >= 1;
-  const contribution = step >= 2;
+  const showWork = step >= 1;
+  const showTests = step >= 2;
 
-  return <div className="industry-content career-s08">
-    <Heading eyebrow="실제 문제에서 출발하기 / 오픈소스 기여">무엇을 만들지 막막하다면,<br />오픈소스에 기여해 보세요</Heading>
+  return <div className="industry-content career-s06">
+    <Heading eyebrow="문제 정의에서 실행으로 / 기술 선택 · 작업 분해 · 테스트">어떻게 만들고 검증할지 구체화합니다</Heading>
 
-    <div className="c08-composition">
-      <div className="c08-projects">
-        <ReferenceLink to="LangChain" className="c08-project-area">
-          <p className="c08-area-label">AI 앱·에이전트</p>
-          <img src="/slides/053/c08-langchain.svg" width="472" height="100" alt="LangChain 공식 로고" />
-        </ReferenceLink>
-        <ReferenceLink to="vLLM" className="c08-project-area">
-          <p className="c08-area-label">모델 추론·서빙</p>
-          <img src="/slides/053/c08-vllm.png" width="3000" height="860" alt="vLLM 공식 로고" />
-        </ReferenceLink>
-        <ReferenceLink to="React" className="c08-project-area">
-          <p className="c08-area-label">웹 화면 개발</p>
-          <img src="/slides/053/c08-react.svg" width="600" height="181" alt="React 공식 로고" />
-        </ReferenceLink>
-        <ReferenceLink to="pandas" className="c08-project-area">
-          <p className="c08-area-label">데이터 분석</p>
-          <img src="/slides/053/c08-pandas.svg" width="819" height="331" alt="pandas 공식 로고" />
-        </ReferenceLink>
-      </div>
+    <div className="c06-composition">
+      <section className="c06-plan" aria-label="정의한 문제를 바탕으로 작성할 실행 계획">
+        <header className="c06-plan-header"><h2>실행 계획</h2><p>웹서비스 개발 도구는 선택 예시</p></header>
 
-      <div className="c08-entry">
-        <section className="c08-entry-question" style={reveal(!guide, instant, 'translateY(6px)')} aria-hidden={guide}>
-          <p>새로운 주제를 찾기 어렵다면</p>
-          <h2>이미 필요한 문제에서<br />시작할 수 있습니다</h2>
-        </section>
-
-        <div className="c08-guide" style={reveal(guide, instant, 'translateY(6px)')} aria-hidden={!guide}>
-          <p className="c08-guide-label">실제 요구와 피드백이 있는 환경</p>
-          <svg viewBox="0 0 600 270" role="img" aria-label="오픈소스는 이미 필요한 문제와 다른 사람의 피드백을 만날 수 있는 환경이다.">
-            <path className="c08-book" d="M300 58C233 32 164 29 82 43V222C164 208 233 211 300 238C367 211 436 208 518 222V43C436 29 367 32 300 58Z" />
-            <path className="c08-spine" d="M300 58V238" />
-            <text className="c08-book-title" x="187" y="105" textAnchor="middle">필요한 문제</text>
-            <text className="c08-book-title" x="414" y="105" textAnchor="middle">검토·피드백</text>
-            <path className="c08-book-ink" d="M122 132H252M122 155H237M122 178H249M347 132H477M347 155H459M347 178H475" />
-          </svg>
-          <p className="c08-contribution-types" style={reveal(contribution, instant, 'translateY(6px)')} aria-hidden={!contribution}>문서 · 예제 · 테스트 · 작은 버그 수정</p>
+        <div className="c06-row c06-tools">
+          <div className="c06-question"><p>기술 선택</p><h3>무엇으로 만들까?</h3></div>
+          <div className="c06-answer">
+            <p><ReferenceLink to="React">React</ReferenceLink> <span>화면</span><b>·</b><ReferenceLink to="FastAPI">FastAPI</ReferenceLink> <span>API</span></p>
+            <p className="c06-detail">요구사항에 맞는 라이브러리·프레임워크와 선택 이유</p>
+          </div>
         </div>
-      </div>
+
+        <div className="c06-row c06-work" style={reveal(showWork, instant, 'translateY(6px)')} aria-hidden={!showWork}>
+          <div className="c06-question"><p>작업 분해</p><h3>어떤 순서로 만들까?</h3></div>
+          <div className="c06-answer">
+            <p className="c06-flow">입력·화면 <span>→</span> 처리·API <span>→</span> 결과 표시</p>
+            <p className="c06-detail">핵심 흐름부터 샘플로 연결</p>
+          </div>
+        </div>
+
+        <div className="c06-row c06-tests" style={reveal(showTests, instant, 'translateY(6px)')} aria-hidden={!showTests}>
+          <div className="c06-question"><p>테스트 설계</p><h3>어떻게 확인할까?</h3></div>
+          <div className="c06-answer">
+            <p><ReferenceLink to="Vitest">Vitest</ReferenceLink> <span>로직</span><b>·</b><ReferenceLink to="Playwright">Playwright</ReferenceLink> <span>사용자 흐름</span></p>
+            <p className="c06-detail">정상·오류·예외 조건과 기대 결과 정의</p>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <p className="c08-takeaway" style={reveal(contribution, instant, 'translateY(6px)')} aria-hidden={!contribution}>
-      필요한 변화에 기여하며, <strong>내가 한 일을 보여줄 근거</strong>를 남깁니다.
+    <p className="c06-takeaway" style={reveal(showTests, instant, 'translateY(5px)')} aria-hidden={!showTests}>
+      도구 선택부터 작업 순서와 테스트까지, <strong>AI와 함께 실행 계획을 구체화합니다.</strong>
     </p>
   </div>;
 }

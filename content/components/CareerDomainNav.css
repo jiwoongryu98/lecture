@@ -1,0 +1,23 @@
+.career-domain-nav {
+  display: flex;
+  gap: 3cqw;
+  margin-top: 1.1cqw;
+  padding-bottom: .7cqw;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 1.15cqw;
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+.career-domain-nav span { position: relative; }
+.career-domain-nav [aria-current] { color: var(--domain-color); font-weight: 750; }
+.career-domain-nav [aria-current]::after { content: ''; position: absolute; bottom: -.8cqw; left: 0; right: 0; height: .2cqw; background: currentColor; }
+.career-domain-slide { --domain-color: var(--green); }
+.career-domain-slide .industry-heading h1 { font-size: 3.25cqw; }
+.career-domain-label { margin: 0 0 1cqw; color: var(--domain-color); font-size: 1.1cqw; font-weight: 700; }
+.career-domain-foundation h2 { font-size: 2.35cqw; font-weight: 700; line-height: 1.5; letter-spacing: -.045em; margin: 0 0 1.6cqw; }
+.career-domain-foundation ul { padding: 0; margin: 0; list-style: none; font-size: 1.35cqw; line-height: 2; }
+.career-domain-evidence { flex-shrink: 0; display: flex; align-items: center; gap: 2cqw; border-top: 1px solid var(--line); padding: 1.25cqw 0 .3cqw; }
+.career-domain-evidence > span { color: var(--domain-color); font-size: 1.1cqw; font-weight: 700; white-space: nowrap; }
+.career-domain-evidence p { margin: 0; font-size: 1.55cqw; line-height: 1.5; letter-spacing: -.035em; }
+.career-domain-evidence strong { color: var(--domain-color); }

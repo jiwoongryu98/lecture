@@ -4,7 +4,7 @@ import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
   "id": "industry-adoption",
-  "title": "Adoption의 간극과 AX",
+  "title": "활용의 장벽과 AX",
   "section": "1부 · 산업을 읽다",
   "maxStep": 3,
   "subsection": "제품"
@@ -23,7 +23,7 @@ export default function Slide010({ step, instant }: SlideProps) {
   const connected = phase === 3;
 
   return <div className="industry-content industry-s07" data-instant={instant} data-connected={connected}>
-    <Heading eyebrow="제품·활용 / 관점 · Adoption과 AX">강력한 도구와 실제 활용 사이의 간극</Heading>
+    <Heading eyebrow="제품·활용 / 관점 · 활용의 장벽과 AX">강력한 도구가 있어도, 활용에는 장벽이 있습니다</Heading>
 
     <figure className="s07-workflow">
       <svg viewBox="0 0 1000 340" role="group" aria-label={connected

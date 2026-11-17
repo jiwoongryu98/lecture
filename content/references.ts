@@ -1,6 +1,12 @@
 // Official product, project, and original research sources used by the slides.
 export const references = {
+  "발표 웹사이트 소스 코드": "https://github.com/jiwoongryu98/lecture",
   "Cloudflare": "https://www.cloudflare.com/",
+  "Cloudflare Workers": "https://developers.cloudflare.com/workers/",
+  "Cloudflare D1": "https://developers.cloudflare.com/d1/",
+  "Cloudflare Durable Objects": "https://developers.cloudflare.com/durable-objects/",
+  "TypeScript": "https://www.typescriptlang.org/",
+  "Vite": "https://vite.dev/",
   "Attention": "https://arxiv.org/abs/1409.0473",
   "Transformer": "https://arxiv.org/abs/1706.03762",
   "GPT-3": "https://arxiv.org/abs/2005.14165",

@@ -59,6 +59,13 @@ export default function Slide030({ step, instant }: SlideProps) {
           <path d="M-12 0L-3 9L14-10" />
         </g>
       </svg>
+
+      <a className="w04-meme" href="https://media.giphy.com/media/UqZ4imFIoljlr5O2sM/giphy.gif"
+        target="_blank" rel="noopener noreferrer" title="GIPHY 원본 · 새 탭에서 열기"
+        style={reveal(sampleFirst, instant, 'translateY(8px)')} aria-hidden={!sampleFirst}>
+        <img src="/slides/030/just-do-it.gif" width="470" height="352"
+          alt="JUST DO IT! 문구와 함께 실행을 독려하는 밈 GIF" />
+      </a>
     </div>
 
     <p className="w04-takeaway" style={reveal(sampleFirst, instant, 'none')} aria-hidden={!sampleFirst}>

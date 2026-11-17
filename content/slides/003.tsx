@@ -29,20 +29,22 @@ export default function Slide003({ step, instant }: SlideProps) {
 
       <div className="website-intro-context">
         <div className="website-intro-making">
-          <p className="website-intro-label">만들기</p>
+          <p className="website-intro-label">기술 스택</p>
           <h2>AI와 함께</h2>
-          <p className="website-intro-detail">슬라이드부터 실시간 질문까지</p>
+          <p className="website-intro-detail"><ReferenceLink to="React">React</ReferenceLink> · <ReferenceLink to="TypeScript">TypeScript</ReferenceLink> · <ReferenceLink to="Vite">Vite</ReferenceLink></p>
         </div>
 
         <div className="website-intro-hosting">
-          <p className="website-intro-label">배포하기</p>
+          <p className="website-intro-label">인프라 스택</p>
           <h2><ReferenceLink to="Cloudflare">Cloudflare</ReferenceLink></h2>
-          <p className="website-intro-detail">브라우저에서 바로 보는 강연</p>
+          <p className="website-intro-detail"><ReferenceLink to="Cloudflare Workers">Workers</ReferenceLink> · <ReferenceLink to="Cloudflare D1">D1</ReferenceLink> · <ReferenceLink to="Cloudflare Durable Objects">Durable Objects</ReferenceLink></p>
         </div>
 
         <div className="website-intro-source" style={reveal(showParticipation, instant)} aria-hidden={!showParticipation}>
           <p className="website-intro-label">소스 코드</p>
-          <p className="website-intro-source-placeholder"><span aria-hidden="true">&lt;/&gt;</span> 공개 링크 준비 중</p>
+          <p className="website-intro-source-link">
+            <ReferenceLink to="발표 웹사이트 소스 코드">jiwoongryu98/lecture <span aria-hidden="true">↗</span></ReferenceLink>
+          </p>
         </div>
       </div>
     </div>

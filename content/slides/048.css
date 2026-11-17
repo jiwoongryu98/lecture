@@ -1,1 +1,19 @@
-/* Shared layout is provided by the lecture theme. */
+.career-s04 .industry-heading h1 { font-size: 3.3cqw; }
+.career-s04 .c04-composition { flex: 1; min-height: 0; display: grid; grid-template-columns: 34cqw 1fr; gap: 6cqw; align-items: center; margin: 1.2cqw 2cqw; }
+.career-s04 .c04-posting { border: 1px solid #d4dcd5; border-top: .35cqw solid #b77a32; border-radius: .5cqw; padding: 2.1cqw 2.5cqw; background: #fffefa; box-shadow: 0 .8cqw 1.8cqw #283c3510; }
+.career-s04 .c04-company { display: flex; align-items: center; justify-content: space-between; margin: 0 0 2.7cqw; color: var(--ink); font-size: 1.25cqw; font-weight: 650; }
+.career-s04 .c04-company span { color: var(--blue); font-size: 1.5cqw; }
+.career-s04 .c04-role { margin: 0; color: var(--ink); font-size: 4.6cqw; letter-spacing: -.055em; font-weight: 750; line-height: 1.15; }
+.career-s04 .c04-posting h2 { margin: .65cqw 0 1.4cqw; color: var(--blue); font-size: 1.7cqw; line-height: 1.4; font-weight: 600; }
+.career-s04 .c04-context { margin: 0; font-size: 1.45cqw; color: var(--ink); line-height: 1.65; letter-spacing: -.035em; }
+.career-s04 .c04-job-id { margin: 2.2cqw 0 0; color: var(--muted); font-size: .95cqw; }
+.career-s04 .c04-work { display: grid; gap: 1.3cqw; }
+.career-s04 .c04-work section { border-bottom: 1px solid var(--line); padding-bottom: 1.1cqw; }
+.career-s04 .c04-label { margin: 0 0 .4cqw; font-size: 1.1cqw; color: var(--green); font-weight: 650; }
+.career-s04 .c04-work h2 { margin: 0; font-size: 1.9cqw; line-height: 1.5; letter-spacing: -.04em; font-weight: 650; }
+.career-s04 .c04-ai { margin: .1cqw 0 0; color: var(--ink); font-size: 1.3cqw; line-height: 1.6; }
+.career-s04 .c04-ai strong { color: var(--green); }
+.career-s04 .c04-footer { display: flex; align-items: center; justify-content: space-between; gap: 1cqw; margin: .7cqw 0 .4cqw; border-top: 1px solid var(--line); padding-top: 1cqw; }
+.career-s04 .c04-footer p { margin: 0; font-size: 1.4cqw; line-height: 1.6; letter-spacing: -.035em; }
+.career-s04 .c04-footer strong { color: var(--green); }
+.career-s04 .c04-footer a { color: var(--muted); font-size: .9cqw; white-space: nowrap; }

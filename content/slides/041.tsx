@@ -18,7 +18,7 @@ export default function Slide041({ step, instant }: SlideProps) {
     <Heading eyebrow="실무 관점 / 결과 검증">실행이 빨라질수록, 검증이 병목이 됩니다</Heading>
 
     <div className="wv-composition">
-      <svg viewBox="0 0 1100 400" role="group" aria-label="생성한 결과의 검증을 명세와 테스트와 반복 실행 환경이 받친다. Chrome DevTools MCP는 실제 브라우저에서 동작과 화면을 확인하고 성능을 분석할 수 있게 한다.">
+      <svg viewBox="0 0 1100 400" role="group" style={reveal(specified, instant, 'none')} aria-hidden={!specified} aria-label="생성한 결과의 검증을 명세와 테스트와 반복 실행 환경이 받친다. Chrome DevTools MCP는 실제 브라우저에서 동작과 화면을 확인하고 성능을 분석할 수 있게 한다.">
         <defs>
           <marker id="workflow-validation-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M2 1L8 5L2 9" fill="none" stroke="#177c68" strokeWidth="1.8" />
@@ -44,7 +44,6 @@ export default function Slide041({ step, instant }: SlideProps) {
 
         <path className="wv-gate" d="M525 217V98Q525 76 547 76H613Q635 76 635 98V217" />
         <text className="wv-gate-label" x="580" y="158" textAnchor="middle">검증</text>
-        <text className="wv-question" x="914" y="160" textAnchor="middle" style={reveal(!specified, instant, 'none')} aria-hidden={specified}>원하는 결과인가?</text>
         <g style={reveal(specified, instant, 'translateY(6px)')} aria-hidden={!specified}>
           <path className="wv-result-link" d="M649 151H773" markerEnd="url(#workflow-validation-arrow)" />
           <ReferenceLink to="Chrome DevTools MCP"><text className="wv-browser-title" x="938" y="24" textAnchor="middle">Chrome DevTools MCP</text>
@@ -74,6 +73,9 @@ export default function Slide041({ step, instant }: SlideProps) {
           <text className="wv-environment-label" x="580" y="377" textAnchor="middle">반복 실행 환경 · 같은 조건으로</text>
         </g>
       </svg>
+      <ReferenceLink to="흑백요리사" className="wv-meme" style={reveal(!specified, instant, 'none')} aria-hidden={specified}>
+        <img src="/slides/041/even-meme.jpg" width="900" height="448" alt="흑백요리사의 ‘고기가 이븐하게 익지 않았어요’ 심사 장면" />
+      </ReferenceLink>
     </div>
 
     <p className="wv-takeaway" style={reveal(repeatable, instant, 'translateY(6px)')} aria-hidden={!repeatable}>

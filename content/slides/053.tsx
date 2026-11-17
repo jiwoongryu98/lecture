@@ -1,40 +1,64 @@
-import { Heading, reveal, type SlideProps } from '../components/kit';
+import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
 import './053.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "career-portfolio",
-  "title": "포트폴리오에 문제·실행·검증을 담습니다",
+  "id": "career-open-source",
+  "title": "무엇을 만들지 막막하다면, 오픈소스에 기여해 보세요",
   "section": "3부 · 경험을 연결하다",
   "maxStep": 2,
-  "subsection": "포트폴리오"
+  "subsection": "오픈소스"
 } satisfies SlideMetadata;
 
 export default function Slide053({ step, instant }: SlideProps) {
-  return <div className="industry-content career-s03">
-    <Heading eyebrow="포트폴리오 / 앞에서 배운 역량을 한눈에">포트폴리오에 문제·실행·검증을 담습니다</Heading>
-    <div className="c03-composition">
-      <svg viewBox="0 0 1100 390" role="img" aria-label="포트폴리오에 문제 정의, 실행 설계, 검증 근거를 연결하고, 자신이 맡은 일과 결과를 보여 준다.">
-        <rect className="c03-paper-back" x="403" y="32" width="294" height="153" rx="9" transform="rotate(4 550 110)" />
-        <rect className="c03-paper" x="400" y="24" width="300" height="153" rx="9" />
-        <path className="c03-paper-line" d="M400 58H700" />
-        <circle className="c03-dot" cx="421" cy="41" r="3" /><circle className="c03-dot" cx="434" cy="41" r="3" /><circle className="c03-dot" cx="447" cy="41" r="3" />
-        <text className="c03-output" x="550" y="109" textAnchor="middle">포트폴리오</text>
-        <text className="c03-output-detail" x="550" y="145" textAnchor="middle">내가 맡은 일과 결과</text>
-        <g style={reveal(step >= 1, instant, 'none')} aria-hidden={step < 1}>
-          <path className="c03-branch" d="M550 188V216M190 251V229Q190 216 203 216H550M550 216V251M550 216H897Q910 216 910 229V251" />
-          <circle className="c03-blue-dot" cx="190" cy="256" r="5" />
-          <circle className="c03-green-dot" cx="550" cy="256" r="5" />
-          <text className="c03-label c03-blue" x="190" y="304" textAnchor="middle">문제 정의</text>
-          <text className="c03-detail" x="190" y="342" textAnchor="middle">왜 이 문제를 골랐나?</text>
-          <text className="c03-label c03-green" x="550" y="304" textAnchor="middle">실행 설계</text>
-          <text className="c03-detail" x="550" y="342" textAnchor="middle">어떤 도구·방법을 썼나?</text>
-          <circle className="c03-amber-dot" cx="910" cy="256" r="5" />
-          <text className="c03-label c03-amber" x="910" y="304" textAnchor="middle">검증 근거</text>
-          <text className="c03-detail" x="910" y="342" textAnchor="middle">무엇으로 확인했나?</text>
-        </g>
-      </svg>
+  const guide = step >= 1;
+  const contribution = step >= 2;
+
+  return <div className="industry-content career-s08">
+    <Heading eyebrow="실제 문제에서 출발하기 / 오픈소스 기여">무엇을 만들지 막막하다면,<br />오픈소스에 기여해 보세요</Heading>
+
+    <div className="c08-composition">
+      <div className="c08-projects">
+        <ReferenceLink to="LangChain" className="c08-project-area">
+          <p className="c08-area-label">AI 앱·에이전트</p>
+          <img src="/slides/053/c08-langchain.svg" width="472" height="100" alt="LangChain 공식 로고" />
+        </ReferenceLink>
+        <ReferenceLink to="vLLM" className="c08-project-area">
+          <p className="c08-area-label">모델 추론·서빙</p>
+          <img src="/slides/053/c08-vllm.png" width="3000" height="860" alt="vLLM 공식 로고" />
+        </ReferenceLink>
+        <ReferenceLink to="React" className="c08-project-area">
+          <p className="c08-area-label">웹 화면 개발</p>
+          <img src="/slides/053/c08-react.svg" width="600" height="181" alt="React 공식 로고" />
+        </ReferenceLink>
+        <ReferenceLink to="pandas" className="c08-project-area">
+          <p className="c08-area-label">데이터 분석</p>
+          <img src="/slides/053/c08-pandas.svg" width="819" height="331" alt="pandas 공식 로고" />
+        </ReferenceLink>
+      </div>
+
+      <div className="c08-entry">
+        <section className="c08-entry-question" style={reveal(!guide, instant, 'translateY(6px)')} aria-hidden={guide}>
+          <p>새로운 주제를 찾기 어렵다면</p>
+          <h2>이미 필요한 문제에서<br />시작할 수 있습니다</h2>
+        </section>
+
+        <div className="c08-guide" style={reveal(guide, instant, 'translateY(6px)')} aria-hidden={!guide}>
+          <p className="c08-guide-label">실제 요구와 피드백이 있는 환경</p>
+          <svg viewBox="0 0 600 270" role="img" aria-label="오픈소스는 이미 필요한 문제와 다른 사람의 피드백을 만날 수 있는 환경이다.">
+            <path className="c08-book" d="M300 58C233 32 164 29 82 43V222C164 208 233 211 300 238C367 211 436 208 518 222V43C436 29 367 32 300 58Z" />
+            <path className="c08-spine" d="M300 58V238" />
+            <text className="c08-book-title" x="187" y="105" textAnchor="middle">필요한 문제</text>
+            <text className="c08-book-title" x="414" y="105" textAnchor="middle">검토·피드백</text>
+            <path className="c08-book-ink" d="M122 132H252M122 155H237M122 178H249M347 132H477M347 155H459M347 178H475" />
+          </svg>
+          <p className="c08-contribution-types" style={reveal(contribution, instant, 'translateY(6px)')} aria-hidden={!contribution}>문서 · 예제 · 테스트 · 작은 버그 수정</p>
+        </div>
+      </div>
     </div>
-    <p className="c03-takeaway" style={reveal(step >= 2, instant, 'translateY(5px)')} aria-hidden={step < 2}>작업 중 남긴 <strong>선택 이유 · 내 역할 · 확인 자료</strong>를 결과물과 함께 보여줍니다.</p>
+
+    <p className="c08-takeaway" style={reveal(contribution, instant, 'translateY(6px)')} aria-hidden={!contribution}>
+      필요한 변화에 기여하며, <strong>내가 한 일을 보여줄 근거</strong>를 남깁니다.
+    </p>
   </div>;
 }

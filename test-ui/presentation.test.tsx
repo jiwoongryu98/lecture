@@ -377,7 +377,7 @@ it('jumps a viewer by section or slide, pauses following, and keeps one socket',
   fireEvent.click(view.getByRole('button', { name: '목차 펼치기' }));
   const menu = view.getByRole('navigation', { name: '슬라이드 목차' });
   fireEvent.click(within(menu).getByRole('button', { name: '3부 · 경험을 연결하다' }));
-  expect(view.container.querySelector('.slide')?.getAttribute('data-index')).toBe('49');
+  expect(view.container.querySelector('.slide')?.getAttribute('data-index')).toBe('48');
   expect(view.getByRole('button', { name: '재생' })).toBeTruthy();
   expect(view.getByRole('navigation', { name: '슬라이드 목차' })).toBe(menu);
   fireEvent.click(within(menu).getByRole('button', { name: /Zoom의 회의 전사·AI 요약/ }));
@@ -386,6 +386,50 @@ it('jumps a viewer by section or slide, pauses following, and keeps one socket',
   expect(view.getByRole('navigation', { name: '슬라이드 목차' })).toBe(menu);
   expect(FakeSocket.instances).toHaveLength(1);
   expect(socket.sent.some((command) => command.type === 'slide.set')).toBe(false);
+});
+
+it('keeps notes hidden until presenter authentication and removes them when access is lost', async () => {
+  history.replaceState(null, '', '/presenter');
+  let completeNote!: (response: Response) => void;
+  const fetchNotes = vi.fn((url: string, options?: RequestInit) => {
+    if (url === '/api/participation') {
+      expect(JSON.parse(String(options?.body))).toEqual({ role: 'presenter', key: 'fixture-key' });
+      presenterCookie = true;
+      return Promise.resolve(Response.json({ name: '발표자' }));
+    }
+    return new Promise<Response>((resolve) => { completeNote = resolve; });
+  });
+  vi.stubGlobal('fetch', fetchNotes);
+  const view = render(<App deck={lecture} />);
+  let socket = FakeSocket.instances.at(-1)!;
+  act(() => socket.open());
+  const toggle = view.getByRole('button', { name: '발표 노트 펼치기' });
+  expect((toggle as HTMLButtonElement).disabled).toBe(true);
+  fireEvent.click(toggle);
+  expect(view.queryByRole('complementary', { name: '발표 노트' })).toBeNull();
+  expect(fetchNotes).not.toHaveBeenCalled();
+
+  fireEvent.change(view.getByLabelText('발표자 키'), { target: { value: 'fixture-key' } });
+  fireEvent.click(view.getByRole('button', { name: '발표 시작' }));
+  await waitFor(() => expect(FakeSocket.instances).toHaveLength(2));
+  socket = FakeSocket.instances.at(-1)!;
+  act(() => socket.open());
+  fireEvent.click(toggle);
+  await waitFor(() => expect(fetchNotes).toHaveBeenCalledWith('/api/notes/1', expect.anything()));
+  act(() => socket.close());
+  expect(view.queryByRole('complementary', { name: '발표 노트' })).toBeNull();
+  await act(async () => completeNote(new Response('# 비공개 발표 노트')));
+  expect(view.queryByRole('heading', { name: '비공개 발표 노트' })).toBeNull();
+});
+
+it('does not offer or fetch presenter notes for a viewer with question-posting access', () => {
+  const fetchNotes = vi.fn();
+  vi.stubGlobal('fetch', fetchNotes);
+  const view = render(<App deck={lecture} />);
+  act(() => FakeSocket.instances.at(-1)!.open());
+  expect(view.queryByRole('button', { name: /발표 노트/ })).toBeNull();
+  expect(view.queryByRole('complementary', { name: '발표 노트' })).toBeNull();
+  expect(fetchNotes).not.toHaveBeenCalled();
 });
 
 it('publishes presenter menu jumps and shows notes alongside a read-only question list', async () => {
@@ -406,8 +450,8 @@ it('publishes presenter menu jumps and shows notes alongside a read-only questio
   fireEvent.click(view.getByRole('button', { name: '목차 펼치기' }));
   fireEvent.click(within(view.getByRole('navigation', { name: '슬라이드 목차' })).getByRole('button', { name: '3부 · 경험을 연결하다' }));
   await view.findByRole('heading', { name: '목표 노트' });
-  expect(notes).toHaveBeenLastCalledWith('/api/notes/49', expect.objectContaining({ credentials: 'same-origin' }));
-  expect(FakeSocket.instances.at(-1)!.sent).toContainEqual(expect.objectContaining({ type: 'slide.set', payload: { index: 49, step: 0 } }));
+  expect(notes).toHaveBeenLastCalledWith('/api/notes/48', expect.objectContaining({ credentials: 'same-origin' }));
+  expect(FakeSocket.instances.at(-1)!.sent).toContainEqual(expect.objectContaining({ type: 'slide.set', payload: { index: 48, step: 0 } }));
   fireEvent.click(view.getByRole('button', { name: '질문 접기' }));
   expect(view.getByRole('complementary', { name: '발표 노트' })).toBeTruthy();
   fireEvent.click(view.getByRole('button', { name: '질문 펼치기' }));

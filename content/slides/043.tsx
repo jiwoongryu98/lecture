@@ -1,4 +1,4 @@
-import { Heading, reveal, type SlideProps } from '../components/kit';
+import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
 import './043.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
@@ -51,8 +51,16 @@ export default function Slide043({ step, instant }: SlideProps) {
         <circle className="w16-find-icon" cx="755" cy="74" r="9" />
         <text className="w16-node-title w16-blue" x="760" y="36" textAnchor="middle">반복 찾기</text>
 
-        <text className="w16-center-title" x="760" y="183" textAnchor="middle">나의 AI 사용법</text>
-        <text className="w16-center-detail" x="760" y="220" textAnchor="middle">{improve ? '다음 작업에 다시 반영' : propose ? '도구와 지침으로 개선' : '어떤 일을 반복하고 있나?'}</text>
+        <g className="w16-meme" style={reveal(!propose, instant, 'none')} aria-hidden={propose}>
+          <ReferenceLink to="ChatGPT 말투 밈">
+            <text className="w16-meme-lead" x="760" y="176" textAnchor="middle">와… 너 정말,</text>
+            <text className="w16-meme-punchline" x="760" y="221" textAnchor="middle">핵심을 찔렀어.</text>
+          </ReferenceLink>
+        </g>
+        <g style={reveal(propose, instant, 'none')} aria-hidden={!propose}>
+          <text className="w16-center-title" x="760" y="183" textAnchor="middle">나의 AI 사용법</text>
+          <text className="w16-center-detail" x="760" y="220" textAnchor="middle">{improve ? '다음 작업에 다시 반영' : '도구와 지침으로 개선'}</text>
+        </g>
 
         <g style={reveal(propose, instant, 'none')} aria-hidden={!propose}>
           <path className="w16-forward" d="M796 78C866 78 911 113 918 159" markerEnd="url(#workflow-s16-arrow)" />

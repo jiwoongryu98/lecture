@@ -33,20 +33,20 @@ and connect their existing experience to meaningful projects and career choices.
 
 The three-hour format is a five-minute opening, three sessions of **40 minutes of
 presentation + 10 minutes of Q&A**, two ten-minute breaks, and a five-minute closing.
-The current deck contains 61 slides, including the opening and session Q&As.
+The current deck contains 60 slides, including the opening and session Q&As.
 
 Session 3 uses the same experience records throughout portfolio, resume, and
 interview preparation. Its presentation time is divided as follows:
 
 | Slides | Topic | Minutes |
 | --- | --- | --- |
-| 049–051 | 역할의 변화: overlapping responsibilities, problem definition, and execution planning | 10 |
-| 052–053 | 포트폴리오: choosing a problem and summarizing problem definition, execution, and validation evidence | 6 |
-| 054–055 | 오픈소스: real requirements, contributing, testing evidence, and the community review loop | 4 |
-| 056–058 | 이력서: hiring-side AI, AI-assisted resume drafting and editing, and LaTeX/PDF | 12 |
-| 059 | 면접: AI mock interviews with follow-up questions and feedback | 5 |
-| 060 | 학습: learning quickly and continuously, trying new approaches, and adapting to change | 3 |
-| 061 | Q&A | 10 |
+| 048–050 | 역할의 변화: overlapping responsibilities, problem definition, and execution planning | 10 |
+| 051–052 | 포트폴리오: choosing a problem and summarizing problem definition, execution, and validation evidence | 6 |
+| 053–054 | 오픈소스: real requirements, contributing, testing evidence, and the community review loop | 4 |
+| 055–057 | 이력서: hiring-side AI, AI-assisted resume drafting and editing, and LaTeX/PDF | 12 |
+| 058 | 면접: AI mock interviews with follow-up questions and feedback | 5 |
+| 059 | 학습: learning quickly and continuously, trying new approaches, and adapting to change | 3 |
+| 060 | Q&A | 10 |
 
 ### Teaching principles
 
@@ -103,6 +103,9 @@ existing credentials and saved data are retained. Local development needs no clo
 Open `/presenter` with the local `PRESENTER_KEY` for presenter controls, notes,
 annotations, and the question list. Open `/` for the audience view. Viewers can read
 questions freely; posting requires a name and `COMMENT_PASSWORD`.
+
+Speaker notes require presenter authentication, including a previously saved
+presenter-key cookie. Direct note-file URLs are blocked in the local preview.
 
 Use arrow keys or the step buttons to navigate. A link such as `/?index=5&step=0`
 opens a specific slide paused; `/` follows a connected presenter. `재생` and `정지`

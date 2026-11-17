@@ -1,0 +1,26 @@
+[
+  {
+    "file": "c08-langchain.svg",
+    "credit": "LangChain",
+    "sourcePage": "https://github.com/langchain-ai/langchain",
+    "originalUrl": "https://raw.githubusercontent.com/langchain-ai/langchain/master/.github/images/logo-light.svg"
+  },
+  {
+    "file": "c08-vllm.png",
+    "credit": "vLLM project",
+    "sourcePage": "https://github.com/vllm-project/vllm",
+    "originalUrl": "https://raw.githubusercontent.com/vllm-project/vllm/main/docs/assets/logos/vllm-logo-text-light.png"
+  },
+  {
+    "file": "c08-react.svg",
+    "credit": "React",
+    "sourcePage": "https://github.com/reactjs/react.dev/tree/main/public/images/brand",
+    "originalUrl": "https://raw.githubusercontent.com/reactjs/react.dev/main/public/images/brand/wordmark_light.svg"
+  },
+  {
+    "file": "c08-pandas.svg",
+    "credit": "pandas development team",
+    "sourcePage": "https://pandas.pydata.org/about/citing.html",
+    "originalUrl": "https://raw.githubusercontent.com/pandas-dev/pandas/main/web/pandas/static/img/pandas.svg"
+  }
+]

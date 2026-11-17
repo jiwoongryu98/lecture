@@ -1,24 +1,23 @@
-.workflow-s18 .industry-heading h1 { font-size: 3.3cqw; }
-.workflow-s18 .w18-layout {
-  flex: 1;
-  min-height: 0;
-  display: grid;
-  grid-template-columns: 27cqw 49cqw;
-  gap: 4cqw;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1.2cqw;
-}
-.workflow-s18 .w18-request { border-left: 2px solid #b3cdbc; padding-left: 1.8cqw; }
-.workflow-s18 .w18-label { margin: 0 0 2cqw; color: var(--green); font-size: 1.15cqw; font-weight: 700; letter-spacing: -.025em; }
-.workflow-s18 .w18-concept-label { margin: 0 0 .5cqw; color: var(--muted); font-size: 1.1cqw; line-height: 1.4; }
-.workflow-s18 .w18-request h2 { margin: 0; color: var(--ink); font-size: 3cqw; line-height: 1.3; letter-spacing: -.05em; }
-.workflow-s18 .w18-goal { margin: 1cqw 0 0; color: var(--ink); font-size: 1.6cqw; line-height: 1.6; letter-spacing: -.035em; }
-.workflow-s18 .w18-brief { margin-top: 2.2cqw; }
-.workflow-s18 .w18-brief > div + div { margin-top: 1.5cqw; }
-.workflow-s18 .w18-brief > div > p:last-child { margin: 0; color: var(--ink); font-size: 1.45cqw; line-height: 1.5; letter-spacing: -.035em; }
-.workflow-s18 .w18-brief a { display: inline-block; color: var(--green); font-size: 1.2cqw; font-weight: 650; line-height: 1.7; text-decoration: none; border-bottom: 1px solid #a9c8b7; margin-top: 2cqw; }
-.workflow-s18 .w18-brief a > span { margin-left: .4cqw; }
-.workflow-s18 .w18-website { margin: 0; min-width: 0; }
-.workflow-s18 .w18-website img { display: block; width: 100%; height: auto; border: 1px solid #d3ded6; border-radius: .7cqw; box-shadow: 0 .6cqw 1.5cqw #22354a0c; }
-.workflow-s18 .w18-website figcaption { margin-top: .65cqw; color: var(--muted); font-size: 1cqw; line-height: 1.5; letter-spacing: -.025em; }
+.workflow-s19 .industry-heading h1 { font-size: 3.3cqw; }
+.workflow-s19 .w19-composition { display: grid; grid-template-columns: 33cqw minmax(0, 1fr); gap: 5cqw; align-items: center; height: 32cqw; flex: 0 0 auto; margin-top: 1cqw; }
+.workflow-s19 .w19-request { border-left: 2px solid #b3cdbc; padding-left: 1.6cqw; }
+.workflow-s19 .w19-label { color: var(--green); margin: 0 0 1.5cqw; font-size: 1.15cqw; font-weight: 700; }
+.workflow-s19 .w19-request blockquote { margin: 0; color: var(--ink); font-size: 1.95cqw; line-height: 1.8; font-weight: 650; letter-spacing: -.045em; }
+.workflow-s19 .w19-request-note { margin: 1.5cqw 0 0; color: var(--muted); font-size: 1.2cqw; line-height: 1.7; }
+.workflow-s19 .w19-guide { padding: .9cqw 1.8cqw .8cqw; background: #fff; border: 1px solid #d9e2df; border-radius: .65cqw; box-shadow: 0 .5cqw 1.5cqw #22354a08; }
+.workflow-s19 .w19-guide-heading { border-bottom: 1px solid var(--line); padding-bottom: .85cqw; }
+.workflow-s19 .w19-guide-heading > span { display: block; color: var(--muted); font-size: .85cqw; line-height: 1.5; letter-spacing: .07em; }
+.workflow-s19 .w19-guide-heading h2 { color: var(--ink); font-size: 1.8cqw; margin: .25cqw 0 0; letter-spacing: -.04em; }
+.workflow-s19 .w19-guide h3 { display: flex; align-items: center; gap: .65cqw; margin: 0 0 .8cqw; color: var(--green); font-size: 1.15cqw; font-weight: 700; }
+.workflow-s19 .w19-guide h3 > span { color: #8ca69e; font-size: .85cqw; }
+.workflow-s19 .w19-new-section { margin-top: 1.1cqw; }
+.workflow-s19 .w19-new-section dl { margin: 0; }
+.workflow-s19 .w19-new-section dl > div { display: grid; grid-template-columns: 6cqw 1fr; gap: .6cqw; align-items: baseline; padding: .35cqw 0; }
+.workflow-s19 .w19-new-section dt { color: var(--ink); font-size: 1.35cqw; font-weight: 700; }
+.workflow-s19 .w19-new-section dd { margin: 0; color: var(--muted); font-size: 1.2cqw; }
+.workflow-s19 .w19-new-diagram { margin: 1.1cqw 0 0; border-top: 1px solid var(--line); padding-top: 1cqw; }
+.workflow-s19 .w19-new-diagram img { display: block; width: 100%; height: 10.5cqw; object-fit: contain; }
+.workflow-s19 .w19-new-diagram figcaption { display: flex; gap: .7cqw; align-items: baseline; justify-content: center; margin-top: .35cqw; font-size: .9cqw; color: var(--muted); }
+.workflow-s19 .w19-new-diagram figcaption a { color: var(--green); font-weight: 700; }
+.workflow-s19 .w19-takeaway { margin: .6cqw 0 0; border-top: 1px solid var(--line); padding-top: 1cqw; font-size: 1.35cqw; color: var(--ink); line-height: 1.5; text-align: center; letter-spacing: -.035em; }
+.workflow-s19 .w19-takeaway strong { color: var(--green); }

@@ -1,56 +1,47 @@
-import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
+import { Heading, reveal, type SlideProps } from '../components/kit';
 import './058.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "career-latex",
-  "title": "AI와 문서를 만들고, 출력까지 확인합니다",
+  "id": "career-interview",
+  "title": "AI와 모의 면접을 연습합니다",
   "section": "3부 · 경험을 연결하다",
   "maxStep": 2,
-  "subsection": "이력서"
+  "subsection": "면접"
 } satisfies SlideMetadata;
 
-const introduction = `\\section*{소개}
-사용자 문제를 정리하고,
-샘플로 아이디어를 확인합니다.`;
-const project = `\\section*{프로젝트}
-\\textbf{도서 검색 화면 개선}\\par
-검색 흐름을 정리하고
-화면 샘플을 제작했습니다.`;
-
 export default function Slide058({ step, instant }: SlideProps) {
-  const focusProject = step >= 1;
-  const verify = step >= 2;
-  const transition = instant ? 'none' : 'background-color 320ms ease, border-color 320ms ease';
+  const showPractice = step >= 1;
+  const showFeedback = step >= 2;
 
-  return <div className="industry-content career-s13">
-    <Heading eyebrow="이력서 작성 / LaTeX 원본과 PDF">AI와 문서를 만들고, 출력까지 확인합니다</Heading>
-    <div className="c13-workbench">
-      <section className="c13-source">
-        <p className="c13-section-label">AI와 수정하는 원본</p>
-        <div className="c13-source-page">
-          <p className="c13-file-label">sample-resume.tex · 본문 발췌</p>
-          <pre><code>{introduction}</code></pre>
-          <pre className="c13-project-code" style={{ transition, backgroundColor: focusProject ? '#e4f0e8' : 'transparent', borderColor: focusProject ? '#8bb19a' : 'transparent' }}><code>{project}</code></pre>
+  return <div className="industry-content career-s15">
+    <Heading eyebrow="AI로 면접 준비 / 내 자료로 질문·답변·피드백 반복">AI와 모의 면접을 연습합니다</Heading>
+
+    <div className="c15-layout">
+      <aside className="c15-materials" aria-label="모의 면접을 위해 AI에게 제공할 자료">
+        <p className="c15-materials-label">함께 제공할 자료</p>
+        <section className="c15-source c15-role"><p>지원할 직무</p><h2>채용 공고</h2><span>업무 · 역량 · 지원 조건</span></section>
+        <section className="c15-source c15-record"><p>내 경험 자료</p><h2>이력서와<br />경험 기록</h2><span>내 역할 · 선택 · 확인 자료</span></section>
+      </aside>
+
+      <svg className="c15-feed" viewBox="0 0 80 80" aria-hidden="true"><path d="M9 40H68M49 21L68 40L49 59" /></svg>
+
+      <section className="c15-sheet" aria-label="AI를 면접관으로 삼아 대화하며 연습하는 방법">
+        <header className="c15-sheet-header"><p>AI에게 면접관 역할 요청</p><span>요청·질문 예시</span></header>
+        <p className="c15-prompt-copy">공고와 이력서로 면접 질문을 하나씩 해 주세요.<br />제 답변 뒤에는 꼬리 질문과 피드백을 주세요.</p>
+
+        <div className="c15-practice" style={reveal(showPractice, instant, 'translateY(6px)')} aria-hidden={!showPractice}>
+          <div className="c15-ai-question"><p className="c15-section-label">AI 질문 예시</p><p>이 방법을 고른 이유는 무엇인가요?</p></div>
+          <p className="c15-my-answer"><span>내 차례</span>내 경험으로 직접 답하기</p>
         </div>
-        <p className="c13-source-explanation"><ReferenceLink to="LaTeX">LaTeX</ReferenceLink>: 글과 서식을 코드로 작성</p>
-        <p className="c13-instruction" style={reveal(focusProject, instant, 'translateY(5px)')} aria-hidden={!focusProject}>“프로젝트 설명과 서식을 다듬어 주세요.”</p>
+
+        <div className="c15-feedback" style={reveal(showFeedback, instant, 'translateY(6px)')} aria-hidden={!showFeedback}>
+          <p className="c15-section-label">꼬리 질문·피드백으로 더 설명할 것</p>
+          <p>선택 이유 · 검증 근거 · 나와 AI의 역할</p>
+        </div>
       </section>
-      <figure className="c13-output">
-        <figcaption className="c13-section-label">직접 확인하는 출력</figcaption>
-        <div className="c13-pdf-crop">
-          <img src="/slides/058/sample-resume.png" width="1012" height="1432" alt="예시용 가상 이력서. 김민수라는 가상 인물의 서비스 기획 소개, 도서 검색 화면 개선 프로젝트, 활용 도구와 학습 항목을 LaTeX로 실제 출력한 PDF." />
-          <div className="c13-project-highlight" style={reveal(focusProject, instant, 'none')} aria-hidden="true" />
-        </div>
-        <p className="c13-output-caption">예시용 가상 이력서 · 실제 PDF의 위쪽 부분</p>
-      </figure>
     </div>
-    <footer className="c13-footer">
-      <p style={reveal(verify, instant, 'translateY(5px)')} aria-hidden={!verify}><strong>사실 · 줄바꿈 · 텍스트 복사</strong>까지 확인합니다.</p>
-      <nav aria-label="가상 이력서 예제 파일">
-        <a href="/slides/058/sample-resume.tex" target="_blank" rel="noreferrer">LaTeX 원본 ↗</a>
-        <a href="/slides/058/sample-resume.pdf" target="_blank" rel="noreferrer">PDF ↗</a>
-      </nav>
-    </footer>
+
+    <p className="c15-takeaway" style={reveal(showFeedback, instant, 'translateY(5px)')} aria-hidden={!showFeedback}>질문·답변·피드백을 반복하며, <strong>핵심부터 명확하고 간결하게</strong> 말하는 연습을 합니다.</p>
   </div>;
 }

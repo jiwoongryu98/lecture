@@ -1,47 +1,56 @@
-import { Heading, reveal, type SlideProps } from '../components/kit';
+import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
 import './057.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "career-resume",
-  "title": "AI와 함께 이력서를 만듭니다",
+  "id": "career-latex",
+  "title": "AI와 문서를 만들고, 출력까지 확인합니다",
   "section": "3부 · 경험을 연결하다",
   "maxStep": 2,
   "subsection": "이력서"
 } satisfies SlideMetadata;
 
+const introduction = `\\section*{소개}
+사용자 문제를 정리하고,
+샘플로 아이디어를 확인합니다.`;
+const project = `\\section*{프로젝트}
+\\textbf{도서 검색 화면 개선}\\par
+검색 흐름을 정리하고
+화면 샘플을 제작했습니다.`;
+
 export default function Slide057({ step, instant }: SlideProps) {
-  const showRequest = step >= 1;
-  const showCheck = step >= 2;
+  const focusProject = step >= 1;
+  const verify = step >= 2;
+  const transition = instant ? 'none' : 'background-color 320ms ease, border-color 320ms ease';
 
-  return <div className="industry-content career-resume-ai">
-    <Heading eyebrow="AI로 이력서·자기소개서 작성 / 자료 제공 → 초안·편집 → 사실 확인">AI와 함께 이력서를 만듭니다</Heading>
-
-    <div className="crai-layout">
-      <aside className="crai-materials" aria-label="AI에게 제공할 이력서 작성 자료">
-        <p className="crai-materials-label">함께 제공할 자료</p>
-        <section className="crai-source crai-role"><p>지원할 직무</p><h2>채용 공고</h2><span>업무 · 역량 · 지원 조건</span></section>
-        <section className="crai-source crai-record"><p>실제로 한 일</p><h2>내 경험 기록</h2><span>내 역할 · 선택 · 확인 자료</span></section>
-      </aside>
-
-      <svg className="crai-feed" viewBox="0 0 80 80" aria-hidden="true" style={reveal(showRequest, instant, 'none')}><path d="M9 40H68M49 21L68 40L49 59" /></svg>
-
-      <section className="crai-sheet" aria-label="AI와 이력서를 작성하고 확인하는 방법">
-        <header className="crai-sheet-header"><p>AI와 이력서·자기소개서 편집</p><span>요청 예시</span></header>
-        <p className="crai-empty" style={reveal(!showRequest, instant, 'none')} aria-hidden={showRequest}>공고와 기록을 함께 제공해<br />지원 직무에 맞춰 작성합니다.</p>
-
-        <div className="crai-request" style={reveal(showRequest, instant, 'translateY(6px)')} aria-hidden={!showRequest}>
-          <p className="crai-label">AI에게 요청</p>
-          <p className="crai-request-copy">공고에 맞는 경험을 골라<br />내 역할과 결과를 명확하고 간결하게 써 주세요.<br />빠진 정보는 질문해 주세요.</p>
+  return <div className="industry-content career-s13">
+    <Heading eyebrow="이력서 작성 / LaTeX 원본과 PDF">AI와 문서를 만들고, 출력까지 확인합니다</Heading>
+    <div className="c13-workbench">
+      <section className="c13-source">
+        <p className="c13-section-label">AI와 수정하는 원본</p>
+        <div className="c13-source-page">
+          <p className="c13-file-label">sample-resume.tex · 본문 발췌</p>
+          <pre><code>{introduction}</code></pre>
+          <pre className="c13-project-code" style={{ transition, backgroundColor: focusProject ? '#e4f0e8' : 'transparent', borderColor: focusProject ? '#8bb19a' : 'transparent' }}><code>{project}</code></pre>
         </div>
-
-        <div className="crai-check" style={reveal(showCheck, instant, 'translateY(6px)')} aria-hidden={!showCheck}>
-          <p className="crai-label">초안을 받은 뒤, 내가 확인</p>
-          <p>내 역할 · 숫자 · 성과 · 기간을<br /><strong>원래 기록과 대조합니다.</strong></p>
-        </div>
+        <p className="c13-source-explanation"><ReferenceLink to="LaTeX">LaTeX</ReferenceLink>: 글과 서식을 코드로 작성</p>
+        <p className="c13-instruction" style={reveal(focusProject, instant, 'translateY(5px)')} aria-hidden={!focusProject}>“프로젝트 설명과 서식을 다듬어 주세요.”</p>
       </section>
+      <figure className="c13-output">
+        <figcaption className="c13-section-label">직접 확인하는 출력</figcaption>
+        <div className="c13-pdf-crop">
+          <img src="/slides/057/sample-resume.png" width="1012" height="1432" alt="예시용 가상 이력서. 김민수라는 가상 인물의 서비스 기획 소개, 도서 검색 화면 개선 프로젝트, 활용 도구와 학습 항목을 LaTeX로 실제 출력한 PDF." />
+          <div className="c13-project-highlight" style={reveal(focusProject, instant, 'none')} aria-hidden="true" />
+        </div>
+        <p className="c13-output-caption">예시용 가상 이력서 · 실제 PDF의 위쪽 부분</p>
+      </figure>
     </div>
-
-    <p className="crai-takeaway" style={reveal(showCheck, instant, 'translateY(5px)')} aria-hidden={!showCheck}>이력서·자기소개서는 <strong>핵심이 바로 읽히도록 명확하고 간결하게</strong> 씁니다.</p>
+    <footer className="c13-footer">
+      <p style={reveal(verify, instant, 'translateY(5px)')} aria-hidden={!verify}><strong>사실 · 줄바꿈 · 텍스트 복사</strong>까지 확인합니다.</p>
+      <nav aria-label="가상 이력서 예제 파일">
+        <a href="/slides/057/sample-resume.tex" target="_blank" rel="noreferrer">LaTeX 원본 ↗</a>
+        <a href="/slides/057/sample-resume.pdf" target="_blank" rel="noreferrer">PDF ↗</a>
+      </nav>
+    </footer>
   </div>;
 }

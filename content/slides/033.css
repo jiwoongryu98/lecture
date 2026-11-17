@@ -1,6 +1,9 @@
 .workflow-s07 .industry-heading h1 { font-size: 3.3cqw; }
 .workflow-s07 .w07-composition { flex: 1; min-height: 0; display: grid; grid-template-columns: 26cqw minmax(0, 1fr); gap: 5cqw; align-items: center; margin-top: 1.1cqw; }
 .workflow-s07 .w07-question-label { margin: 0 0 1.6cqw; color: var(--green); font-size: 1.1cqw; font-weight: 650; }
+.workflow-s07 .w07-question-scene { display: grid; align-items: center; min-height: 11.6cqw; }
+.workflow-s07 .w07-question-scene > * { grid-area: 1 / 1; }
+.workflow-s07 .w07-question-scene .w07-meme { margin: 0; color: var(--ink); font-size: 3.05cqw; line-height: 1.4; font-weight: 750; letter-spacing: -.065em; white-space: nowrap; }
 .workflow-s07 .w07-question h2 { margin: 0; font-size: 2.65cqw; color: var(--ink); line-height: 1.45; letter-spacing: -.055em; font-weight: 500; }
 .workflow-s07 .w07-question h2 strong { color: var(--green); font-weight: 750; }
 .workflow-s07 .w07-artifact-label { margin: 1.65cqw 0 0; color: var(--muted); font-size: 1.15cqw; line-height: 1.7; letter-spacing: -.035em; }

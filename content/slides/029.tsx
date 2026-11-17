@@ -20,8 +20,15 @@ export default function Slide029({ step, instant }: SlideProps) {
     <div className="w03-composition">
       <section className="w03-purpose">
         <p className="w03-feature"><ReferenceLink to="Plan Mode">Plan Mode</ReferenceLink></p>
-        <h2>실행 전에<br />함께 계획하기</h2>
-        <p className="w03-purpose-detail">접근 방식과 작업 범위를<br />먼저 맞춥니다.</p>
+        <div className="w03-purpose-scene">
+          <ReferenceLink to="기생충 예고편" className="w03-meme" style={reveal(!changing, instant, 'none')} aria-hidden={changing}>
+            <img src="/slides/029/plan-meme.jpg" width="740" height="598" alt="기생충의 송강호와 ‘아들아, 역시 너는 계획이 다 있구나!’ 대사" />
+          </ReferenceLink>
+          <div className="w03-purpose-copy" style={reveal(changing, instant, 'translateY(6px)')} aria-hidden={!changing}>
+            <h2>실행 전에<br />함께 계획하기</h2>
+            <p className="w03-purpose-detail">접근 방식과 작업 범위를<br />먼저 맞춥니다.</p>
+          </div>
+        </div>
       </section>
 
       <div className="w03-evolution">

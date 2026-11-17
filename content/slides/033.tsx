@@ -26,7 +26,10 @@ export default function Slide033({ step, instant }: SlideProps) {
     <div className="w07-composition">
       <div className="w07-question">
         <p className="w07-question-label">AI가 알아야 할 것</p>
-        <h2>언제 쓰고,<br />무엇을<br /><strong>받을까요?</strong></h2>
+        <div className="w07-question-scene">
+          <p className="w07-meme" style={reveal(!defined, instant, 'none')} aria-hidden={defined}><ReferenceLink to="알잘딱깔센 사용례">“알잘딱깔센”</ReferenceLink></p>
+          <h2 style={reveal(defined, instant, 'translateY(6px)')} aria-hidden={!defined}>언제 쓰고,<br />무엇을<br /><strong>받을까요?</strong></h2>
+        </div>
         <p className="w07-artifact-label"><ReferenceLink to="GitHub MCP">GitHub 공식 MCP 서버</ReferenceLink>의<br />이슈 검색 도구로 살펴봅니다.</p>
       </div>
 

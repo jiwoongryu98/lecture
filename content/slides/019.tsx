@@ -1,4 +1,4 @@
-import { Heading, ReferenceLink, Takeaway, type SlideProps } from '../components/kit';
+import { Heading, ReferenceLink, type SlideProps } from '../components/kit';
 import './019.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
@@ -63,7 +63,5 @@ export default function Slide019(_props: SlideProps) {
         </dl>
       </section>)}
     </div>
-
-    <Takeaway><ReferenceLink to="Transformer">Transformer</ReferenceLink>는 모델 아키텍처, <strong><ReferenceLink to="Hugging Face Transformers">Hugging Face Transformers는 소프트웨어 라이브러리</ReferenceLink></strong>입니다.</Takeaway>
   </div>;
 }

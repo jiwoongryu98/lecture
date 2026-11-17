@@ -150,12 +150,12 @@ it('authorizes presenter connections and rejects anonymous or invalid slide comm
 
 it('serves the matching speaker notes only to an authenticated presenter', async () => {
   for (const cookie of ['', 'presenter_key=wrong', 'comment_password=test-comment-password']) {
-    const response = await exports.default.fetch(base + '/notes/49', { headers: { Cookie: cookie } });
+    const response = await exports.default.fetch(base + '/notes/48', { headers: { Cookie: cookie } });
     expect(response.status).toBe(401);
     expect(response.headers.get('Cache-Control')).toBe('no-store');
   }
   const headers = { Cookie: 'presenter_key=test-presenter-key' };
-  for (const index of [1, 49, 61]) {
+  for (const index of [1, 48, 60]) {
     const response = await exports.default.fetch(base + '/notes/' + index, { headers });
     expect(response.headers.get('Cache-Control')).toBe('no-store');
     if (response.status === 404) {
@@ -169,7 +169,7 @@ it('serves the matching speaker notes only to an authenticated presenter', async
     }
   }
   expect((await exports.default.fetch(base + '/notes/not-a-slide', { headers })).status).toBe(404);
-  expect((await exports.default.fetch(base + '/notes/49', { method: 'POST', headers })).status).toBe(405);
+  expect((await exports.default.fetch(base + '/notes/48', { method: 'POST', headers })).status).toBe(405);
 });
 
 it('reports presenter presence only after authentication and clears it when authentication is revoked', async () => {

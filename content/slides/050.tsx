@@ -1,45 +1,54 @@
-import { Heading, reveal, type SlideProps } from '../components/kit';
+import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
 import './050.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "career-domain",
-  "title": "문제를 정의하는 능력이 더 중요해집니다",
+  "id": "career-contribution",
+  "title": "어떻게 만들고 검증할지 구체화합니다",
   "section": "3부 · 경험을 연결하다",
   "maxStep": 2,
   "subsection": "역할의 변화"
 } satisfies SlideMetadata;
 
 export default function Slide050({ step, instant }: SlideProps) {
-  const showDefinition = step >= 1;
-  const showCriteria = step >= 2;
+  const showWork = step >= 1;
+  const showTests = step >= 2;
 
-  return <div className="industry-content career-s05">
-    <Heading eyebrow="역할의 변화 / 무엇을 풀 것인가" subtitle="실행이 쉬워질수록, 풀어야 할 문제를 정확히 정하는 일이 중요합니다.">문제를 정의하는 능력이 더 중요해집니다</Heading>
+  return <div className="industry-content career-s06">
+    <Heading eyebrow="문제 정의에서 실행으로 / 기술 선택 · 작업 분해 · 테스트">어떻게 만들고 검증할지 구체화합니다</Heading>
 
-    <div className="c05-composition">
-      <div className="c05-possibilities">
-        <p className="c05-label">넓어진 실행 범위</p>
-        <h2>AI로 무엇을<br />만들 수 있을까?</h2>
-        <p className="c05-examples">코드 · 문서 · 화면 · 자동화</p>
-      </div>
+    <div className="c06-composition">
+      <section className="c06-plan" aria-label="정의한 문제를 바탕으로 작성할 실행 계획">
+        <header className="c06-plan-header"><h2>실행 계획</h2><p>웹서비스 개발 도구는 선택 예시</p></header>
 
-      <svg className="c05-arrow" viewBox="0 0 80 60" aria-hidden="true" style={reveal(showDefinition, instant, 'none')}>
-        <path d="M7 30H69M53 14L69 30L53 46" />
-      </svg>
+        <div className="c06-row c06-tools">
+          <div className="c06-question"><p>기술 선택</p><h3>무엇으로 만들까?</h3></div>
+          <div className="c06-answer">
+            <p><ReferenceLink to="React">React</ReferenceLink> <span>화면</span><b>·</b><ReferenceLink to="FastAPI">FastAPI</ReferenceLink> <span>API</span></p>
+            <p className="c06-detail">요구사항에 맞는 라이브러리·프레임워크와 선택 이유</p>
+          </div>
+        </div>
 
-      <section className="c05-definition" aria-label="문제 정의에서 답할 질문" style={reveal(showDefinition, instant, 'translateY(6px)')} aria-hidden={!showDefinition}>
-        <header><p className="c05-label">무엇을 해결해야 할까?</p><h2>문제 정의</h2></header>
-        <dl>
-          <div><dt>대상과 불편</dt><dd>누가, 어떤 불편을 겪는가?</dd></div>
-          <div><dt>원하는 변화</dt><dd>무엇이 달라져야 하는가?</dd></div>
-          <div className="c05-criteria" style={reveal(showCriteria, instant, 'translateY(5px)')} aria-hidden={!showCriteria}><dt>확인 기준</dt><dd>어떤 결과로 확인할 것인가?</dd></div>
-        </dl>
+        <div className="c06-row c06-work" style={reveal(showWork, instant, 'translateY(6px)')} aria-hidden={!showWork}>
+          <div className="c06-question"><p>작업 분해</p><h3>어떤 순서로 만들까?</h3></div>
+          <div className="c06-answer">
+            <p className="c06-flow">입력·화면 <span>→</span> 처리·API <span>→</span> 결과 표시</p>
+            <p className="c06-detail">핵심 흐름부터 샘플로 연결</p>
+          </div>
+        </div>
+
+        <div className="c06-row c06-tests" style={reveal(showTests, instant, 'translateY(6px)')} aria-hidden={!showTests}>
+          <div className="c06-question"><p>테스트 설계</p><h3>어떻게 확인할까?</h3></div>
+          <div className="c06-answer">
+            <p><ReferenceLink to="Vitest">Vitest</ReferenceLink> <span>로직</span><b>·</b><ReferenceLink to="Playwright">Playwright</ReferenceLink> <span>사용자 흐름</span></p>
+            <p className="c06-detail">정상·오류·예외 조건과 기대 결과 정의</p>
+          </div>
+        </div>
       </section>
     </div>
 
-    <p className="c05-takeaway" style={reveal(showCriteria, instant, 'translateY(6px)')} aria-hidden={!showCriteria}>
-      AI와 실행할 방향을 정하는 역량, <strong>문제 정의 능력</strong>이 중요해집니다.
+    <p className="c06-takeaway" style={reveal(showTests, instant, 'translateY(5px)')} aria-hidden={!showTests}>
+      도구 선택부터 작업 순서와 테스트까지, <strong>AI와 함께 실행 계획을 구체화합니다.</strong>
     </p>
   </div>;
 }

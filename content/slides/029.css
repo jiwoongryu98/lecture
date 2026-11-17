@@ -9,6 +9,10 @@
   margin-top: 1.2cqw;
 }
 .workflow-s03 .w03-purpose { border-left: 2px solid #c5d5e9; padding-left: 2cqw; }
+.workflow-s03 .w03-purpose-scene { display: grid; align-items: center; min-height: 23cqw; }
+.workflow-s03 .w03-purpose-scene > * { grid-area: 1 / 1; min-width: 0; }
+.workflow-s03 .w03-meme { display: block; border-radius: .5cqw; overflow: hidden; }
+.workflow-s03 .w03-meme img { display: block; width: 100%; height: auto; }
 .workflow-s03 .w03-feature { margin: 0 0 1.25cqw; color: var(--blue); font-size: 1.65cqw; font-weight: 700; letter-spacing: -.025em; }
 .workflow-s03 .w03-purpose h2 { margin: 0; color: var(--ink); font-size: 2.8cqw; font-weight: 700; letter-spacing: -.055em; line-height: 1.45; }
 .workflow-s03 .w03-purpose-detail { margin: 1.5cqw 0 0; color: var(--muted); font-size: 1.35cqw; line-height: 1.7; letter-spacing: -.03em; }

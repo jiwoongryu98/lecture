@@ -16,6 +16,8 @@
 .workflow-s16 .w16-green { fill: var(--green); }
 .workflow-s16 .w16-center-title { fill: var(--ink); font-size: 31px; font-weight: 750; letter-spacing: -.9px; }
 .workflow-s16 .w16-center-detail { fill: var(--muted); font-size: 23px; letter-spacing: -.7px; }
+.workflow-s16 .w16-meme-lead { fill: var(--ink); font-size: 30px; font-weight: 450; letter-spacing: -.7px; }
+.workflow-s16 .w16-meme-punchline { fill: var(--ink); font-size: 35px; font-weight: 800; letter-spacing: -1px; }
 .workflow-s16 .w16-forward { fill: none; stroke: #9ab4a5; stroke-width: 2.5; }
 .workflow-s16 .w16-propose { fill: #fbf3e8; stroke: #d0ad7c; stroke-width: 2; }
 .workflow-s16 .w16-propose-icon { fill: none; stroke: var(--amber); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }

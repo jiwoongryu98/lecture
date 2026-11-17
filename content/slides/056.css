@@ -1,0 +1,18 @@
+.career-s14 .industry-heading h1 { font-size: 3.3cqw; }
+.career-s14 .industry-subtitle { margin-top: .8cqw; font-size: 1.35cqw; }
+.career-s14 .c14-case { flex: 1; min-height: 0; display: grid; grid-template-columns: 16cqw minmax(0, 1fr); align-items: center; gap: 3cqw; margin: 1.1cqw 2.5cqw .4cqw; }
+.career-s14 .c14-source { margin: 0; transform: rotate(-2deg); }
+.career-s14 .c14-source > a { display: block; padding: .45cqw; background: #fff; border: 1px solid #d8dfe4; box-shadow: 0 .35cqw 1cqw #263c4810; }
+.career-s14 .c14-source img { display: block; width: 100%; height: auto; }
+.career-s14 .c14-source figcaption { display: flex; justify-content: space-between; gap: .5cqw; margin-top: .8cqw; color: var(--muted); font-size: 1.02cqw; line-height: 1.5; }
+.career-s14 .c14-source figcaption > a { color: var(--green); text-decoration: none; border-bottom: 1px solid #b4cbbb; white-space: nowrap; }
+.career-s14 .c14-explanation { min-width: 0; }
+.career-s14 .c14-explanation svg { display: block; width: 100%; height: 22.8cqw; overflow: visible; }
+.career-s14 .c14-inputs > text { fill: var(--ink); font-family: inherit; font-size: 28px; font-weight: 500; letter-spacing: -.025em; }
+.career-s14 .c14-inputs > .c14-paper-title { fill: var(--green); font-size: 25px; font-weight: 650; }
+.career-s14 .c14-ai-label { fill: var(--green); font-family: inherit; font-size: 29px; font-weight: 700; }
+.career-s14 .c14-ai-title { fill: var(--ink); font-family: inherit; font-size: 29px; font-weight: 650; letter-spacing: -.04em; }
+.career-s14 .c14-scope { margin: .1cqw 0 0 2.3cqw; color: var(--muted); font-size: 1.05cqw; line-height: 1.5; letter-spacing: -.025em; }
+.career-s14 .c14-advice { display: flex; flex-shrink: 0; align-items: baseline; justify-content: center; gap: 1.7cqw; margin: .8cqw 2.5cqw .5cqw; padding: 1.2cqw 0 .4cqw; border-top: 1px solid var(--line); line-height: 1.5; letter-spacing: -.035em; }
+.career-s14 .c14-advice > span { color: var(--muted); font-size: 1.1cqw; }
+.career-s14 .c14-advice > strong { color: var(--ink); font-size: 1.8cqw; font-weight: 650; }

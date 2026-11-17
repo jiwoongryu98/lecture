@@ -1,0 +1,22 @@
+.workflow-s06 .industry-heading h1 { font-size: 3.45cqw; }
+.workflow-s06 .w06-visual { flex: 1; min-height: 0; display: flex; align-items: center; margin-top: .7cqw; }
+.workflow-s06 .w06-visual svg { display: block; width: 100%; height: 30cqw; overflow: visible; }
+.workflow-s06 .w06-select { fill: none; stroke: #94aaa0; stroke-width: 3; }
+.workflow-s06 .w06-action-label { fill: var(--muted); font-size: 24px; font-weight: 550; }
+.workflow-s06 .w06-model { fill: #edf2fa; stroke: #8da9ce; stroke-width: 2; }
+.workflow-s06 .w06-model-label { fill: var(--blue); font-size: 23px; font-weight: 600; }
+.workflow-s06 .w06-model-title { fill: var(--ink); font-size: 38px; font-weight: 750; letter-spacing: -1px; }
+.workflow-s06 .w06-model-detail { fill: var(--muted); font-size: 23px; }
+.workflow-s06 .w06-tools-title { fill: var(--green); font-size: 26px; font-weight: 700; }
+.workflow-s06 .w06-tool-surface { fill: #eef6f1; stroke: #b0cbbd; stroke-width: 2; }
+.workflow-s06 .w06-tool-icons { fill: none; stroke: var(--green); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+.workflow-s06 .w06-tool-labels { fill: var(--ink); font-size: 23px; font-weight: 550; }
+.workflow-s06 .w06-execute { fill: none; stroke: var(--green); stroke-width: 3; }
+.workflow-s06 .w06-execute-label { fill: var(--green); font-size: 23px; font-weight: 650; }
+.workflow-s06 .w06-result { fill: #fffefa; stroke: #c3d3ca; stroke-width: 2; }
+.workflow-s06 .w06-result-title { fill: var(--green); font-size: 23px; font-weight: 700; }
+.workflow-s06 .w06-result-detail { fill: var(--ink); font-size: 24px; letter-spacing: -.5px; }
+.workflow-s06 .w06-observe { fill: none; stroke: var(--green); stroke-width: 3; }
+.workflow-s06 .w06-observe-label { fill: var(--green); font-size: 25px; font-weight: 650; }
+.workflow-s06 .w06-takeaway { margin: .7cqw 0 .5cqw; padding-top: 1.15cqw; border-top: 1px solid var(--line); color: var(--ink); font-size: 1.45cqw; line-height: 1.6; letter-spacing: -.035em; }
+.workflow-s06 .w06-takeaway strong { color: var(--green); font-weight: 700; }

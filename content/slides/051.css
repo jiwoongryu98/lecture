@@ -1,0 +1,21 @@
+.career-s06 .industry-heading h1 { font-size: 3.3cqw; }
+.career-s06 .c06-composition { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; margin-top: 1cqw; }
+.career-s06 .c06-plan { width: 86cqw; padding: 1.4cqw 2cqw .5cqw; background: #fbfcf7; border: 1px solid #d5dfd5; border-radius: .35cqw; }
+.career-s06 .c06-plan-header { display: flex; align-items: baseline; justify-content: space-between; gap: 2cqw; padding: 0 .6cqw 1.2cqw; }
+.career-s06 .c06-plan-header h2 { margin: 0; color: var(--ink); font-size: 1.8cqw; line-height: 1.4; letter-spacing: -.04em; }
+.career-s06 .c06-plan-header > p { margin: 0; color: var(--muted); font-size: 1cqw; line-height: 1.5; }
+.career-s06 .c06-row { display: grid; grid-template-columns: 23cqw 1fr; gap: 3cqw; align-items: center; padding: 1.2cqw .6cqw; border-top: 1px solid var(--line); }
+.career-s06 .c06-question > p { margin: 0 0 .35cqw; font-size: 1.05cqw; line-height: 1.5; font-weight: 650; }
+.career-s06 .c06-tools .c06-question > p { color: var(--blue); }
+.career-s06 .c06-work .c06-question > p { color: var(--green); }
+.career-s06 .c06-tests .c06-question > p { color: var(--amber); }
+.career-s06 .c06-question h3 { margin: 0; color: var(--ink); font-size: 1.8cqw; line-height: 1.5; letter-spacing: -.045em; }
+.career-s06 .c06-answer > p { margin: 0; color: var(--ink); font-size: 1.9cqw; line-height: 1.6; letter-spacing: -.035em; }
+.career-s06 .c06-answer > p > .reference-link { font-weight: 700; }
+.career-s06 .c06-answer > p > span { margin-left: .3cqw; color: var(--muted); font-size: 1.15cqw; }
+.career-s06 .c06-answer > p > b { margin: 0 1.1cqw; color: #aabbb0; font-weight: 400; }
+.career-s06 .c06-answer > p.c06-detail { margin-top: .3cqw; color: var(--muted); font-size: 1.1cqw; line-height: 1.5; }
+.career-s06 .c06-answer > p.c06-flow { font-size: 1.7cqw; }
+.career-s06 .c06-answer > p.c06-flow > span { margin: 0 .65cqw; color: #91b09c; font-size: 1.5cqw; }
+.career-s06 .c06-takeaway { margin: .8cqw 0 .3cqw; padding-top: 1cqw; border-top: 1px solid var(--line); color: var(--ink); font-size: 1.45cqw; line-height: 1.6; letter-spacing: -.035em; }
+.career-s06 .c06-takeaway strong { color: var(--green); }

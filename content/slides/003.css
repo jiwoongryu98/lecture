@@ -1,0 +1,61 @@
+.introduction-website .industry-heading h1 { font-size: 3.2cqw; }
+.introduction-website .website-intro-layout {
+  display: grid;
+  grid-template-columns: 54cqw minmax(0, 1fr);
+  gap: 3.8cqw;
+  align-items: center;
+  margin-top: 1.8cqw;
+}
+.introduction-website .website-intro-screen { margin: 0; min-width: 0; }
+.introduction-website .website-intro-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #d9e2df;
+  border-radius: .65cqw;
+  box-shadow: 0 .65cqw 1.6cqw #22354a12;
+}
+.introduction-website .website-intro-screen figcaption {
+  margin-top: .7cqw;
+  color: var(--muted);
+  font-size: .9cqw;
+  line-height: 1.4;
+}
+.introduction-website .website-intro-context { min-width: 0; padding-bottom: 1.7cqw; }
+.introduction-website .website-intro-label {
+  margin: 0 0 .5cqw;
+  color: var(--muted);
+  font-size: 1cqw;
+  line-height: 1.4;
+}
+.introduction-website .website-intro-context h2 {
+  margin: 0;
+  color: var(--green);
+  font-size: 2.65cqw;
+  line-height: 1.2;
+  letter-spacing: -.045em;
+}
+.introduction-website .website-intro-detail {
+  margin: .7cqw 0 0;
+  color: var(--ink);
+  font-size: 1.12cqw;
+  line-height: 1.6;
+}
+.introduction-website .website-intro-hosting { margin-top: 2.1cqw; }
+.introduction-website .website-intro-hosting h2 { color: #bd6225; letter-spacing: -.025em; }
+.introduction-website .website-intro-source {
+  margin-top: 2.1cqw;
+  padding-top: 1.3cqw;
+  border-top: 1px solid var(--line);
+}
+.introduction-website .website-intro-source-placeholder {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.15cqw;
+  line-height: 1.5;
+}
+.introduction-website .website-intro-source-placeholder span { margin-right: .4cqw; color: var(--green); font-weight: 700; }
+.introduction-website .website-intro-participation { margin-top: .9cqw; }
+.introduction-website .website-intro-participation p { margin: 0; color: var(--ink); font-size: 1.18cqw; line-height: 1.5; }
+.introduction-website .website-intro-participation strong { color: var(--green); font-weight: 750; }
+.introduction-website .website-intro-participation p > span { margin: 0 .8cqw; color: #92a49e; }

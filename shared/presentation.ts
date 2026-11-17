@@ -1,0 +1,80 @@
+export interface SlideMetadata {
+  id: string;
+  title: string;
+  section: string;
+  subsection?: string;
+  maxStep: number;
+}
+export interface SlideDefinition extends SlideMetadata { number: string }
+
+export interface Position { index: number; step: number }
+export interface LectureState extends Position { revision: number; updatedAt: number }
+export interface Question {
+  id: number;
+  index: number;
+  step: number;
+  name: string | null;
+  body: string;
+  createdAt: number;
+}
+export interface QuestionPage { questions: Question[]; nextCursor: number; hasMore: boolean }
+export interface ViewerState {
+  following: boolean;
+  position: Position;
+  latest: LectureState | null;
+}
+export type ViewerAction = { type: 'snapshot'; state: LectureState }
+  | { type: 'navigate'; position: Position } | { type: 'pause' } | { type: 'play' };
+
+export function createDeckRules(slides: readonly SlideDefinition[]) {
+  if (!slides.length) throw new Error('A presentation requires at least one slide');
+  const initialPosition: Position = { index: 1, step: 0 };
+
+  function isPosition(value: unknown): value is Position {
+    if (!value || typeof value !== 'object') return false;
+    const p = value as Record<string, unknown>;
+    const slide = typeof p.index === 'number' && Number.isSafeInteger(p.index) ? slides[p.index - 1] : undefined;
+    return !!slide && typeof p.step === 'number' && Number.isInteger(p.step)
+      && p.step >= 0 && p.step <= slide.maxStep;
+  }
+
+  function move(position: Position, direction: 1 | -1): Position {
+    const index = position.index - 1;
+    const slide = slides[index];
+    if (direction === 1) {
+      if (position.step < slide.maxStep) return { ...position, step: position.step + 1 };
+      return index < slides.length - 1 ? { index: index + 2, step: 0 } : position;
+    }
+    if (position.step > 0) return { ...position, step: position.step - 1 };
+    return index > 0 ? { index: index, step: slides[index - 1].maxStep } : position;
+  }
+
+  function positionFromSearch(search: string): Position {
+    const params = new URLSearchParams(search);
+    const rawIndex = params.get('index');
+    const index = rawIndex !== null && /^\d+$/.test(rawIndex) ? Number(rawIndex) : 0;
+    const position = { index, step: Number(params.get('step') ?? 0) };
+    return isPosition(position) ? position : initialPosition;
+  }
+
+  function viewerReducer(state: ViewerState, action: ViewerAction): ViewerState {
+    if (action.type === 'pause') return { ...state, following: false };
+    if (action.type === 'navigate') return { ...state, following: false, position: action.position };
+    if (action.type === 'play') return { ...state, following: true, position: state.latest ?? state.position };
+    if (!isPosition(action.state) || !Number.isSafeInteger(action.state.revision)
+      || action.state.revision < 0 || (state.latest && action.state.revision < state.latest.revision)) return state;
+    return { ...state, latest: action.state, position: state.following ? action.state : state.position };
+  }
+
+  return { initialPosition, isPosition, move, positionFromSearch, viewerReducer };
+}
+
+export function groupSections(slides: readonly SlideDefinition[]) {
+  const groups: { title: string; slides: SlideDefinition[] }[] = [];
+  for (const slide of slides) {
+    const previous = groups.at(-1);
+    if (previous?.title === slide.section) previous.slides.push(slide);
+    else groups.push({ title: slide.section, slides: [slide] });
+  }
+  return groups;
+}

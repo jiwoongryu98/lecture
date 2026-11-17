@@ -1,0 +1,16 @@
+[
+  {
+    "file": "samsung-hbm4.png",
+    "url": "https://image.semiconductor.samsung.com/image/samsung/p6/semiconductor/products/dram/spec-dram-hbm-hbm4.png?$ORIGIN_PNG$",
+    "source": "https://semiconductor.samsung.com/dram/hbm/",
+    "credit": "Samsung Electronics",
+    "bytes": 312253
+  },
+  {
+    "file": "stable-diffusion-2022.jpg",
+    "url": "https://images.squarespace-cdn.com/content/v1/6213c340453c3f502425776e/59acee8f-e2cf-4e9d-a212-57767efc3b6b/stable-diffusion-generated-images+1.jpg",
+    "source": "https://stability.ai/news-updates/stable-diffusion-public-release",
+    "credit": "Stability AI / original release examples",
+    "bytes": 93223
+  }
+]

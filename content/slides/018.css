@@ -1,0 +1,46 @@
+.industry-s15 .industry-heading h1 { font-size: 3.32cqw; }
+.industry-s15 .s15-loop-visual {
+  flex: 0 0 auto;
+  height: 28.6cqw;
+  margin-top: 1.25cqw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.industry-s15 .s15-loop-visual svg { width: 100%; height: 100%; overflow: visible; }
+.industry-s15 .s15-loop-arrows path {
+  stroke: #d1dce2;
+  stroke-width: 3;
+  transition: stroke 380ms ease;
+}
+.industry-s15 .s15-loop-arrows path.s15-active { stroke: var(--blue); }
+.industry-s15 .s15-focus-marker circle:first-child { fill: #4269a51a; }
+.industry-s15 .s15-focus-marker circle:last-child { fill: var(--blue); }
+.industry-s15 .s15-phase-title {
+  fill: #69798b;
+  font-size: 24px;
+  font-weight: 750;
+  letter-spacing: -.045em;
+  transition: fill 380ms ease;
+}
+.industry-s15 .s15-phase-detail { fill: var(--muted); font-size: 16px; }
+.industry-s15 .s15-current .s15-phase-title { fill: var(--blue); }
+.industry-s15 .s15-center-disc { fill: #f0f4f8; }
+.industry-s15 .s15-center-title { fill: var(--blue); font-size: 18px; font-weight: 800; letter-spacing: -.045em; }
+.industry-s15 .s15-center-detail { fill: var(--ink); font-size: 16px; letter-spacing: -.025em; }
+.industry-s15 .s15-separation { fill: none; stroke: #d5dedf; stroke-width: 1.2; stroke-dasharray: 4 7; }
+.industry-s15 .s15-heldout-heading { fill: var(--ink); font-size: 20px; font-weight: 750; letter-spacing: -.04em; }
+.industry-s15 .s15-paper { fill: none; stroke: var(--green); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.industry-s15 .s15-material-title { fill: var(--green); font-size: 23px; font-weight: 750; letter-spacing: -.035em; }
+.industry-s15 .s15-material-detail { fill: var(--muted); font-size: 16px; letter-spacing: -.03em; }
+.industry-s15 .s15-validation { opacity: .7; transition: opacity 380ms ease; }
+.industry-s15 .s15-material-active { opacity: 1; }
+.industry-s15 .s15-validation-link { fill: none; stroke: #bdd3cc; stroke-width: 1.8; stroke-dasharray: 5 6; transition: stroke 380ms ease, stroke-width 380ms ease; }
+.industry-s15 .s15-link-active { stroke: var(--green); stroke-width: 2.5; }
+.industry-s15 .s15-material-divider { fill: none; stroke: var(--line); }
+.industry-s15 .s15-test .s15-paper { stroke: var(--amber); }
+.industry-s15 .s15-test .s15-material-title { fill: var(--amber); }
+.industry-s15 .s15-holdout-note { fill: var(--muted); font-size: 12px; letter-spacing: -.035em; }
+.industry-s15 .s15-takeaway { margin: .8cqw 0 0; text-align: center; color: var(--ink); font-size: 1.45cqw; line-height: 1.5; letter-spacing: -.035em; }
+.industry-s15 .s15-takeaway strong { color: var(--blue); font-weight: 800; }
+.industry-s15[data-instant="true"] * { transition: none !important; }

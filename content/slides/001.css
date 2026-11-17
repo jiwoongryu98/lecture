@@ -1,0 +1,8 @@
+.slide-body { flex: 1; display: grid; grid-template-columns: 1.5fr 1fr; align-items: center; gap: 4cqw; }
+.section-label { margin: 0 0 1.6cqw; font-size: 0.85cqw; color: #177c68; font-weight: 700; letter-spacing: 0.1em; }
+.slide-description { margin: 2cqw 0 0; font-size: 1.2cqw; line-height: 1.8; color: #647486; letter-spacing: -0.03em; }
+.topics { list-style: none; padding: 0; margin: 0; border-top: 1px solid #dce3df; }
+.topic { display: flex; gap: 1.4cqw; padding: 2cqw 0; border-bottom: 1px solid #dce3df; }
+.topic-number { font-size: 1cqw; color: #177c68; font-weight: 700; padding-top: 0.3cqw; }
+.topic h2 { font-size: 1.7cqw; letter-spacing: -0.05em; margin: 0; font-weight: 700; }
+.topic p { font-size: 0.95cqw; color: #647486; margin: 0.7cqw 0 0; letter-spacing: -0.04em; }

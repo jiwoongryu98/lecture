@@ -1,0 +1,24 @@
+.workflow-s18 .industry-heading h1 { font-size: 3.3cqw; }
+.workflow-s18 .w18-layout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 27cqw 49cqw;
+  gap: 4cqw;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.2cqw;
+}
+.workflow-s18 .w18-request { border-left: 2px solid #b3cdbc; padding-left: 1.8cqw; }
+.workflow-s18 .w18-label { margin: 0 0 2cqw; color: var(--green); font-size: 1.15cqw; font-weight: 700; letter-spacing: -.025em; }
+.workflow-s18 .w18-concept-label { margin: 0 0 .5cqw; color: var(--muted); font-size: 1.1cqw; line-height: 1.4; }
+.workflow-s18 .w18-request h2 { margin: 0; color: var(--ink); font-size: 3cqw; line-height: 1.3; letter-spacing: -.05em; }
+.workflow-s18 .w18-goal { margin: 1cqw 0 0; color: var(--ink); font-size: 1.6cqw; line-height: 1.6; letter-spacing: -.035em; }
+.workflow-s18 .w18-brief { margin-top: 2.2cqw; }
+.workflow-s18 .w18-brief > div + div { margin-top: 1.5cqw; }
+.workflow-s18 .w18-brief > div > p:last-child { margin: 0; color: var(--ink); font-size: 1.45cqw; line-height: 1.5; letter-spacing: -.035em; }
+.workflow-s18 .w18-brief a { display: inline-block; color: var(--green); font-size: 1.2cqw; font-weight: 650; line-height: 1.7; text-decoration: none; border-bottom: 1px solid #a9c8b7; margin-top: 2cqw; }
+.workflow-s18 .w18-brief a > span { margin-left: .4cqw; }
+.workflow-s18 .w18-website { margin: 0; min-width: 0; }
+.workflow-s18 .w18-website img { display: block; width: 100%; height: auto; border: 1px solid #d3ded6; border-radius: .7cqw; box-shadow: 0 .6cqw 1.5cqw #22354a0c; }
+.workflow-s18 .w18-website figcaption { margin-top: .65cqw; color: var(--muted); font-size: 1cqw; line-height: 1.5; letter-spacing: -.025em; }

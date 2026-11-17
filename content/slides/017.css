@@ -1,0 +1,73 @@
+.industry-s14 .industry-s14-visual {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  margin-top: .8cqw;
+}
+.industry-s14 .industry-s14-visual svg {
+  display: block;
+  width: 100%;
+  height: 28cqw;
+  overflow: visible;
+}
+.industry-s14 .industry-s14-base-title,
+.industry-s14 .industry-s14-result {
+  fill: var(--ink);
+  font-size: 19px;
+  font-weight: 750;
+  letter-spacing: -.04em;
+}
+.industry-s14 .industry-s14-path-title {
+  font-size: 21px;
+  font-weight: 750;
+  letter-spacing: -.045em;
+}
+.industry-s14 .industry-s14-opening {
+  fill: var(--ink);
+  font-size: 28px;
+  font-weight: 650;
+  letter-spacing: -.04em;
+}
+.industry-s14 .industry-s14-small {
+  fill: var(--muted);
+  font-size: 15px;
+  font-weight: 450;
+  letter-spacing: -.035em;
+}
+.industry-s14 .industry-s14-blue { fill: var(--blue); }
+.industry-s14 .industry-s14-green { fill: var(--green); }
+.industry-s14 .industry-s14-product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1cqw;
+  flex-shrink: 0;
+  border-top: 1px solid var(--line);
+  padding-top: 1.05cqw;
+}
+.industry-s14 .industry-s14-product > div {
+  display: flex;
+  align-items: center;
+  gap: .8cqw;
+}
+.industry-s14 .industry-s14-product > div > span {
+  font-size: .95cqw;
+  font-weight: 700;
+  color: var(--green);
+}
+.industry-s14 .industry-s14-product strong {
+  font-size: 1.35cqw;
+  letter-spacing: -.025em;
+}
+.industry-s14 .industry-s14-product p {
+  margin: 0;
+  font-size: 1.1cqw;
+  line-height: 1.5;
+  color: var(--muted);
+  letter-spacing: -.025em;
+}
+.industry-s14 .industry-s14-product p > span {
+  display: inline-block;
+  color: var(--green);
+}

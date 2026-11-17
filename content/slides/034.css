@@ -1,0 +1,32 @@
+.workflow-s08 .industry-heading h1 { font-size: 3.4cqw; }
+.workflow-s08 .w08-diagram { flex: 1; min-height: 0; display: flex; align-items: center; margin-top: .8cqw; }
+.workflow-s08 .w08-diagram svg { display: block; width: 100%; height: 29cqw; overflow: visible; }
+.workflow-s08 .w08-host { fill: #fafbf8; stroke: #9eb6ab; stroke-width: 2; }
+.workflow-s08 .w08-host-rule { stroke: #d5e1da; stroke-width: 1.5; }
+.workflow-s08 .w08-host-title { fill: var(--ink); font-size: 29px; font-weight: 700; letter-spacing: -1px; }
+.workflow-s08 .w08-model { fill: #edf1f7; stroke: #b1c0d2; stroke-width: 2; }
+.workflow-s08 .w08-model-title { fill: var(--blue); font-size: 27px; font-weight: 650; letter-spacing: -1px; }
+.workflow-s08 .w08-inner-link { fill: none; stroke: #a8bcb1; stroke-width: 2; }
+.workflow-s08 .w08-client { fill: #e8f2ed; stroke: #8eb5a2; stroke-width: 2; }
+.workflow-s08 .w08-client-top { fill: var(--green); font-size: 22px; font-weight: 700; }
+.workflow-s08 .w08-client-title { fill: var(--green); font-size: 21px; font-weight: 600; letter-spacing: -1px; }
+.workflow-s08 .w08-guide { fill: none; stroke: #d9e2df; stroke-width: 2; stroke-dasharray: 6 7; }
+.workflow-s08 .w08-server-base { fill: #f4f6f3; stroke: #b5c7bd; stroke-width: 2; }
+.workflow-s08 .w08-server-active { fill: #e4f0e9; stroke: #177c68; stroke-width: 2.5; }
+.workflow-s08 .w08-server-title { fill: var(--green); font-size: 28px; font-weight: 700; letter-spacing: -1px; }
+.workflow-s08 .w08-zone-label { fill: var(--muted); font-size: 21px; letter-spacing: -.5px; }
+.workflow-s08 .w08-tool circle { fill: #f2f5ee; stroke: #b6c6ac; stroke-width: 2; }
+.workflow-s08 .w08-tool path { fill: none; stroke: #738b5a; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-s08 .w08-resource circle { fill: #edf2f8; stroke: #b4c3d8; stroke-width: 2; }
+.workflow-s08 .w08-resource path { fill: none; stroke: var(--blue); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-s08 .w08-end-title { fill: var(--ink); font-size: 28px; font-weight: 650; letter-spacing: -1px; }
+.workflow-s08 .w08-end-detail { fill: var(--muted); font-size: 22px; letter-spacing: -.8px; }
+.workflow-s08 .w08-service-link { fill: none; stroke: #8cab9a; stroke-width: 2.5; }
+.workflow-s08 .w08-protocol-label { fill: var(--green); font-size: 23px; font-weight: 650; letter-spacing: -.7px; }
+.workflow-s08 .w08-connection { fill: none; stroke: var(--green); stroke-width: 3; }
+.workflow-s08 .w08-request { fill: none; stroke: var(--green); stroke-width: 2.5; }
+.workflow-s08 .w08-result { fill: none; stroke: var(--blue); stroke-width: 2.5; }
+.workflow-s08 .w08-request-label { fill: var(--green); font-size: 23px; font-weight: 650; }
+.workflow-s08 .w08-result-label { fill: var(--blue); font-size: 23px; font-weight: 650; }
+.workflow-s08 .w08-takeaway { margin: .7cqw 0 .5cqw; font-size: 1.5cqw; line-height: 1.6; letter-spacing: -.035em; }
+.workflow-s08 .w08-takeaway strong { color: var(--green); font-weight: 750; }

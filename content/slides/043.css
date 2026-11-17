@@ -1,0 +1,27 @@
+.workflow-s16 .industry-heading h1 { font-size: 3.3cqw; }
+.workflow-s16 .w16-visual { flex: 1; min-height: 0; display: flex; align-items: center; margin-top: .7cqw; }
+.workflow-s16 .w16-visual svg { display: block; width: 100%; height: 30cqw; overflow: visible; }
+.workflow-s16 .w16-conversation { fill: #fffefa; stroke: #c5d5cb; stroke-width: 2; }
+.workflow-s16 .w16-source-title { fill: var(--green); font-size: 25px; font-weight: 750; letter-spacing: -.7px; }
+.workflow-s16 .w16-source-detail { fill: var(--muted); font-size: 20px; letter-spacing: -.5px; }
+.workflow-s16 .w16-rule { fill: none; stroke: var(--line); stroke-width: 1.5; }
+.workflow-s16 .w16-request { fill: var(--ink); font-size: 25px; font-weight: 600; letter-spacing: -.6px; }
+.workflow-s16 .w16-request-detail { fill: var(--muted); font-size: 22px; letter-spacing: -.5px; }
+.workflow-s16 .w16-input { fill: none; stroke: #a1b5cf; stroke-width: 2.5; }
+.workflow-s16 .w16-find { fill: #edf2fa; stroke: #8da7ca; stroke-width: 2; }
+.workflow-s16 .w16-find-icon { fill: none; stroke: var(--blue); stroke-width: 2.5; stroke-linecap: round; }
+.workflow-s16 .w16-node-title { font-size: 25px; font-weight: 700; letter-spacing: -.6px; }
+.workflow-s16 .w16-blue { fill: var(--blue); }
+.workflow-s16 .w16-amber { fill: var(--amber); }
+.workflow-s16 .w16-green { fill: var(--green); }
+.workflow-s16 .w16-center-title { fill: var(--ink); font-size: 31px; font-weight: 750; letter-spacing: -.9px; }
+.workflow-s16 .w16-center-detail { fill: var(--muted); font-size: 23px; letter-spacing: -.7px; }
+.workflow-s16 .w16-forward { fill: none; stroke: #9ab4a5; stroke-width: 2.5; }
+.workflow-s16 .w16-propose { fill: #fbf3e8; stroke: #d0ad7c; stroke-width: 2; }
+.workflow-s16 .w16-propose-icon { fill: none; stroke: var(--amber); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-s16 .w16-use { fill: #eaf3ed; stroke: #8bab97; stroke-width: 2; }
+.workflow-s16 .w16-use-icon { fill: none; stroke: var(--green); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-s16 .w16-return { fill: none; stroke: var(--green); stroke-width: 3; }
+.workflow-s16 .w16-footer { margin-top: .6cqw; border-top: 1px solid var(--line); padding-top: .8cqw; }
+.workflow-s16 .w16-caption { margin: 0; color: var(--ink); font-size: 1.45cqw; line-height: 1.6; letter-spacing: -.035em; }
+.workflow-s16 .w16-reference { display: inline-block; margin-top: .25cqw; color: var(--muted); font-size: .85cqw; text-decoration: none; }

@@ -1,0 +1,27 @@
+.workflow-s17 .industry-heading h1 { font-size: 3.25cqw; }
+.workflow-s17 .w17-composition { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; margin: .7cqw 4cqw 0; }
+.workflow-s17 .w17-input { align-self: center; display: flex; align-items: center; gap: 1.2cqw; border-bottom: 2px solid #c1d4c8; padding: .7cqw 1.6cqw; }
+.workflow-s17 .w17-input span { font-size: 1cqw; color: var(--muted); }
+.workflow-s17 .w17-input strong { font-size: 1.55cqw; font-weight: 700; color: var(--ink); letter-spacing: -.04em; }
+.workflow-s17 .w17-fork { flex-shrink: 0; display: block; width: 100%; height: 4.3cqw; }
+.workflow-s17 .w17-fork path { fill: none; stroke: #b7c9c0; stroke-width: 2; }
+.workflow-s17 .w17-versions { display: grid; grid-template-columns: 1fr 1fr; gap: 4cqw; }
+.workflow-s17 .w17-version { border-top: 3px solid #a6b5c3; padding: 1.2cqw 1.7cqw; background: #f5f7f7; border-radius: 0 0 .5cqw .5cqw; }
+.workflow-s17 .w17-candidate { border-top-color: var(--green); background: #eff6f1; }
+.workflow-s17 .w17-version header { display: flex; align-items: baseline; justify-content: space-between; gap: .7cqw; }
+.workflow-s17 .w17-version h2 { margin: 0; color: var(--ink); font-size: 1.85cqw; font-weight: 750; line-height: 1.4; letter-spacing: -.04em; }
+.workflow-s17 .w17-candidate h2 { color: var(--green); }
+.workflow-s17 .w17-version header p { margin: 0; font-size: .98cqw; color: var(--muted); }
+.workflow-s17 .w17-output { min-height: 8.3cqw; display: flex; justify-content: center; align-items: center; gap: 1.5cqw; padding-top: 1cqw; }
+.workflow-s17 .w17-output svg { width: 5cqw; height: 6cqw; }
+.workflow-s17 .w17-output path { fill: white; stroke: #8194a6; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-s17 .w17-candidate .w17-output path { stroke: #59917c; }
+.workflow-s17 .w17-output p { margin: 0; color: var(--muted); font-size: 1.4cqw; }
+.workflow-s17 .w17-comparison { display: flex; align-items: center; justify-content: center; gap: 1.6cqw; margin-top: 1.8cqw; padding: .9cqw 0; }
+.workflow-s17 .w17-comparison p { margin: 0 .7cqw 0 0; color: var(--green); font-size: 1.5cqw; font-weight: 750; letter-spacing: -.04em; }
+.workflow-s17 .w17-comparison span { color: var(--ink); font-size: 1.35cqw; }
+.workflow-s17 .w17-comparison i { width: 1px; height: 1.3cqw; background: #ccd8d2; }
+.workflow-s17 .w17-footer { border-top: 1px solid var(--line); margin-top: .8cqw; padding-top: .8cqw; }
+.workflow-s17 .w17-takeaway { margin: 0; color: var(--ink); font-size: 1.45cqw; line-height: 1.6; letter-spacing: -.035em; }
+.workflow-s17 .w17-takeaway strong { color: var(--green); font-weight: 750; }
+.workflow-s17 .w17-footer a { display: inline-block; margin-top: .25cqw; color: var(--muted); font-size: .85cqw; text-decoration: none; }

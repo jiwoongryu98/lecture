@@ -1,0 +1,24 @@
+.product-usage-nav {
+  display: flex;
+  align-items: baseline;
+  gap: 3.1cqw;
+  flex-shrink: 0;
+  margin-top: 1.25cqw;
+  padding-bottom: .7cqw;
+  border-bottom: 1px solid var(--line);
+  color: #7b8991;
+  font-size: 1.15cqw;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.product-usage-nav > span { position: relative; white-space: nowrap; }
+.product-usage-nav > .product-usage-current { color: var(--green); font-weight: 800; }
+.product-usage-nav > .product-usage-current::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -.8cqw;
+  height: .17cqw;
+  background: var(--green);
+}

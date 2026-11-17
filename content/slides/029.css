@@ -1,0 +1,34 @@
+.workflow-s03 .industry-heading h1 { font-size: 3.3cqw; }
+.workflow-s03 .w03-composition {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 30cqw minmax(0, 1fr);
+  gap: 4cqw;
+  align-items: center;
+  margin-top: 1.2cqw;
+}
+.workflow-s03 .w03-purpose { border-left: 2px solid #c5d5e9; padding-left: 2cqw; }
+.workflow-s03 .w03-feature { margin: 0 0 1.25cqw; color: var(--blue); font-size: 1.65cqw; font-weight: 700; letter-spacing: -.025em; }
+.workflow-s03 .w03-purpose h2 { margin: 0; color: var(--ink); font-size: 2.8cqw; font-weight: 700; letter-spacing: -.055em; line-height: 1.45; }
+.workflow-s03 .w03-purpose-detail { margin: 1.5cqw 0 0; color: var(--muted); font-size: 1.35cqw; line-height: 1.7; letter-spacing: -.03em; }
+.workflow-s03 .w03-evolution { min-width: 0; }
+.workflow-s03 .w03-evolution svg { display: block; width: 100%; height: 21.5cqw; overflow: visible; }
+.workflow-s03 .w03-route-ground { fill: none; stroke: #f0f3ef; stroke-width: 70; stroke-linecap: round; }
+.workflow-s03 .w03-route { fill: none; stroke: #91a99b; stroke-width: 3; }
+.workflow-s03 .w03-plan { fill: #edf2fa; stroke: #8da9ce; stroke-width: 2; }
+.workflow-s03 .w03-action { fill: #e8f2ed; stroke: #81af9e; stroke-width: 2; }
+.workflow-s03 .w03-node-title { font-size: 34px; font-weight: 750; letter-spacing: -.04em; }
+.workflow-s03 .w03-blue { fill: var(--blue); }
+.workflow-s03 .w03-green { fill: var(--green); }
+.workflow-s03 .w03-route-label { fill: var(--muted); font-size: 23px; font-weight: 550; }
+.workflow-s03 .w03-diagram-caption { fill: var(--muted); font-size: 23px; }
+.workflow-s03 .w03-return, .workflow-s03 .w03-dialogue { fill: none; stroke: var(--green); stroke-width: 2.5; }
+.workflow-s03 .w03-loop-label { fill: var(--green); font-size: 24px; font-weight: 650; letter-spacing: -.025em; }
+.workflow-s03 .w03-perspective { margin-top: 1.6cqw; padding-left: 1cqw; }
+.workflow-s03 .w03-perspective p { margin: 0; color: var(--ink); font-size: 1.25cqw; line-height: 1.6; letter-spacing: -.03em; }
+.workflow-s03 .w03-perspective .w03-person { color: var(--muted); font-size: 1cqw; margin-bottom: .35cqw; }
+.workflow-s03 .w03-takeaway { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5cqw; border-top: 1px solid var(--line); margin-top: 1cqw; padding: 1.1cqw 0 .5cqw; }
+.workflow-s03 .w03-takeaway p { margin: 0; font-size: 1.6cqw; line-height: 1.5; letter-spacing: -.035em; }
+.workflow-s03 .w03-takeaway strong { color: var(--green); font-weight: 700; }
+.workflow-s03 .w03-takeaway .w03-status { color: var(--muted); font-size: 1.15cqw; white-space: nowrap; }

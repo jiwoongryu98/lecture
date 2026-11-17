@@ -1,0 +1,7 @@
+.session-qa { justify-content: center; }
+.session-qa .session-qa-conversation { margin: auto 0; padding-left: 4.5cqw; border-left: 2px solid #c9ddd2; }
+.session-qa .session-qa-label { margin: 0 0 1cqw; color: var(--green); font-size: 1.05cqw; font-weight: 650; letter-spacing: -.025em; }
+.session-qa h1 { color: var(--ink); font-size: 12cqw; line-height: 1.12; letter-spacing: -.07em; }
+.session-qa h1 span { color: var(--green); font-weight: 450; }
+.session-qa .session-qa-invitation { margin: 1.5cqw 0 0; color: var(--ink); font-size: 2cqw; line-height: 1.5; letter-spacing: -.045em; }
+.session-qa .session-qa-participation { margin: 0 0 1.2cqw; padding-left: 4.5cqw; color: var(--muted); font-size: 1.15cqw; line-height: 1.6; letter-spacing: -.025em; }

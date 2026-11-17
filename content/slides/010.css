@@ -1,0 +1,31 @@
+.industry-s07 .industry-heading h1 { font-size: 3.3cqw; }
+.industry-s07 .s07-workflow { flex: 0 0 auto; margin: 2.8cqw 0 0; }
+.industry-s07 .s07-workflow svg { display: block; width: 100%; height: 28cqw; overflow: visible; }
+.industry-s07 .s07-workflow figcaption { margin: .15cqw 0 0; text-align: right; font-size: .88cqw; line-height: 1.4; color: var(--muted); }
+.industry-s07 .s07-route-ground { fill: none; stroke: #eef2ee; stroke-width: 78; stroke-linecap: round; }
+.industry-s07 .s07-familiar-line { fill: none; stroke: #a7b8ad; stroke-width: 3; }
+.industry-s07 .s07-route-label { font-size: 17px; font-weight: 650; fill: #7c8c80; }
+.industry-s07 .s07-file-node circle, .industry-s07 .s07-review-node circle, .industry-s07 .s07-work-node { fill: #fffefa; stroke: #9eb3a4; stroke-width: 1.7; }
+.industry-s07 .s07-file-node path, .industry-s07 .s07-review-node path, .industry-s07 .s07-work-symbol { fill: none; stroke: #6e8b78; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.industry-s07 .s07-task-label { font-size: 21px; font-weight: 650; fill: var(--ink); letter-spacing: -.04em; }
+.industry-s07 .s07-detour { fill: none; stroke: #b3c1d4; stroke-width: 2; stroke-dasharray: 5 7; }
+.industry-s07 .s07-detour-label { font-size: 17px; fill: #667d9a; letter-spacing: -.03em; }
+.industry-s07 .s07-tool-names { font-size: 19px; font-weight: 700; fill: var(--blue); }
+.industry-s07 .s07-ai-halo { fill: #fffefa; }
+.industry-s07 .s07-ai-core { fill: #e8eef8; stroke: #7f9fc8; stroke-width: 2; transition: fill 400ms ease, stroke 400ms ease; }
+.industry-s07 .s07-ai-title { font-size: 20px; font-weight: 750; fill: #365e96; letter-spacing: -.04em; }
+.industry-s07 .s07-ai-detail { font-size: 14px; fill: #667d9a; }
+.industry-s07 .s07-inertia-title { font-size: 25px; font-weight: 750; fill: var(--ink); letter-spacing: -.04em; }
+.industry-s07 .s07-inertia-detail { font-size: 17px; fill: var(--muted); }
+.industry-s07 .s07-inertia-loop { fill: none; stroke: #8b9b90; stroke-width: 2.5; }
+.industry-s07 .s07-ax-title { font-size: 27px; font-weight: 750; fill: var(--green); letter-spacing: -.04em; }
+.industry-s07 .s07-ax-detail { font-size: 20px; font-weight: 650; fill: var(--green); letter-spacing: -.035em; }
+.industry-s07 .s07-ax-leader { fill: none; stroke: #a7c8b9; stroke-width: 1.5; }
+.industry-s07 .s07-connected-line { fill: none; stroke: var(--green); stroke-width: 4; }
+.industry-s07[data-connected="true"] .s07-ai-core { fill: #dcefe5; stroke: var(--green); }
+.industry-s07[data-connected="true"] .s07-ai-title { fill: var(--green); }
+.industry-s07 .s07-viewpoint { border-top: 1px solid var(--line); margin-top: 1cqw; padding-top: 1.1cqw; display: grid; grid-template-columns: 11cqw minmax(0, 1fr); gap: 1.1cqw; align-items: baseline; }
+.industry-s07 .s07-view-label { margin: 0; font-size: 1cqw; color: var(--green); font-weight: 700; }
+.industry-s07 .s07-view-copy { display: grid; min-width: 0; }
+.industry-s07 .s07-view-copy p { grid-area: 1 / 1; margin: 0; color: var(--ink); font-size: 1.32cqw; line-height: 1.65; letter-spacing: -.035em; }
+.industry-s07[data-instant="true"] * { transition: none !important; }

@@ -1,0 +1,10 @@
+[
+  {
+    "file": "roles.svg",
+    "sourceFile": "roles.dot",
+    "credit": "Lecture diagram generated with Graphviz",
+    "sourcePage": "https://chrislryu.github.io/di/architecture/vllm/",
+    "tool": "https://graphviz.org/",
+    "note": "A simplified teaching diagram of GPU communication and optional KV transfer; not an image or modification of the original Field Guide."
+  }
+]

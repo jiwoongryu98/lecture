@@ -1,0 +1,10 @@
+digraph Roles {
+  graph [rankdir=LR, bgcolor="transparent", pad="0.2", nodesep="0.6", ranksep="0.9"];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=22, fontcolor="#22354a", margin="0.25,0.15", penwidth=1.5];
+  edge [fontname="Arial", fontsize=14, color="#7b8a99", fontcolor="#667789", arrowsize=0.7, penwidth=1.5];
+  vLLM [fillcolor="#edf2fa", color="#4269a5"];
+  NCCL [fillcolor="#fbf3e8", color="#b87927"];
+  NIXL [fillcolor="#eaf4ee", color="#177c68"];
+  vLLM -> NCCL [label="GPU comm."];
+  vLLM -> NIXL [label="KV transfer\n(optional)", style=dashed];
+}

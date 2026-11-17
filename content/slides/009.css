@@ -1,0 +1,37 @@
+.industry-s06 .s06-cutaway { flex: 0 0 auto; margin: 1cqw 0 0; }
+.industry-s06 .s06-cutaway svg { display: block; width: 100%; height: 25cqw; overflow: visible; }
+.industry-s06 .s06-cutaway figcaption { margin-top: .05cqw; font-size: .9cqw; line-height: 1.4; color: var(--muted); text-align: right; }
+.industry-s06 .s06-service-shadow { fill: #e3ece6; }
+.industry-s06 .s06-service-shell { fill: #f2f7f1; stroke: #8bb7a6; stroke-width: 2; transition: fill 380ms ease, stroke 380ms ease; }
+.industry-s06[data-product="true"] .s06-service-shell { fill: #eaf4ec; stroke: var(--green); }
+.industry-s06 .s06-service-title { fill: var(--green); font-size: 29px; font-weight: 800; letter-spacing: -.8px; }
+.industry-s06 .s06-small { fill: var(--muted); font-size: 17px; font-weight: 450; letter-spacing: -.4px; }
+.industry-s06 .s06-green { fill: var(--green); }
+.industry-s06 .s06-blue { fill: var(--blue); }
+.industry-s06 .s06-divider { fill: none; stroke: #c5d9cd; stroke-width: 1.5; }
+.industry-s06 .s06-interface rect { fill: #fffefa; stroke: #8eb3a1; stroke-width: 1.8; }
+.industry-s06 .s06-interface path,
+.industry-s06 .s06-interface circle { fill: none; stroke: #6b9a86; stroke-width: 1.8; stroke-linecap: round; }
+.industry-s06 .s06-part-title { fill: var(--ink); font-size: 23px; font-weight: 750; letter-spacing: -.8px; }
+.industry-s06 .s06-service-message { fill: #607e6e; font-size: 24px; font-weight: 650; letter-spacing: -.7px; }
+.industry-s06 .s06-data-icon,
+.industry-s06 .s06-flow-icon,
+.industry-s06 .s06-check-icon { fill: #fffefa; stroke: var(--green); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.industry-s06 .s06-flow-icon path,
+.industry-s06 .s06-check-icon path { fill: none; }
+.industry-s06 .s06-wire-internal { fill: none; stroke: #9abbaa; stroke-width: 3; }
+.industry-s06 .s06-plug { fill: var(--green); stroke: var(--green); stroke-width: 2; stroke-linejoin: round; }
+.industry-s06 .s06-plug-pins { stroke: var(--green); stroke-width: 5; stroke-linecap: round; }
+.industry-s06 .s06-api-label { fill: var(--green); font-size: 29px; font-weight: 850; }
+.industry-s06 .s06-api-caption { fill: var(--muted); font-size: 15px; }
+.industry-s06 .s06-request { fill: none; stroke: var(--blue); stroke-width: 2.5; }
+.industry-s06 .s06-response { fill: none; stroke: var(--green); stroke-width: 2.5; }
+.industry-s06 .s06-route-label { font-size: 19px; font-weight: 650; }
+.industry-s06 .s06-alternative { stroke-dasharray: 5 5; }
+.industry-s06 .s06-provider { fill: var(--muted); font-size: 18px; font-weight: 650; }
+.industry-s06 .s06-provider-title { fill: var(--ink); font-size: 30px; font-weight: 800; letter-spacing: -.65px; }
+.industry-s06 .s06-model { fill: var(--blue); font-size: 23px; font-weight: 650; letter-spacing: -.4px; }
+.industry-s06 .s06-provider-rule { fill: none; stroke: #d5dfe4; stroke-width: 1.5; }
+.industry-s06 .s06-takeaway { border-top: 1px solid var(--line); margin-top: .75cqw; }
+.industry-s06 .industry-takeaway { font-size: 1.25cqw; text-align: center; margin-top: .7cqw; }
+.industry-s06[data-instant="true"] * { transition: none !important; }

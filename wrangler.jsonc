@@ -1,0 +1,37 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "lecture-presentation",
+  "account_id": "e53a360b9bc3c37990c48812e3c80afe",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-11-13",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "secrets": { "required": ["PRESENTER_KEY", "COMMENT_PASSWORD"] },
+  "assets": {
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "lecture-questions",
+      "database_id": "62d9bd8d-4be0-4bc3-bb2f-69c77ade9094",
+      // Keep local previews isolated from the production database.
+      "remote": false
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      { "name": "LECTURE_SESSIONS", "class_name": "LectureSession" }
+    ]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["LectureSession"] }
+  ],
+  "observability": {
+    "enabled": true,
+    "logs": { "enabled": true, "head_sampling_rate": 1 },
+    "traces": { "enabled": true, "head_sampling_rate": 0.01 }
+  }
+}

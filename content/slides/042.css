@@ -1,0 +1,24 @@
+.workflow-s15 .industry-heading h1 { font-size: 3.3cqw; }
+.workflow-s15 .w15-composition { flex: 1; min-height: 0; display: grid; align-items: center; margin-top: .7cqw; }
+.workflow-s15 .w15-composition svg { display: block; width: 100%; height: 28cqw; overflow: visible; }
+.workflow-s15 .w15-result-ground { fill: #f2f5ee; }
+.workflow-s15 .w15-result-page { fill: #fffefa; stroke: #a8bfb0; stroke-width: 2.3; }
+.workflow-s15 .w15-result-ink { fill: none; stroke: #a7bdb0; stroke-width: 4; stroke-linecap: round; }
+.workflow-s15 .w15-result-label { fill: var(--ink); font-size: 26px; font-weight: 650; letter-spacing: -.7px; }
+.workflow-s15 .w15-criterion { color: #899a8e; }
+.workflow-s15 .w15-criterion circle { fill: #f5f7f2; stroke: currentColor; stroke-width: 2; }
+.workflow-s15 .w15-criterion text { fill: currentColor; font-size: 29px; font-weight: 650; letter-spacing: -.8px; }
+.workflow-s15 .w15-link { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-s15 .w15-symbol { fill: none; stroke: currentColor; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-s15 .w15-quality.w15-active { color: var(--green); }
+.workflow-s15 .w15-quality.w15-active circle { fill: #e2efe7; }
+.workflow-s15 .w15-cost.w15-active { color: var(--blue); }
+.workflow-s15 .w15-cost.w15-active circle { fill: #e7edf7; }
+.workflow-s15 .w15-reliability.w15-active { color: var(--amber); }
+.workflow-s15 .w15-reliability.w15-active circle { fill: #f8efdf; }
+.workflow-s15 .w15-active .w15-link { stroke-width: 3; }
+.workflow-s15 .w15-question-area { position: relative; height: 4.5cqw; flex-shrink: 0; border-top: 1px solid var(--line); margin-top: .8cqw; }
+.workflow-s15 .w15-question { position: absolute; inset: 1.2cqw 0 auto; margin: 0; text-align: center; font-size: 1.8cqw; line-height: 1.55; letter-spacing: -.035em; font-weight: 650; }
+.workflow-s15 .w15-question-0 { color: var(--green); }
+.workflow-s15 .w15-question-1 { color: var(--blue); }
+.workflow-s15 .w15-question-2 { color: var(--amber); }

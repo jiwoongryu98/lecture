@@ -51,6 +51,8 @@
 
 ## Boundaries
 
+- Never commit or push any personal information about the presenter, including
+  information in files, assets, or commit metadata.
 - Preserve configured credentials and keep secrets out of source, output, and logs.
 - Edit source files rather than generated output.
 - Keep changes local unless deployment is requested.

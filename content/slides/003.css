@@ -44,6 +44,10 @@
 .introduction-website .website-intro-hosting { margin-top: 2.1cqw; }
 .introduction-website .website-intro-hosting h2 { color: #bd6225; letter-spacing: -.025em; }
 .introduction-website .website-intro-source {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1cqw;
   margin-top: 2.1cqw;
   padding-top: 1.3cqw;
   border-top: 1px solid var(--line);
@@ -54,6 +58,7 @@
   font-size: 1.3cqw;
   font-weight: 650;
   line-height: 1.5;
+  white-space: nowrap;
 }
 .introduction-website .website-intro-source-link span { margin-left: .25cqw; }
 .introduction-website .website-intro-participation { margin-top: .9cqw; }

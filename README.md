@@ -29,26 +29,28 @@ and connect their existing experience to meaningful projects and career choices.
 | --- | --- |
 | 1. 산업을 읽다 | AI history and the industry map: products and AX, models, and infrastructure |
 | 2. 실무를 만나다 | Agent tools, practical automation, making samples, validation, and improving how we use AI |
-| 3. 경험을 연결하다 | Changing roles → domain-specific skills and experience → portfolio goals and evidence → open source → resumes → AI interview practice → continuous learning and adaptation |
+| 3. 커리어를 설계하다 | Changing roles → domain-specific skills and experience → portfolio goals and evidence → open source → resumes → AI interview practice → continuous learning and adaptation |
 
-The three-hour format is a five-minute opening, three sessions of **40 minutes of
-presentation + 10 minutes of Q&A**, two ten-minute breaks, and a five-minute closing.
-The current deck contains 63 slides, including the opening and session Q&As.
+The three-hour format is three sessions of **45 minutes of presentation + 15 minutes
+for Q&A and a break combined**. The introduction is included in the first session's
+presentation time, and closing remarks fit within the final Q&A block.
+The current deck contains 64 slides, including the opening and session Q&As.
+The opening follows title → presenter → website → session agenda.
 
 Session 3 uses the same experience records throughout portfolio, resume, and
-interview preparation. Its presentation time is divided as follows:
+interview preparation. Suggested pacing for its 45-minute presentation is:
 
 | Slides | Topic | Minutes |
 | --- | --- | --- |
-| 048 | 역할의 변화: overlapping responsibilities | 3 |
-| 049–051 | 영역별 역량: product development, model experiments, and computing/infrastructure experience | 7 |
-| 052–053 | 문제 정의와 실행 계획: choosing a problem and planning implementation and validation | 6 |
-| 054–055 | 포트폴리오: connecting the problem, execution, and validation evidence | 5 |
-| 056–057 | 오픈소스: real requirements, testing evidence, and the community review loop | 4 |
-| 058–060 | 이력서: hiring-side AI, AI-assisted drafting and editing, and LaTeX/PDF | 8 |
-| 061 | 면접: AI mock interviews with follow-up questions and feedback | 5 |
-| 062 | 학습: learning continuously and adapting to change | 2 |
-| 063 | Q&A | 10 |
+| 049 | 역할의 변화: overlapping responsibilities | 3 |
+| 050–052 | 영역별 역량: product development, model experiments, and computing/infrastructure experience | 8 |
+| 053–054 | 문제 정의와 실행 계획: choosing a problem and planning implementation and validation | 7 |
+| 055–056 | 포트폴리오: connecting the problem, execution, and validation evidence | 6 |
+| 057–058 | 오픈소스: real requirements, testing evidence, and the community review loop | 5 |
+| 059–061 | 이력서: hiring-side AI, AI-assisted drafting and editing, and LaTeX/PDF | 9 |
+| 062 | 면접: AI mock interviews with follow-up questions and feedback | 5 |
+| 063 | 학습: learning continuously and adapting to change | 2 |
+| 064 | Q&A 및 휴식 | 15 |
 
 ### Teaching principles
 
@@ -73,6 +75,9 @@ facts. Explain technical detail only as far as it serves the audience and messag
   material. Retain source records and credits for downloaded images.
 - **Shared presentation material:** `content/components/`, `content/theme.css`, and
   `content/presentation.ts` contain reusable visuals, styling, and presentation labels.
+- **Presenter details:** `content/private/presenter.json` supplies the introduction
+  when present; otherwise the slide displays placeholders. Keep resume originals
+  in the same Git-ignored folder. Never commit or push personal details.
 
 Use `step` to determine reveals and honor `instant` so backward navigation and
 catch-up restore the correct state. For example, `maxStep: 2` means steps 0, 1, and 2.
@@ -116,6 +121,9 @@ control following, and `재생` is disabled without a presenter.
 **슬라이드 전체 화면** shows just the slide at the largest size that preserves its
 16:9 proportions. Use arrow keys to navigate and **Esc** to return to the controls
 and open panels. The **⛶** button keeps the usual controls visible in fullscreen.
+Fullscreen buttons are hidden on touch-only mobile devices. Rotate a phone sideways
+to fit the slide to the available browser height, with controls at the sides and
+questions and notes below the slide.
 
 Use **목차**, **발표 노트**, and **질문** to review the presentation with its panels.
 The menu stays open after selection and scrolls manually. Menu and question-panel
@@ -144,7 +152,7 @@ Local previews use a separate database.
 | `npm run build` | Build the presentation |
 | `npx vitest run --config vitest.ui.config.ts` | Run slide and frontend interaction tests |
 | `npm test` | Run backend and frontend tests |
-| `npm run test:browser:install` | Install Chromium for browser checks |
+| `npm run test:browser:install` | Install Chromium and WebKit for desktop and mobile browser checks |
 | `npm run test:browser` | Review every slide/reveal and interactions on desktop and narrow screens |
 | `npm run test:browser:report` | Open the last browser report and screenshots |
 | `npm run verify` | Generate types, type-check, test, build, and check deployment packaging without publishing |

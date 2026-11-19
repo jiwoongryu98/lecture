@@ -68,13 +68,13 @@ afterEach(closePeers);
 it('streams presenter ink, persists completed annotations, and restores them after object recreation', async () => {
   const { peer: presenter } = await connect(); await presenter.auth();
   const viewer = await readOnlyPeer();
-  const stroke: StrokeAnnotation = { id: crypto.randomUUID(), index: 4, step: 2, kind: 'stroke', color: '#d13c45', points: [[10, 20], [500, 400], [1600, 900]] };
-  expect(await viewer.ok('annotations.get', { index: 4 })).toEqual({ index: 4, revision: 0, items: [] });
+  const stroke: StrokeAnnotation = { id: crypto.randomUUID(), index: 5, step: 2, kind: 'stroke', color: '#d13c45', points: [[10, 20], [500, 400], [1600, 900]] };
+  expect(await viewer.ok('annotations.get', { index: 5 })).toEqual({ index: 5, revision: 0, items: [] });
   expect(await viewer.request('annotation.add', stroke)).toMatchObject({ code: 'UNAUTHORIZED' });
-  expect(await viewer.request('annotations.clear', { index: 4 })).toMatchObject({ code: 'UNAUTHORIZED' });
+  expect(await viewer.request('annotations.clear', { index: 5 })).toMatchObject({ code: 'UNAUTHORIZED' });
   presenter.socket.send(JSON.stringify({ type: 'annotation.preview', payload: stroke }));
   expect(await viewer.next((message) => message.type === 'annotation.preview')).toEqual({ type: 'annotation.preview', stroke });
-  expect((await viewer.ok('annotations.get', { index: 4 })).items).toEqual([]);
+  expect((await viewer.ok('annotations.get', { index: 5 })).items).toEqual([]);
   await evictAllDurableObjects();
   const requestId = crypto.randomUUID();
   const saved = await presenter.ok('annotation.add', stroke, requestId);
@@ -83,31 +83,31 @@ it('streams presenter ink, persists completed annotations, and restores them aft
   expect(await presenter.ok('annotation.add', stroke, requestId)).toEqual(saved);
   await closePeers(); await abortAllDurableObjects();
   const refreshed = await readOnlyPeer();
-  expect(await refreshed.ok('annotations.get', { index: 4 })).toEqual(saved);
-  expect((await refreshed.ok('annotations.get', { index: 5 })).items).toEqual([]);
+  expect(await refreshed.ok('annotations.get', { index: 5 })).toEqual(saved);
+  expect((await refreshed.ok('annotations.get', { index: 6 })).items).toEqual([]);
 });
 
 it('supports undo and clear without resurrecting annotations when commands are retried', async () => {
   const { peer } = await connect(); await peer.auth();
-  const first: TextAnnotation = { id: crypto.randomUUID(), index: 5, step: 1, kind: 'text', color: '#2563b8', x: 100, y: 100, text: '한국어 설명\n두 번째 줄' };
+  const first: TextAnnotation = { id: crypto.randomUUID(), index: 6, step: 1, kind: 'text', color: '#2563b8', x: 100, y: 100, text: '한국어 설명\n두 번째 줄' };
   const requestId = crypto.randomUUID();
   await peer.ok('annotation.add', first, requestId);
   const second = { ...first, id: crypto.randomUUID(), step: 2, text: '<script>plain text</script>' };
   await peer.ok('annotation.add', second);
-  expect((await peer.ok('annotation.remove', { index: 5, id: second.id })).items).toEqual([first]);
+  expect((await peer.ok('annotation.remove', { index: 6, id: second.id })).items).toEqual([first]);
   const clearId = crypto.randomUUID();
-  const cleared = await peer.ok('annotations.clear', { index: 5 }, clearId);
+  const cleared = await peer.ok('annotations.clear', { index: 6 }, clearId);
   expect(cleared.items).toEqual([]);
   expect(await peer.ok('annotation.add', first, requestId)).toEqual(cleared);
   await peer.ok('annotation.add', second);
-  expect((await peer.ok('annotations.clear', { index: 5 }, clearId)).items).toEqual([second]);
+  expect((await peer.ok('annotations.clear', { index: 6 }, clearId)).items).toEqual([second]);
   expect(await peer.request('annotation.add', { ...first, text: 'changed' }, requestId)).toMatchObject({ code: 'CONFLICT' });
 });
 
 it('rejects invalid annotation coordinates and removes unfinished ink when its presenter disconnects', async () => {
   const { peer } = await connect(); await peer.auth();
   const viewer = await readOnlyPeer();
-  const stroke: StrokeAnnotation = { id: crypto.randomUUID(), index: 4, step: 0, kind: 'stroke', color: '#22354a', points: [[50, 60]] };
+  const stroke: StrokeAnnotation = { id: crypto.randomUUID(), index: 5, step: 0, kind: 'stroke', color: '#22354a', points: [[50, 60]] };
   for (const invalid of [{ ...stroke, points: [[-1, 1]] }, { ...stroke, points: [[1601, 1]] },
     { ...stroke, points: [[1, 901]] }, { ...stroke, points: [[1.2, 1]] }, { ...stroke, step: 99 },
     { ...stroke, points: [] }] satisfies StrokeAnnotation[]) {
@@ -142,20 +142,20 @@ it('authorizes presenter connections and rejects anonymous or invalid slide comm
   expect(await peer.request('slide.set', { index: 1, step: 0 })).toMatchObject({ type: 'error', code: 'UNAUTHORIZED' });
   expect(await peer.request('presenter.auth', { key: 'wrong' })).toMatchObject({ type: 'error', code: 'UNAUTHORIZED' });
   await peer.auth();
-  for (const position of [{ index: 9999, step: 0 }, { index: 1, step: 1 }, { index: 4, step: 1.5 }]) {
+  for (const position of [{ index: 9999, step: 0 }, { index: 1, step: 1 }, { index: 5, step: 1.5 }]) {
     expect(await peer.request('slide.set', position)).toMatchObject({ type: 'error', code: 'BAD_REQUEST' });
   }
-  expect(await peer.ok('slide.set', { index: 4, step: 1 })).toMatchObject({ index: 4, step: 1 });
+  expect(await peer.ok('slide.set', { index: 5, step: 1 })).toMatchObject({ index: 5, step: 1 });
 });
 
 it('serves the matching speaker notes only to an authenticated presenter', async () => {
   for (const cookie of ['', 'presenter_key=wrong', 'comment_password=test-comment-password']) {
-    const response = await exports.default.fetch(base + '/notes/48', { headers: { Cookie: cookie } });
+    const response = await exports.default.fetch(base + '/notes/49', { headers: { Cookie: cookie } });
     expect(response.status).toBe(401);
     expect(response.headers.get('Cache-Control')).toBe('no-store');
   }
   const headers = { Cookie: 'presenter_key=test-presenter-key' };
-  for (const index of [1, 48, 49, 50, 51, 63]) {
+  for (const index of [1, 49, 50, 51, 52, 64]) {
     const response = await exports.default.fetch(base + '/notes/' + index, { headers });
     expect(response.headers.get('Cache-Control')).toBe('no-store');
     if (response.status === 404) {
@@ -169,7 +169,7 @@ it('serves the matching speaker notes only to an authenticated presenter', async
     }
   }
   expect((await exports.default.fetch(base + '/notes/not-a-slide', { headers })).status).toBe(404);
-  expect((await exports.default.fetch(base + '/notes/48', { method: 'POST', headers })).status).toBe(405);
+  expect((await exports.default.fetch(base + '/notes/49', { method: 'POST', headers })).status).toBe(405);
 });
 
 it('reports presenter presence only after authentication and clears it when authentication is revoked', async () => {
@@ -203,7 +203,7 @@ it('keeps presence online until the last presenter closes while retaining the sa
   await second.peer.auth();
   expect(await viewer.peer.next((message) => message.type === 'presenter.presence'))
     .toEqual({ type: 'presenter.presence', connected: true });
-  const saved = await second.peer.ok('slide.set', { index: 25, step: 2 });
+  const saved = await second.peer.ok('slide.set', { index: 26, step: 2 });
 
   first.peer.socket.close(1000);
   expect(await viewer.peer.next((message) => message.type === 'presenter.presence'))
@@ -250,7 +250,7 @@ it('broadcasts named questions on the same socket as slides and ignores forged a
     expect(await peer.next((message) => message.type === 'question.created')).toEqual({ type: 'question.created', question });
   }
   await first.peer.auth();
-  const state = await first.peer.ok('slide.set', { index: 4, step: 2 });
+  const state = await first.peer.ok('slide.set', { index: 5, step: 2 });
   for (const peer of [first.peer, second.peer]) {
     expect(await peer.next((message) => message.type === 'state' && message.state.revision === state.revision)).toEqual({ type: 'state', state });
   }
@@ -259,7 +259,7 @@ it('broadcasts named questions on the same socket as slides and ignores forged a
 it('deduplicates lost-ack question retries across connections and object recreation', async () => {
   const { peer } = await connect();
   const id = crypto.randomUUID();
-  const input = { index: 4, step: 2, body: 'Same submission' };
+  const input = { index: 5, step: 2, body: 'Same submission' };
   // Simulate an application discarding the first acknowledgement.
   const saved = await peer.ok('question.create', input, id);
   expect(saved).toMatchObject(input);
@@ -269,7 +269,7 @@ it('deduplicates lost-ack question retries across connections and object recreat
   expect(await next.peer.ok('question.create', input, id)).toEqual(saved);
   expect(await next.peer.request('question.create', { ...input, body: 'different' }, id)).toMatchObject({ type: 'error', code: 'CONFLICT' });
   expect(await next.peer.request('question.create', { ...input, step: 3 }, id)).toMatchObject({ type: 'error', code: 'CONFLICT' });
-  expect(await next.peer.request('question.create', { ...input, index: 5 }, id)).toMatchObject({ type: 'error', code: 'CONFLICT' });
+  expect(await next.peer.request('question.create', { ...input, index: 6 }, id)).toMatchObject({ type: 'error', code: 'CONFLICT' });
   const count = await env.DB.prepare('SELECT COUNT(*) AS count FROM questions WHERE submissionRequestId = ?').bind(id).first<{ count: number }>();
   expect(count?.count).toBe(1);
 });
@@ -277,7 +277,7 @@ it('deduplicates lost-ack question retries across connections and object recreat
 it('validates JSON, command sizes, IDs, cursor bounds, and question content', async () => {
   const { peer } = await connect();
   for (const input of [{ index: 1, step: 0, body: '' }, { index: 1, step: 0, body: 'x'.repeat(1001) },
-    { index: 9999, step: 0, body: 'ok' }, { index: 4, step: 99, body: 'ok' }]) {
+    { index: 9999, step: 0, body: 'ok' }, { index: 5, step: 99, body: 'ok' }]) {
     expect(await peer.request('question.create', input)).toMatchObject({ type: 'error', code: 'BAD_REQUEST' });
   }
   expect(await peer.request('questions.list', { cursor: -1 })).toMatchObject({ type: 'error', code: 'BAD_REQUEST' });
@@ -309,9 +309,9 @@ it('pages saved questions and replays missed history from an exclusive cursor', 
 it('replays slide receipts without incrementing revisions or broadcasting a stale position', async () => {
   const { peer } = await connect(); await peer.auth();
   const id = crypto.randomUUID();
-  const position = { index: 4, step: 0 };
+  const position = { index: 5, step: 0 };
   const original = await peer.ok('slide.set', position, id);
-  const current = await peer.ok('slide.set', { index: 25, step: 2 });
+  const current = await peer.ok('slide.set', { index: 26, step: 2 });
   expect(await peer.ok('slide.set', position, id)).toEqual(original);
   expect((await connect()).snapshot.state).toEqual(current);
   expect(await peer.request('slide.set', { ...position, step: 1 }, id)).toMatchObject({ code: 'CONFLICT' });
@@ -325,16 +325,16 @@ it('keeps presenter authorization and both broadcasts through hibernation', asyn
   const host = await connect(); const viewer = await connect(); await host.peer.auth();
   await evictAllDurableObjects();
   expect((await connect()).snapshot.presenterConnected).toBe(true);
-  const state = await host.peer.ok('slide.set', { index: 4, step: 3 });
+  const state = await host.peer.ok('slide.set', { index: 5, step: 3 });
   expect(await viewer.peer.next((message) => message.type === 'state' && message.state.revision === state.revision)).toEqual({ type: 'state', state });
-  const question = await viewer.peer.ok('question.create', { index: 4, step: 0, body: 'Still connected' });
+  const question = await viewer.peer.ok('question.create', { index: 5, step: 0, body: 'Still connected' });
   expect(question.name).toBe('Learner');
   expect(await host.peer.next((message) => message.type === 'question.created')).toEqual({ type: 'question.created', question });
 });
 
 it('requires authentication again on reconnect and uses the shared presentation object', async () => {
   const host = await connect(); await host.peer.auth();
-  const state = await host.peer.ok('slide.set', { index: 25, step: 1 });
+  const state = await host.peer.ok('slide.set', { index: 26, step: 1 });
   const resumed = await connect();
   expect(resumed.snapshot.state).toEqual(state);
   expect(await resumed.peer.request('slide.set', { index: 1, step: 0 })).toMatchObject({ code: 'UNAUTHORIZED' });
@@ -395,7 +395,7 @@ it('saves a presenter key cookie and restores slide publishing after refresh', a
     const upgraded = await exports.default.fetch(base + '/live?role=presenter', { headers: { Upgrade: 'websocket', Cookie: cookie } });
     const peer = new Peer(upgraded.webSocket!);
     expect(await peer.next((message) => message.type === 'snapshot')).toMatchObject({ name: '발표자', presenterConnected: true });
-    expect(await peer.ok('slide.set', { index: 4, step: page })).toMatchObject({ index: 4, step: page });
+    expect(await peer.ok('slide.set', { index: 5, step: page })).toMatchObject({ index: 5, step: page });
   }
   const invalid = await exports.default.fetch(base + '/live?role=presenter', { headers: { Upgrade: 'websocket', Cookie: 'presenter_key=wrong' } });
   const peer = new Peer(invalid.webSocket!);
@@ -416,7 +416,7 @@ it('allows anonymous viewing and questions but requires a name and password to p
     expect(await peer.request('participant.join', { name: 'Learner' })).toMatchObject({ code: 'UNAUTHORIZED' });
   }
   const host = await readOnlyPeer(); await host.auth();
-  const state = await host.ok('slide.set', { index: 4, step: 1 });
+  const state = await host.ok('slide.set', { index: 5, step: 1 });
   const question = await host.ok('question.create', { index: 1, step: 0, body: 'Presenter question' });
   expect(question.name).toBe('발표자');
   for (const peer of [blocked, wrong, unnamed]) {

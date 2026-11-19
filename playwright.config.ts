@@ -17,6 +17,7 @@ export default defineConfig({
   projects: [
     { name: 'chromium-desktop', use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 } } },
     { name: 'chromium-narrow', use: { ...devices['Desktop Chrome'], viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true } },
+    { name: 'webkit-iphone', testMatch: 'mobile-layout.spec.ts', use: { ...devices['iPhone 13'] } },
   ],
   webServer: {
     env: { PLAYWRIGHT_TEST: '1' },

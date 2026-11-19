@@ -1,97 +1,67 @@
-import { Heading, ReferenceLink, Takeaway, reveal, type SlideProps } from '../components/kit';
+import { Heading, ReferenceLink, type SlideProps } from '../components/kit';
 import './020.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "industry-infrastructure",
-  "title": "AI 인프라의 세 영역",
+  "id": "industry-model-tech",
+  "title": "AI 모델의 기술과 도구",
   "section": "1부 · 산업을 읽다",
-  "maxStep": 2,
-  "subsection": "인프라"
+  "maxStep": 0,
+  "subsection": "모델"
 } satisfies SlideMetadata;
 
-function LayerSurface() {
-  return <svg className="s17-layer-surface" viewBox="0 0 760 124" preserveAspectRatio="none" aria-hidden="true">
-    <path className="s17-layer-top" d="M0 0H726L760 22V107H34L0 85Z" />
-    <path className="s17-layer-edge" d="M0 85L34 107H760V124H34L0 102Z" />
-    <path className="s17-layer-seam" d="M34 107H760M0 85L34 107" />
-  </svg>;
-}
+const groups = [
+  {
+    role: '모델 구성·학습',
+    kind: '프레임워크 · 수치 계산 라이브러리',
+    tools: [
+      { name: 'PyTorch', note: '텐서 연산·모델 학습' },
+      { name: 'JAX', note: '자동 미분·컴파일·벡터화' },
+    ],
+  },
+  {
+    role: '사전학습 모델 활용',
+    kind: '소프트웨어 · 모델 라이브러리',
+    tools: [
+      { name: 'Hugging Face Transformers', note: '사전학습 모델의 학습·추론' },
+      { name: 'Hugging Face Diffusers', note: '이미지·영상 생성 모델 활용' },
+    ],
+  },
+  {
+    role: '적응·규모 확장',
+    kind: '적응 라이브러리 · 최적화 라이브러리',
+    tools: [
+      { name: 'Hugging Face PEFT', note: <><ReferenceLink to="LoRA">LoRA</ReferenceLink> 등 효율적인 모델 적응</> },
+      { name: 'DeepSpeed', note: '분산 학습·메모리 최적화' },
+    ],
+  },
+  {
+    role: '학습 흐름·실험 관리',
+    kind: '프레임워크 · 관리 도구',
+    tools: [
+      { name: 'PyTorch Lightning', note: '학습 코드·실행 흐름 정리' },
+      { name: 'MLflow', note: '실험 기록·모델 버전 관리' },
+    ],
+  },
+] as const;
 
-export default function Slide020({ step, instant }: SlideProps) {
-  const software = step >= 1;
-  const hardware = step >= 2;
+export default function Slide020(_props: SlideProps) {
+  return <div className="industry-content industry-s16">
+    <Heading eyebrow="AI 모델 / 기술 찾아보기">모델 개발 도구, 역할로 살펴보기</Heading>
 
-  return <div className="industry-content industry-s17" data-instant={instant}>
-    <Heading
-      eyebrow="AI 인프라 · 영역과 기업"
-      subtitle="모델을 학습시키고, 요청에 응답시키는 실행 기반을 제공합니다."
-    >소프트웨어에서 하드웨어까지</Heading>
-
-    <div className="s17-overview">
-      <div className="s17-stack" aria-label="AI 인프라를 구성하는 세 영역">
-        <section className="s17-layer s17-serving">
-          <LayerSurface />
-          <div className="s17-layer-name">
-            <p className="s17-layer-number">01</p>
-            <h2>서빙 프레임워크</h2>
-            <p className="s17-english">Serving framework</p>
-          </div>
-          <div className="s17-layer-role">
-            <p className="s17-role">요청을 받아 모델을 실행</p>
-            <p className="s17-example"><strong><ReferenceLink to="NVIDIA Triton Inference Server">NVIDIA</ReferenceLink></strong><span>서빙 소프트웨어</span></p>
-          </div>
-        </section>
-
-        <section
-          className="s17-layer s17-software"
-          style={reveal(software, instant, 'translateY(-10px)')}
-          aria-hidden={!software}
-        >
-          <LayerSurface />
-          <div className="s17-layer-name">
-            <p className="s17-layer-number">02</p>
-            <h2>펌웨어·컴파일러</h2>
-            <p className="s17-english">Firmware &amp; Compiler</p>
-          </div>
-          <dl className="s17-software-roles">
-            <div><dt>펌웨어</dt><dd>장치 초기화·관리</dd></div>
-            <div><dt>컴파일러</dt><dd>연산 변환·최적화</dd></div>
-          </dl>
-        </section>
-
-        <section
-          className="s17-layer s17-hardware"
-          style={reveal(hardware, instant, 'translateY(-10px)')}
-          aria-hidden={!hardware}
-        >
-          <LayerSurface />
-          <div className="s17-layer-name">
-            <p className="s17-layer-number">03</p>
-            <h2>하드웨어</h2>
-            <p className="s17-english">Hardware</p>
-          </div>
-          <dl className="s17-hardware-roles">
-            <div><dt>GPU 가속기</dt><dd><ReferenceLink to="NVIDIA">NVIDIA</ReferenceLink>{' · '}<ReferenceLink to="AMD">AMD</ReferenceLink></dd></div>
-            <div><dt>HBM 메모리</dt><dd><ReferenceLink to="삼성전자 HBM">삼성전자</ReferenceLink>{' · '}<ReferenceLink to="SK hynix">SK hynix</ReferenceLink></dd></div>
-          </dl>
-        </section>
-      </div>
-
-      <aside className="s17-context" aria-label="학습과 추론의 뜻, 실제 메모리 제품 사진">
-        <dl className="s17-computing">
-          <div><dt>학습</dt><dd>데이터로 모델을<br />만들고 개선하는 계산</dd></div>
-          <div><dt>추론</dt><dd>모델로 결과를<br />만드는 계산</dd></div>
+    <div className="industry-visual s16-index" aria-label="AI 모델 개발에 쓰이는 소프트웨어의 역할별 예시">
+      {groups.map(({ role, kind, tools }) => <section className="s16-group" key={role} aria-label={role}>
+        <div className="s16-role">
+          <p className="s16-kind">{kind}</p>
+          <h2>{role}</h2>
+        </div>
+        <dl className="s16-tools">
+          {tools.map(({ name, note }) => <div className="s16-tool" key={name}>
+            <dt><ReferenceLink to={name}>{name}</ReferenceLink></dt>
+            <dd>{note}</dd>
+          </div>)}
         </dl>
-        <figure className="s17-memory" style={reveal(hardware, instant)} aria-hidden={!hardware}>
-          <ReferenceLink to="삼성전자 HBM" className="reference-block"><img src="/shared/samsung-hbm4.png" alt="삼성전자가 공개한 HBM4 메모리 제품 이미지" /></ReferenceLink>
-          <figcaption><strong>계산에는 메모리도 필요합니다</strong><span>삼성전자 HBM4 · 공식 제품 이미지</span></figcaption>
-        </figure>
-      </aside>
-    </div>
-
-    <div className="s17-conclusion" style={reveal(hardware, instant)} aria-hidden={!hardware}>
-      <Takeaway>AI 인프라는 <strong>모델을 실행하는 소프트웨어와 계산·메모리 장치</strong>를 함께 다룹니다.</Takeaway>
+      </section>)}
     </div>
   </div>;
 }

@@ -1,26 +1,26 @@
-.workflow-s05 .industry-heading h1 { font-size: 3.3cqw; }
-.workflow-s05 .w05-workbench { flex: 1; min-height: 0; display: grid; align-items: center; margin-top: 1cqw; }
-.workflow-s05 .w05-workbench svg { width: 100%; height: 29cqw; display: block; overflow: visible; }
-.workflow-s05 .w05-paper-shadow { fill: #22354a07; }
-.workflow-s05 .w05-paper { fill: #fffefa; stroke: #bdccc5; stroke-width: 2; }
-.workflow-s05 .w05-paper-rule { fill: none; stroke: #d9e2df; stroke-width: 2; }
-.workflow-s05 .w05-sample-title { fill: var(--ink); font-size: 33px; font-weight: 700; letter-spacing: -.045em; }
-.workflow-s05 .w05-quiet-line { fill: none; stroke: #e0e7e2; stroke-width: 5; stroke-linecap: round; }
-.workflow-s05 .w05-sample-area { fill: #f0f3f0; }
-.workflow-s05 .w05-label { font-size: 29px; font-weight: 700; letter-spacing: -.04em; }
-.workflow-s05 .w05-detail { fill: var(--ink); font-size: 25px; font-weight: 450; letter-spacing: -.035em; }
-.workflow-s05 .w05-blue { fill: var(--blue); }
-.workflow-s05 .w05-green { fill: var(--green); }
-.workflow-s05 .w05-amber { fill: var(--amber); }
-.workflow-s05 .w05-question-leader { fill: none; stroke: #8da9ce; stroke-width: 2; }
-.workflow-s05 .w05-question-point { fill: var(--blue); }
-.workflow-s05 .w05-focus-area { fill: #e3f1e9; stroke: #7fac98; stroke-width: 2; }
-.workflow-s05 .w05-focus-text { fill: var(--green); font-size: 24px; font-weight: 650; letter-spacing: -.04em; }
-.workflow-s05 .w05-scope-leader { fill: none; stroke: #7fac98; stroke-width: 2; }
-.workflow-s05 .w05-scope-point { fill: var(--green); }
-.workflow-s05 .w05-criterion-leader { fill: none; stroke: #c6a16d; stroke-width: 2; }
-.workflow-s05 .w05-criterion-point { fill: var(--amber); }
-.workflow-s05 .w05-check-circle { fill: #e3f1e9; stroke: #7fac98; stroke-width: 2; }
-.workflow-s05 .w05-check { fill: none; stroke: var(--green); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.workflow-s05 .w05-takeaway { flex-shrink: 0; border-top: 1px solid var(--line); margin: .8cqw 0 .4cqw; padding-top: 1.1cqw; font-size: 1.6cqw; line-height: 1.5; letter-spacing: -.04em; color: var(--ink); }
-.workflow-s05 .w05-takeaway strong { color: var(--green); font-weight: 700; }
+.workflow-s04 .industry-heading h1 { font-size: 3.3cqw; }
+.workflow-s04 .w04-comparison {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 23cqw;
+  gap: 2cqw;
+  align-items: center;
+  margin-top: .8cqw;
+}
+.workflow-s04 .w04-comparison svg { display: block; width: 100%; height: 29cqw; }
+.workflow-s04 .w04-meme { display: block; border-radius: .6cqw; overflow: hidden; }
+.workflow-s04 .w04-meme img { display: block; width: 100%; height: auto; }
+.workflow-s04 .w04-meme:focus-visible { outline: 2px solid var(--green); outline-offset: .4cqw; }
+.workflow-s04 .w04-route-label { fill: var(--muted); font-size: 22px; font-weight: 600; letter-spacing: -.025em; }
+.workflow-s04 .w04-route { fill: none; stroke: #a8b5bd; stroke-width: 2; }
+.workflow-s04 .w04-investment-node { fill: #d4dce0; stroke: #9babb5; stroke-width: 2; }
+.workflow-s04 .w04-step-label { fill: var(--ink); font-size: 25px; font-weight: 550; letter-spacing: -.035em; }
+.workflow-s04 .w04-sample .w04-route-label { fill: var(--green); }
+.workflow-s04 .w04-sample .w04-route { stroke: #72a38e; }
+.workflow-s04 .w04-sample-node { fill: #d9eade; stroke: #73a08b; stroke-width: 2; }
+.workflow-s04 .w04-sample .w04-key-step { fill: var(--green); font-weight: 750; }
+.workflow-s04 .w04-evidence circle { fill: #e4f1e9; stroke: var(--green); stroke-width: 2; }
+.workflow-s04 .w04-evidence path { fill: none; stroke: var(--green); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-s04 .w04-takeaway { margin: .4cqw 0 .7cqw; color: var(--ink); font-size: 1.65cqw; line-height: 1.5; letter-spacing: -.04em; text-align: center; }
+.workflow-s04 .w04-takeaway strong { color: var(--green); font-weight: 750; }

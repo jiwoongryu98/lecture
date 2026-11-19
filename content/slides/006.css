@@ -1,15 +1,111 @@
-.industry-s03 .industry-subtitle { font-size: 1.3cqw; }
-.industry-s03 .s03-usage-intro { flex-shrink: 0; }
-.industry-s03 .s03-visual { flex: 0 0 auto; margin-top: 1.3cqw; }
-.industry-s03 .s03-workbench { display: block; width: 100%; height: 16.5cqw; overflow: visible; }
-.industry-s03 .s03-svg-label { fill: var(--ink); font-size: 25px; font-weight: 750; letter-spacing: -.6px; }
-.industry-s03 .s03-svg-caption { fill: var(--muted); font-size: 19px; letter-spacing: -.3px; }
-.industry-s03 .s03-svg-green { fill: var(--green); }
-.industry-s03 .s03-svg-interface-title { fill: var(--green); font-size: 22px; font-weight: 750; }
-.industry-s03 .s03-companies { margin-top: .55cqw; padding: 1cqw 0 1.15cqw; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.industry-s03 .s03-row-label { display: flex; align-items: baseline; gap: .7cqw; margin: 0 0 .8cqw; color: var(--muted); font-size: .95cqw; font-weight: 700; }
-.industry-s03 .s03-company-line { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 2.1cqw; }
-.industry-s03 .s03-company { display: flex; flex-direction: column; gap: .3cqw; }
-.industry-s03 .s03-company strong { color: var(--ink); font-size: 1.75cqw; line-height: 1.2; letter-spacing: -.055em; font-weight: 750; }
-.industry-s03 .s03-company span { color: var(--muted); font-size: 1.08cqw; line-height: 1.4; }
-.industry-s03[data-instant="true"] * { transition: none !important; }
+.industry-s02 .industry-s02-map {
+  flex: 0 0 28.6cqw;
+  margin-top: 1.15cqw;
+}
+
+.industry-sector-map {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  font-family: inherit;
+}
+
+.industry-sector-map g {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.industry-sector-map .sector-map-sector-title {
+  font-size: 29px;
+  font-weight: 750;
+  letter-spacing: -1.2px;
+  fill: currentColor;
+}
+
+.industry-sector-map .sector-map-number {
+  font-size: 17px;
+  font-weight: 700;
+  fill: currentColor;
+  opacity: .65;
+}
+
+.industry-sector-map .sector-map-sector-description {
+  font-size: 20px;
+  fill: #22354a;
+  letter-spacing: -.55px;
+}
+
+.industry-sector-map .sector-map-sector-examples {
+  font-size: 16px;
+  fill: #667789;
+  letter-spacing: -.25px;
+}
+
+.industry-sector-map .sector-map-leader {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  opacity: .35;
+}
+
+.industry-sector-map .sector-map-products { color: #177c68; }
+.industry-sector-map .sector-map-models { color: #4269a5; }
+.industry-sector-map .sector-map-infrastructure { color: #b87927; }
+
+.industry-sector-map .sector-map-product-top {
+  fill: #e3f1e9;
+  stroke: #a6ccbb;
+  stroke-width: 1.4;
+}
+
+.industry-sector-map .sector-map-product-front { fill: #bad8cb; }
+.industry-sector-map .sector-map-product-side { fill: #8ab9a5; }
+.industry-sector-map .sector-map-model-top { fill: #e6ecf7; stroke: #adbfdd; stroke-width: 1.4; }
+.industry-sector-map .sector-map-model-front { fill: #c2d0e7; }
+.industry-sector-map .sector-map-model-side { fill: #91abd0; }
+.industry-sector-map .sector-map-foundation-top { fill: #f7ecd8; stroke: #d9ba82; stroke-width: 1.4; }
+.industry-sector-map .sector-map-foundation-front { fill: #ead3aa; }
+.industry-sector-map .sector-map-foundation-side { fill: #cba76f; }
+
+.industry-sector-map .sector-map-screen rect {
+  fill: #fffefa;
+  stroke: #177c68;
+  stroke-width: 2;
+}
+
+.industry-sector-map .sector-map-screen-bar { stroke: #a6ccbb; stroke-width: 1.4; }
+.industry-sector-map .sector-map-screen circle { fill: #91bdaa; }
+.industry-sector-map .sector-map-chat { fill: #d8eae1; }
+.industry-sector-map .sector-map-chat-answer { fill: #177c68; }
+.industry-sector-map .sector-map-chat-line { fill: none; stroke: #fffefa; stroke-width: 2; }
+.industry-sector-map .sector-map-tool rect { fill: #177c68; }
+.industry-sector-map .sector-map-tool path { fill: none; stroke: #e3f1e9; stroke-width: 2; stroke-linecap: round; }
+.industry-sector-map .sector-map-workflow path { fill: none; stroke: #177c68; stroke-width: 2; }
+.industry-sector-map .sector-map-workflow rect { fill: #fffefa; stroke: #177c68; stroke-width: 2; }
+.industry-sector-map .sector-map-person circle { fill: #177c68; }
+.industry-sector-map .sector-map-person path { fill: none; stroke: #177c68; stroke-width: 3; stroke-linecap: round; }
+.industry-sector-map .sector-map-user-link { fill: none; stroke: #177c68; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.industry-sector-map .sector-map-model-trace { fill: none; stroke: #4269a5; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.industry-sector-map .sector-map-model-node ellipse { fill: #fffefa; stroke: #4269a5; stroke-width: 1.7; }
+.industry-sector-map .sector-map-model-node path { fill: none; stroke: #4269a5; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.industry-sector-map .sector-map-model-engine path:first-child { fill: #4269a5; stroke: #2d528b; stroke-width: 1.5; }
+.industry-sector-map .sector-map-model-engine path:nth-child(2) { fill: none; stroke: #cbd8ee; stroke-width: 1.5; }
+.industry-sector-map .sector-map-model-engine circle { fill: #e6ecf7; }
+.industry-sector-map .sector-map-api-link { fill: none; stroke: #4269a5; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.industry-sector-map .sector-map-api-badge { fill: #fffefa; stroke: #c2d0e7; stroke-width: 1; }
+.industry-sector-map .sector-map-api-label { fill: #4269a5; font-size: 14px; font-weight: 650; }
+
+.industry-sector-map .sector-map-support { fill: none; stroke: #d5b27b; stroke-width: 7; }
+.industry-sector-map .sector-map-rack rect { fill: #b87927; stroke: #9b631e; stroke-width: 1; }
+.industry-sector-map .sector-map-rack path { fill: none; stroke: #f5e7cd; stroke-width: 2; }
+.industry-sector-map .sector-map-rack .sector-map-rack-side { fill: #98621f; stroke: none; }
+.industry-sector-map .sector-map-rack circle { fill: #ffedb9; }
+.industry-sector-map .sector-map-chip path { fill: none; stroke: #b87927; stroke-width: 2; stroke-linecap: square; }
+.industry-sector-map .sector-map-chip rect { fill: #fffefa; stroke: #b87927; stroke-width: 2; }
+.industry-sector-map .sector-map-chip .sector-map-chip-core { fill: #d5b27b; stroke: none; }
+.industry-sector-map .sector-map-infra-link { fill: none; stroke: #b87927; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.industry-sector-map .sector-map-connector-caption { fill: #9b631e; font-size: 15px; }
+
+.industry-sector-map[data-instant='true'] * { transition: none !important; }

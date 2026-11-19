@@ -6,8 +6,6 @@ import type { SlideProps } from './slide';
 export interface PresentationConfig {
   title: string;
   brand: string;
-  date?: string;
-  format: string;
 }
 export interface PresentationDeck {
   slides: readonly SlideDefinition[];

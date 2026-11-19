@@ -17,7 +17,8 @@ test('chapter scrolling stays where the user left it during navigation and reope
   expect(await menu.evaluate((node) => node.scrollTop)).toBe(scroll);
 });
 
-test('fullscreen selection follows the browser fullscreen state', async ({ page }) => {
+test('fullscreen selection follows the browser fullscreen state', async ({ page }, testInfo) => {
+  test.skip(!!testInfo.project.use.isMobile, 'Fullscreen controls are hidden on mobile.');
   await page.goto('/');
   const button = page.getByRole('button', { name: '전체 화면 전환', exact: true });
   await expect(button).toHaveAttribute('aria-pressed', 'false');
@@ -29,11 +30,12 @@ test('fullscreen selection follows the browser fullscreen state', async ({ page 
 });
 
 test('slide fullscreen fills the available screen, keeps navigation, and restores open panels', async ({ page }, testInfo) => {
+  test.skip(!!testInfo.project.use.isMobile, 'Fullscreen controls are hidden on mobile.');
   await page.addInitScript(() => {
     localStorage.setItem('questions-expanded', 'true');
     localStorage.setItem('slide-menu-expanded', 'true');
   });
-  await page.goto('/?index=62&step=2');
+  await page.goto('/?index=63&step=2');
   const button = page.getByRole('button', { name: '슬라이드 전체 화면', exact: true, includeHidden: true });
   const menu = page.getByRole('navigation', { name: '슬라이드 목차' });
   const questions = page.getByRole('complementary', { name: '질문 게시판' });
@@ -60,10 +62,10 @@ test('slide fullscreen fills the available screen, keeps navigation, and restore
     await expect(page.locator('.stage')).toHaveCSS('background-color', 'rgb(0, 0, 0)');
     if (viewport === originalViewport) await testInfo.attach('slide-fullscreen', { body: await page.screenshot(), contentType: 'image/png' });
     await page.keyboard.press('ArrowRight');
-    await expect(page.locator('article.slide')).toHaveAttribute('data-index', '63');
+    await expect(page.locator('article.slide')).toHaveAttribute('data-index', '64');
     await expect.poll(() => page.evaluate(() => document.fullscreenElement?.className)).toBe('stage');
     await page.keyboard.press('ArrowLeft');
-    await expect(page.locator('article.slide')).toHaveAttribute('data-index', '62');
+    await expect(page.locator('article.slide')).toHaveAttribute('data-index', '63');
     await page.keyboard.press('Escape');
     await expect.poll(() => page.evaluate(() => !!document.fullscreenElement)).toBe(false);
     await expect(button).toHaveAttribute('aria-pressed', 'false');
@@ -95,8 +97,8 @@ test('viewer links skip the password field and the section menu jumps without ov
   await expect(menu).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
   await testInfo.attach('viewer-menu', { body: await page.screenshot(), contentType: 'image/png' });
-  await menu.getByRole('button', { name: '3부 · 경험을 연결하다', exact: true }).click();
-  await expect(page.locator('article.slide')).toHaveAttribute('data-index', '48');
+  await menu.getByRole('button', { name: '3부 · 커리어를 설계하다', exact: true }).click();
+  await expect(page.locator('article.slide')).toHaveAttribute('data-index', '49');
   await expect(page.locator('article.slide')).toHaveAttribute('data-step', '0');
   await expect(menu).toBeVisible();
   await expect(menu.locator('[aria-current=page]')).toContainText('기획·조율·구현의 경계가 겹칩니다');
@@ -115,7 +117,7 @@ test('presenter notes follow menu selections and stay open alongside questions',
   const published: Position[] = [];
   let authenticate: (() => void) | undefined;
   await page.routeWebSocket('**/api/live*', (socket) => {
-    authenticate = () => socket.send(JSON.stringify({ type: 'snapshot', state: { index: 48, step: 0, revision, updatedAt: 0 },
+    authenticate = () => socket.send(JSON.stringify({ type: 'snapshot', state: { index: 49, step: 0, revision, updatedAt: 0 },
       presenterConnected: true, page: { questions: [], nextCursor: 0, hasMore: false }, name: '발표자', passwordSaved: false }));
     socket.onMessage((message) => {
       if (message === 'ping') { socket.send('pong'); return; }
@@ -164,16 +166,18 @@ test('presenter notes follow menu selections and stay open alongside questions',
     expect(slideBox!.y + slideBox!.height).toBeLessThanOrEqual(notesBox!.y);
     expect(notesBox!.y + notesBox!.height).toBeLessThanOrEqual(questionsBox!.y);
   }
-  await page.getByRole('button', { name: '슬라이드 전체 화면', exact: true }).click();
-  await expect.poll(() => page.evaluate(() => document.fullscreenElement?.className)).toBe('stage');
-  await expect(notes).toBeHidden();
-  await expect(questions).toBeHidden();
-  await expect(page.getByRole('toolbar', { name: '발표 필기 도구' })).toBeHidden();
-  await page.keyboard.press('ArrowRight');
-  await expect(page.locator('article.slide')).toHaveAttribute('data-step', '1');
-  await expect.poll(() => published.at(-1)).toMatchObject({ index: 48, step: 1 });
-  await page.keyboard.press('Escape');
-  await expect.poll(() => page.evaluate(() => !!document.fullscreenElement)).toBe(false);
+  if (!testInfo.project.use.isMobile) {
+    await page.getByRole('button', { name: '슬라이드 전체 화면', exact: true }).click();
+    await expect.poll(() => page.evaluate(() => document.fullscreenElement?.className)).toBe('stage');
+    await expect(notes).toBeHidden();
+    await expect(questions).toBeHidden();
+    await expect(page.getByRole('toolbar', { name: '발표 필기 도구' })).toBeHidden();
+    await page.keyboard.press('ArrowRight');
+    await expect(page.locator('article.slide')).toHaveAttribute('data-step', '1');
+    await expect.poll(() => published.at(-1)).toMatchObject({ index: 49, step: 1 });
+    await page.keyboard.press('Escape');
+    await expect.poll(() => page.evaluate(() => !!document.fullscreenElement)).toBe(false);
+  }
   await expect(notes).toBeVisible();
   await expect(questions).toBeVisible();
   await page.getByRole('button', { name: '목차 펼치기', exact: true }).click();
@@ -181,7 +185,7 @@ test('presenter notes follow menu selections and stay open alongside questions',
   const menu = page.getByRole('navigation', { name: '슬라이드 목차' });
   await menu.getByRole('button', { name: '1부 · 산업을 읽다', exact: true }).click();
   await expect(notes.getByRole('heading', { name: 'AI는 어떻게 여기까지 왔을까?', exact: true })).toBeVisible();
-  await expect.poll(() => published.at(-1)).toEqual({ index: 4, step: 0 });
+  await expect.poll(() => published.at(-1)).toEqual({ index: 5, step: 0 });
   const frame = await page.locator('article.slide').boundingBox();
   expect(frame!.width / frame!.height).toBeCloseTo(16 / 9, 1);
   expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);

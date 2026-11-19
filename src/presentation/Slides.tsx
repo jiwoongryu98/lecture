@@ -64,8 +64,11 @@ export function Slides({ position, instant, transition = 'none', children }: {
         <Slide step={position.step} instant={instant} />
       </div>
       <footer className="slide-footer">
-        <span>{presentation.date && <><SlideLabel text={presentation.date} instant={instant} /> <span className="footer-dot">·</span> </>}
-          <SlideLabel text={presentation.format} instant={instant} className="slide-format" /></span>
+        <div className="slide-progress" role="progressbar" aria-label="발표 진행"
+          aria-valuemin={0} aria-valuemax={slides.length} aria-valuenow={position.index}
+          aria-valuetext={`전체 ${slides.length}장 중 ${position.index}번째 슬라이드`}>
+          <span className="slide-progress-fill" style={{ transform: `scaleX(${position.index / slides.length})`, transition: instant ? 'none' : undefined }} />
+        </div>
         <SlideLabel text={String(index + 1).padStart(2, '0')} instant={instant} className="slide-number" />
       </footer>
       <div className="slide-annotations" ref={annotations}>{children}</div>

@@ -1,4 +1,5 @@
 import { Heading, reveal, type SlideProps } from '../components/kit';
+import { presenterProfile as profile } from '../presenter';
 import './002.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
@@ -17,18 +18,25 @@ export default function Slide002({ step, instant }: SlideProps) {
     <div className="presenter-intro-layout">
       <section className="presenter-intro-identity">
         <p className="presenter-intro-greeting">반갑습니다.</p>
-        <Heading eyebrow="PRESENTER · 발표자 소개">[발표자 이름]</Heading>
-        <p className="presenter-intro-role">[현재 역할 · 소속]</p>
+        <Heading eyebrow="PRESENTER · 발표자 소개">{profile.name}</Heading>
+        <div className="presenter-intro-current">
+          <p className="presenter-intro-current-label">현재</p>
+          <p className="presenter-intro-organization">{profile.organizationUrl
+            ? <a className="reference-link" href={profile.organizationUrl} target="_blank" rel="noopener noreferrer">{profile.organization}</a>
+            : profile.organization}</p>
+          <p className="presenter-intro-role">{profile.role}</p>
+          {profile.focus && <p className="presenter-intro-focus">{profile.focus}</p>}
+        </div>
       </section>
 
       <aside className="presenter-intro-experience" style={reveal(showExperience, instant, 'translateY(8px)')} aria-hidden={!showExperience}>
-        <p className="presenter-intro-experience-label">오늘의 이야기와 연결되는 경험</p>
-        <ol>
-          <li><span>01</span><p>[산업·제품과 연결되는 경험]</p></li>
-          <li><span>02</span><p>[AI·업무와 연결되는 경험]</p></li>
-        </ol>
+        <ul className="presenter-intro-highlights">
+          {profile.highlights.map(({ title, detail, href }) => <li key={title}>
+            <h2>{href ? <a className="reference-link" href={href} target="_blank" rel="noopener noreferrer">{title}</a> : title}</h2>
+            {detail && <p>{detail}</p>}
+          </li>)}
+        </ul>
       </aside>
     </div>
-
   </div>;
 }

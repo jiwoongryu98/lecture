@@ -9,6 +9,7 @@ export default defineConfig(({ command }) => ({
     : command === 'build' ? 'node_modules/.vite-build' : 'node_modules/.vite-dev',
   server: { fs: { deny: [
     '**/.dev.vars', '**/.dev.vars.*', '**/.env', '**/.env.*', '**/*.{crt,pem}', '**/.git/**',
+    '**/content/private/resume.{tex,pdf}',
     '**/dist/worker/**',
   ] } },
   plugins: [privateNotes(), slideCatalog(), react(), cloudflare({ viteEnvironment: { name: 'worker' } })],

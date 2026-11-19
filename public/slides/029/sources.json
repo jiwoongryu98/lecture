@@ -1,11 +1,14 @@
 [
   {
-    "file": "plan-meme.jpg",
-    "credit": "기생충 · CJ ENM / 브런치스토리에 게시된 대사 포함 스틸",
-    "sourcePage": "https://brunch.co.kr/@sangpil14/167",
-    "sourceImage": "https://t1.daumcdn.net/brunch/service/user/6TTP/image/dM3VY9szjdFWgm9LQqbpOhuvR2w.jpg",
-    "originalSource": "https://www.youtube.com/watch?v=jBdRhhSt3Bc",
-    "retrievedAt": "2026-11-16",
-    "usage": "Downloaded unchanged. Third-party film image and embedded dialogue retain their respective rights."
+    "file": "antigravity-icon.png",
+    "credit": "Google Antigravity",
+    "sourcePage": "https://antigravity.google/",
+    "originalUrl": "https://antigravity.google/assets/image/antigravity-logo.png"
+  },
+  {
+    "file": "tutorial-tasks.png",
+    "credit": "Google Codelabs",
+    "sourcePage": "https://codelabs.developers.google.com/getting-started-agy-ide#6",
+    "originalUrl": "https://codelabs.developers.google.com/static/getting-started-agy-ide/img/5eb1f122174855a8.png"
   }
 ]

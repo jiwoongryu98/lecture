@@ -1,15 +1,26 @@
-.workflow-s11 .industry-heading h1 { font-size: 3.4cqw; }
-.workflow-s11 .w11-composition { flex: 1; min-height: 0; display: grid; grid-template-columns: 53cqw minmax(0, 1fr); align-items: center; gap: 3.5cqw; margin-top: 1.2cqw; }
-.workflow-s11 .w11-product-screen { min-width: 0; margin: 0; }
-.workflow-s11 .w11-image-stage { position: relative; width: 100%; height: 29.5cqw; background: #19181c; border: 1px solid #d4ddd7; border-radius: .7cqw; overflow: hidden; box-shadow: 0 .5cqw 1.4cqw #22354a10; }
-.workflow-s11 .w11-image-stage img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; }
-.workflow-s11 .w11-product-screen figcaption { margin-top: .6cqw; color: var(--muted); font-size: .95cqw; line-height: 1.4; }
-.workflow-s11 .w11-product-role { border-left: 2px solid var(--line); padding: .5cqw 0 .5cqw 1.7cqw; }
-.workflow-s11 .w11-product-role + .w11-product-role { margin-top: 3.3cqw; }
-.workflow-s11 .w11-product-role h2 { margin: 0; color: var(--ink); font-size: 2.6cqw; letter-spacing: -.045em; line-height: 1.2; }
-.workflow-s11 .w11-product-role p { margin: 1cqw 0 0; font-size: 1.35cqw; color: var(--muted); line-height: 1.7; letter-spacing: -.04em; }
-.workflow-s11 .w11-product-role strong { color: var(--ink); font-weight: 650; }
-.workflow-s11 .w11-active { border-left-color: var(--green); }
-.workflow-s11 .w11-active h2 { color: var(--green); }
-.workflow-s11 .w11-takeaway { margin: .7cqw 0 .3cqw; font-size: 1.45cqw; line-height: 1.6; letter-spacing: -.035em; }
-.workflow-s11 .w11-takeaway strong { color: var(--green); font-weight: 750; }
+.workflow-s10 .industry-heading h1 { font-size: 3.3cqw; }
+.workflow-s10 .w10-visual { flex: 1; min-height: 0; display: flex; align-items: center; margin-top: .6cqw; }
+.workflow-s10 .w10-visual svg { display: block; width: 100%; height: 30.5cqw; overflow: visible; }
+.workflow-s10 .w10-case { fill: var(--muted); font-size: 20px; font-weight: 550; }
+.workflow-s10 .w10-criteria-label { fill: var(--blue); font-size: 25px; font-weight: 700; }
+.workflow-s10 .w10-criteria { fill: var(--ink); font-size: 22px; letter-spacing: -.6px; }
+.workflow-s10 .w10-criteria-link { fill: none; stroke: #92a9c9; stroke-width: 2.5; }
+.workflow-s10 .w10-coordinator { fill: #e9f3ed; stroke: #9cbead; stroke-width: 2; }
+.workflow-s10 .w10-coordinator-label { fill: var(--green); font-size: 22px; font-weight: 600; }
+.workflow-s10 .w10-coordinator-title { fill: var(--ink); font-size: 27px; font-weight: 750; letter-spacing: -.6px; }
+.workflow-s10 .w10-cli-link { stroke: #90ab9c; stroke-width: 2; }
+.workflow-s10 .w10-cli { fill: #edf2f8; stroke: #9aafcb; stroke-width: 1.5; }
+.workflow-s10 .w10-cli-label { fill: var(--blue); font-size: 24px; font-weight: 700; }
+.workflow-s10 .w10-cli-detail { fill: var(--muted); font-size: 20px; letter-spacing: -.5px; }
+.workflow-s10 .w10-fan-out { fill: none; stroke: #a4bdb0; stroke-width: 2.5; stroke-linejoin: round; }
+.workflow-s10 .w10-workspace { fill: #fffefa; stroke: #8fa99b; stroke-width: 1.8; }
+.workflow-s10 .w10-workspace-bar { stroke: #c7d4cc; stroke-width: 1.3; }
+.workflow-s10 .w10-workspace-dot { fill: #b1c1b8; }
+.workflow-s10 .w10-task-title { fill: var(--ink); font-size: 26px; font-weight: 650; letter-spacing: -.6px; }
+.workflow-s10 .w10-task-detail { fill: var(--muted); font-size: 22px; }
+.workflow-s10 .w10-fan-in { fill: none; stroke: var(--green); stroke-width: 2.5; stroke-linejoin: round; }
+.workflow-s10 .w10-review { fill: #e9f3ed; stroke: #7da88f; stroke-width: 2; }
+.workflow-s10 .w10-check { fill: none; stroke: var(--green); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-s10 .w10-review-title { fill: var(--green); font-size: 25px; font-weight: 750; letter-spacing: -.7px; }
+.workflow-s10 .w10-review-detail { fill: var(--muted); font-size: 22px; }
+.workflow-s10 .w10-caption { margin: .8cqw 0 .4cqw; border-top: 1px solid var(--line); padding-top: 1.05cqw; color: var(--ink); font-size: 1.45cqw; line-height: 1.6; letter-spacing: -.035em; }

@@ -1,1 +1,14 @@
-/* Shared layout is provided by the lecture theme. */
+.career-s17 .industry-heading h1 { font-size: 3.4cqw; }
+.career-s17 .c17-landscape { flex: 1; min-height: 0; display: grid; grid-template-columns: 40cqw minmax(0, 1fr); gap: 4.5cqw; align-items: center; margin-top: 1.1cqw; }
+.career-s17 .c17-meme { margin: 0; text-align: center; }
+.career-s17 .c17-meme a { display: block; width: fit-content; margin: 0 auto; border-radius: .5cqw; overflow: hidden; }
+.career-s17 .c17-meme a:focus-visible { outline: 2px solid var(--green); outline-offset: .3cqw; }
+.career-s17 .c17-meme img { display: block; height: 28.3cqw; width: auto; }
+.career-s17 .c17-learning h2 { margin: 0 0 2cqw; color: var(--ink); font-size: 2.5cqw; line-height: 1.35; letter-spacing: -.045em; }
+.career-s17 .c17-actions { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.5cqw; }
+.career-s17 .c17-actions li { display: grid; grid-template-columns: 2.3cqw minmax(0, 1fr); gap: .8cqw; align-items: baseline; }
+.career-s17 .c17-actions li > span { color: #8a9b96; font-size: .95cqw; font-weight: 600; }
+.career-s17 .c17-actions h3 { margin: 0; color: var(--green); font-size: 1.65cqw; font-weight: 700; line-height: 1.35; letter-spacing: -.035em; }
+.career-s17 .c17-actions p { margin: .4cqw 0 0; color: var(--muted); font-size: 1.1cqw; line-height: 1.5; letter-spacing: -.025em; }
+.career-s17 .c17-takeaway { margin: .7cqw 0 .3cqw; padding-top: 1cqw; border-top: 1px solid var(--line); color: var(--ink); font-size: 1.45cqw; line-height: 1.6; letter-spacing: -.035em; }
+.career-s17 .c17-takeaway strong { color: var(--green); font-weight: 700; }

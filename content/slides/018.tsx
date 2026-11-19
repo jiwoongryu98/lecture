@@ -1,117 +1,91 @@
-import { Heading, reveal, type SlideProps } from '../components/kit';
+import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
 import './018.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "industry-evaluation",
-  "title": "데이터, 학습, 평가, 개선",
+  "id": "industry-adaptation",
+  "title": "기존 모델을 우리 문제에 맞추기",
   "section": "1부 · 산업을 읽다",
-  "maxStep": 3,
+  "maxStep": 2,
   "subsection": "모델"
 } satisfies SlideMetadata;
 
-const phases = [
-  { x: 190, y: 79, title: '데이터 준비', detail: '정리 · 라벨링' },
-  { x: 440, y: 79, title: '학습', detail: '학습용 자료로' },
-  { x: 440, y: 279, title: '검증', detail: '별도로 나눈 자료로' },
-  { x: 190, y: 279, title: '실패 분석 · 개선', detail: '자료 · 설정 보완' },
-];
-
-const focusCopy = [
-  ['먼저 나눕니다', '학습할 자료와', '실력을 확인할 자료'],
-  ['학습합니다', '학습용 자료로', '모델을 업데이트'],
-  ['확인합니다', '학습에 쓰지 않은', '자료에서의 결과'],
-  ['다시 개선합니다', '검증 결과를 보고', '실패의 원인부터'],
-];
+function ModelGlyph({ x, y, adapted = false }: { x: number; y: number; adapted?: boolean }) {
+  return <g transform={`translate(${x} ${y})`}>
+    <circle r="48" fill={adapted ? '#e5f1ec' : '#eaf0f8'} stroke={adapted ? '#177c68' : '#4269a5'} strokeWidth="2" />
+    <g fill="none" stroke={adapted ? '#177c68' : '#7f9fc8'} strokeWidth="2">
+      <path d="M -23 -19 L 21 -22 L -1 4 L -23 -19 L -20 25 L -1 4 L 24 24 L 21 -22" />
+      <path d="M -20 25 L 24 24" />
+      {adapted && <path d="M -23 -19 Q 27 -5 24 24 M -20 25 Q 19 8 21 -22" strokeWidth="3" />}
+    </g>
+    {[[-23, -19], [21, -22], [-1, 4], [-20, 25], [24, 24]].map(([cx, cy], index) =>
+      <circle key={index} cx={cx} cy={cy} r={adapted && (index === 2 || index === 4) ? 6 : 4.5} fill={adapted ? '#177c68' : '#4269a5'} />,
+    )}
+  </g>;
+}
 
 export default function Slide018({ step, instant }: SlideProps) {
-  const phase = Math.max(0, Math.min(step, 3));
-  const focused = phases[phase];
+  const context = step >= 1;
+  const training = step >= 2;
 
-  return <div className="industry-content industry-s15" data-instant={instant} data-step={phase}>
-    <Heading
-      eyebrow="모델 / 공통 개발 흐름"
-      subtitle="범용 개발 · 특화 개발 · 기존 모델 적응에 공통인 원칙"
-    >배운 자료만으로 실력을 판단하지 않습니다</Heading>
+  return <div className="industry-content industry-s14">
+    <Heading eyebrow="AI 모델 · 기존 모델의 적응">우리 문제에 맞추는 방법은 다르다</Heading>
 
-    <div className="industry-visual s15-loop-visual">
-      <svg viewBox="0 0 1000 355" role="img" aria-labelledby="s15-diagram-title s15-diagram-desc">
-        <title id="s15-diagram-title">데이터 준비, 학습, 검증, 실패 분석과 개선의 순환</title>
-        <desc id="s15-diagram-desc">학습용 자료와 검증용 자료를 분리합니다. 검증 결과는 개선에 활용하고, 테스트용 자료는 마지막 확인을 위해 별도로 보관합니다.</desc>
+    <div className="industry-s14-visual">
+      <svg viewBox="0 0 1000 330" role="img" aria-labelledby="industry-s14-title industry-s14-desc">
+        <title id="industry-s14-title">사전학습 모델을 활용하는 두 가지 방법</title>
+        <desc id="industry-s14-desc">
+          이미 학습한 모델의 능력에서 출발합니다.
+          {context && ' 요청 시 지시와 참고 자료를 주는 방법은 기존 학습값을 유지하며 맥락을 활용합니다.'}
+          {training && ' 파인튜닝은 과제나 도메인 데이터로 추가 학습하여 모델에 학습 결과를 반영합니다.'}
+        </desc>
         <defs>
-          <marker id="s15-arrow" viewBox="0 0 8 8" refX="6.5" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse" overflow="visible">
-            <path d="M1 1 L7 4 L1 7" fill="none" stroke="context-stroke" strokeWidth="1.5" />
+          <marker id="industry-s14-arrow-context" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto" overflow="visible">
+            <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#4269a5" strokeWidth="1.7" />
+          </marker>
+          <marker id="industry-s14-arrow-training" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto" overflow="visible">
+            <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#177c68" strokeWidth="1.7" />
           </marker>
         </defs>
 
-        <g className="s15-loop-arrows" fill="none" markerEnd="url(#s15-arrow)">
-          <path className={phase === 1 ? 's15-active' : ''} d="M282 59 Q315 30 348 59" />
-          <path className={phase === 2 ? 's15-active' : ''} d="M515 135 Q565 179 515 225" />
-          <path className={phase === 3 ? 's15-active' : ''} d="M348 301 Q315 330 282 301" />
-          <path className={phase === 3 ? 's15-active' : ''} d="M115 225 Q64 179 115 135" />
+        <circle cx="157" cy="161" r="79" fill="#f2f5fa" />
+        <ModelGlyph x={157} y={161} />
+        <text className="industry-s14-base-title" x="157" y="276" textAnchor="middle">사전학습 모델</text>
+        <text className="industry-s14-small" x="157" y="301" textAnchor="middle">이미 배운 능력에서 출발</text>
+
+        <g style={reveal(!context, instant, 'translateX(-7px)')} aria-hidden={context}>
+          <path d="M 273 162 H 359" stroke="#b5c7df" strokeWidth="2" markerEnd="url(#industry-s14-arrow-context)" />
+          <text className="industry-s14-opening" x="407" y="146">처음부터 만들지 않고,</text>
+          <text className="industry-s14-opening" x="407" y="186">기존 능력을 우리 문제에 연결</text>
         </g>
 
-        <g className="s15-focus-marker" style={{
-          transform: `translate(${focused.x}px, ${focused.y - 32}px)`,
-          transition: instant ? 'none' : 'transform 620ms cubic-bezier(.2,.7,.2,1)',
-        }} aria-hidden="true">
-          <circle r="14" />
-          <circle r="5" />
+        <g style={reveal(context, instant, 'translateY(8px)')} aria-hidden={!context}>
+          <path d="M 236 147 C 285 147, 299 86, 358 86 H 647" fill="none" stroke="#4269a5" strokeWidth="2.5" markerEnd="url(#industry-s14-arrow-context)" />
+          <text className="industry-s14-path-title industry-s14-blue" x="370" y="54">요청할 때 맥락 제공</text>
+          <text className="industry-s14-small" x="370" y="116">지시 · 참고 자료</text>
+
+          <rect x="656" y="16" width="137" height="139" rx="13" fill="#e8f1f7" fillOpacity=".45" stroke="#9db7d0" strokeWidth="1.5" strokeDasharray="5 5" />
+          <ModelGlyph x={725} y={86} />
+          <path d="M 763 8 H 783 L 795 20 V 50 H 763 Z M 783 8 V 20 H 795" fill="#fffefa" stroke="#4269a5" strokeWidth="1.5" />
+          <path d="M 771 30 H 787 M 771 37 H 787" stroke="#7f9fc8" strokeWidth="1.5" />
+          <text className="industry-s14-result" x="821" y="79">맥락을 보고 응답</text>
+          <text className="industry-s14-small" x="821" y="105">기존 학습값 유지</text>
         </g>
 
-        {phases.map((item, index) => <g
-          key={item.title}
-          className={`s15-phase${phase === index ? ' s15-current' : ''}`}
-          transform={`translate(${item.x},${item.y})`}
-        >
-          <text className="s15-phase-title" textAnchor="middle" y="9">{item.title}</text>
-          <text className="s15-phase-detail" textAnchor="middle" y="35">{item.detail}</text>
-        </g>)}
-
-        <circle className="s15-center-disc" cx="315" cy="181" r="77" />
-        {focusCopy.map((copy, index) => <g key={copy[0]}
-          className="s15-center-copy"
-          style={reveal(index === phase, instant, 'translateY(7px)')}
-          aria-hidden={index !== phase}
-        >
-          <text className="s15-center-title" x="315" y="160" textAnchor="middle">{copy[0]}</text>
-          <text className="s15-center-detail" x="315" y="188" textAnchor="middle">{copy[1]}</text>
-          <text className="s15-center-detail" x="315" y="212" textAnchor="middle">{copy[2]}</text>
-        </g>)}
-
-        <path className="s15-separation" d="M630 28 V326" />
-        <text className="s15-heldout-heading" x="710" y="45">학습에 넣지 않는 자료</text>
-
-        <g className={`s15-material s15-validation${phase === 2 ? ' s15-material-active' : ''}`}>
-          <g className="s15-paper" transform="translate(714,83)" aria-hidden="true">
-            <path d="M7 0 H48 V49 H7 Z M0 7 V56 H41" />
-            <path d="M17 15 H38 M17 25 H38 M17 35 H31" />
-          </g>
-          <text className="s15-material-title" x="785" y="104">검증용</text>
-          <text className="s15-material-detail" x="785" y="130">반복 중 선택 · 개선</text>
+        <g style={reveal(training, instant, 'translateY(-8px)')} aria-hidden={!training}>
+          <path d="M 236 175 C 285 175, 299 244, 358 244 H 664" fill="none" stroke="#177c68" strokeWidth="2.5" markerEnd="url(#industry-s14-arrow-training)" />
+          <text className="industry-s14-path-title industry-s14-green" x="370" y="211">데이터로 추가 학습</text>
+          <text className="industry-s14-small" x="370" y="274">파인튜닝 · 과제·도메인에 적응</text>
+          <ModelGlyph x={725} y={244} adapted />
+          <text className="industry-s14-result industry-s14-green" x="821" y="237">모델 자체를 조정</text>
+          <text className="industry-s14-small" x="821" y="263">학습 결과를 모델에 반영</text>
         </g>
-
-        <path className={`s15-validation-link${phase >= 2 ? ' s15-link-active' : ''}`}
-          d="M700 111 H617 Q585 111 585 143 V247 Q585 279 553 279 H500"
-          markerEnd="url(#s15-arrow)"
-        />
-
-        <path className="s15-material-divider" d="M710 193 H974" />
-
-        <g className="s15-material s15-test">
-          <g className="s15-paper" transform="translate(714,228)" aria-hidden="true">
-            <path d="M7 0 H48 V49 H7 Z M0 7 V56 H41" />
-            <path d="M17 15 H38 M17 25 H38 M17 35 H31" />
-          </g>
-          <text className="s15-material-title" x="785" y="250">테스트용</text>
-          <text className="s15-material-detail" x="785" y="277">마지막 확인에 보관</text>
-        </g>
-        <text className="s15-holdout-note" x="710" y="324">테스트 결과에 맞춰 반복 조정하지 않기</text>
       </svg>
     </div>
 
-    <p className="s15-takeaway" style={reveal(phase >= 2, instant)} aria-hidden={phase < 2}>
-      <strong>학습에 쓰지 않은 예로 평가하고,</strong> 실패를 분석해 다시 개선합니다.
-    </p>
+    <aside className="industry-s14-product" aria-label="기존 모델을 활용하는 실제 예">
+      <div><span>모델 예</span><strong><ReferenceLink to="Llama">Meta · Llama</ReferenceLink></strong></div>
+      <p>공개된 모델에서 출발 <span style={reveal(training, instant, 'translateX(-5px)')} aria-hidden={!training}>· 목적에 맞게 추가 학습</span></p>
+    </aside>
   </div>;
 }

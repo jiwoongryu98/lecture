@@ -9,7 +9,7 @@ test('presenter ink and inline text stay inside the slide and sync across screen
   const boards = new Map<number, AnnotationBoard>();
   const sockets = new Set<WebSocketRoute>();
   const board = (index: number) => boards.get(index) ?? { index, revision: 0, items: [] };
-  let state = { index: 4, step: 1, revision: 0, updatedAt: 0 };
+  let state = { index: 5, step: 1, revision: 0, updatedAt: 0 };
   function broadcast(message: ServerMessage) { for (const socket of sockets) socket.send(JSON.stringify(message)); }
   async function connect(page: Page, presenter: boolean) {
     await page.route('**/api/notes/*', (route) => route.fulfill({ body: '# 발표 노트\n\n슬라이드를 보며 설명합니다.', contentType: 'text/markdown' }));
@@ -37,12 +37,30 @@ test('presenter ink and inline text stay inside the slide and sync across screen
         socket.send(JSON.stringify({ type: 'ack', requestId: command.requestId, result }));
       });
     });
-    await page.goto(presenter ? '/presenter' : '/?index=4&step=1');
+    await page.goto(presenter ? '/presenter' : '/?index=5&step=1');
     await expect(page.getByRole('status', { name: '연결됨', exact: true })).toBeVisible();
   }
   const presenter = await context.newPage();
   const viewer = await context.newPage();
   await connect(presenter, true); await connect(viewer, false);
+  const mobile = !!testInfo.project.use.isMobile;
+  const originalViewport = presenter.viewportSize()!;
+  async function expandBoard() {
+    if (mobile) {
+      await presenter.setViewportSize({ width: 844, height: 390 });
+      await expect.poll(async () => (await presenter.locator('article.slide').boundingBox())!.width).toBeGreaterThan(500);
+    } else {
+      await presenter.getByRole('button', { name: '슬라이드 전체 화면', exact: true }).click();
+      await expect.poll(() => presenter.evaluate(() => document.fullscreenElement?.className)).toBe('stage');
+    }
+  }
+  async function restoreBoard() {
+    if (mobile) await presenter.setViewportSize(originalViewport);
+    else {
+      await presenter.keyboard.press('Escape');
+      await expect.poll(() => presenter.evaluate(() => !!document.fullscreenElement)).toBe(false);
+    }
+  }
   const layer = presenter.getByLabel('슬라이드 필기 영역');
   const marks = viewer.locator('[data-annotation]');
   await expect(presenter.getByRole('button', { name: '펜', exact: true })).toBeEnabled();
@@ -58,8 +76,8 @@ test('presenter ink and inline text stay inside the slide and sync across screen
   await expect(marks).toHaveCount(1); // Ink is visible before releasing the pointer.
   await presenter.mouse.move(bounds.x + bounds.width + 25, bounds.y + bounds.height + 25);
   await presenter.mouse.up();
-  await expect.poll(() => board(4).items.length).toBe(1);
-  const ink = board(4).items[0];
+  await expect.poll(() => board(5).items.length).toBe(1);
+  const ink = board(5).items[0];
   if (ink.kind !== 'stroke') throw new Error('Expected a stroke');
   expect(ink.points[0][0]).toBeCloseTo(320, -1);
   expect(ink.points.at(-1)).toEqual([1600, 900]);
@@ -77,16 +95,16 @@ test('presenter ink and inline text stay inside the slide and sync across screen
   await editor.fill('목표를 먼저 확인\n다음 단계');
   await editor.press('Meta+z');
   await editor.press('Control+z');
-  expect(board(4).items).toHaveLength(1); // Text-field undo must not remove the existing stroke.
+  expect(board(5).items).toHaveLength(1); // Text-field undo must not remove the existing stroke.
   await editor.fill('목표를 먼저 확인\n다음 단계');
   await editor.dispatchEvent('keydown', { key: 'Enter', isComposing: true });
   await expect(editor).toBeVisible();
-  expect(board(4).items).toHaveLength(1); // Korean composition must not submit prematurely.
+  expect(board(5).items).toHaveLength(1); // Korean composition must not submit prematurely.
   await editor.press('Enter');
   await expect(marks).toHaveCount(2);
   await expect(marks.locator('.annotation-text')).toHaveText('목표를 먼저 확인\n다음 단계');
   await viewer.keyboard.press('Control+z');
-  expect(board(4).items).toHaveLength(2); // Viewers cannot undo presenter annotations.
+  expect(board(5).items).toHaveLength(2); // Viewers cannot undo presenter annotations.
   await expect(presenter.getByText('필기 저장 중…')).toHaveCount(0);
 
   // Resizing the board by opening notes does not rewrite stored coordinates.
@@ -94,10 +112,9 @@ test('presenter ink and inline text stay inside the slide and sync across screen
   await expect(presenter.getByRole('complementary', { name: '발표 노트' })).toBeVisible();
   await expect(presenter.locator('[data-annotation] polyline')).toHaveAttribute('points', coordinates!);
 
-  // Fullscreen uses the same board coordinates and continues to synchronize ink.
+  // Desktop fullscreen and mobile rotation preserve coordinates and synchronized ink.
   await presenter.getByRole('button', { name: '펜', exact: true }).click();
-  await presenter.getByRole('button', { name: '슬라이드 전체 화면', exact: true }).click();
-  await expect.poll(() => presenter.evaluate(() => document.fullscreenElement?.className)).toBe('stage');
+  await expandBoard();
   await expect(presenter.locator('[data-annotation] polyline')).toHaveAttribute('points', coordinates!);
   const fullscreenBounds = (await layer.boundingBox())!;
   await presenter.mouse.move(fullscreenBounds.x + fullscreenBounds.width * .25, fullscreenBounds.y + fullscreenBounds.height * .25);
@@ -105,8 +122,8 @@ test('presenter ink and inline text stay inside the slide and sync across screen
   await presenter.mouse.move(fullscreenBounds.x + fullscreenBounds.width * .75, fullscreenBounds.y + fullscreenBounds.height * .75, { steps: 4 });
   await presenter.mouse.up();
   await expect(marks).toHaveCount(3);
-  await expect.poll(() => board(4).items.length).toBe(3);
-  const fullscreenInk = board(4).items.at(-1)!;
+  await expect.poll(() => board(5).items.length).toBe(3);
+  const fullscreenInk = board(5).items.at(-1)!;
   if (fullscreenInk.kind !== 'stroke') throw new Error('Expected a fullscreen stroke');
   expect(fullscreenInk.points[0][0]).toBeCloseTo(400, -1);
   expect(fullscreenInk.points[0][1]).toBeCloseTo(225, -1);
@@ -115,8 +132,7 @@ test('presenter ink and inline text stay inside the slide and sync across screen
   await expect(presenter.getByRole('button', { name: '실행 취소', exact: true, includeHidden: true })).toBeEnabled();
   await presenter.keyboard.press('Control+z');
   await expect(marks).toHaveCount(2);
-  await presenter.keyboard.press('Escape');
-  await expect.poll(() => presenter.evaluate(() => !!document.fullscreenElement)).toBe(false);
+  await restoreBoard();
   await expect(presenter.getByRole('complementary', { name: '발표 노트' })).toBeVisible();
   await viewer.getByRole('button', { name: '이전 단계', exact: true }).click();
   await expect(marks).toHaveCount(0);
@@ -140,16 +156,14 @@ test('presenter ink and inline text stay inside the slide and sync across screen
   // Text entered and cancelled on the slide never reaches the viewer.
   await presenter.getByRole('button', { name: '발표 노트 접기', exact: true }).click();
   await presenter.getByRole('button', { name: '텍스트', exact: true }).click();
-  await presenter.getByRole('button', { name: '슬라이드 전체 화면', exact: true }).click();
-  await expect.poll(() => presenter.evaluate(() => document.fullscreenElement?.className)).toBe('stage');
+  await expandBoard();
   const textBounds = (await layer.boundingBox())!;
   await layer.click({ position: { x: textBounds.width * .3, y: textBounds.height * .6 } });
   await editor.fill('취소할 텍스트'); await editor.press('Escape');
   await expect(editor).toHaveCount(0);
   await expect(marks).toHaveCount(0);
-  expect(await presenter.evaluate(() => document.fullscreenElement?.className)).toBe('stage');
-  await presenter.keyboard.press('Escape');
-  await expect.poll(() => presenter.evaluate(() => !!document.fullscreenElement)).toBe(false);
+  if (!mobile) expect(await presenter.evaluate(() => document.fullscreenElement?.className)).toBe('stage');
+  await restoreBoard();
   if (testInfo.project.name === 'chromium-narrow') {
     await presenter.getByRole('button', { name: '펜', exact: true }).click();
     const box = (await layer.boundingBox())!;

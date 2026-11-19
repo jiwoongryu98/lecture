@@ -19,4 +19,5 @@ h1 span { color: #177c68; }
 .slide-topline { font-weight: 600; }
 .eyebrow { color: #6e7b87; font-size: 0.85cqw; letter-spacing: 0.12em; }
 .slide-footer { color: #7d8996; padding-top: 1.3cqw; border-top: 1px solid #e4e8e4; font-size: 0.9cqw; }
-.footer-dot { margin: 0 0.6cqw; }
+.slide-progress { width: 16cqw; height: .25cqw; min-height: 2px; overflow: hidden; border-radius: 999px; background: #e4e8e4; }
+.slide-progress-fill { display: block; width: 100%; height: 100%; border-radius: inherit; background: #177c68; transform-origin: left; transition: transform 180ms ease-out; }

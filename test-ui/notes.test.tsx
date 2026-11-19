@@ -9,14 +9,14 @@ it('ignores a late response for a previous slide, renders Markdown, and retains 
   const fetchNotes = vi.fn(() => new Promise<Response>((resolve) => pending.push(resolve)));
   vi.stubGlobal('fetch', fetchNotes);
   const view = render(<PresenterNotes position={{ index: 1, step: 0 }} />);
-  view.rerender(<PresenterNotes position={{ index: 4, step: 1 }} />);
+  view.rerender(<PresenterNotes position={{ index: 5, step: 1 }} />);
   await act(async () => pending[1](new Response('# 현재 노트\n\n[PDF](../public/shared/example-document.pdf)\n\n| 내용 | 확인 |\n| --- | --- |\n| 현재 | 예 |')));
   expect(view.getByRole('heading', { name: '현재 노트' })).toBeTruthy();
   expect(view.getByRole('table')).toBeTruthy();
   expect(view.getByRole('link', { name: 'PDF' }).getAttribute('href')).toBe('/shared/example-document.pdf');
   await act(async () => pending[0](new Response('# 지난 노트')));
   expect(view.queryByRole('heading', { name: '지난 노트' })).toBeNull();
-  view.rerender(<PresenterNotes position={{ index: 4, step: 2 }} />);
+  view.rerender(<PresenterNotes position={{ index: 5, step: 2 }} />);
   expect(view.getByRole('heading', { name: '현재 노트' })).toBeTruthy();
   expect(fetchNotes).toHaveBeenCalledTimes(2);
 });

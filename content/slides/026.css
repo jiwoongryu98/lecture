@@ -1,1 +1,36 @@
-/* Shared layout is provided by the lecture theme. */
+.industry-s22 .industry-heading h1 { font-size: 3.4cqw; }
+.industry-s22 .s22-composition {
+  display: grid;
+  grid-template-columns: 55% 6% 39%;
+  align-items: center;
+  height: 28.8cqw;
+  flex: 0 0 auto;
+  margin-top: 1.55cqw;
+}
+.industry-s22 .s22-map-area { position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+.industry-s22 .s22-map { height: 21.5cqw; width: 100%; }
+.industry-s22 .s22-contributions { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 1.15cqw; margin: 1cqw 1.1cqw 0; }
+.industry-s22 .s22-contributions p { display: flex; align-items: center; gap: .55cqw; margin: 0; font-size: 1.12cqw; color: var(--ink); }
+.industry-s22 .s22-contributions p span { width: .55cqw; height: .55cqw; border-radius: 50%; }
+.industry-s22 .s22-product-dot { background: var(--green); }
+.industry-s22 .s22-model-dot { background: var(--blue); }
+.industry-s22 .s22-infra-dot { background: var(--amber); }
+.industry-s22 .s22-hinge { display: flex; align-items: center; width: 100%; color: #aab7b9; transform: translateY(-1.3cqw); }
+.industry-s22 .s22-hinge span { width: 1.6cqw; height: 1px; background: #d0dcd7; }
+.industry-s22 .s22-hinge b { font-size: 2cqw; font-weight: 400; line-height: 1; }
+.industry-s22 .s22-question-area { height: 25cqw; position: relative; padding-left: 1.7cqw; }
+.industry-s22 .s22-progress { display: flex; gap: .55cqw; margin-top: 2.3cqw; }
+.industry-s22 .s22-progress span { width: .7cqw; height: .7cqw; border: 1px solid #bdcdc6; border-radius: 50%; background: transparent; transition: background 380ms ease, border-color 380ms ease; }
+.industry-s22 .s22-progress .s22-current { background: var(--green); border-color: var(--green); }
+.industry-s22 .s22-progress .s22-past { background: #c9dfd2; border-color: #c9dfd2; }
+.industry-s22 .s22-question { position: absolute; top: 5cqw; left: 1.7cqw; right: 0; }
+.industry-s22 .s22-question-label { color: var(--green); font-size: 1.05cqw; font-weight: 700; margin: 0 0 1.6cqw; letter-spacing: -.02em; }
+.industry-s22 .s22-question h2 { font-size: 2.35cqw; line-height: 1.45; font-weight: 450; letter-spacing: -.055em; margin: 0; word-break: keep-all; color: var(--ink); }
+.industry-s22 .s22-question h2 strong { font-weight: 750; }
+.industry-s22 .s22-question-detail { font-size: 1.2cqw; line-height: 1.75; margin: 1.8cqw 0 0; color: var(--muted); max-width: 29cqw; }
+.industry-s22 .s22-next { border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; margin-top: 1cqw; padding-top: 1.3cqw; }
+.industry-s22 .s22-next p { margin: 0; display: flex; align-items: baseline; gap: 1.65cqw; }
+.industry-s22 .s22-next p span { color: var(--muted); font-size: 1cqw; }
+.industry-s22 .s22-next strong { font-size: 1.55cqw; color: var(--green); font-weight: 650; letter-spacing: -.035em; }
+.industry-s22 .s22-next-arrow { font-size: 2cqw; color: var(--green); line-height: 1; }
+.industry-s22[data-instant="true"] * { transition: none !important; }

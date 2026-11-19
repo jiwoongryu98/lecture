@@ -19,7 +19,7 @@
     "typecheck": "tsc -p tsconfig.app.json && tsc -p tsconfig.worker.json && tsc -p tsconfig.node.json && tsc -p test/tsconfig.json && tsc -p test-ui/tsconfig.json && tsc -p test-browser/tsconfig.json",
     "test": "vitest run && vitest run --config vitest.ui.config.ts",
     "test:browser": "playwright test",
-    "test:browser:install": "playwright install chromium",
+    "test:browser:install": "playwright install chromium webkit",
     "test:browser:report": "playwright show-report",
     "deploy:dry-run": "npm run build && wrangler deploy --dry-run",
     "verify": "npm run types && npm run typecheck && npm test && npm run deploy:dry-run",

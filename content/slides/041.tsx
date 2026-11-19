@@ -3,83 +3,78 @@ import './041.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "workflow-validation",
-  "title": "실행이 빨라질수록, 검증이 병목이 됩니다",
+  "id": "workflow-ticket-automation",
+  "title": "티켓을 모아 정리하는 자동화",
   "section": "2부 · 실무를 만나다",
   "maxStep": 2,
-  "subsection": "검증"
+  "subsection": "자동화"
 } satisfies SlideMetadata;
 
 export default function Slide041({ step, instant }: SlideProps) {
-  const specified = step >= 1;
-  const repeatable = step >= 2;
+  const connecting = step >= 1;
+  const handling = step >= 2;
 
-  return <div className="industry-content workflow-validation">
-    <Heading eyebrow="실무 관점 / 결과 검증">실행이 빨라질수록, 검증이 병목이 됩니다</Heading>
+  return <div className="industry-content workflow-s14">
+    <Heading eyebrow="자동화 구조 / 일정·이벤트에서 API까지">티켓을 모아 정리하는 자동화</Heading>
 
-    <div className="wv-composition">
-      <svg viewBox="0 0 1100 400" role="group" style={reveal(specified, instant, 'none')} aria-hidden={!specified} aria-label="생성한 결과의 검증을 명세와 테스트와 반복 실행 환경이 받친다. Chrome DevTools MCP는 실제 브라우저에서 동작과 화면을 확인하고 성능을 분석할 수 있게 한다.">
+    <div className="w14-architecture">
+      <svg viewBox="0 0 1100 390" role="group" aria-label="일정이나 이벤트가 서버리스 작업을 시작하고, 티켓을 수집해 OpenAI API를 호출한 뒤 결과를 확인하고 저장하거나 전달하는 구조">
         <defs>
-          <marker id="workflow-validation-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <marker id="workflow-s14-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M2 1L8 5L2 9" fill="none" stroke="#177c68" strokeWidth="1.8" />
+          </marker>
+          <marker id="workflow-s14-answer-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#4269a5" strokeWidth="1.8" />
           </marker>
         </defs>
 
-        <path className="wv-funnel" d="M229 70C382 70 425 118 520 118V186C425 186 382 233 229 233Z" />
-        <g className="wv-pages">
-          <g transform="translate(97 45) rotate(-7 35 48)">
-            <rect width="70" height="96" rx="7" />
-            <path d="M15 23H55M15 42H47M15 61H55M15 79H41" />
-          </g>
-          <g transform="translate(164 103) rotate(7 35 48)">
-            <rect width="70" height="96" rx="7" />
-            <path d="M15 23H55M15 42H47M15 61H55M15 79H41" />
-          </g>
-          <g transform="translate(82 154) rotate(-4 35 48)">
-            <rect width="70" height="96" rx="7" />
-            <path d="M15 23H55M15 42H47M15 61H55M15 79H41" />
-          </g>
+        <g className="w14-trigger">
+          <circle cx="447" cy="32" r="15" />
+          <path d="M447 22V33L454 38" />
+          <text x="475" y="41">일정·이벤트</text>
         </g>
-        <text className="wv-source-label" x="161" y="286" textAnchor="middle">생성·수정한 결과물</text>
+        <path className="w14-start" d="M550 61V101" markerEnd="url(#workflow-s14-arrow)" />
 
-        <path className="wv-gate" d="M525 217V98Q525 76 547 76H613Q635 76 635 98V217" />
-        <text className="wv-gate-label" x="580" y="158" textAnchor="middle">검증</text>
-        <g style={reveal(specified, instant, 'translateY(6px)')} aria-hidden={!specified}>
-          <path className="wv-result-link" d="M649 151H773" markerEnd="url(#workflow-validation-arrow)" />
-          <ReferenceLink to="Chrome DevTools MCP"><text className="wv-browser-title" x="938" y="24" textAnchor="middle">Chrome DevTools MCP</text>
-          <rect className="wv-browser" x="791" y="47" width="294" height="215" rx="10" />
-          <path className="wv-browser-rule" d="M791 76H1085M809 138H1067M809 200H1067" />
-          <circle className="wv-browser-dot" cx="808" cy="62" r="3" />
-          <circle className="wv-browser-dot" cx="821" cy="62" r="3" />
-          <circle className="wv-browser-dot" cx="834" cy="62" r="3" />
-          <text className="wv-check-label" x="817" y="116">동작</text>
-          <text className="wv-check-detail" x="904" y="116">클릭·입력</text>
-          <text className="wv-check-label" x="817" y="178">화면</text>
-          <text className="wv-check-detail" x="904" y="178">배치·표시</text>
-          <text className="wv-check-label" x="817" y="240">성능</text>
-          <text className="wv-check-detail" x="904" y="240">추적·분석</text></ReferenceLink>
+        <circle className="w14-job" cx="550" cy="191" r="86" />
+        <path className="w14-job-symbol" d="M553 122L540 145H552L547 162L566 139H554L560 122Z" />
+        <text className="w14-job-title" x="550" y="195" textAnchor="middle">서버리스</text>
+        <text className="w14-job-title" x="550" y="231" textAnchor="middle">작업</text>
+
+        <g style={reveal(connecting, instant, 'none')} aria-hidden={!connecting}>
+          <g className="w14-tickets" transform="translate(170 176)">
+            <rect x="-28" y="-52" width="77" height="99" rx="9" />
+            <rect x="-39" y="-42" width="77" height="99" rx="9" />
+            <rect x="-50" y="-32" width="77" height="99" rx="9" />
+            <path d="M-33-10H9M-33 5H9M-33 20H-2M-33 41H9" />
+          </g>
+          <text className="w14-node-title" x="170" y="281" textAnchor="middle">회사 티켓</text>
+          <path className="w14-data" d="M234 190H457" markerEnd="url(#workflow-s14-arrow)" />
+          <text className="w14-data-label" x="346" y="166" textAnchor="middle">조회·수집</text>
+
+          <ReferenceLink to="OpenAI API"><circle className="w14-api" cx="930" cy="191" r="74" />
+          <text className="w14-api-title" x="930" y="184" textAnchor="middle">OpenAI</text>
+          <text className="w14-api-title" x="930" y="219" textAnchor="middle">API</text></ReferenceLink>
+          <path className="w14-request" d="M642 172H848" markerEnd="url(#workflow-s14-arrow)" />
+          <path className="w14-answer" d="M848 216H642" markerEnd="url(#workflow-s14-answer-arrow)" />
+          <text className="w14-request-label" x="746" y="151" textAnchor="middle">요청</text>
+          <text className="w14-answer-label" x="746" y="252" textAnchor="middle">응답</text>
         </g>
 
-        <g style={reveal(specified, instant, 'translateY(6px)')} aria-hidden={!specified}>
-          <path className="wv-support-link" d="M580 217V239" />
-          <rect className="wv-spec" x="410" y="239" width="340" height="49" rx="3" />
-          <text className="wv-spec-label" x="580" y="271" textAnchor="middle">명세 · 모습과 동작</text>
-        </g>
-
-        <g style={reveal(repeatable, instant, 'translateY(6px)')} aria-hidden={!repeatable}>
-          <rect className="wv-tests" x="375" y="292" width="410" height="49" rx="3" />
-          <text className="wv-test-label" x="580" y="324" textAnchor="middle">테스트 · 기대한 결과 확인</text>
-          <rect className="wv-environment" x="340" y="345" width="480" height="49" rx="3" />
-          <text className="wv-environment-label" x="580" y="377" textAnchor="middle">반복 실행 환경 · 같은 조건으로</text>
+        <g style={reveal(handling, instant, 'translateY(6px)')} aria-hidden={!handling}>
+          <path className="w14-output" d="M550 281V307" markerEnd="url(#workflow-s14-arrow)" />
+          <text className="w14-output-title" x="550" y="343" textAnchor="middle">결과 확인</text>
+          <path className="w14-output" d="M625 334H707" markerEnd="url(#workflow-s14-arrow)" />
+          <g className="w14-storage" transform="translate(747 333)">
+            <path d="M-17-14V13C-17 23 17 23 17 13V-14M-17 0C-17 10 17 10 17 0" />
+            <ellipse cx="0" cy="-14" rx="17" ry="7" />
+          </g>
+          <text className="w14-output-title" x="786" y="343">저장·전달</text>
         </g>
       </svg>
-      <ReferenceLink to="흑백요리사" className="wv-meme" style={reveal(!specified, instant, 'none')} aria-hidden={specified}>
-        <img src="/slides/041/even-meme.jpg" width="900" height="448" alt="흑백요리사의 ‘고기가 이븐하게 익지 않았어요’ 심사 장면" />
-      </ReferenceLink>
     </div>
 
-    <p className="wv-takeaway" style={reveal(repeatable, instant, 'translateY(6px)')} aria-hidden={!repeatable}>
-      기대한 결과를 <strong>명세로 정하고, 테스트로 반복해서 확인합니다.</strong>
+    <p className="w14-takeaway" style={reveal(handling, instant, 'translateY(6px)')} aria-hidden={!handling}>
+      정해진 조건이 시작하고, <strong>코드가 실행 흐름을 이어갑니다.</strong>
     </p>
   </div>;
 }

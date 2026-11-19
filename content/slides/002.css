@@ -2,9 +2,9 @@
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
+  grid-template-columns: 1fr 1.1fr;
   align-items: center;
-  gap: 5cqw;
+  gap: 4cqw;
 }
 .presenter-intro .presenter-intro-identity { padding: 1cqw 0 2cqw; }
 .presenter-intro .presenter-intro-greeting {
@@ -14,28 +14,26 @@
   letter-spacing: -.04em;
 }
 .presenter-intro .industry-eyebrow { margin-bottom: 1.2cqw; }
-.presenter-intro .industry-heading h1 { font-size: 4.8cqw; letter-spacing: -.06em; }
+.presenter-intro .industry-heading h1 { font-size: 4.25cqw; letter-spacing: -.055em; }
+.presenter-intro .presenter-intro-current { margin-top: 2.4cqw; }
+.presenter-intro .presenter-intro-current-label { margin: 0 0 .5cqw; color: var(--green); font-size: 1.05cqw; font-weight: 650; }
+.presenter-intro .presenter-intro-organization { margin: 0; color: var(--green); font-size: 2.45cqw; letter-spacing: -.04em; font-weight: 650; line-height: 1.4; }
 .presenter-intro .presenter-intro-role {
-  margin: 1.5cqw 0 0;
+  margin: .6cqw 0 0;
   color: var(--muted);
-  font-size: 1.65cqw;
+  font-size: 1.35cqw;
   letter-spacing: -.04em;
   line-height: 1.6;
 }
+.presenter-intro .presenter-intro-focus { margin: 1cqw 0 0; color: var(--ink); font-size: 1.55cqw; font-weight: 550; line-height: 1.5; letter-spacing: -.035em; }
 .presenter-intro .presenter-intro-experience {
   border-left: 2px solid #c9ddd2;
   padding: 1cqw 0 1cqw 2.8cqw;
 }
-.presenter-intro .presenter-intro-experience-label {
-  margin: 0 0 1.6cqw;
-  font-size: 1.05cqw;
-  font-weight: 650;
-  color: var(--green);
-  letter-spacing: -.03em;
-}
-.presenter-intro .presenter-intro-experience ol { list-style: none; padding: 0; margin: 0; }
-.presenter-intro .presenter-intro-experience li { display: flex; align-items: baseline; gap: 1.1cqw; padding: 1.2cqw 0; }
-.presenter-intro .presenter-intro-experience li + li { border-top: 1px solid var(--line); }
-.presenter-intro .presenter-intro-experience li > span { color: #8ba797; font-size: .95cqw; font-weight: 650; }
-.presenter-intro .presenter-intro-experience li p { margin: 0; color: var(--ink); font-size: 1.6cqw; letter-spacing: -.045em; line-height: 1.65; }
+.presenter-intro .presenter-intro-highlights { margin: 0; padding: 0; list-style: none; }
+.presenter-intro .presenter-intro-highlights > li { padding: 1cqw 0; }
+.presenter-intro .presenter-intro-highlights > li + li { border-top: 1px solid var(--line); }
+.presenter-intro .presenter-intro-highlights > li + li:nth-last-child(-n + 2) { border-top-color: #c9ddd2; }
+.presenter-intro .presenter-intro-experience h2 { margin: 0; font-size: 2.15cqw; font-weight: 650; line-height: 1.4; letter-spacing: -.04em; }
+.presenter-intro .presenter-intro-experience p { margin: .5cqw 0 0; color: var(--muted); font-size: 1.25cqw; letter-spacing: -.025em; line-height: 1.75; white-space: pre-line; }
 .presenter-intro[data-instant="true"] * { transition: none !important; }

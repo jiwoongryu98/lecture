@@ -3,78 +3,82 @@ import './040.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "workflow-ticket-automation",
-  "title": "티켓을 모아 정리하는 자동화",
+  "id": "workflow-product",
+  "title": "나를 돕는 AI에서, 서비스 속의 AI로",
   "section": "2부 · 실무를 만나다",
-  "maxStep": 2,
+  "maxStep": 1,
   "subsection": "자동화"
 } satisfies SlideMetadata;
 
 export default function Slide040({ step, instant }: SlideProps) {
-  const connecting = step >= 1;
-  const handling = step >= 2;
+  const showProduct = step >= 1;
 
-  return <div className="industry-content workflow-s14">
-    <Heading eyebrow="자동화 구조 / 일정·이벤트에서 API까지">티켓을 모아 정리하는 자동화</Heading>
+  return <div className="industry-content workflow-s13">
+    <Heading eyebrow="활용 범위 넓히기 / 개인 도구와 서비스">나를 돕는 AI에서, 서비스 속의 AI로</Heading>
 
-    <div className="w14-architecture">
-      <svg viewBox="0 0 1100 390" role="group" aria-label="일정이나 이벤트가 서버리스 작업을 시작하고, 티켓을 수집해 OpenAI API를 호출한 뒤 결과를 확인하고 저장하거나 전달하는 구조">
+    <div className="w13-visual">
+      <svg viewBox="0 0 1100 380" role="group" aria-label={showProduct
+        ? '개인이 AI 도구에 직접 요청하고 결과를 확인하는 방식과, 사용자가 이용하는 서비스가 API로 모델을 연결하고 도구와 결과 확인을 담당하는 방식을 비교한다.'
+        : '내 작업을 위해 Claude Code나 Codex 같은 AI 도구에 직접 요청하고 결과를 검토한다.'}>
         <defs>
-          <marker id="workflow-s14-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M2 1L8 5L2 9" fill="none" stroke="#177c68" strokeWidth="1.8" />
-          </marker>
-          <marker id="workflow-s14-answer-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M2 1L8 5L2 9" fill="none" stroke="#4269a5" strokeWidth="1.8" />
+          <marker id="workflow-s13-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" strokeWidth="1.7" />
           </marker>
         </defs>
 
-        <g className="w14-trigger">
-          <circle cx="447" cy="32" r="15" />
-          <path d="M447 22V33L454 38" />
-          <text x="475" y="41">일정·이벤트</text>
+        <text className="w13-track-title w13-green" x="48" y="30">내 작업을 돕는 AI</text>
+
+        <g className="w13-person">
+          <circle cx="150" cy="95" r="16" />
+          <path d="M119 141V131C119 107 181 107 181 131V141" />
         </g>
-        <path className="w14-start" d="M550 61V101" markerEnd="url(#workflow-s14-arrow)" />
+        <text className="w13-person-label" x="150" y="173" textAnchor="middle">나</text>
 
-        <circle className="w14-job" cx="550" cy="191" r="86" />
-        <path className="w14-job-symbol" d="M553 122L540 145H552L547 162L566 139H554L560 122Z" />
-        <text className="w14-job-title" x="550" y="195" textAnchor="middle">서버리스</text>
-        <text className="w14-job-title" x="550" y="231" textAnchor="middle">작업</text>
+        <path className="w13-request" d="M205 111H365" markerEnd="url(#workflow-s13-arrow)" />
+        <text className="w13-flow-label" x="285" y="92" textAnchor="middle">직접 요청</text>
+        <rect className="w13-agent" x="385" y="65" width="260" height="104" rx="12" />
+        <text className="w13-agent-title" x="515" y="107" textAnchor="middle">AI 도구</text>
+        <text className="w13-agent-detail" x="515" y="143" textAnchor="middle"><ReferenceLink to="Claude Code">Claude Code</ReferenceLink>{' · '}<ReferenceLink to="Codex">Codex</ReferenceLink></text>
+        <path className="w13-request" d="M665 111H830" markerEnd="url(#workflow-s13-arrow)" />
+        <text className="w13-flow-label" x="748" y="92" textAnchor="middle">결과</text>
 
-        <g style={reveal(connecting, instant, 'none')} aria-hidden={!connecting}>
-          <g className="w14-tickets" transform="translate(170 176)">
-            <rect x="-28" y="-52" width="77" height="99" rx="9" />
-            <rect x="-39" y="-42" width="77" height="99" rx="9" />
-            <rect x="-50" y="-32" width="77" height="99" rx="9" />
-            <path d="M-33-10H9M-33 5H9M-33 20H-2M-33 41H9" />
-          </g>
-          <text className="w14-node-title" x="170" y="281" textAnchor="middle">회사 티켓</text>
-          <path className="w14-data" d="M234 190H457" markerEnd="url(#workflow-s14-arrow)" />
-          <text className="w14-data-label" x="346" y="166" textAnchor="middle">조회·수집</text>
-
-          <ReferenceLink to="OpenAI API"><circle className="w14-api" cx="930" cy="191" r="74" />
-          <text className="w14-api-title" x="930" y="184" textAnchor="middle">OpenAI</text>
-          <text className="w14-api-title" x="930" y="219" textAnchor="middle">API</text></ReferenceLink>
-          <path className="w14-request" d="M642 172H848" markerEnd="url(#workflow-s14-arrow)" />
-          <path className="w14-answer" d="M848 216H642" markerEnd="url(#workflow-s14-answer-arrow)" />
-          <text className="w14-request-label" x="746" y="151" textAnchor="middle">요청</text>
-          <text className="w14-answer-label" x="746" y="252" textAnchor="middle">응답</text>
+        <g className="w13-output">
+          <path d="M855 79H887L901 93V143H855ZM887 79V94H901M866 105H890M866 117H890M866 129H883" />
         </g>
+        <text className="w13-person-label" x="878" y="173" textAnchor="middle">내가 검토·활용</text>
 
-        <g style={reveal(handling, instant, 'translateY(6px)')} aria-hidden={!handling}>
-          <path className="w14-output" d="M550 281V307" markerEnd="url(#workflow-s14-arrow)" />
-          <text className="w14-output-title" x="550" y="343" textAnchor="middle">결과 확인</text>
-          <path className="w14-output" d="M625 334H707" markerEnd="url(#workflow-s14-arrow)" />
-          <g className="w14-storage" transform="translate(747 333)">
-            <path d="M-17-14V13C-17 23 17 23 17 13V-14M-17 0C-17 10 17 10 17 0" />
-            <ellipse cx="0" cy="-14" rx="17" ry="7" />
+        <g style={reveal(showProduct, instant, 'translateY(7px)')} aria-hidden={!showProduct}>
+          <path className="w13-divider" d="M48 206H1052" />
+          <text className="w13-track-title w13-blue" x="48" y="240">서비스 속의 AI</text>
+
+          <g className="w13-users">
+            <circle cx="126" cy="294" r="12" />
+            <circle cx="158" cy="284" r="14" />
+            <circle cx="190" cy="294" r="12" />
+            <path d="M105 330V321C105 304 143 304 146 319M136 330V316C136 295 180 295 180 316V330M176 319C179 304 211 304 211 321V330" />
           </g>
-          <text className="w14-output-title" x="786" y="343">저장·전달</text>
+          <text className="w13-person-label" x="158" y="366" textAnchor="middle">사용자</text>
+
+          <path className="w13-service-request" d="M235 300H365" markerEnd="url(#workflow-s13-arrow)" />
+          <path className="w13-service-response" d="M365 332H235" markerEnd="url(#workflow-s13-arrow)" />
+          <text className="w13-flow-label" x="300" y="280" textAnchor="middle">이용</text>
+          <text className="w13-flow-label" x="300" y="362" textAnchor="middle">결과</text>
+
+          <rect className="w13-service" x="385" y="265" width="260" height="104" rx="12" />
+          <text className="w13-service-title" x="515" y="307" textAnchor="middle">서비스의 업무 흐름</text>
+          <text className="w13-service-detail" x="515" y="343" textAnchor="middle">요청 · 도구 · 결과 확인</text>
+
+          <path className="w13-service-request" d="M665 300H825" markerEnd="url(#workflow-s13-arrow)" />
+          <path className="w13-service-response" d="M825 332H665" markerEnd="url(#workflow-s13-arrow)" />
+          <text className="w13-api-label" x="745" y="280" textAnchor="middle">API</text>
+          <circle className="w13-model" cx="890" cy="316" r="61" />
+          <text className="w13-model-label" x="890" y="325" textAnchor="middle">AI 모델</text>
         </g>
       </svg>
     </div>
 
-    <p className="w14-takeaway" style={reveal(handling, instant, 'translateY(6px)')} aria-hidden={!handling}>
-      정해진 조건이 시작하고, <strong>코드가 실행 흐름을 이어갑니다.</strong>
-    </p>
+    <p className="w13-caption">{showProduct
+      ? '서비스가 요청과 결과를 연결하고, 사용자는 기능을 이용합니다.'
+      : '내가 요청하고, 내가 결과를 확인합니다.'}</p>
   </div>;
 }

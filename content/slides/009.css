@@ -1,37 +1,46 @@
-.industry-s06 .s06-cutaway { flex: 0 0 auto; margin: 1cqw 0 0; }
-.industry-s06 .s06-cutaway svg { display: block; width: 100%; height: 25cqw; overflow: visible; }
-.industry-s06 .s06-cutaway figcaption { margin-top: .05cqw; font-size: .9cqw; line-height: 1.4; color: var(--muted); text-align: right; }
-.industry-s06 .s06-service-shadow { fill: #e3ece6; }
-.industry-s06 .s06-service-shell { fill: #f2f7f1; stroke: #8bb7a6; stroke-width: 2; transition: fill 380ms ease, stroke 380ms ease; }
-.industry-s06[data-product="true"] .s06-service-shell { fill: #eaf4ec; stroke: var(--green); }
-.industry-s06 .s06-service-title { fill: var(--green); font-size: 29px; font-weight: 800; letter-spacing: -.8px; }
-.industry-s06 .s06-small { fill: var(--muted); font-size: 17px; font-weight: 450; letter-spacing: -.4px; }
-.industry-s06 .s06-green { fill: var(--green); }
-.industry-s06 .s06-blue { fill: var(--blue); }
-.industry-s06 .s06-divider { fill: none; stroke: #c5d9cd; stroke-width: 1.5; }
-.industry-s06 .s06-interface rect { fill: #fffefa; stroke: #8eb3a1; stroke-width: 1.8; }
-.industry-s06 .s06-interface path,
-.industry-s06 .s06-interface circle { fill: none; stroke: #6b9a86; stroke-width: 1.8; stroke-linecap: round; }
-.industry-s06 .s06-part-title { fill: var(--ink); font-size: 23px; font-weight: 750; letter-spacing: -.8px; }
-.industry-s06 .s06-service-message { fill: #607e6e; font-size: 24px; font-weight: 650; letter-spacing: -.7px; }
-.industry-s06 .s06-data-icon,
-.industry-s06 .s06-flow-icon,
-.industry-s06 .s06-check-icon { fill: #fffefa; stroke: var(--green); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.industry-s06 .s06-flow-icon path,
-.industry-s06 .s06-check-icon path { fill: none; }
-.industry-s06 .s06-wire-internal { fill: none; stroke: #9abbaa; stroke-width: 3; }
-.industry-s06 .s06-plug { fill: var(--green); stroke: var(--green); stroke-width: 2; stroke-linejoin: round; }
-.industry-s06 .s06-plug-pins { stroke: var(--green); stroke-width: 5; stroke-linecap: round; }
-.industry-s06 .s06-api-label { fill: var(--green); font-size: 29px; font-weight: 850; }
-.industry-s06 .s06-api-caption { fill: var(--muted); font-size: 15px; }
-.industry-s06 .s06-request { fill: none; stroke: var(--blue); stroke-width: 2.5; }
-.industry-s06 .s06-response { fill: none; stroke: var(--green); stroke-width: 2.5; }
-.industry-s06 .s06-route-label { font-size: 19px; font-weight: 650; }
-.industry-s06 .s06-alternative { stroke-dasharray: 5 5; }
-.industry-s06 .s06-provider { fill: var(--muted); font-size: 18px; font-weight: 650; }
-.industry-s06 .s06-provider-title { fill: var(--ink); font-size: 30px; font-weight: 800; letter-spacing: -.65px; }
-.industry-s06 .s06-model { fill: var(--blue); font-size: 23px; font-weight: 650; letter-spacing: -.4px; }
-.industry-s06 .s06-provider-rule { fill: none; stroke: #d5dfe4; stroke-width: 1.5; }
-.industry-s06 .s06-takeaway { border-top: 1px solid var(--line); margin-top: .75cqw; }
-.industry-s06 .industry-takeaway { font-size: 1.25cqw; text-align: center; margin-top: .7cqw; }
-.industry-s06[data-instant="true"] * { transition: none !important; }
+.industry-s05 .s05-workspace {
+  flex: 0 0 auto;
+  height: 28.5cqw;
+  margin-top: .9cqw;
+}
+.industry-s05 .s05-workspace > svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.industry-s05 .s05-work-surface { fill: #f1f5ef; stroke: #e1e8df; stroke-width: 1.5; }
+.industry-s05 .s05-desk-edge { fill: none; stroke: #b4c4b9; stroke-width: 2; }
+.industry-s05 .s05-rule { stroke: #d2ded4; stroke-width: 1; }
+.industry-s05 .s05-section { fill: var(--green); font-size: 23px; font-weight: 750; letter-spacing: -.7px; }
+.industry-s05 .s05-brief-copy { fill: var(--ink); font-size: 24px; font-weight: 600; letter-spacing: -.8px; }
+.industry-s05 .s05-paper-title { fill: var(--green); font-size: 23px; font-weight: 750; letter-spacing: -.8px; }
+.industry-s05 .s05-input-file { fill: #fffefa; stroke: #9eb8a7; stroke-width: 1.6; }
+.industry-s05 .s05-input-file text { fill: var(--ink); stroke: none; font-size: 18px; font-weight: 650; }
+.industry-s05 .s05-input-lines { fill: none; stroke: #b3c7b9; stroke-width: 2; }
+.industry-s05 .s05-tool-orbit { fill: #fffefa; stroke: #adc7b6; stroke-width: 1.7; }
+.industry-s05 .s05-tool-symbol { stroke: var(--green); stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.industry-s05 .s05-tool-name { fill: var(--ink); font-size: 27px; font-weight: 750; letter-spacing: -.8px; }
+.industry-s05 .s05-tool-role { fill: #567263; font-size: 18px; font-weight: 500; }
+.industry-s05 .s05-work-connection,
+.industry-s05 .s05-output-connection { color: var(--green); fill: none; stroke: currentColor; stroke-width: 2; }
+.industry-s05 .s05-capability-name { fill: var(--green); font-size: 21px; font-weight: 750; letter-spacing: -.5px; }
+.industry-s05 .s05-capability-detail { fill: var(--ink); font-size: 18px; letter-spacing: -.4px; }
+.industry-s05 .s05-capability-divider { stroke: #d4dfd5; stroke-width: 1; }
+.industry-s05 .s05-artifact-shadow { fill: #e4e8e0; }
+.industry-s05 .s05-artifact-page { fill: #fffefa; stroke: #b9c4b8; stroke-width: 1.6; transition: stroke 380ms ease, stroke-width 380ms ease; }
+.industry-s05 .s05-artifact-heading { fill: var(--ink); font-size: 24px; font-weight: 750; letter-spacing: -.8px; }
+.industry-s05 .s05-artifact-rule { stroke: #d5dfd4; stroke-width: 1.5; }
+.industry-s05 .s05-artifact-item { fill: var(--ink); font-size: 21px; font-weight: 500; letter-spacing: -.5px; }
+.industry-s05 .s05-review-marks { stroke: #b7c4b7; stroke-width: 2; }
+.industry-s05 .s05-review-circle { fill: none; stroke: var(--green); stroke-width: 2; stroke-linecap: round; }
+.industry-s05 .s05-review-leader { fill: none; stroke: var(--green); stroke-width: 1.5; }
+.industry-s05 .s05-review-title { fill: var(--green); font-size: 22px; font-weight: 750; letter-spacing: -.7px; }
+.industry-s05 .s05-review-sub { fill: #61786a; font-size: 18px; letter-spacing: -.5px; }
+.industry-s05 .s05-state-change { transition: opacity 380ms ease; }
+.industry-s05[data-step="0"] .s05-tool,
+.industry-s05[data-step="0"] .s05-capabilities { opacity: .4; }
+.industry-s05[data-step="0"] .s05-artifact,
+.industry-s05[data-step="1"] .s05-artifact { opacity: .46; }
+.industry-s05[data-step="1"] .s05-brief,
+.industry-s05[data-step="2"] .s05-brief { opacity: .6; }
+.industry-s05[data-step="2"] .s05-artifact-page { stroke: var(--green); stroke-width: 2.5; }
+.industry-s05 .s05-bottom { display: flex; align-items: end; justify-content: space-between; gap: 1cqw; margin-top: .5cqw; padding-top: .5cqw; border-top: 1px solid var(--line); }
+.industry-s05 .s05-bottom .industry-takeaway { margin: 0; font-size: 1.3cqw; letter-spacing: -.035em; }
+.industry-s05 .s05-bottom .industry-caption { margin: 0; white-space: nowrap; font-size: .9cqw; }
+.industry-s05[data-instant="true"] * { transition: none !important; }

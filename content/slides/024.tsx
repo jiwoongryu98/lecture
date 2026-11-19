@@ -1,69 +1,79 @@
-import { Heading, ReferenceLink, Takeaway, type SlideProps } from '../components/kit';
+import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
 import './024.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "industry-infra-tech",
-  "title": "AI 인프라의 소프트웨어",
+  "id": "industry-hardware",
+  "title": "가속기, HBM, SRAM",
   "section": "1부 · 산업을 읽다",
-  "maxStep": 0,
+  "maxStep": 2,
   "subsection": "인프라"
 } satisfies SlideMetadata;
 
-const groups = [
-  {
-    role: '모델 서빙',
-    kind: '추론 엔진 · 추론 서버',
-    tools: [
-      { name: 'vLLM', note: '언어 모델 추론·요청 처리' },
-      { name: 'NVIDIA Triton Inference Server', note: '여러 모델 백엔드의 실행 관리' },
-    ],
-  },
-  {
-    role: '데이터 전송·통신',
-    kind: '전송 · 통신 라이브러리',
-    tools: [
-      { name: 'NIXL', note: '메모리·스토리지 간 데이터 전송' },
-      { name: 'NCCL', note: '여러 GPU 간 통신' },
-    ],
-  },
-  {
-    role: '연산 변환·최적화',
-    kind: 'ML 컴파일러 · 컴파일러 프레임워크',
-    tools: [
-      { name: 'XLA', note: '하드웨어에 맞게 연산 컴파일' },
-      { name: 'Apache TVM', note: 'ML 컴파일러 구성·코드 생성' },
-    ],
-  },
-  {
-    role: 'GPU 개발·실행',
-    kind: '소프트웨어 플랫폼',
-    tools: [
-      { name: 'CUDA', note: 'NVIDIA GPU용 개발·실행' },
-      { name: 'ROCm', note: 'AMD GPU용 개발·실행' },
-    ],
-  },
-] as const;
+export default function Slide024({ step, instant }: SlideProps) {
+  const memoryPath = step >= 1;
+  const balanced = step >= 2;
 
-export default function Slide024(_props: SlideProps) {
-  return <div className="industry-content industry-s21">
-    <Heading eyebrow="AI 인프라 / 기술 찾아보기">인프라 도구, 역할로 살펴보기</Heading>
+  return <div className="industry-content industry-s20" data-instant={instant} data-balanced={balanced}>
+    <Heading eyebrow="AI 인프라 / 하드웨어">계산만큼 중요한 데이터 공급</Heading>
 
-    <div className="industry-visual s21-index" aria-label="AI 인프라 소프트웨어의 역할별 예시">
-      {groups.map(({ role, kind, tools }) => <section className="s21-group" key={role} aria-label={role}>
-        <div className="s21-role">
-          <p className="s21-kind">{kind}</p>
-          <h2>{role}</h2>
+    <div className="s20-hardware">
+      <figure className="s20-hbm">
+        <div className="s20-photo">
+          <ReferenceLink to="삼성전자 HBM" className="reference-block"><img src="/shared/samsung-hbm4.png" alt="삼성전자가 공개한 HBM4 메모리 제품 이미지" /></ReferenceLink>
         </div>
-        <dl className="s21-tools">
-          {tools.map(({ name, note }) => <div className="s21-tool" key={name}>
-            <dt><ReferenceLink to={name}>{name}</ReferenceLink></dt>
-            <dd>{note}</dd>
-          </div>)}
-        </dl>
-      </section>)}
+        <figcaption>삼성전자 HBM4 · 공식 제품 이미지</figcaption>
+        <div className="s20-memory-label"><h2>HBM</h2><p>데이터를 공급하는<br />고대역폭 적층 DRAM</p></div>
+        <p className="s20-companies"><ReferenceLink to="삼성전자 HBM">삼성전자</ReferenceLink>{' · '}<ReferenceLink to="SK hynix">SK hynix</ReferenceLink></p>
+      </figure>
+
+      <div className="s20-chip-region">
+        <p className="s20-accelerator-label"><strong>GPU 가속기</strong><span><ReferenceLink to="NVIDIA">NVIDIA</ReferenceLink>{' · '}<ReferenceLink to="AMD">AMD</ReferenceLink></span></p>
+        <svg viewBox="0 0 700 310" role="img" aria-labelledby="s20-title s20-description">
+          <title id="s20-title">HBM과 GPU 내부 SRAM, 연산부의 관계</title>
+          <desc id="s20-description">HBM은 GPU 칩 외부의 메모리입니다. GPU 칩 내부에는 연산부와, 캐시 및 가까운 작업 공간으로 쓰이는 SRAM이 있습니다. 양쪽 화살표는 데이터의 이동을 단순화합니다. 실제 배치나 모든 메모리 계층을 나타내지 않습니다.</desc>
+          <defs>
+            <marker id="s20-arrow" viewBox="0 0 8 8" refX="6.8" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse" overflow="visible">
+              <path d="M1 1 L7 4 L1 7" fill="none" stroke="#b87927" strokeWidth="1.5" />
+            </marker>
+          </defs>
+
+          <path className="s20-chip-shadow" d="M136 48H641L666 73V276H161L136 251Z" />
+          <rect className="s20-chip-outline" x="124" y="37" width="516" height="216" rx="19" />
+          <g className="s20-pins" aria-hidden="true">
+            {[164, 212, 260, 308, 356, 404, 452, 500, 548, 596].map(x => <path key={x} d={`M${x} 24V37M${x} 253V267`} />)}
+            {[77, 112, 147, 182, 217].map(y => <path key={y} d={`M111 ${y}H124M640 ${y}H653`} />)}
+          </g>
+          <text className="s20-boundary-label" x="151" y="66">GPU 칩 내부</text>
+
+          <g className="s20-compute">
+            <g className="s20-compute-array" aria-hidden="true">
+              {[0, 1, 2].flatMap(row => [0, 1, 2, 3].map(column => <rect key={`${row}-${column}`} x={448 + column * 35} y={91 + row * 29} width="25" height="19" rx="3" />))}
+            </g>
+            <text className="s20-compute-title" x="513" y="207" textAnchor="middle">연산부</text>
+          </g>
+
+          <g className="s20-sram" style={reveal(memoryPath, instant, 'none')} aria-hidden={!memoryPath}>
+            <rect className="s20-sram-outline" x="177" y="91" width="151" height="130" rx="12" />
+            <path className="s20-sram-lines" d="M195 109H310M195 117H310M195 125H310" aria-hidden="true" />
+            <text className="s20-sram-title" x="252" y="166" textAnchor="middle">SRAM</text>
+            <text className="s20-sram-copy" x="252" y="193" textAnchor="middle">가까운 작업 공간</text>
+          </g>
+
+          <g className="s20-data-path" style={reveal(memoryPath, instant, 'none')} aria-hidden={!memoryPath}>
+            <path d="M12 155H162" markerStart="url(#s20-arrow)" markerEnd="url(#s20-arrow)" />
+            <path d="M344 155H428" markerStart="url(#s20-arrow)" markerEnd="url(#s20-arrow)" />
+            <text className="s20-transfer-label" x="62" y="128" textAnchor="middle">데이터 이동</text>
+          </g>
+
+          <text className="s20-diagram-caption" x="382" y="300" textAnchor="middle">메모리 관계를 단순화한 개념도 · 실제 배치·비율과 다름</text>
+        </svg>
+      </div>
     </div>
 
-    <Takeaway>병목이 어디인지에 따라, <strong>살펴볼 도구</strong>가 달라집니다.</Takeaway>
+    <div className="s20-balance" style={reveal(balanced, instant, 'translateY(8px)')} aria-hidden={!balanced}>
+      <p>함께 봐야 할 것</p>
+      <div><strong>연산 성능</strong><span aria-hidden="true">/</span><strong>메모리 용량·대역폭</strong><span aria-hidden="true">/</span><strong>데이터 이동</strong></div>
+    </div>
   </div>;
 }

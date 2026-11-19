@@ -1,36 +1,41 @@
-.industry-s20 .industry-eyebrow { color: var(--amber); }
-.industry-s20 .s20-hardware { display: grid; grid-template-columns: 29% minmax(0, 1fr); gap: .7cqw; align-items: start; margin-top: 2cqw; }
-.industry-s20 .s20-hbm { margin: 0; padding-top: 1.25cqw; min-width: 0; }
-.industry-s20 .s20-photo { height: 12.1cqw; width: 100%; overflow: hidden; }
-.industry-s20 .s20-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.industry-s20 .s20-hbm figcaption { margin-top: .55cqw; text-align: center; color: var(--muted); font-size: .9cqw; line-height: 1.5; }
-.industry-s20 .s20-memory-label { display: flex; align-items: center; justify-content: center; gap: 1.2cqw; margin-top: 1.2cqw; }
-.industry-s20 .s20-memory-label h2 { margin: 0; color: #9e6926; font-size: 2.55cqw; letter-spacing: -.045em; line-height: 1.2; }
-.industry-s20 .s20-memory-label p { margin: 0; font-size: 1.23cqw; color: var(--ink); line-height: 1.6; }
-.industry-s20 .s20-companies { margin: .8cqw 0 0; text-align: center; color: #8a6230; font-weight: 700; font-size: 1.2cqw; line-height: 1.5; }
-.industry-s20 .s20-chip-region { min-width: 0; }
-.industry-s20 .s20-accelerator-label { margin: 0 0 .55cqw 9.7cqw; display: flex; align-items: baseline; gap: 1.15cqw; color: var(--ink); }
-.industry-s20 .s20-accelerator-label strong { font-size: 1.7cqw; letter-spacing: -.04em; }
-.industry-s20 .s20-accelerator-label span { font-size: 1.2cqw; color: var(--muted); font-weight: 600; }
-.industry-s20 .s20-chip-region svg { display: block; width: 100%; height: 27.5cqw; overflow: visible; }
-.industry-s20 .s20-chip-shadow { fill: #e8e3d9; }
-.industry-s20 .s20-chip-outline { fill: #f8f5ee; stroke: #c9b490; stroke-width: 1.7; }
-.industry-s20 .s20-pins { fill: none; stroke: #c9b490; stroke-width: 5; }
-.industry-s20 .s20-boundary-label { fill: #917a57; font-size: 14px; font-weight: 650; }
-.industry-s20 .s20-compute-array { fill: #b87927; }
-.industry-s20 .s20-compute-array rect { transition: fill 400ms ease; }
-.industry-s20[data-balanced="true"] .s20-compute-array rect { fill: #916125; }
-.industry-s20 .s20-compute-title { font-size: 26px; font-weight: 750; fill: #775324; letter-spacing: -.04em; }
-.industry-s20 .s20-sram-outline { fill: #fffefa; stroke: #d3b985; stroke-width: 1.5; }
-.industry-s20 .s20-sram-lines { fill: none; stroke: #e1d0b2; stroke-width: 3; }
-.industry-s20 .s20-sram-title { fill: #9e6926; font-size: 26px; font-weight: 750; }
-.industry-s20 .s20-sram-copy { fill: var(--ink); font-size: 15px; }
-.industry-s20 .s20-data-path path { fill: none; stroke: var(--amber); stroke-width: 3.5; }
-.industry-s20 .s20-transfer-label { fill: #9b6b2d; font-size: 15px; font-weight: 650; }
-.industry-s20 .s20-diagram-caption { fill: var(--muted); font-size: 11.5px; }
-.industry-s20 .s20-balance { display: flex; align-items: baseline; justify-content: center; gap: 1.5cqw; margin-top: .25cqw; padding-top: 1.1cqw; border-top: 1px solid #ddd6c8; }
-.industry-s20 .s20-balance p { margin: 0; color: var(--muted); font-size: 1cqw; }
-.industry-s20 .s20-balance div { display: flex; align-items: baseline; gap: 1.4cqw; }
-.industry-s20 .s20-balance strong { color: #8d6127; font-size: 1.35cqw; font-weight: 700; letter-spacing: -.03em; }
-.industry-s20 .s20-balance span { color: #cfbd9e; font-size: 1.4cqw; font-weight: 300; }
-.industry-s20[data-instant="true"] * { transition: none !important; }
+.industry-s19 .industry-eyebrow { color: var(--amber); }
+.industry-s19 .industry-heading h1 { font-size: 3.22cqw; }
+.industry-s19 .s19-visual {
+  flex: 0 0 auto;
+  height: 29.4cqw;
+  margin-top: 1.4cqw;
+  display: flex;
+  align-items: center;
+}
+.industry-s19 .s19-visual svg { width: 100%; height: 100%; overflow: visible; }
+.industry-s19 .s19-device { fill: none; stroke: #b9c7cf; stroke-width: 2; }
+.industry-s19 .s19-device-outline { fill: #f4f5ef; }
+.industry-s19 .s19-device-label { fill: var(--muted); stroke: none; font-size: 17px; letter-spacing: .12em; font-weight: 750; }
+.industry-s19 .s19-lane-heading { fill: var(--ink); font-size: 22px; font-weight: 750; letter-spacing: -.045em; }
+.industry-s19 .s19-role { fill: var(--blue); font-size: 26px; font-weight: 800; letter-spacing: -.04em; }
+.industry-s19 .s19-source { fill: var(--muted); font-size: 15px; }
+.industry-s19 .s19-operation-chain circle { fill: #edf2f8; stroke: #b6c8df; stroke-width: 1.5; }
+.industry-s19 .s19-operation-chain text { fill: var(--blue); font-size: 18px; font-weight: 650; }
+.industry-s19 .s19-flow { fill: none; stroke: #91a6bb; stroke-width: 2; }
+.industry-s19 .s19-main-flow { stroke-width: 2.5; }
+.industry-s19 .s19-compiler-mark { fill: none; stroke: var(--blue); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.industry-s19 .s19-fused-outline { fill: #edf2f8; stroke: var(--blue); stroke-width: 2; }
+.industry-s19 .s19-fused-operations path { fill: none; stroke: var(--blue); stroke-width: 3; }
+.industry-s19 .s19-fused-operations circle { fill: var(--blue); }
+.industry-s19 .s19-detail { fill: var(--muted); font-size: 16px; letter-spacing: -.035em; }
+.industry-s19 .s19-execution path { fill: none; stroke: #b9c7cf; stroke-width: 1.5; }
+.industry-s19 .s19-execution text { fill: var(--ink); font-size: 25px; font-weight: 750; letter-spacing: -.045em; }
+.industry-s19 .s19-separator { fill: none; stroke: var(--line); stroke-width: 1; }
+.industry-s19 .s19-firmware-role { fill: var(--amber); }
+.industry-s19 .s19-firmware-copy { fill: var(--ink); font-size: 22px; font-weight: 650; letter-spacing: -.04em; }
+.industry-s19 .s19-control-caption { fill: var(--amber); font-size: 18px; font-weight: 650; letter-spacing: -.035em; }
+.industry-s19 .s19-control-flow { fill: none; stroke: var(--amber); stroke-width: 2; }
+.industry-s19 .s19-gsp { fill: #fbefdc; stroke: #c6995e; stroke-width: 1.6; }
+.industry-s19 .s19-gsp-label { fill: var(--amber); font-size: 16px; font-weight: 750; }
+.industry-s19 .s19-gsp-detail { fill: var(--amber); font-size: 17px; font-weight: 650; letter-spacing: -.025em; }
+.industry-s19 .s19-internal-control { fill: none; stroke: var(--amber); stroke-width: 1.8; stroke-dasharray: 4 5; }
+.industry-s19 .s19-takeaway { display: grid; margin: .9cqw 0 0; font-size: 1.4cqw; line-height: 1.6; letter-spacing: -.035em; color: var(--ink); }
+.industry-s19 .s19-takeaway p { grid-area: 1 / 1; margin: 0; }
+.industry-s19 .s19-takeaway strong { color: var(--blue); font-weight: 750; }
+.industry-s19 .s19-takeaway span { color: var(--amber); font-weight: 700; }
+.industry-s19[data-instant="true"] * { transition: none !important; }

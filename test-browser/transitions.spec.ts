@@ -57,14 +57,14 @@ test('slide changes animate inside a stationary board, while reveals and rapid j
 
   await page.getByRole('button', { name: '목차 펼치기', exact: true }).click();
   const jump = await navigate('1부 · 산업을 읽다', true);
-  expect(jump.index).toBe('4');
+  expect(jump.index).toBe('5');
   expect(jump.frames[0]).toMatchObject({ transform: 'translateY(0px)' });
   expect(jump.before).toEqual(jump.after);
   expect(jump.chromeBefore).toEqual(jump.chromeDuring);
 
   const rapid = await page.evaluate(async () => {
     const buttons = [...document.querySelectorAll<HTMLButtonElement>('#slide-menu button')];
-    buttons.find((button) => button.textContent?.trim() === '3부 · 경험을 연결하다')!.click();
+    buttons.find((button) => button.textContent?.trim() === '3부 · 커리어를 설계하다')!.click();
     buttons.find((button) => button.textContent?.trim() === '2부 · 실무를 만나다')!.click();
     await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
     const frame = document.querySelector('article.slide')!;
@@ -73,5 +73,5 @@ test('slide changes animate inside a stationary board, while reveals and rapid j
     for (const animation of animations) animation.finish();
     return result;
   });
-  expect(rapid).toEqual({ index: '27', count: 1 });
+  expect(rapid).toEqual({ index: '28', count: 1 });
 });

@@ -41,10 +41,12 @@ export default function Slide003({ step, instant }: SlideProps) {
         </div>
 
         <div className="website-intro-source" style={reveal(showParticipation, instant)} aria-hidden={!showParticipation}>
-          <p className="website-intro-label">소스 코드</p>
-          <p className="website-intro-source-link">
-            <ReferenceLink to="발표 웹사이트 소스 코드">jiwoongryu98/lecture <span aria-hidden="true">↗</span></ReferenceLink>
-          </p>
+          <div>
+            <p className="website-intro-label">소스 코드 · <ReferenceLink to="발표 웹사이트 라이선스">MIT 라이선스</ReferenceLink></p>
+            <p className="website-intro-source-link">
+              <ReferenceLink to="발표 웹사이트 소스 코드">jiwoongryu98/lecture <span aria-hidden="true">↗</span></ReferenceLink>
+            </p>
+          </div>
         </div>
       </div>
     </div>

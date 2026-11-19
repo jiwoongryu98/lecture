@@ -1,14 +1,28 @@
-.career-s17 .industry-heading h1 { font-size: 3.4cqw; }
-.career-s17 .c17-landscape { flex: 1; min-height: 0; display: grid; grid-template-columns: 40cqw minmax(0, 1fr); gap: 4.5cqw; align-items: center; margin-top: 1.1cqw; }
-.career-s17 .c17-meme { margin: 0; text-align: center; }
-.career-s17 .c17-meme a { display: block; width: fit-content; margin: 0 auto; border-radius: .5cqw; overflow: hidden; }
-.career-s17 .c17-meme a:focus-visible { outline: 2px solid var(--green); outline-offset: .3cqw; }
-.career-s17 .c17-meme img { display: block; height: 28.3cqw; width: auto; }
-.career-s17 .c17-learning h2 { margin: 0 0 2cqw; color: var(--ink); font-size: 2.5cqw; line-height: 1.35; letter-spacing: -.045em; }
-.career-s17 .c17-actions { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.5cqw; }
-.career-s17 .c17-actions li { display: grid; grid-template-columns: 2.3cqw minmax(0, 1fr); gap: .8cqw; align-items: baseline; }
-.career-s17 .c17-actions li > span { color: #8a9b96; font-size: .95cqw; font-weight: 600; }
-.career-s17 .c17-actions h3 { margin: 0; color: var(--green); font-size: 1.65cqw; font-weight: 700; line-height: 1.35; letter-spacing: -.035em; }
-.career-s17 .c17-actions p { margin: .4cqw 0 0; color: var(--muted); font-size: 1.1cqw; line-height: 1.5; letter-spacing: -.025em; }
-.career-s17 .c17-takeaway { margin: .7cqw 0 .3cqw; padding-top: 1cqw; border-top: 1px solid var(--line); color: var(--ink); font-size: 1.45cqw; line-height: 1.6; letter-spacing: -.035em; }
-.career-s17 .c17-takeaway strong { color: var(--green); font-weight: 700; }
+.career-s15 .industry-heading h1 { font-size: 3.3cqw; }
+.career-s15 .c15-layout { display: grid; grid-template-columns: 26cqw 5cqw minmax(0, 1fr); gap: 1.5cqw; flex: 1; min-height: 0; align-items: center; margin-top: 1cqw; }
+.career-s15 .c15-materials { position: relative; height: 31cqw; }
+.career-s15 .c15-materials-label { margin: 0 0 1cqw; color: var(--muted); font-size: 1.1cqw; line-height: 1.5; }
+.career-s15 .c15-source { position: absolute; width: 23cqw; border: 1px solid #d1ded5; border-radius: .65cqw; padding: 1.7cqw; background: #fffefa; box-shadow: 0 .5cqw 1.1cqw #22354a08; }
+.career-s15 .c15-role { top: 3cqw; left: .5cqw; transform: rotate(-2deg); padding-bottom: 4.5cqw; }
+.career-s15 .c15-record { top: 14cqw; left: 2.3cqw; transform: rotate(2deg); background: #eff6f1; }
+.career-s15 .c15-source p { margin: 0 0 .6cqw; color: var(--muted); font-size: 1.1cqw; line-height: 1.5; }
+.career-s15 .c15-source h2 { margin: 0 0 1cqw; color: var(--ink); font-size: 2cqw; line-height: 1.4; letter-spacing: -.045em; }
+.career-s15 .c15-record h2 { color: var(--green); }
+.career-s15 .c15-source span { display: block; color: var(--muted); font-size: 1cqw; line-height: 1.5; }
+.career-s15 .c15-feed { display: block; width: 100%; height: 6cqw; fill: none; stroke: #93b19e; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+.career-s15 .c15-sheet { height: 31cqw; padding: 1.6cqw 2cqw; border: 1px solid #ceddd3; border-radius: .75cqw; background: #fffefa; }
+.career-s15 .c15-sheet-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1cqw; border-bottom: 1px solid var(--line); padding-bottom: .8cqw; }
+.career-s15 .c15-sheet-header p { margin: 0; color: var(--ink); font-size: 1.25cqw; line-height: 1.5; font-weight: 700; }
+.career-s15 .c15-sheet-header span { color: var(--muted); font-size: 1cqw; line-height: 1.5; }
+.career-s15 .c15-prompt-copy { margin: 1cqw 0 0; color: var(--ink); font-size: 1.35cqw; line-height: 1.8; letter-spacing: -.035em; }
+.career-s15 .c15-practice { margin-top: 1.2cqw; }
+.career-s15 .c15-ai-question { padding: .9cqw 1.2cqw; background: #eff6f1; border-radius: .6cqw .6cqw .6cqw 0; }
+.career-s15 .c15-section-label { margin: 0 0 .45cqw; color: var(--green); font-size: 1.05cqw; line-height: 1.5; font-weight: 700; }
+.career-s15 .c15-ai-question > p:last-child { margin: 0; color: var(--ink); font-size: 1.6cqw; line-height: 1.6; letter-spacing: -.035em; }
+.career-s15 .c15-my-answer { margin: .8cqw 0 0; color: var(--ink); font-size: 1.3cqw; line-height: 1.6; text-align: right; }
+.career-s15 .c15-my-answer span { margin-right: 1cqw; color: var(--muted); font-size: 1cqw; }
+.career-s15 .c15-feedback { margin-top: 1.1cqw; padding-top: .9cqw; border-top: 1px solid var(--line); }
+.career-s15 .c15-feedback .c15-section-label { color: var(--blue); }
+.career-s15 .c15-feedback > p:last-child { margin: 0; color: var(--ink); font-size: 1.3cqw; line-height: 1.7; letter-spacing: -.035em; }
+.career-s15 .c15-takeaway { margin: .8cqw 0 .3cqw; border-top: 1px solid var(--line); padding-top: 1cqw; color: var(--ink); font-size: 1.4cqw; line-height: 1.6; letter-spacing: -.035em; }
+.career-s15 .c15-takeaway strong { color: var(--green); }

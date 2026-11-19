@@ -1,13 +1,17 @@
 import { resolve } from 'node:path';
 import { expect, test } from '@playwright/test';
 
-test('private note files and Worker bundles cannot be read through preview file URLs', async ({ request }) => {
+test('private source documents and Worker bundles cannot be read through preview file URLs', async ({ request }) => {
   const paths = [
     '/notes/001.md',
     '/notes/001.md?raw',
     '/notes/001.md?import&raw',
     '/%6eotes/001.md?raw',
     `/@fs${resolve('notes/001.md')}?raw`,
+    '/content/private/resume.tex',
+    '/content/private/resume.tex?raw',
+    '/content/private/resume.pdf',
+    `/@fs${resolve('content/private/resume.tex')}?raw`,
     '/dist/worker/index.js',
     '/dist/worker/index.js.map',
     `/@fs${resolve('dist/worker/index.js')}?raw`,

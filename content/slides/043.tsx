@@ -1,91 +1,62 @@
-import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
+import { Heading, reveal, type SlideProps } from '../components/kit';
 import './043.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "workflow-improve-usage",
-  "title": "AI 활용 방법도 AI와 함께 개선합니다",
+  "id": "workflow-operation",
+  "title": "만든 다음에는 운영 기준을 봅니다",
   "section": "2부 · 실무를 만나다",
   "maxStep": 2,
-  "subsection": "활용의 개선"
+  "subsection": "실제 적용"
 } satisfies SlideMetadata;
 
-const captions = [
-  '“이 대화에서 반복한 일을 찾고, 더 나은 작업 방법을 제안해 줘.”',
-  '반복한 작업은 도구로, 판단 기준은 Skill로 남길 수 있습니다.',
-  '써본 결과를 다시 제공하고, 다음 작업 방법을 개선합니다.',
+const questions = [
+  '내용이 맞고, 필요한 형식인가요?',
+  '시간과 비용을 감당할 수 있나요?',
+  '실패를 확인하고, 다시 실행할 수 있나요?',
 ];
 
 export default function Slide043({ step, instant }: SlideProps) {
-  const propose = step >= 1;
-  const improve = step >= 2;
   const phase = Math.max(0, Math.min(step, 2));
 
-  return <div className="industry-content workflow-s16">
-    <Heading eyebrow="활용 방법의 개선 / 대화에서 다음 도구로">AI 활용 방법도 AI와 함께 개선합니다</Heading>
+  return <div className="industry-content workflow-s15">
+    <Heading eyebrow="실제 적용 / 사용할 기준">만든 다음에는 운영 기준을 봅니다</Heading>
 
-    <div className="w16-visual">
-      <svg viewBox="0 0 1100 380" role="img" aria-label={improve
-        ? '내가 제공한 대화에서 반복을 찾고, 도구와 작업 지침을 제안해 사용한 뒤, 결과를 다음 작업에 반영하는 순환.'
-        : propose
-          ? '선택한 대화에서 반복되는 일을 찾아 도구나 Skill을 제안하고 써보는 흐름.'
-          : '내가 제공한 대화의 요청과 수정, 작업 결과를 돌아보며 반복되는 작업과 판단 기준을 찾는다.'}>
-        <defs>
-          <marker id="workflow-s16-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto" overflow="visible">
-            <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" strokeWidth="1.7" />
-          </marker>
-        </defs>
+    <div className="w15-composition">
+      <svg viewBox="0 0 1100 390" role="img" aria-label="같은 샘플 결과를 결과·형식, 시간·비용, 반복 실행이라는 세 기준으로 살펴본다.">
+        <circle className="w15-result-ground" cx="550" cy="172" r="115" />
+        <rect className="w15-result-page" x="490" y="83" width="120" height="164" rx="10" />
+        <path className="w15-result-ink" d="M511 115H589M511 139H569M511 163H589M511 187H578M511 211H554" />
+        <text className="w15-result-label" x="550" y="61" textAnchor="middle">샘플 결과</text>
 
-        <rect className="w16-conversation" x="45" y="61" width="310" height="258" rx="12" />
-        <text className="w16-source-title" x="70" y="96">내가 제공한 대화</text>
-        <text className="w16-source-detail" x="70" y="124">요청 · 수정 · 작업 결과</text>
-        <path className="w16-rule" d="M70 143H330" />
-        <text className="w16-request" x="70" y="184">반복해서 맡긴 일</text>
-        <text className="w16-request-detail" x="70" y="213">어떤 도구를 썼나?</text>
-        <text className="w16-request" x="70" y="260">되풀이한 수정</text>
-        <text className="w16-request-detail" x="70" y="289">어떤 기준을 원했나?</text>
-
-        <path className="w16-input" d="M355 118C463 118 511 78 724 78" markerEnd="url(#workflow-s16-arrow)" />
-        <circle className="w16-find" cx="760" cy="78" r="25" />
-        <path className="w16-find-icon" d="M763 80L773 90" />
-        <circle className="w16-find-icon" cx="755" cy="74" r="9" />
-        <text className="w16-node-title w16-blue" x="760" y="36" textAnchor="middle">반복 찾기</text>
-
-        <g className="w16-meme" style={reveal(!propose, instant, 'none')} aria-hidden={propose}>
-          <ReferenceLink to="ChatGPT 말투 밈">
-            <text className="w16-meme-lead" x="760" y="176" textAnchor="middle">와… 너 정말,</text>
-            <text className="w16-meme-punchline" x="760" y="221" textAnchor="middle">핵심을 찔렀어.</text>
-          </ReferenceLink>
-        </g>
-        <g style={reveal(propose, instant, 'none')} aria-hidden={!propose}>
-          <text className="w16-center-title" x="760" y="183" textAnchor="middle">나의 AI 사용법</text>
-          <text className="w16-center-detail" x="760" y="220" textAnchor="middle">{improve ? '다음 작업에 다시 반영' : '도구와 지침으로 개선'}</text>
+        <g className={`w15-criterion w15-quality${phase === 0 ? ' w15-active' : ''}`}>
+          <path className="w15-link" d="M255 105H365Q400 105 430 135L470 160" />
+          <circle cx="220" cy="105" r="33" />
+          <path className="w15-symbol" d="M204 105L215 116L236 94" />
+          <text x="220" y="179" textAnchor="middle">결과 · 형식</text>
         </g>
 
-        <g style={reveal(propose, instant, 'none')} aria-hidden={!propose}>
-          <path className="w16-forward" d="M796 78C866 78 911 113 918 159" markerEnd="url(#workflow-s16-arrow)" />
-          <circle className="w16-propose" cx="920" cy="195" r="25" />
-          <path className="w16-propose-icon" d="M911 181H925L930 186V207H911ZM925 181V187H930M916 193H925M916 200H924" />
-          <text className="w16-node-title w16-amber" x="960" y="188">
-            <tspan x="960">도구·Skill</tspan>
-            <tspan x="960" dy="32">제안</tspan>
-          </text>
-
-          <path className="w16-forward" d="M914 231C894 293 856 318 796 318" markerEnd="url(#workflow-s16-arrow)" />
-          <circle className="w16-use" cx="760" cy="318" r="25" />
-          <path className="w16-use-icon" d="M747 318L756 327L774 307" />
-          <text className="w16-node-title w16-green" x="760" y="380" textAnchor="middle">써보고 확인</text>
+        <g className={`w15-criterion w15-cost${phase === 1 ? ' w15-active' : ''}`}>
+          <path className="w15-link" d="M845 105H735Q700 105 670 135L630 160" />
+          <circle cx="880" cy="105" r="33" />
+          <path className="w15-symbol" d="M880 85V105L894 113" />
+          <text x="880" y="179" textAnchor="middle">시간 · 비용</text>
         </g>
 
-        <g style={reveal(improve, instant, 'none')} aria-hidden={!improve}>
-          <path className="w16-return" d="M724 318C600 318 547 263 565 197C580 145 690 151 734 105" markerEnd="url(#workflow-s16-arrow)" />
+        <g className={`w15-criterion w15-reliability${phase === 2 ? ' w15-active' : ''}`}>
+          <path className="w15-link" d="M550 247V300" />
+          <circle cx="550" cy="330" r="30" />
+          <path className="w15-symbol" d="M535 324A17 17 0 0 1 565 320M565 320V308M565 320H553M565 336A17 17 0 0 1 535 340M535 340V352M535 340H547" />
+          <text x="602" y="340">반복 실행</text>
         </g>
       </svg>
     </div>
 
-    <div className="w16-footer">
-      <p className="w16-caption">{captions[phase]}</p>
-      <a className="w16-reference" href="https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md" target="_blank" rel="noreferrer">공개 사례 · Anthropic skill-creator ↗</a>
+    <div className="w15-question-area">
+      {questions.map((question, index) => <p key={question} className={`w15-question w15-question-${index}`}
+        style={reveal(index === phase, instant, 'translateY(6px)')} aria-hidden={index !== phase}>
+        {question}
+      </p>)}
     </div>
   </div>;
 }

@@ -1,11 +1,26 @@
 [
   {
-    "file": "keep-going-meme.png",
-    "credit": "할명수 EP.122 · JTBC / 트렌드어워드 화면 갈무리",
-    "sourcePage": "https://maily.so/trendaword/posts/vpzlq74mrk9",
-    "sourceImage": "https://cdn.maily.so/202304/trendaword/1680568658591495.png",
-    "originalSource": "https://www.youtube.com/watch?v=b1-TR9mZux8&t=637",
-    "retrievedAt": "2026-11-16",
-    "usage": "Downloaded unchanged with original subtitle. Third-party media retains its respective rights."
+    "file": "c08-langchain.svg",
+    "credit": "LangChain",
+    "sourcePage": "https://github.com/langchain-ai/langchain",
+    "originalUrl": "https://raw.githubusercontent.com/langchain-ai/langchain/master/.github/images/logo-light.svg"
+  },
+  {
+    "file": "c08-vllm.png",
+    "credit": "vLLM project",
+    "sourcePage": "https://github.com/vllm-project/vllm",
+    "originalUrl": "https://raw.githubusercontent.com/vllm-project/vllm/main/docs/assets/logos/vllm-logo-text-light.png"
+  },
+  {
+    "file": "c08-react.svg",
+    "credit": "React",
+    "sourcePage": "https://github.com/reactjs/react.dev/tree/main/public/images/brand",
+    "originalUrl": "https://raw.githubusercontent.com/reactjs/react.dev/main/public/images/brand/wordmark_light.svg"
+  },
+  {
+    "file": "c08-pandas.svg",
+    "credit": "pandas development team",
+    "sourcePage": "https://pandas.pydata.org/about/citing.html",
+    "originalUrl": "https://raw.githubusercontent.com/pandas-dev/pandas/main/web/pandas/static/img/pandas.svg"
   }
 ]

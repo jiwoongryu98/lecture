@@ -1,24 +1,21 @@
-.career-s01 .industry-heading h1 { font-size: 3.3cqw; }
-.career-s01 .c01-composition { flex: 1; min-height: 0; display: flex; align-items: center; margin-top: .9cqw; }
-.career-s01 .c01-composition svg { display: block; width: 100%; height: 29cqw; overflow: visible; }
-.career-s01 .c01-screen rect { fill: #f3f7f3; stroke: #a9bfae; stroke-width: 2; }
-.career-s01 .c01-screen > path { fill: none; stroke: #b8ccbf; stroke-width: 1.8; }
-.career-s01 .c01-screen circle { fill: #a9bfae; }
-.career-s01 .c01-screen .c01-screen-ink { stroke: #8ea99a; stroke-width: 4; stroke-linecap: round; }
-.career-s01 .c01-code rect { fill: #edf2f7; stroke: #b4c3d4; stroke-width: 2; }
-.career-s01 .c01-code path { fill: none; stroke: #7791b1; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
-.career-s01 .c01-document > path { fill: #fffefa; stroke: #bdc7b7; stroke-width: 2; stroke-linejoin: round; }
-.career-s01 .c01-document .c01-document-ink { fill: none; stroke: #a2ad98; stroke-width: 3.2; stroke-linecap: round; }
-.career-s01 .c01-outputs-label { fill: var(--muted); font-size: 27px; font-weight: 550; letter-spacing: -.8px; }
-.career-s01 .c01-origin { fill: #9bb7a6; }
-.career-s01 .c01-route-guide { fill: none; stroke: #d4dfd7; stroke-width: 2.5; stroke-dasharray: 6 8; }
-.career-s01 .c01-option-end { fill: #c6d5cb; }
-.career-s01 .c01-options-label { fill: #91a298; font-size: 23px; letter-spacing: -.6px; }
-.career-s01 .c01-chosen-route { fill: none; stroke: var(--green); stroke-width: 3.5; }
-.career-s01 .c01-flag-pole { fill: none; stroke: var(--green); stroke-width: 3.5; stroke-linecap: round; }
-.career-s01 .c01-flag { fill: #d8ebdf; stroke: var(--green); stroke-width: 2.5; stroke-linejoin: round; }
-.career-s01 .c01-goal-label { fill: var(--green); font-size: 34px; font-weight: 750; letter-spacing: -1.2px; }
-.career-s01 .c01-goal-question { fill: var(--ink); font-size: 26px; font-weight: 550; letter-spacing: -.8px; }
-.career-s01 .c01-choice-label { fill: var(--green); font-size: 27px; font-weight: 650; letter-spacing: -.9px; }
-.career-s01 .c01-takeaway { margin: .7cqw 0 .3cqw; color: var(--ink); font-size: 1.5cqw; line-height: 1.6; letter-spacing: -.035em; }
-.career-s01 .c01-takeaway strong { color: var(--green); font-weight: 750; }
+.career-s06 .industry-heading h1 { font-size: 3.3cqw; }
+.career-s06 .c06-composition { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; margin-top: 1cqw; }
+.career-s06 .c06-plan { width: 86cqw; padding: 1.4cqw 2cqw .5cqw; background: #fbfcf7; border: 1px solid #d5dfd5; border-radius: .35cqw; }
+.career-s06 .c06-plan-header { display: flex; align-items: baseline; justify-content: space-between; gap: 2cqw; padding: 0 .6cqw 1.2cqw; }
+.career-s06 .c06-plan-header h2 { margin: 0; color: var(--ink); font-size: 1.8cqw; line-height: 1.4; letter-spacing: -.04em; }
+.career-s06 .c06-plan-header > p { margin: 0; color: var(--muted); font-size: 1cqw; line-height: 1.5; }
+.career-s06 .c06-row { display: grid; grid-template-columns: 23cqw 1fr; gap: 3cqw; align-items: center; padding: 1.2cqw .6cqw; border-top: 1px solid var(--line); }
+.career-s06 .c06-question > p { margin: 0 0 .35cqw; font-size: 1.05cqw; line-height: 1.5; font-weight: 650; }
+.career-s06 .c06-tools .c06-question > p { color: var(--blue); }
+.career-s06 .c06-work .c06-question > p { color: var(--green); }
+.career-s06 .c06-tests .c06-question > p { color: var(--amber); }
+.career-s06 .c06-question h3 { margin: 0; color: var(--ink); font-size: 1.8cqw; line-height: 1.5; letter-spacing: -.045em; }
+.career-s06 .c06-answer > p { margin: 0; color: var(--ink); font-size: 1.9cqw; line-height: 1.6; letter-spacing: -.035em; }
+.career-s06 .c06-answer > p > .reference-link { font-weight: 700; }
+.career-s06 .c06-answer > p > span { margin-left: .3cqw; color: var(--muted); font-size: 1.15cqw; }
+.career-s06 .c06-answer > p > b { margin: 0 1.1cqw; color: #aabbb0; font-weight: 400; }
+.career-s06 .c06-answer > p.c06-detail { margin-top: .3cqw; color: var(--muted); font-size: 1.1cqw; line-height: 1.5; }
+.career-s06 .c06-answer > p.c06-flow { font-size: 1.7cqw; }
+.career-s06 .c06-answer > p.c06-flow > span { margin: 0 .65cqw; color: #91b09c; font-size: 1.5cqw; }
+.career-s06 .c06-takeaway { margin: .8cqw 0 .3cqw; padding-top: 1cqw; border-top: 1px solid var(--line); color: var(--ink); font-size: 1.45cqw; line-height: 1.6; letter-spacing: -.035em; }
+.career-s06 .c06-takeaway strong { color: var(--green); }

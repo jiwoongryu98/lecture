@@ -6,9 +6,9 @@ test('offline viewers start on the first slide and can open direct links without
   await expect(page.locator('article.slide')).toHaveAttribute('data-index', '1');
   await expect(page.getByRole('button', { name: '재생', exact: true })).toBeDisabled();
 
-  await page.goto('/?index=6&step=1');
+  await page.goto('/?index=7&step=1');
   await expect(page.getByRole('status', { name: '연결됨', exact: true })).toBeVisible();
-  await expect(page.locator('article.slide')).toHaveAttribute('data-index', '6');
+  await expect(page.locator('article.slide')).toHaveAttribute('data-index', '7');
   await expect(page.locator('article.slide')).toHaveAttribute('data-step', '1');
   await expect(page.getByRole('button', { name: '재생', exact: true })).toBeDisabled();
   await page.keyboard.press('Space');

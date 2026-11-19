@@ -11,7 +11,7 @@ import type { Command, ServerMessage } from '../shared/protocol';
 
 const initial: LectureState = { index: 1, step: 0, revision: 0, updatedAt: 0 };
 const firstContentIndex = 2;
-const historyIndex = 4;
+const historyIndex = 5;
 const empty: QuestionPage = { questions: [], nextCursor: 0, hasMore: false };
 const question: Question = { id: 1, index: 1, step: 0, body: 'A question', name: null, createdAt: 1 };
 let handle: (socket: FakeSocket, command: Command) => void;
@@ -97,7 +97,7 @@ it('keeps navigation available and explains a rejected slide fullscreen request'
 it('opens the default route at the first slide and disables following without a connected presenter', () => {
   presenterConnected = false;
   const view = render(<App deck={lecture} />);
-  act(() => FakeSocket.instances.at(-1)!.open({ ...initial, index: 25, step: 2, revision: 10 }));
+  act(() => FakeSocket.instances.at(-1)!.open({ ...initial, index: 26, step: 2, revision: 10 }));
   expect(view.container.querySelector('.slide')?.getAttribute('data-index')).toBe('1');
   expect((view.getByRole('button', { name: '재생' }) as HTMLButtonElement).disabled).toBe(true);
   fireEvent.keyDown(document.body, { key: ' ' });
@@ -108,8 +108,8 @@ it('opens the default route at the first slide and disables following without a 
 
 it('starts playing from the default route when a presenter is connected', () => {
   const view = render(<App deck={lecture} />);
-  act(() => FakeSocket.instances.at(-1)!.open({ ...initial, index: 25, step: 2, revision: 10 }));
-  expect(view.container.querySelector('.slide')?.getAttribute('data-index')).toBe('25');
+  act(() => FakeSocket.instances.at(-1)!.open({ ...initial, index: 26, step: 2, revision: 10 }));
+  expect(view.container.querySelector('.slide')?.getAttribute('data-index')).toBe('26');
   const pause = view.getByRole('button', { name: '정지' }) as HTMLButtonElement;
   expect(pause.disabled).toBe(false);
   expect(pause.getAttribute('aria-pressed')).toBe('true');
@@ -135,31 +135,31 @@ it('animates navigation and normal live changes while keeping reveal steps and c
   expect(result.current.slideTransition).toBe('forward');
   act(() => result.current.go(-1));
   expect(result.current.slideTransition).toBe('backward');
-  act(() => result.current.navigate({ index: 4, step: 1 }));
+  act(() => result.current.navigate({ index: 5, step: 1 }));
   expect(result.current.slideTransition).toBe('fade');
   act(() => result.current.go(1));
   expect(result.current.slideTransition).toBe('none');
-  act(() => socket.server({ type: 'state', state: { ...initial, index: 5, revision: 1 } }));
+  act(() => socket.server({ type: 'state', state: { ...initial, index: 6, revision: 1 } }));
   act(() => result.current.toggleFollowing());
-  expect(result.current.state.position.index).toBe(5);
+  expect(result.current.state.position.index).toBe(6);
   expect(result.current.instant).toBe(true);
   expect(result.current.slideTransition).toBe('none');
-  act(() => socket.server({ type: 'state', state: { ...initial, index: 6, revision: 2 } }));
+  act(() => socket.server({ type: 'state', state: { ...initial, index: 7, revision: 2 } }));
   expect(result.current.slideTransition).toBe('forward');
   expect(result.current.instant).toBe(false);
-  act(() => socket.server({ type: 'state', state: { ...initial, index: 6, step: 1, revision: 3 } }));
+  act(() => socket.server({ type: 'state', state: { ...initial, index: 7, step: 1, revision: 3 } }));
   expect(result.current.slideTransition).toBe('none');
-  act(() => socket.server({ type: 'state', state: { ...initial, index: 5, revision: 4 } }));
+  act(() => socket.server({ type: 'state', state: { ...initial, index: 6, revision: 4 } }));
   expect(result.current.slideTransition).toBe('backward');
 });
 
-it.each(['/?index=6&step=1', '/?index=1&step=0', '/?step=0'])(
+it.each(['/?index=7&step=1', '/?index=1&step=0', '/?step=0'])(
   'starts paused at %s with a connected presenter and catches up only on 재생', (url) => {
     history.replaceState(null, '', url);
     const view = render(<App deck={lecture} />);
     const socket = FakeSocket.instances.at(-1)!;
-    act(() => socket.open({ ...initial, index: 25, step: 2, revision: 10 }));
-    const requested = url.includes('index=6') ? 6 : 1;
+    act(() => socket.open({ ...initial, index: 26, step: 2, revision: 10 }));
+    const requested = url.includes('index=7') ? 7 : 1;
     expect(view.container.querySelector('.slide')?.getAttribute('data-index')).toBe(String(requested));
     const play = view.getByRole('button', { name: '재생' }) as HTMLButtonElement;
     expect(play.disabled).toBe(false);
@@ -175,16 +175,16 @@ it.each(['/?index=6&step=1', '/?index=1&step=0', '/?step=0'])(
 
 it('preserves explicit slide links when no presenter is connected', () => {
   presenterConnected = false;
-  history.replaceState(null, '', '/?index=6&step=1');
+  history.replaceState(null, '', '/?index=7&step=1');
   const { result } = renderHook(() => useSystem());
-  act(() => FakeSocket.instances.at(-1)!.open({ ...initial, index: 25, step: 2, revision: 10 }));
-  expect(result.current.state.position).toEqual({ index: 6, step: 1 });
+  act(() => FakeSocket.instances.at(-1)!.open({ ...initial, index: 26, step: 2, revision: 10 }));
+  expect(result.current.state.position).toEqual({ index: 7, step: 1 });
   expect(result.current.state.following).toBe(false);
   expect(result.current.canFollow).toBe(false);
   act(() => FakeSocket.instances.at(-1)!.server({ type: 'presenter.presence', connected: true }));
   expect(result.current.canFollow).toBe(true);
   expect(result.current.state.following).toBe(false);
-  expect(result.current.state.position).toEqual({ index: 6, step: 1 });
+  expect(result.current.state.position).toEqual({ index: 7, step: 1 });
 });
 
 it('follows presenter presence, keeps the last slide on departure, and preserves independent navigation', () => {
@@ -206,13 +206,13 @@ it('follows presenter presence, keeps the last slide on departure, and preserves
   expect(result.current.state.following).toBe(false);
   act(() => result.current.go(-1));
   act(() => {
-    socket.server({ type: 'state', state: { ...initial, index: 25, step: 2, revision: 7 } });
+    socket.server({ type: 'state', state: { ...initial, index: 26, step: 2, revision: 7 } });
     socket.server({ type: 'presenter.presence', connected: true });
   });
   expect(result.current.state.following).toBe(false);
   expect(result.current.state.position).toMatchObject({ index: historyIndex, step: 2 });
   act(() => result.current.toggleFollowing());
-  expect(result.current.state.position).toMatchObject({ index: 25, step: 2 });
+  expect(result.current.state.position).toMatchObject({ index: 26, step: 2 });
   expect(result.current.state.following).toBe(true);
 });
 
@@ -343,7 +343,7 @@ it.each(['/#key=comment-fixture-password', '/?key=comment-fixture-password'])(
 );
 
 it('prefers a saved viewer password over the URL key and preserves explicit slide links', async () => {
-  history.replaceState(null, '', '/?index=9&step=1&key=ignore-this-key'); viewerName = null;
+  history.replaceState(null, '', '/?index=10&step=1&key=ignore-this-key'); viewerName = null;
   const enter = vi.fn(async (_url: string, options: RequestInit) => {
     expect(JSON.parse(String(options.body))).toEqual({ name: '수강생' });
     return Response.json({ name: '수강생', passwordSaved: true });
@@ -351,7 +351,7 @@ it('prefers a saved viewer password over the URL key and preserves explicit slid
   vi.stubGlobal('fetch', enter);
   const view = render(<App deck={lecture} />); act(() => FakeSocket.instances.at(-1)!.open());
   expect(view.queryByLabelText('비밀번호')).toBeNull();
-  expect(view.container.querySelector('.slide')?.getAttribute('data-index')).toBe('9');
+  expect(view.container.querySelector('.slide')?.getAttribute('data-index')).toBe('10');
   expect(view.container.querySelector('.slide')?.getAttribute('data-step')).toBe('1');
   expect(view.getByRole('button', { name: '재생' })).toBeTruthy();
   expect(location.search).not.toContain('key=');
@@ -376,12 +376,12 @@ it('jumps a viewer by section or slide, pauses following, and keeps one socket',
   expect(view.queryByRole('button', { name: '발표 노트 펼치기' })).toBeNull();
   fireEvent.click(view.getByRole('button', { name: '목차 펼치기' }));
   const menu = view.getByRole('navigation', { name: '슬라이드 목차' });
-  fireEvent.click(within(menu).getByRole('button', { name: '3부 · 경험을 연결하다' }));
-  expect(view.container.querySelector('.slide')?.getAttribute('data-index')).toBe('48');
+  fireEvent.click(within(menu).getByRole('button', { name: '3부 · 커리어를 설계하다' }));
+  expect(view.container.querySelector('.slide')?.getAttribute('data-index')).toBe('49');
   expect(view.getByRole('button', { name: '재생' })).toBeTruthy();
   expect(view.getByRole('navigation', { name: '슬라이드 목차' })).toBe(menu);
   fireEvent.click(within(menu).getByRole('button', { name: /Zoom의 회의 전사·AI 요약/ }));
-  expect(view.container.querySelector('.slide')?.getAttribute('data-index')).toBe('12');
+  expect(view.container.querySelector('.slide')?.getAttribute('data-index')).toBe('13');
   expect(view.container.querySelector('.slide')?.getAttribute('data-step')).toBe('0');
   expect(view.getByRole('navigation', { name: '슬라이드 목차' })).toBe(menu);
   expect(FakeSocket.instances).toHaveLength(1);
@@ -448,10 +448,10 @@ it('publishes presenter menu jumps and shows notes alongside a read-only questio
   await view.findByRole('heading', { name: '첫 노트' });
   expect(view.getByRole('complementary', { name: '질문 게시판' })).toBeTruthy();
   fireEvent.click(view.getByRole('button', { name: '목차 펼치기' }));
-  fireEvent.click(within(view.getByRole('navigation', { name: '슬라이드 목차' })).getByRole('button', { name: '3부 · 경험을 연결하다' }));
+  fireEvent.click(within(view.getByRole('navigation', { name: '슬라이드 목차' })).getByRole('button', { name: '3부 · 커리어를 설계하다' }));
   await view.findByRole('heading', { name: '목표 노트' });
-  expect(notes).toHaveBeenLastCalledWith('/api/notes/48', expect.objectContaining({ credentials: 'same-origin' }));
-  expect(FakeSocket.instances.at(-1)!.sent).toContainEqual(expect.objectContaining({ type: 'slide.set', payload: { index: 48, step: 0 } }));
+  expect(notes).toHaveBeenLastCalledWith('/api/notes/49', expect.objectContaining({ credentials: 'same-origin' }));
+  expect(FakeSocket.instances.at(-1)!.sent).toContainEqual(expect.objectContaining({ type: 'slide.set', payload: { index: 49, step: 0 } }));
   fireEvent.click(view.getByRole('button', { name: '질문 접기' }));
   expect(view.getByRole('complementary', { name: '발표 노트' })).toBeTruthy();
   fireEvent.click(view.getByRole('button', { name: '질문 펼치기' }));
@@ -472,7 +472,7 @@ it('shares one socket for slides and questions, including while paused, without 
   fireEvent.keyDown(document.body, { key: ' ' });
   act(() => {
     socket.server({ type: 'question.created', question });
-    socket.server({ type: 'state', state: { ...initial, index: 25, step: 2, revision: 2 } });
+    socket.server({ type: 'state', state: { ...initial, index: 26, step: 2, revision: 2 } });
   });
   expect(view.getByText('A question')).toBeTruthy();
   expect(document.querySelector('.slide')?.getAttribute('data-index')).toBe('1');
@@ -483,7 +483,7 @@ it('shares one socket for slides and questions, including while paused, without 
   fireEvent.keyDown(next, { key: 'ArrowLeft' });
   expect(document.querySelector('.slide')?.getAttribute('data-index')).toBe('1');
   fireEvent.keyDown(next, { key: ' ' });
-  expect(document.querySelector('.slide')?.getAttribute('data-index')).toBe('25');
+  expect(document.querySelector('.slide')?.getAttribute('data-index')).toBe('26');
   fireEvent.keyDown(next, { key: ' ', repeat: true });
   expect(view.getByRole('button', { name: '정지' })).toBeTruthy();
   await act(() => vi.advanceTimersByTimeAsync(5000));
@@ -515,9 +515,9 @@ it('recovers a suspended viewer immediately on tab return, ignoring its stuck so
   expect(FakeSocket.instances).toHaveLength(2);
   const second = FakeSocket.instances.at(-1)!;
   expect(new URL(second.url).searchParams.get('cursor')).toBe('1');
-  const latest = { ...initial, index: 25, step: 2, revision: 4 };
+  const latest = { ...initial, index: 26, step: 2, revision: 4 };
   act(() => second.open(latest, { questions: [{ ...question, id: 2 }], nextCursor: 2, hasMore: false }));
-  expect(result.current.state.position).toMatchObject({ index: 25, step: 2 });
+  expect(result.current.state.position).toMatchObject({ index: 26, step: 2 });
   expect(result.current.instant).toBe(true);
   expect(result.current.view.questions.map((row) => row.id)).toEqual([1, 2]);
   act(() => {
@@ -526,7 +526,7 @@ it('recovers a suspended viewer immediately on tab return, ignoring its stuck so
     window.dispatchEvent(new Event('focus'));
   });
   await act(() => vi.advanceTimersByTimeAsync(1000));
-  expect(result.current.state.position).toMatchObject({ index: 25, step: 2 });
+  expect(result.current.state.position).toMatchObject({ index: 26, step: 2 });
   expect(result.current.connection).toBe('connected');
   expect(FakeSocket.instances).toHaveLength(2);
   unmount();
@@ -539,18 +539,18 @@ it('hides unrevealed map layers when a foreground snapshot repeats an interrupte
   vi.useFakeTimers();
   const visibility = vi.spyOn(document, 'visibilityState', 'get').mockReturnValue('visible');
   const view = render(<App deck={lecture} />); const first = FakeSocket.instances.at(-1)!;
-  act(() => first.open({ ...initial, index: 5, step: 2, revision: 1 }));
+  act(() => first.open({ ...initial, index: 6, step: 2, revision: 1 }));
   const nodes = ['products', 'models', 'infrastructure'].map((sector) =>
     view.container.querySelector<SVGElement>(`.sector-map-${sector}`)!);
   expect(nodes.every((node) => getComputedStyle(node).opacity === '1')).toBe(true);
   act(() => {
     visibility.mockReturnValue('hidden'); document.dispatchEvent(new Event('visibilitychange'));
-    first.server({ type: 'state', state: { ...initial, index: 5, step: 0, revision: 2 } });
+    first.server({ type: 'state', state: { ...initial, index: 6, step: 0, revision: 2 } });
   });
   // Resume without progressing any animation frames or transition timers.
   act(() => {
     visibility.mockReturnValue('visible'); document.dispatchEvent(new Event('visibilitychange'));
-    FakeSocket.instances.at(-1)!.open({ ...initial, index: 5, step: 0, revision: 2 });
+    FakeSocket.instances.at(-1)!.open({ ...initial, index: 6, step: 0, revision: 2 });
   });
   expect(getComputedStyle(nodes[0]).visibility).toBe('visible');
   expect(getComputedStyle(nodes[0]).opacity).toBe('1');
@@ -597,7 +597,7 @@ it('keeps a paused position and pending draft on foreground recovery, cancelling
   });
   const second = FakeSocket.instances.at(-1)!;
   expect(second).not.toBe(first);
-  await act(async () => second.open({ ...initial, index: 25, step: 2, revision: 3 }));
+  await act(async () => second.open({ ...initial, index: 26, step: 2, revision: 3 }));
   expect(second.sent.find((item) => item.type === 'question.create')).toEqual(command);
   expect(input.value).toBe('Pending before tab switch'); expect(input.disabled).toBe(true);
   expect(document.querySelector('.slide')?.getAttribute('data-index')).toBe(String(firstContentIndex));
@@ -608,7 +608,7 @@ it('keeps a paused position and pending draft on foreground recovery, cancelling
     result: { ...question, body: 'Pending before tab switch' } }));
   expect(input.value).toBe(''); expect(input.disabled).toBe(false);
   fireEvent.keyDown(document.body, { key: ' ' });
-  expect(document.querySelector('.slide')?.getAttribute('data-index')).toBe('25');
+  expect(document.querySelector('.slide')?.getAttribute('data-index')).toBe('26');
 });
 
 it('automatically retries a lost-ack question with the same request ID and merges duplicate events', async () => {
@@ -678,16 +678,16 @@ it('restores presenter cookie access before replaying updates, then publishes th
 it('keeps a paused viewer stationary after reconnect, rejects stale revisions, and uses instant catch-up', async () => {
   vi.useFakeTimers(); const { result } = renderHook(() => useSystem());
   const first = FakeSocket.instances.at(-1)!;
-  act(() => { first.open(); first.server({ type: 'state', state: { ...initial, index: 4, step: 2, revision: 2 } }); });
+  act(() => { first.open(); first.server({ type: 'state', state: { ...initial, index: 5, step: 2, revision: 2 } }); });
   expect(result.current.instant).toBe(false);
   act(() => result.current.go(-1));
   act(() => first.close()); await act(() => vi.advanceTimersByTimeAsync(500));
   const second = FakeSocket.instances.at(-1)!;
-  act(() => second.open({ ...initial, index: 25, step: 2, revision: 3 }));
-  expect(result.current.state.position).toMatchObject({ index: 4, step: 1 });
+  act(() => second.open({ ...initial, index: 26, step: 2, revision: 3 }));
+  expect(result.current.state.position).toMatchObject({ index: 5, step: 1 });
   act(() => second.server({ type: 'state', state: { ...initial, revision: 1 } }));
   act(() => result.current.toggleFollowing());
-  expect(result.current.state.position.index).toBe(25); expect(result.current.instant).toBe(true);
+  expect(result.current.state.position.index).toBe(26); expect(result.current.instant).toBe(true);
 });
 
 it('keeps failed authentication visible and rejects writes from an unauthorized presenter', async () => {
@@ -704,26 +704,26 @@ it('keeps failed authentication visible and rejects writes from an unauthorized 
 it('retains draft context through live slides and shows a pending submission until acknowledged', async () => {
   handle = () => {};
   const view = render(<App deck={lecture} />); const socket = FakeSocket.instances.at(-1)!;
-  act(() => socket.open({ ...initial, index: 4, step: 1 }));
+  act(() => socket.open({ ...initial, index: 5, step: 1 }));
   const input = view.getByLabelText('질문 내용') as HTMLTextAreaElement;
   fireEvent.change(input, { target: { value: 'A question' } });
   fireEvent.keyDown(input, { key: ' ' });
   fireEvent.keyDown(input, { key: 'ArrowRight' });
   fireEvent.keyDown(input, { key: 'ArrowLeft' });
-  expect(document.querySelector('.slide')?.getAttribute('data-index')).toBe('4');
-  act(() => socket.server({ type: 'state', state: { ...initial, index: 4, step: 2, revision: 1 } }));
-  expect(view.getByText('질문 대상 · 슬라이드 4 · 단계 1')).toBeTruthy();
-  act(() => socket.server({ type: 'state', state: { ...initial, index: 5, step: 2, revision: 2 } }));
+  expect(document.querySelector('.slide')?.getAttribute('data-index')).toBe('5');
+  act(() => socket.server({ type: 'state', state: { ...initial, index: 5, step: 2, revision: 1 } }));
+  expect(view.getByText('질문 대상 · 슬라이드 5 · 단계 1')).toBeTruthy();
+  act(() => socket.server({ type: 'state', state: { ...initial, index: 6, step: 2, revision: 2 } }));
   fireEvent.click(view.getByRole('button', { name: '현재 슬라이드' }));
-  expect(view.getByText('질문 대상 · 슬라이드 4 · 단계 1')).toBeTruthy();
+  expect(view.getByText('질문 대상 · 슬라이드 5 · 단계 1')).toBeTruthy();
   fireEvent.click(view.getByRole('button', { name: '질문 등록' }));
   expect(input.value).toBe('A question'); expect(input.disabled).toBe(true);
   const sent = socket.sent.at(-1)!;
-  expect(sent).toMatchObject({ type: 'question.create', payload: { index: 4, step: 1 } });
-  act(() => socket.server({ type: 'ack', requestId: sent.requestId, result: { ...question, index: 4, step: 1 } }));
+  expect(sent).toMatchObject({ type: 'question.create', payload: { index: 5, step: 1 } });
+  act(() => socket.server({ type: 'ack', requestId: sent.requestId, result: { ...question, index: 5, step: 1 } }));
   await waitFor(() => expect(input.value).toBe(''));
   expect(view.getByText('질문을 등록했습니다.')).toBeTruthy();
-  expect(view.getByText('질문 대상 · 슬라이드 5 · 단계 2')).toBeTruthy();
+  expect(view.getByText('질문 대상 · 슬라이드 6 · 단계 2')).toBeTruthy();
 });
 
 it('preserves a rejected question draft for correction rather than automatically resending bad input', async () => {
@@ -738,14 +738,14 @@ it('preserves a rejected question draft for correction rather than automatically
 
 it('restores a question draft and its original slide after refresh, then clears saved text after submission', async () => {
   const first = render(<App deck={lecture} />);
-  act(() => FakeSocket.instances.at(-1)!.open({ ...initial, index: 4, step: 1 }));
+  act(() => FakeSocket.instances.at(-1)!.open({ ...initial, index: 5, step: 1 }));
   fireEvent.change(first.getByLabelText('질문 내용'), { target: { value: '작성하던 질문\n다음 줄' } });
   first.unmount();
-  history.replaceState(null, '', '/?index=5&step=2');
+  history.replaceState(null, '', '/?index=6&step=2');
   const refreshed = render(<App deck={lecture} />);
-  act(() => FakeSocket.instances.at(-1)!.open({ ...initial, index: 5, step: 2 }));
+  act(() => FakeSocket.instances.at(-1)!.open({ ...initial, index: 6, step: 2 }));
   expect((refreshed.getByLabelText('질문 내용') as HTMLTextAreaElement).value).toBe('작성하던 질문\n다음 줄');
-  expect(refreshed.getByText('질문 대상 · 슬라이드 4 · 단계 1')).toBeTruthy();
+  expect(refreshed.getByText('질문 대상 · 슬라이드 5 · 단계 1')).toBeTruthy();
   expect(FakeSocket.instances.at(-1)!.sent.every((command) => command.type !== 'question.create')).toBe(true);
   fireEvent.click(refreshed.getByRole('button', { name: '질문 등록' }));
   await waitFor(() => expect(window.localStorage.getItem('question-draft')).toBeNull());

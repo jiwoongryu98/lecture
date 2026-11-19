@@ -149,7 +149,7 @@ function Presentation() {
             <path d="m7 21 5-5 5 5" />
           </svg>
         </button>
-        <button onClick={() => { void fullscreen(); }} aria-label="전체 화면 전환" title="전체 화면 전환" aria-pressed={isFullscreen}>⛶</button></div>
+        <button className="app-fullscreen-button" onClick={() => { void fullscreen(); }} aria-label="전체 화면 전환" title="전체 화면 전환" aria-pressed={isFullscreen}>⛶</button></div>
     </header>
     {presenter && !authorized && !autoLogin && connection === 'locked' && <form className="presenter-login" onSubmit={(event) => { event.preventDefault(); login(keyInput); setKeyInput(''); }}>
       <label htmlFor="presenter-key">발표자 키</label><input id="presenter-key" type="password" autoComplete="off" value={keyInput} onChange={(event) => setKeyInput(event.target.value)} required />

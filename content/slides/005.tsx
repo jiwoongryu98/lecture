@@ -1,173 +1,148 @@
-import type { CSSProperties } from 'react';
-import { Heading, reveal, Takeaway, type SlideProps } from '../components/kit';
+import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
 import './005.css';
+import type { ReferenceName } from '../references';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "industry-map",
-  "title": "AI 산업의 세 영역",
+  "id": "industry-history",
+  "title": "AI는 어떻게 여기까지 왔을까?",
   "section": "1부 · 산업을 읽다",
-  "maxStep": 2,
-  "subsection": "지도"
+  "maxStep": 5,
+  "subsection": "역사"
 } satisfies SlideMetadata;
 
-type Sector = 'products' | 'models' | 'infrastructure';
+const epochs = [
+  { year: '2014', label: '관련된 부분에 집중하다', detail: <><ReferenceLink to="Attention">Attention</ReferenceLink> · 출력할 단어마다 입력의 관련 부분을 참조</>, phase: '연구의 아이디어' },
+  { year: '2017', label: 'Attention으로 구조를 만들다', detail: <><ReferenceLink to="Transformer">Transformer</ReferenceLink> · Attention을 중심으로 설계한 모델 아키텍처</>, phase: '연구의 아이디어' },
+  { year: '2020', label: '언어와 이미지, 생성 능력의 확장', detail: <><ReferenceLink to="GPT-3">GPT-3</ReferenceLink> · 입력 예시로 과제 수행  /  <ReferenceLink to="DDPM">DDPM</ReferenceLink> · 노이즈를 점차 제거</>, phase: '모델과 생성 방법' },
+  { year: '2021', label: '텍스트와 이미지가 연결되다', detail: <><ReferenceLink to="CLIP">CLIP</ReferenceLink> · 텍스트–이미지 연결  /  <ReferenceLink to="Latent diffusion">Latent diffusion</ReferenceLink> · 압축 표현에서 생성</>, phase: '서로 다른 두 기여' },
+  { year: '2022', label: '모델의 능력이 사용 경험으로', detail: <><ReferenceLink to="Stable Diffusion">Stable Diffusion</ReferenceLink> 모델 공개 · <ReferenceLink to="ChatGPT 공개">ChatGPT</ReferenceLink> 대화형 서비스 공개</>, phase: '모델 공개와 제품 경험' },
+  { year: '2025', label: '답변을 넘어 작업을 수행하다', detail: <><ReferenceLink to="Claude Code 공개">Claude Code</ReferenceLink> · 코드와 도구를 다루는 작업 도구, 연구 프리뷰 공개</>, phase: '제품과 업무의 연결' },
+];
 
-interface SectorMapProps extends SlideProps {
-  focus?: Sector;
+type Kind = 'research' | 'model' | 'product';
+const columns = [130, 290, 450, 610, 770, 930];
+
+function Mark({ kind, x, y }: { kind: Kind; x: number; y: number }) {
+  if (kind === 'model') return <path className="s01-mark s01-model" d={`M ${x} ${y - 6} l 6 6 l -6 6 l -6 -6 Z`} />;
+  if (kind === 'product') return <rect className="s01-mark s01-product" x={x - 5.5} y={y - 5.5} width="11" height="11" rx="2" />;
+  return <circle className="s01-mark s01-research" cx={x} cy={y} r="5.5" />;
 }
 
-/** The same cutaway is used when introducing a sector and when returning to the map. */
-export function SectorMap({ step, instant, focus }: SectorMapProps) {
-  const sectorStyle = (sector: Sector, visible: boolean): CSSProperties => ({
-    ...reveal(visible, instant, 'translateY(14px)'),
-    opacity: visible ? (focus && focus !== sector ? 0.3 : 1) : 0,
-  });
-  const modelVisible = step >= 1;
-  const infrastructureVisible = step >= 2;
-
-  return (
-    <svg
-      className="industry-sector-map"
-      viewBox="0 0 1000 370"
-      role="img"
-      aria-label={infrastructureVisible
-        ? '제품과 활용은 모델의 기능을 사용하고, 인프라는 모델의 학습과 추론을 지원합니다.'
-        : modelVisible
-          ? '사용자와 업무를 만나는 제품과 활용이 API 등의 인터페이스로 모델과 연결됩니다.'
-          : 'AI 제품과 활용은 사용자와 업무를 만나는 접점입니다. AX도 이 영역에서 살펴봅니다.'}
-      data-instant={instant ? 'true' : 'false'}
-    >
-      <title>AI 산업의 세 영역을 연결한 건축 단면도</title>
-
-      <g className="sector-map-infrastructure" style={sectorStyle('infrastructure', infrastructureVisible)} aria-hidden={!infrastructureVisible}>
-        {/* Infrastructure is the foundation and execution space under the model floor. */}
-        <path className="sector-map-support" d="M420 227V316M841 227V316" />
-        <path className="sector-map-foundation-top" d="M396 316L851 316L947 286L492 286Z" />
-        <path className="sector-map-foundation-front" d="M396 316H851V343H396Z" />
-        <path className="sector-map-foundation-side" d="M851 316L947 286V313L851 343Z" />
-
-        <g className="sector-map-rack" transform="translate(497 247)">
-          <path className="sector-map-rack-side" d="M55 0L68 -5V57L55 62Z" />
-          <rect width="55" height="62" rx="3" />
-          <path d="M9 13H43M9 27H43M9 41H43" />
-          <circle cx="43" cy="53" r="2" />
-        </g>
-        <g className="sector-map-rack" transform="translate(578 247)">
-          <path className="sector-map-rack-side" d="M55 0L68 -5V57L55 62Z" />
-          <rect width="55" height="62" rx="3" />
-          <path d="M9 13H43M9 27H43M9 41H43" />
-          <circle cx="43" cy="53" r="2" />
-        </g>
-
-        <g className="sector-map-chip" transform="translate(728 270)">
-          <path d="M-10 9H0M-10 21H0M-10 33H0M64 9H74M64 21H74M64 33H74M10 -10V0M23 -10V0M36 -10V0M49 -10V0M10 42V52M23 42V52M36 42V52M49 42V52" />
-          <rect width="64" height="42" rx="3" />
-          <rect className="sector-map-chip-core" x="13" y="10" width="38" height="22" rx="2" />
-        </g>
-
-        <path className="sector-map-infra-link" d="M898 228V278" />
-        <path className="sector-map-infra-link" d="M892 235L898 228L904 235M892 271L898 278L904 271" />
-        <text className="sector-map-connector-caption" x="925" y="258">학습·추론</text>
-
-        <text className="sector-map-number" x="20" y="278">03</text>
-        <text className="sector-map-sector-title" x="60" y="278">AI 인프라</text>
-        <text className="sector-map-sector-description" x="60" y="310">학습·추론을 뒷받침</text>
-        <text className="sector-map-sector-examples" x="60" y="338">실행 환경 · 컴퓨팅 · 메모리</text>
-        <path className="sector-map-leader" d="M333 296H382" />
-      </g>
-
-      <g className="sector-map-models" style={sectorStyle('models', modelVisible)} aria-hidden={!modelVisible}>
-        <path className="sector-map-model-top" d="M396 207H851L947 177H492Z" />
-        <path className="sector-map-model-front" d="M396 207H851V228H396Z" />
-        <path className="sector-map-model-side" d="M851 207L947 177V198L851 228Z" />
-
-        {/* One engine with several capabilities, rather than three separate products. */}
-        <path className="sector-map-model-trace" d="M526 179H581L630 163H688L740 180H811M630 163L608 190M688 163L710 190" />
-        <g className="sector-map-model-node">
-          <ellipse cx="526" cy="177" rx="26" ry="15" />
-          <path d="M515 177H537M515 172H532M515 182H528" />
-          <ellipse cx="811" cy="177" rx="26" ry="15" />
-          <path d="M802 178L809 171L816 178M809 171V184" />
-          <ellipse cx="607" cy="190" rx="15" ry="8" />
-          <ellipse cx="711" cy="190" rx="15" ry="8" />
-        </g>
-        <g className="sector-map-model-engine">
-          <path d="M625 145L657 133L690 145V172L657 185L625 172Z" />
-          <path d="M625 145L657 158L690 145M657 158V185" />
-          <circle cx="657" cy="146" r="4" />
-        </g>
-
-        <path className="sector-map-api-link" d="M910 116V174" />
-        <path className="sector-map-api-link" d="M904 123L910 116L916 123M904 167L910 174L916 167" />
-        <rect className="sector-map-api-badge" x="878" y="134" width="64" height="24" rx="12" />
-        <text className="sector-map-api-label" x="910" y="151" textAnchor="middle">API 등</text>
-
-        <text className="sector-map-number" x="20" y="166">02</text>
-        <text className="sector-map-sector-title" x="60" y="166">AI 모델</text>
-        <text className="sector-map-sector-description" x="60" y="198">필요한 기능을 제공</text>
-        <text className="sector-map-sector-examples" x="60" y="226">이해 · 생성 · 검색</text>
-        <path className="sector-map-leader" d="M333 184H382" />
-      </g>
-
-      <g className="sector-map-products" style={sectorStyle('products', true)}>
-        <path className="sector-map-product-top" d="M396 98H851L947 68H492Z" />
-        <path className="sector-map-product-front" d="M396 98H851V119H396Z" />
-        <path className="sector-map-product-side" d="M851 98L947 68V89L851 119Z" />
-
-        <g className="sector-map-person" transform="translate(423 35)">
-          <circle cx="0" cy="8" r="8" />
-          <path d="M-13 50V32C-13 18 13 18 13 32V50M0 29V57" />
-        </g>
-        <path className="sector-map-user-link" d="M442 62H466M461 57L466 62L461 67" />
-
-        {/* Application screen, professional tool, and a connected workflow share the terrace. */}
-        <g className="sector-map-screen" transform="translate(482 15)">
-          <rect width="143" height="78" rx="5" />
-          <path className="sector-map-screen-bar" d="M0 16H143" />
-          <circle cx="9" cy="8" r="2" />
-          <circle cx="16" cy="8" r="2" />
-          <path className="sector-map-chat" d="M17 29H92V45H43L33 52V45H17Z" />
-          <path className="sector-map-chat-answer" d="M52 52H125V67H52Z" />
-          <path className="sector-map-chat-line" d="M61 59H112" />
-        </g>
-        <g className="sector-map-tool" transform="translate(653 29)">
-          <rect width="112" height="63" rx="4" />
-          <path d="M11 14L18 20L11 26M25 26H43M11 38H88M11 47H67" />
-        </g>
-        <g className="sector-map-workflow" transform="translate(802 39)">
-          <path d="M12 25H41V7H70M41 25V43H70" />
-          <rect x="0" y="15" width="23" height="20" rx="3" />
-          <rect x="65" y="-2" width="23" height="20" rx="3" />
-          <rect x="65" y="33" width="23" height="20" rx="3" />
-        </g>
-
-        <text className="sector-map-number" x="20" y="52">01</text>
-        <text className="sector-map-sector-title" x="60" y="52">AI 제품·활용</text>
-        <text className="sector-map-sector-description" x="60" y="84">사용자·업무의 가치로 연결</text>
-        <text className="sector-map-sector-examples" x="60" y="112">앱 · 전문 도구 · AX</text>
-        <path className="sector-map-leader" d="M333 72H382" />
-      </g>
-    </svg>
-  );
+function EpochDiagram({ epoch }: { epoch: number }) {
+  return <svg className="s01-epoch-diagram" viewBox="0 0 320 112" role="group" aria-label="이정표의 핵심 개념">
+    {epoch === 0 && <>
+      <text x="12" y="15" className="s01-diagram-caption">입력의 관련도</text>
+      {[30, 61, 92].map((y, index) => <g key={y}>
+        <rect x="10" y={y - 10} width="62" height="22" rx="5" className={index === 1 ? 's01-fill-blue' : 's01-fill-pale'} />
+        <text x="41" y={y + 5} textAnchor="middle" className="s01-diagram-small">입력 {index + 1}</text>
+        <path d={`M 77 ${y + 1} L 212 59`} className={index === 1 ? 's01-link s01-link-bold' : 's01-link s01-link-faint'} />
+      </g>)}
+      <circle cx="234" cy="59" r="26" className="s01-fill-green" />
+      <text x="234" y="64" textAnchor="middle" className="s01-diagram-small s01-text-light">출력</text>
+    </>}
+    {epoch === 1 && <>
+      <path d="M 51 78 L 157 25 L 267 78 M 51 78 H 267 M 157 25 V 89" className="s01-link" />
+      {[{ x: 51, y: 78, text: '문장' }, { x: 157, y: 25, text: '안의' }, { x: 267, y: 78, text: '관계' }].map((token) => <g key={token.text}>
+        <circle cx={token.x} cy={token.y} r="22" className="s01-fill-blue" />
+        <text x={token.x} y={token.y + 5} textAnchor="middle" className="s01-diagram-small">{token.text}</text>
+      </g>)}
+      <text x="157" y="109" textAnchor="middle" className="s01-diagram-caption">토큰 사이의 관계를 계산</text>
+    </>}
+    {epoch === 2 && <>
+      <text x="9" y="24" className="s01-diagram-caption">언어</text>
+      <text x="70" y="24" className="s01-diagram-small">입력 예시</text>
+      <path d="M 146 19 H 198 m -7 -5 l 7 5 l -7 5" className="s01-link" />
+      <text x="216" y="24" className="s01-diagram-small">새 응답</text>
+      <text x="9" y="83" className="s01-diagram-caption">이미지</text>
+      {Array.from({ length: 16 }, (_, index) => <circle key={index} cx={80 + (index % 4) * 10} cy={61 + Math.floor(index / 4) * 10} r={index % 3 === 0 ? 2.8 : 1.5} className="s01-noise" />)}
+      <path d="M 146 77 H 198 m -7 -5 l 7 5 l -7 5" className="s01-link" />
+      <rect x="222" y="53" width="58" height="47" rx="4" className="s01-image-outline" />
+      <circle cx="264" cy="65" r="5" className="s01-fill-amber" />
+      <path d="M 225 95 L 244 73 L 257 85 L 266 78 L 277 95" className="s01-landscape" />
+    </>}
+    {epoch === 3 && <>
+      <ReferenceLink to="CLIP"><text x="8" y="21" className="s01-diagram-caption">CLIP</text></ReferenceLink>
+      <text x="8" y="47" className="s01-diagram-small">텍스트</text>
+      <path d="M 78 42 H 194 m -7 -5 l 7 5 l -7 5 M 85 37 l -7 5 l 7 5" className="s01-link" />
+      <text x="213" y="47" className="s01-diagram-small">이미지</text>
+      <path d="M 8 64 H 296" className="s01-diagram-rule" />
+      <ReferenceLink to="Latent diffusion"><text x="8" y="88" className="s01-diagram-caption">Latent diffusion</text></ReferenceLink>
+      <text x="8" y="109" className="s01-diagram-small">압축 표현</text>
+      <path d="M 122 104 H 194 m -7 -5 l 7 5 l -7 5" className="s01-link" />
+      <text x="213" y="109" className="s01-diagram-small">생성</text>
+    </>}
+    {epoch === 4 && <>
+      <path d="M 13 20 H 140 Q 150 20 150 30 V 62 Q 150 72 140 72 H 57 L 34 88 V 72 H 13 Q 3 72 3 62 V 30 Q 3 20 13 20 Z" className="s01-chat" />
+      <path d="M 24 39 H 127 M 24 53 H 96" className="s01-chat-lines" />
+      <ReferenceLink to="ChatGPT 공개"><text x="76" y="108" textAnchor="middle" className="s01-diagram-caption">ChatGPT · 대화형 제품</text></ReferenceLink>
+      <ReferenceLink to="Stable Diffusion">
+        <image href="/shared/stable-diffusion-2022.jpg" x="209" y="16" width="81" height="65" preserveAspectRatio="xMidYMid slice" />
+        <text x="250" y="108" textAnchor="middle" className="s01-diagram-caption">Stable Diffusion · 모델</text>
+      </ReferenceLink>
+    </>}
+    {epoch === 5 && <>
+      <text x="10" y="27" className="s01-diagram-small">목표</text>
+      <text x="10" y="49" className="s01-diagram-caption">+ 코드 맥락</text>
+      <path d="M 94 37 H 128 m -7 -5 l 7 5 l -7 5" className="s01-link" />
+      <rect x="145" y="8" width="152" height="82" rx="7" className="s01-terminal" />
+      <circle cx="158" cy="21" r="2.5" className="s01-terminal-dot" />
+      <path d="M 169 21 H 284 M 158 40 l 5 5 l -5 5 M 174 47 H 264 M 174 64 H 247" className="s01-terminal-lines" />
+      <text x="221" y="109" textAnchor="middle" className="s01-diagram-caption">수정 · 실행 · 검토</text>
+    </>}
+  </svg>;
 }
 
 export default function Slide005({ step, instant }: SlideProps) {
-  return (
-    <div className="industry-content industry-s02">
-      <Heading eyebrow="산업 지도" subtitle="사용자에게 보이는 것부터, 그 아래를 받치는 것까지">
-        AI 산업은 이렇게 연결됩니다
-      </Heading>
-      <div className="industry-visual industry-s02-map">
-        <SectorMap step={step} instant={instant} />
-      </div>
-      <Takeaway>
-        {step === 0
-          ? <><strong>제품·활용</strong>은 AI의 기능을 사용자의 문제와 연결합니다.</>
-          : step === 1
-            ? <><strong>모델</strong>은 제품이 사용하는 이해·생성·검색 기능을 제공합니다.</>
-            : <>제품은 <strong>모델의 기능</strong>을, 모델은 <strong>인프라의 실행 기반</strong>을 활용합니다.</>}
-      </Takeaway>
+  const current = Math.min(Math.max(step, 0), 5);
+  const milestone = (epoch: number, y: number, label: ReferenceName, kind: Kind, secondLabel?: ReferenceName, secondKind?: Kind) => {
+    const x = columns[epoch];
+    const visible = current >= epoch;
+    return <g key={`${epoch}-${y}`} className={`s01-milestone ${current === epoch ? 'is-current' : 'is-past'}`} style={reveal(visible, instant, 'translateY(5px)')} aria-hidden={!visible}>
+      <ReferenceLink to={label === 'ChatGPT' ? 'ChatGPT 공개' : label === 'Claude Code' ? 'Claude Code 공개' : label}>
+        <Mark x={x} y={y} kind={kind} />
+        <text x={x} y={y - 18} className="s01-milestone-label" textAnchor="middle">{label}</text>
+      </ReferenceLink>
+      {secondLabel && <ReferenceLink to={secondLabel}>
+        <Mark x={x - 58} y={y + 24} kind={secondKind ?? 'research'} />
+        <text x={x - 46} y={y + 29} className="s01-milestone-secondary">{secondLabel}</text>
+      </ReferenceLink>}
+    </g>;
+  };
+
+  return <div className="industry-content industry-s01" data-instant={instant}>
+    <Heading eyebrow="01 · 생성형 AI의 주요 이정표" subtitle="연구의 아이디어가 모델의 능력으로, 다시 사람이 쓰는 도구로 연결됩니다.">AI는 어떻게 여기까지 왔을까?</Heading>
+
+    <div className="s01-focus" aria-live="polite">
+      {epochs.map((epoch, index) => <div key={epoch.year} className="s01-epoch" style={reveal(current === index, instant, 'translateY(9px)')} aria-hidden={current !== index}>
+        <div className="s01-year">{epoch.year}<span>{epoch.phase}</span></div>
+        <div className="s01-epoch-copy"><h2>{epoch.label}</h2><p>{epoch.detail}</p></div>
+        <EpochDiagram epoch={index} />
+      </div>)}
     </div>
-  );
+
+    <div className="s01-timeline-wrap">
+      <div className="s01-timeline-top"><span>두 흐름이 쌓이며 이어진 발전</span><div className="s01-legend" aria-label="이정표 종류"><span><i className="is-research" />연구</span><span><i className="is-model" />모델</span><span><i className="is-product" />제품·도구</span></div></div>
+      <svg className="s01-timeline" viewBox="0 0 1000 205" role="group" aria-label={`${epochs[current].year}까지 공개한 언어 및 이미지 생성형 AI의 주요 이정표`}>
+        <rect x={columns[current] - 73} y="4" width="146" height="194" rx="12" className="s01-current-band" style={{ transition: instant ? 'none' : 'x 480ms cubic-bezier(.2,.7,.2,1)' }} />
+        <path d="M 95 56 H 970 M 95 137 H 970" className="s01-track" />
+        <path d={`M 95 56 H ${columns[current]}`} className="s01-track-progress s01-language-progress" />
+        {current >= 2 && <path d={`M 450 137 H ${columns[Math.min(current, 4)]}`} className="s01-track-progress s01-image-progress" />}
+        <text x="1" y="61" className="s01-track-name">언어</text>
+        <text x="1" y="142" className="s01-track-name">이미지</text>
+        {milestone(0, 56, 'Attention', 'research')}
+        {milestone(1, 56, 'Transformer', 'research')}
+        {milestone(2, 56, 'GPT-3', 'model')}
+        {milestone(2, 137, 'DDPM', 'research')}
+        {milestone(3, 137, 'CLIP', 'model', 'Latent diffusion', 'research')}
+        {milestone(4, 56, 'ChatGPT', 'product')}
+        {milestone(4, 137, 'Stable Diffusion', 'model')}
+        {milestone(5, 56, 'Claude Code', 'product')}
+        {columns.map((x, index) => <g key={epochs[index].year} className={index === current ? 's01-axis-year is-current' : 's01-axis-year'}>
+          <text x={x} y="190" textAnchor="middle">{epochs[index].year}</text>
+        </g>)}
+      </svg>
+      <p className="s01-timeline-caption">현대 생성형 AI로 이어지는 선택된 이정표 · 연도 간 간격은 동일하게 배치</p>
+    </div>
+  </div>;
 }

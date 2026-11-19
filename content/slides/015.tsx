@@ -1,102 +1,98 @@
-import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
+import { Heading, ReferenceLink, Takeaway, reveal, type SlideProps } from '../components/kit';
 import './015.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "industry-frontier",
-  "title": "범용 모델의 기반 만들기",
+  "id": "industry-models",
+  "title": "AI 모델 산업의 세 전략",
   "section": "1부 · 산업을 읽다",
   "maxStep": 2,
   "subsection": "모델"
 } satisfies SlideMetadata;
 
 export default function Slide015({ step, instant }: SlideProps) {
-  const directed = step >= 1;
-  const evaluated = step >= 2;
+  const focused = step >= 1;
+  const adapted = step >= 2;
 
-  return <div className="industry-content industry-s12">
-    <Heading eyebrow="AI 모델 · 범용 모델 개발">넓게 배우고, 쓸 수 있게 다듬는다</Heading>
+  return <div className="industry-content industry-s11" data-instant={instant}>
+    <Heading
+      eyebrow="AI 모델 · 영역과 기업"
+      subtitle="언어·이미지·추론 등, 제품에 필요한 기능의 기반을 만듭니다."
+    >능력을 넓히고, 목적에 맞춥니다</Heading>
 
-    <div className="industry-s12-visual">
-      <svg viewBox="0 0 1000 300" role="img" aria-labelledby="industry-s12-title industry-s12-description">
-        <title id="industry-s12-title">범용 모델의 능력을 만드는 학습과 개선</title>
-        <desc id="industry-s12-description">
-          다양한 자료의 사전학습으로 폭넓은 능력 기반을 만듭니다.
-          {directed && ' 후속 학습으로 지시 따르기와 과제 수행을 다듬습니다.'}
-          {evaluated && ' 실제 과제의 평가에서 찾은 약점을 개선에 반영합니다.'}
-          언어, 코드, 이미지 이해는 가능한 과제의 예이며 이미지 학습과 지원 여부는 모델마다 다릅니다.
-        </desc>
-        <defs>
-          <linearGradient id="industry-s12-core" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#5279b1" />
-            <stop offset="1" stopColor="#345782" />
-          </linearGradient>
-          <marker id="industry-s12-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse" overflow="visible">
-            <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#177c68" strokeWidth="1.7" />
-          </marker>
-        </defs>
+    <div className="s11-overview">
+      <figure className="s11-landscape">
+        <svg viewBox="0 0 740 400" role="img" aria-label={adapted
+          ? '범용 역량 개발, 특정 문제 특화, 기존 모델 적응의 세 전략이 겹친다. 한 기업이 여러 전략을 함께 사용할 수 있다.'
+          : focused
+            ? '폭넓은 과제의 공통 기반을 만드는 범용 역량 개발과 한 문제나 분야에 집중하는 특화 전략이 겹친다.'
+            : '범용 역량 개발은 폭넓은 과제의 공통 기반을 만드는 전략이다.'}>
+          <g className="s11-broad-field">
+            <ellipse className="s11-broad-fill" cx="280" cy="173" rx="260" ry="148" />
+            <path className="s11-broad-contour" d="M358 58A227 122 0 1 1 106 251" />
+            <path className="s11-broad-contour" d="M346 83A194 96 0 1 1 131 235" />
+            <text className="s11-strategy-number" x="100" y="93">01</text>
+            <text className="s11-strategy-title" x="100" y="131">범용 역량 개발</text>
+            <text className="s11-strategy-detail" x="100" y="163">폭넓은 과제의 공통 기반</text>
+            <path className="s11-capability-rule" d="M102 192H290" />
+            <circle className="s11-capability-dot" cx="102" cy="192" r="4" />
+            <circle className="s11-capability-dot" cx="198" cy="192" r="4" />
+            <circle className="s11-capability-dot" cx="290" cy="192" r="4" />
+            <text className="s11-capability" x="102" y="222" textAnchor="middle">언어</text>
+            <text className="s11-capability" x="198" y="222" textAnchor="middle">이미지</text>
+            <text className="s11-capability" x="290" y="222" textAnchor="middle">추론</text>
+          </g>
 
-        <text className="industry-s12-stage" x="30" y="25">① 사전학습</text>
-        <text className="industry-s12-small" x="30" y="48">다양한 자료에서 패턴 학습</text>
+          <g style={reveal(focused, instant, 'scale(.94)')} aria-hidden={!focused} className="s11-focused-field">
+            <ellipse className="s11-focus-fill" cx="526" cy="183" rx="183" ry="121" />
+            <ellipse className="s11-focus-contour" cx="526" cy="183" rx="159" ry="98" />
+            <path className="s11-focus-mark" d="M586 102H613V125M613 147V170H586M564 170H541V147M541 125V102H564" transform="translate(9 -12)" />
+            <circle className="s11-focus-dot" cx="586" cy="124" r="5" />
+            <text className="s11-strategy-number" x="410" y="154">02</text>
+            <text className="s11-strategy-title" x="410" y="196">특정 문제 특화</text>
+            <text className="s11-strategy-detail" x="410" y="228">한 문제·분야에 집중</text>
+          </g>
 
-        <g className="industry-s12-streams" fill="none" strokeLinecap="round">
-          <path d="M 156 93 C 245 93, 260 122, 385 128" stroke="#8ca8cf" strokeWidth="13" />
-          <path d="M 156 151 C 250 151, 280 151, 382 151" stroke="#4269a5" strokeWidth="13" />
-          <path d="M 156 209 C 245 209, 260 180, 385 174" stroke="#b8cae2" strokeWidth="13" />
-        </g>
-        <g className="industry-s12-input">
-          <text x="30" y="99">언어 자료</text>
-          <text x="30" y="157">코드</text>
-          <text x="30" y="215">이미지*</text>
-        </g>
+          <g style={reveal(adapted, instant, 'translateY(12px)')} aria-hidden={!adapted}>
+            <path className="s11-adapt-fill" d="M85 302C103 253 269 232 428 240C579 245 691 271 683 313C675 356 531 382 365 379C205 378 68 350 85 302Z" />
+            <path className="s11-adapt-contour" d="M116 304C134 269 277 252 425 259C559 265 655 285 651 312C646 340 519 362 368 360C228 358 104 338 116 304Z" />
+            <text className="s11-strategy-number" x="160" y="307">03</text>
+            <text className="s11-strategy-title" x="218" y="310">기존 모델 적응</text>
+            <text className="s11-strategy-detail" x="218" y="342">기존 모델 + 목적에 맞는 추가 학습</text>
+          </g>
+        </svg>
+        <figcaption>개발 전략의 개념도 · 영역 크기는 규모·성능과 무관</figcaption>
+      </figure>
 
-        <g fill="none" stroke="#b6c8df" strokeWidth="2">
-          <path d="M 552 116 C 650 116, 654 86, 741 86" />
-          <path d="M 561 151 H 741" />
-          <path d="M 552 186 C 650 186, 654 216, 741 216" />
-        </g>
-
-        <circle cx="473" cy="151" r="89" fill="url(#industry-s12-core)" />
-        <circle cx="473" cy="151" r="76" fill="none" stroke="#a7bedb" strokeWidth="1" opacity=".42" />
-        <g className="industry-s12-core-copy" textAnchor="middle">
-          <text x="473" y="136">폭넓은</text>
-          <text x="473" y="171">능력 기반</text>
-          <text className="industry-s12-core-label" x="473" y="202">범용 모델</text>
-        </g>
-
-        <g style={reveal(directed, instant, 'scale(.94)')} aria-hidden={!directed} className="industry-s12-direction">
-          <circle cx="473" cy="151" r="108" fill="none" stroke="#177c68" strokeWidth="5" />
-          <text className="industry-s12-stage industry-s12-green" x="473" y="25" textAnchor="middle">② 후속 학습</text>
-          <path d="M 473 31 V 43" stroke="#177c68" strokeWidth="2" />
-          <rect x="356" y="248" width="234" height="30" rx="15" fill="#edf5f0" />
-          <text className="industry-s12-direction-copy" x="473" y="268" textAnchor="middle">지시 따르기 · 과제 수행</text>
-        </g>
-
-        <g className="industry-s12-capabilities">
-          <text className="industry-s12-small" x="777" y="48">가능한 과제의 예</text>
-          <circle cx="755" cy="86" r="5" fill="#4269a5" />
-          <text x="777" y="92">언어 이해·생성</text>
-          <circle cx="755" cy="151" r="5" fill="#4269a5" />
-          <text x="777" y="157">코드 작성</text>
-          <circle cx="755" cy="216" r="5" fill="#4269a5" />
-          <text x="777" y="222">이미지 이해*</text>
-        </g>
-
-        <g style={reveal(evaluated, instant, 'translateY(6px)')} aria-hidden={!evaluated}>
-          <path d="M 938 232 V 266 Q 938 291, 911 291 H 670 C 630 291, 628 270, 568 225" fill="none" stroke="#177c68" strokeWidth="2.5" markerEnd="url(#industry-s12-arrow)" />
-          <rect x="678" y="275" width="191" height="25" fill="#fffefa" />
-          <text className="industry-s12-evaluation" x="774" y="293" textAnchor="middle">③ 평가 → 약점 개선</text>
-        </g>
-      </svg>
-      <p className="industry-s12-caveat">* 이미지 학습·지원 여부와 과제 범위는 모델마다 다름</p>
+      <aside className="s11-players" aria-label="대표 기업과 공개 모델 예시">
+        <p className="s11-players-heading">대표 기업 <span>공개 모델 예</span></p>
+        <dl>
+          <div className="s11-player">
+            <dt><ReferenceLink to="OpenAI">OpenAI</ReferenceLink></dt>
+            <dd><strong><ReferenceLink to="GPT">GPT</ReferenceLink></strong><span>범용 모델</span></dd>
+          </div>
+          <div className="s11-player">
+            <dt><ReferenceLink to="Anthropic">Anthropic</ReferenceLink></dt>
+            <dd><strong><ReferenceLink to="Claude">Claude</ReferenceLink></strong><span>범용 모델</span></dd>
+          </div>
+          <div className="s11-player">
+            <dt><ReferenceLink to="Google DeepMind">Google DeepMind</ReferenceLink></dt>
+            <dd><strong><ReferenceLink to="Gemini">Gemini</ReferenceLink></strong><span>범용 모델</span></dd>
+          </div>
+          <div className={adapted ? 's11-player s11-player-emphasis' : 's11-player'}>
+            <dt><ReferenceLink to="Meta">Meta</ReferenceLink></dt>
+            <dd><strong><ReferenceLink to="Llama">Llama</ReferenceLink></strong><span>공개 모델 기반 활용·학습</span></dd>
+          </div>
+          <div className={focused && !adapted ? 's11-player s11-player-emphasis' : 's11-player'} style={reveal(focused, instant, 'translateY(5px)')} aria-hidden={!focused}>
+            <dt><ReferenceLink to="Stability AI">Stability AI</ReferenceLink></dt>
+            <dd><strong><ReferenceLink to="Stable Diffusion">Stable Diffusion</ReferenceLink></strong><span>이미지 생성 모델</span></dd>
+          </div>
+        </dl>
+      </aside>
     </div>
 
-    <aside className="industry-s12-examples" aria-label="범용 모델 개발 사례">
-      <div className="industry-s12-model-example">
-        <span>모델 예</span>
-        <strong><ReferenceLink to="GPT">OpenAI · GPT</ReferenceLink></strong>
-      </div>
-      <p><ReferenceLink to="Claude">Anthropic · Claude</ReferenceLink> <span>/</span> <ReferenceLink to="Gemini">Google DeepMind · Gemini</ReferenceLink></p>
-    </aside>
+    <div className="s11-conclusion" style={reveal(adapted, instant)} aria-hidden={!adapted}>
+      <Takeaway><strong>범용 개발·특화·적응</strong>은 서로 겹치는 전략입니다. 한 기업도 여러 전략을 함께 씁니다.</Takeaway>
+    </div>
   </div>;
 }

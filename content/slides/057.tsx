@@ -3,87 +3,62 @@ import './057.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "career-open-source-flow",
-  "title": "오픈소스 기여는 리뷰를 거쳐 완성됩니다",
-  "section": "3부 · 경험을 연결하다",
-  "maxStep": 3,
+  "id": "career-open-source",
+  "title": "무엇을 만들지 막막하다면, 오픈소스에 기여해 보세요",
+  "section": "3부 · 커리어를 설계하다",
+  "maxStep": 2,
   "subsection": "오픈소스"
 } satisfies SlideMetadata;
 
 export default function Slide057({ step, instant }: SlideProps) {
-  const showPR = step >= 1;
-  const showFeedback = step >= 2;
-  const showMeme = step >= 3;
+  const guide = step >= 1;
+  const contribution = step >= 2;
 
-  return <div className="industry-content career-contribution-flow">
-    <Heading eyebrow="오픈소스 커뮤니티 / 기여의 전체 흐름" subtitle="PR(Pull Request): 프로젝트에 변경을 제안하는 요청">오픈소스 기여는 리뷰를 거쳐 완성됩니다</Heading>
+  return <div className="industry-content career-s08">
+    <Heading eyebrow="실제 문제에서 출발하기 / 오픈소스 기여">무엇을 만들지 막막하다면,<br />오픈소스에 기여해 보세요</Heading>
 
-    <div className="oss-flow-composition">
-      <svg viewBox="0 0 1100 390" role="group" style={reveal(!showMeme, instant, 'none')} aria-hidden={showMeme} aria-label="기여 가이드 확인, 이슈 확인 또는 등록, 구현과 충분한 테스트 및 결과 기록, PR 공개, 커뮤니티 리뷰 요청, 코멘트 반영과 재테스트를 거쳐 승인까지 이어지는 흐름">
-        <defs>
-          <marker id="oss-contribution-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-            <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" strokeWidth="1.8" />
-          </marker>
-        </defs>
+    <div className="c08-composition">
+      <div className="c08-projects">
+        <ReferenceLink to="LangChain" className="c08-project-area">
+          <p className="c08-area-label">AI 앱·에이전트</p>
+          <img src="/slides/057/c08-langchain.svg" width="472" height="100" alt="LangChain 공식 로고" />
+        </ReferenceLink>
+        <ReferenceLink to="vLLM" className="c08-project-area">
+          <p className="c08-area-label">모델 추론·서빙</p>
+          <img src="/slides/057/c08-vllm.png" width="3000" height="860" alt="vLLM 공식 로고" />
+        </ReferenceLink>
+        <ReferenceLink to="React" className="c08-project-area">
+          <p className="c08-area-label">웹 화면 개발</p>
+          <img src="/slides/057/c08-react.svg" width="600" height="181" alt="React 공식 로고" />
+        </ReferenceLink>
+        <ReferenceLink to="pandas" className="c08-project-area">
+          <p className="c08-area-label">데이터 분석</p>
+          <img src="/slides/057/c08-pandas.svg" width="819" height="331" alt="pandas 공식 로고" />
+        </ReferenceLink>
+      </div>
 
-        <g className="oss-flow-preparation">
-          <text className="oss-flow-phase" x="42" y="35">준비</text>
-          <path className="oss-flow-rail" d="M62 110V270" />
-          <circle className="oss-flow-number-bg" cx="62" cy="90" r="21" />
-          <text className="oss-flow-number" x="62" y="98" textAnchor="middle">1</text>
-          <ReferenceLink to="vLLM 기여 안내"><text className="oss-flow-title" x="104" y="99">기여 가이드 확인</text></ReferenceLink>
-          <text className="oss-flow-detail" x="104" y="132">CONTRIBUTING · 개발 규칙</text>
+      <div className="c08-entry">
+        <section className="c08-entry-question" style={reveal(!guide, instant, 'translateY(6px)')} aria-hidden={guide}>
+          <p>새로운 주제를 찾기 어렵다면</p>
+          <h2>이미 필요한 문제에서<br />시작할 수 있습니다</h2>
+        </section>
 
-          <circle className="oss-flow-number-bg" cx="62" cy="190" r="21" />
-          <text className="oss-flow-number" x="62" y="198" textAnchor="middle">2</text>
-          <ReferenceLink to="vLLM 이슈"><text className="oss-flow-title" x="104" y="199">이슈 확인·등록</text></ReferenceLink>
-          <text className="oss-flow-detail" x="104" y="232">기존 이슈 · 발견한 문제 제안</text>
-
-          <circle className="oss-flow-number-bg" cx="62" cy="290" r="21" />
-          <text className="oss-flow-number" x="62" y="298" textAnchor="middle">3</text>
-          <text className="oss-flow-title" x="104" y="299">구현·충분한 테스트</text>
-          <text className="oss-flow-detail" x="104" y="332">테스트 결과도 기록</text>
-        </g>
-
-        <g className="oss-flow-publish" style={reveal(showPR && !showMeme, instant, 'none')} aria-hidden={!showPR || showMeme}>
-          <path className="oss-flow-forward" d="M402 194H452" markerEnd="url(#oss-contribution-arrow)" />
-          <ReferenceLink to="GitHub PR 만들기"><text className="oss-flow-title oss-flow-green" x="571" y="75" textAnchor="middle">4. PR 공개</text></ReferenceLink>
-          <rect className="oss-flow-paper" x="472" y="110" width="198" height="168" rx="9" />
-          <path className="oss-flow-paper-rule" d="M472 141H670" />
-          <circle className="oss-flow-paper-dot" cx="489" cy="126" r="3" /><circle className="oss-flow-paper-dot" cx="501" cy="126" r="3" /><circle className="oss-flow-paper-dot" cx="513" cy="126" r="3" />
-          <text className="oss-flow-pr" x="571" y="203" textAnchor="middle">PR</text>
-          <path className="oss-flow-paper-ink" d="M513 230H629M513 248H603" />
-          <text className="oss-flow-detail" x="571" y="317" textAnchor="middle">변경 내용 · 테스트 결과</text>
-
-          <path className="oss-flow-forward" d="M681 194H724Q748 194 748 170V129Q748 105 772 105H779" markerEnd="url(#oss-contribution-arrow)" />
-          <circle className="oss-flow-number-bg oss-flow-review-number" cx="800" cy="105" r="19" />
-          <text className="oss-flow-number" x="800" y="113" textAnchor="middle">5</text>
-          <text className="oss-flow-title" x="835" y="114">리뷰 요청</text>
-          <ReferenceLink to="vLLM Slack"><text className="oss-flow-detail" x="835" y="148">Slack</text></ReferenceLink>
-          <text className="oss-flow-detail" x="889" y="148">·</text>
-          <ReferenceLink to="Discord"><text className="oss-flow-detail" x="905" y="148">Discord</text></ReferenceLink>
-          <text className="oss-flow-detail" x="994" y="148">등</text>
-          <text className="oss-flow-small" x="835" y="177">안내된 채널에 PR 링크 공유</text>
-        </g>
-
-        <g className="oss-flow-feedback" style={reveal(showFeedback && !showMeme, instant, 'none')} aria-hidden={!showFeedback || showMeme}>
-          <path className="oss-flow-forward" d="M800 124V252" markerEnd="url(#oss-contribution-arrow)" />
-          <circle className="oss-flow-number-bg oss-flow-review-number" cx="800" cy="275" r="19" />
-          <text className="oss-flow-number" x="800" y="283" textAnchor="middle">6</text>
-          <ReferenceLink to="GitHub PR 리뷰"><text className="oss-flow-title" x="835" y="284">코멘트 반영</text></ReferenceLink>
-          <text className="oss-flow-detail" x="835" y="318">수정 · 재테스트</text>
-          <text className="oss-flow-approval" x="835" y="352">승인까지 반복</text>
-          <path className="oss-flow-return" d="M800 294V359Q800 375 816 375H1059Q1075 375 1075 359V66Q1075 50 1059 50H816Q800 50 800 66V82" markerEnd="url(#oss-contribution-arrow)" />
-        </g>
-      </svg>
-      <ReferenceLink to="할명수 중꺾그마" className="oss-flow-meme" style={reveal(showMeme, instant, 'translateY(6px)')} aria-hidden={!showMeme}>
-        <img src="/slides/057/keep-going-meme.png" width="1800" height="960" alt="박명수의 ‘중요한 건 꺾였는데도 그냥 하는 마음’ 자막" />
-      </ReferenceLink>
+        <div className="c08-guide" style={reveal(guide, instant, 'translateY(6px)')} aria-hidden={!guide}>
+          <p className="c08-guide-label">실제 요구와 피드백이 있는 환경</p>
+          <svg viewBox="0 0 600 270" role="img" aria-label="오픈소스는 이미 필요한 문제와 다른 사람의 피드백을 만날 수 있는 환경이다.">
+            <path className="c08-book" d="M300 58C233 32 164 29 82 43V222C164 208 233 211 300 238C367 211 436 208 518 222V43C436 29 367 32 300 58Z" />
+            <path className="c08-spine" d="M300 58V238" />
+            <text className="c08-book-title" x="187" y="105" textAnchor="middle">필요한 문제</text>
+            <text className="c08-book-title" x="414" y="105" textAnchor="middle">검토·피드백</text>
+            <path className="c08-book-ink" d="M122 132H252M122 155H237M122 178H249M347 132H477M347 155H459M347 178H475" />
+          </svg>
+          <p className="c08-contribution-types" style={reveal(contribution, instant, 'translateY(6px)')} aria-hidden={!contribution}>문서 · 예제 · 테스트 · 작은 버그 수정</p>
+        </div>
+      </div>
     </div>
 
-    <footer className="oss-flow-footer">
-      <p style={reveal(showFeedback, instant, 'translateY(5px)')} aria-hidden={!showFeedback}>테스트 결과와 리뷰 기록이 <strong>기여의 근거</strong>가 됩니다.</p>
-      <ReferenceLink to="vLLM 기여 안내">공식 기여 안내 ↗</ReferenceLink>
-    </footer>
+    <p className="c08-takeaway" style={reveal(contribution, instant, 'translateY(6px)')} aria-hidden={!contribution}>
+      필요한 변화에 기여하며, <strong>내가 한 일을 보여줄 근거</strong>를 남깁니다.
+    </p>
   </div>;
 }

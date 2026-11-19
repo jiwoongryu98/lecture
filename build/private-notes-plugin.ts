@@ -1,6 +1,6 @@
 import type { Plugin } from 'vite';
 
-// Block browser file requests while allowing the Worker to import private notes.
+// Block source documents while allowing the Worker to import private notes.
 export function privateNotes(): Plugin {
   return {
     name: 'private-speaker-notes',
@@ -12,6 +12,7 @@ export function privateNotes(): Plugin {
         } catch { next(); return; }
         if (pathname.startsWith('/api/')) { next(); return; }
         if (!/(?:^|\/)(?:notes|Notes)(?:\/|$)/.test(pathname)
+          && !/(?:^|\/)content\/private\/resume\.(?:tex|pdf)$/.test(pathname)
           && !/(?:^|\/)dist\/worker(?:\/|$)/.test(pathname)) { next(); return; }
         response.writeHead(403, { 'Cache-Control': 'no-store', 'Content-Type': 'text/plain; charset=utf-8' });
         response.end('Presenter access required');

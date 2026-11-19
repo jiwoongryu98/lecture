@@ -1,6 +1,7 @@
 // Official product, project, and original research sources used by the slides.
 export const references = {
   "발표 웹사이트 소스 코드": "https://github.com/jiwoongryu98/lecture",
+  "발표 웹사이트 라이선스": "https://github.com/jiwoongryu98/lecture/blob/main/LICENSE",
   "Cloudflare": "https://www.cloudflare.com/",
   "Cloudflare Workers": "https://developers.cloudflare.com/workers/",
   "Cloudflare D1": "https://developers.cloudflare.com/d1/",

@@ -3,45 +3,45 @@ import './062.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "career-learning",
-  "title": "빠르게 배우고, 유연하게 적응합니다",
-  "section": "3부 · 경험을 연결하다",
+  "id": "career-interview",
+  "title": "AI와 모의 면접을 연습합니다",
+  "section": "3부 · 커리어를 설계하다",
   "maxStep": 2,
-  "subsection": "학습"
+  "subsection": "면접"
 } satisfies SlideMetadata;
 
 export default function Slide062({ step, instant }: SlideProps) {
-  const learn = step >= 1;
-  const adapt = step >= 2;
+  const showPractice = step >= 1;
+  const showFeedback = step >= 2;
 
-  return <div className="industry-content career-s17">
-    <Heading eyebrow="계속 배우기 / 변화에 맞춰 생각과 행동 바꾸기" subtitle="기술과 세상이 빠르게 바뀌는 만큼, 배우고 일하는 방식도 계속 바꿉니다.">빠르게 배우고, 유연하게 적응합니다</Heading>
+  return <div className="industry-content career-s15">
+    <Heading eyebrow="AI로 면접 준비 / 내 자료로 질문·답변·피드백 반복">AI와 모의 면접을 연습합니다</Heading>
 
-    <div className="c17-landscape">
-      <figure className="c17-meme">
-        <a href="https://image.fmkorea.com/files/attach/new/20201116/486616/1159261946/3203600963/40d09f18af1d4f14297acb994d63f0b6.jpeg"
-          target="_blank" rel="noopener noreferrer" title="이미지 원본 · 새 탭에서 열기">
-          <img src="/slides/062/excel-functions-meme.jpeg" width="780" height="700"
-            alt="엑셀 함수를 쓰지 말고 익숙한 수작업과 아날로그 방식을 사용하라고 권하는 메시지를 담은 인터넷 밈" />
-        </a>
-      </figure>
+    <div className="c15-layout">
+      <aside className="c15-materials" aria-label="모의 면접을 위해 AI에게 제공할 자료">
+        <p className="c15-materials-label">함께 제공할 자료</p>
+        <section className="c15-source c15-role"><p>지원할 직무</p><h2>채용 공고</h2><span>업무 · 역량 · 지원 조건</span></section>
+        <section className="c15-source c15-record"><p>내 경험 자료</p><h2>이력서와<br />경험 기록</h2><span>내 역할 · 선택 · 확인 자료</span></section>
+      </aside>
 
-      <div className="c17-learning">
-        <h2>익숙한 방식도<br />다시 살펴봅니다</h2>
-        <ol className="c17-actions">
-          <li><span aria-hidden="true">01</span><div><h3>변화를 살피고</h3><p>기술 · 일 · 사회가 어떻게 바뀌는지</p></div></li>
-          <li className="c17-learn" style={reveal(learn, instant, 'translateY(6px)')} aria-hidden={!learn}>
-            <span aria-hidden="true">02</span><div><h3>빠르게 배우고</h3><p>AI로 이해하고, 직접 연습하기</p></div>
-          </li>
-          <li className="c17-adapt" style={reveal(adapt, instant, 'translateY(6px)')} aria-hidden={!adapt}>
-            <span aria-hidden="true">03</span><div><h3>써 보고 조정합니다</h3><p>새 근거에 맞춰 생각과 방식 바꾸기</p></div>
-          </li>
-        </ol>
-      </div>
+      <svg className="c15-feed" viewBox="0 0 80 80" aria-hidden="true"><path d="M9 40H68M49 21L68 40L49 59" /></svg>
+
+      <section className="c15-sheet" aria-label="AI를 면접관으로 삼아 대화하며 연습하는 방법">
+        <header className="c15-sheet-header"><p>AI에게 면접관 역할 요청</p><span>요청·질문 예시</span></header>
+        <p className="c15-prompt-copy">공고와 이력서로 면접 질문을 하나씩 해 주세요.<br />제 답변 뒤에는 꼬리 질문과 피드백을 주세요.</p>
+
+        <div className="c15-practice" style={reveal(showPractice, instant, 'translateY(6px)')} aria-hidden={!showPractice}>
+          <div className="c15-ai-question"><p className="c15-section-label">AI 질문 예시</p><p>이 방법을 고른 이유는 무엇인가요?</p></div>
+          <p className="c15-my-answer"><span>내 차례</span>내 경험으로 직접 답하기</p>
+        </div>
+
+        <div className="c15-feedback" style={reveal(showFeedback, instant, 'translateY(6px)')} aria-hidden={!showFeedback}>
+          <p className="c15-section-label">꼬리 질문·피드백으로 더 설명할 것</p>
+          <p>선택 이유 · 검증 근거 · 나와 AI의 역할</p>
+        </div>
+      </section>
     </div>
 
-    <p className="c17-takeaway" style={reveal(adapt, instant, 'translateY(5px)')} aria-hidden={!adapt}>
-      빠르게 배우고 꾸준히 시도하며, <strong>변화에 맞춰 생각과 행동을 조정합니다.</strong>
-    </p>
+    <p className="c15-takeaway" style={reveal(showFeedback, instant, 'translateY(5px)')} aria-hidden={!showFeedback}>질문·답변·피드백을 반복하며, <strong>핵심부터 명확하고 간결하게</strong> 말하는 연습을 합니다.</p>
   </div>;
 }

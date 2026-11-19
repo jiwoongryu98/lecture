@@ -8,35 +8,22 @@
     "node": ">=22.18.0"
   },
   "scripts": {
-    "setup:local": "node scripts/setup-local.mjs",
-    "db:init:local": "wrangler d1 execute DB --local --file schema.sql --config wrangler.jsonc",
-    "predev": "npm run setup:local && npm run db:init:local",
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "postinstall": "npm run types",
-    "types": "wrangler types",
-    "typecheck": "tsc -p tsconfig.app.json && tsc -p tsconfig.worker.json && tsc -p tsconfig.node.json && tsc -p test/tsconfig.json && tsc -p test-ui/tsconfig.json && tsc -p test-browser/tsconfig.json",
-    "test": "vitest run && vitest run --config vitest.ui.config.ts",
-    "test:browser": "playwright test",
+    "typecheck": "tsc -p tsconfig.app.json && tsc -p tsconfig.node.json && tsc -p test-ui/tsconfig.json && tsc -p test-browser/tsconfig.json",
+    "test": "vitest run",
+    "test:browser": "npm run build && playwright test",
     "test:browser:install": "playwright install chromium webkit",
     "test:browser:report": "playwright show-report",
-    "deploy:dry-run": "npm run build && wrangler deploy --dry-run",
-    "verify": "npm run types && npm run typecheck && npm test && npm run deploy:dry-run",
-    "cloudflare:login": "wrangler login",
-    "cloudflare:whoami": "wrangler whoami",
-    "deploy": "npm run verify && wrangler deploy"
+    "verify": "npm run typecheck && npm test && npm run build"
   },
   "dependencies": {
     "motion": "14.14.0",
     "react": "19.3.1",
-    "react-dom": "19.3.1",
-    "react-markdown": "10.1.0",
-    "remark-gfm": "4.0.1"
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.69.1",
-    "@cloudflare/vitest-plugin": "1.8.2",
     "@playwright/test": "1.65.1",
     "@testing-library/react": "16.3.3",
     "@types/node": "26.6.6",
@@ -47,7 +34,6 @@
     "typescript": "7.0.2",
     "typescript-ast": "npm:typescript@5.9.3",
     "vite": "8.3.8",
-    "vitest": "4.1.12",
-    "wrangler": "4.162.0"
+    "vitest": "4.1.12"
   }
 }

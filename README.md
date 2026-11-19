@@ -75,12 +75,12 @@ facts. Explain technical detail only as far as it serves the audience and messag
   material. Retain source records and credits for downloaded images.
 - **Shared presentation material:** `content/components/`, `content/theme.css`, and
   `content/presentation.ts` contain reusable visuals, styling, and presentation labels.
-- **Presenter details:** `content/private/presenter.json` supplies the introduction
-  when present; otherwise the slide displays placeholders. Keep resume originals
-  in the same Git-ignored folder. Never commit or push personal details.
+- **Presenter details:** the static introduction uses generic placeholders.
+  Keep original résumés and other personal details in the Git-ignored
+  `content/private/` directory.
 
-Use `step` to determine reveals and honor `instant` so backward navigation and
-catch-up restore the correct state. For example, `maxStep: 2` means steps 0, 1, and 2.
+Use `step` to determine reveals and honor `instant` so direct links and backward navigation
+restore the correct state. For example, `maxStep: 2` means steps 0, 1, and 2.
 
 When adding or reordering slides, move the matching CSS/import, notes, and asset
 references together. Keep numbering contiguous. URLs and saved slide references
@@ -101,46 +101,36 @@ npm run dev
 ```
 
 Open http://127.0.0.1:5173, or the LAN URL printed by the server. The preview binds
-to `0.0.0.0` for access from other devices. Local setup creates missing presenter
-and question-posting keys in ignored `.dev.vars` and initializes local storage;
-existing credentials and saved data are retained. Local development needs no cloud login.
+to `0.0.0.0` for access from other devices. The viewer runs entirely in the browser.
 
-## Presenter and viewer rehearsal
+## Viewing the slides
 
-Open `/presenter` with the local `PRESENTER_KEY` for presenter controls, notes,
-annotations, and the question list. Open `/` for the audience view. Viewers can read
-questions freely; posting requires a name and `COMMENT_PASSWORD`.
+Open `/` for the title slide or share a specific reveal with a link such as
+`/?index=5&step=2`. Use the arrow keys or the previous and next buttons to move
+through reveals, and use **목차** to jump to a slide. The menu stays open after
+selection and remembers whether it was open the next time you visit.
 
-Speaker notes require presenter authentication, including a previously saved
-presenter-key cookie. Direct note-file URLs are blocked in the local preview.
+On desktop, **슬라이드 전체 화면** fills the available screen with the slide.
+Use **Esc** to return to the controls. The **⛶** button keeps the controls visible
+in fullscreen. On phones, rotate to landscape to fit the slide between the
+navigation controls.
 
-Use arrow keys or the step buttons to navigate. A link such as `/?index=5&step=0`
-opens a specific slide paused; `/` follows a connected presenter. `재생` and `정지`
-control following, and `재생` is disabled without a presenter.
+## Static hosting
 
-**슬라이드 전체 화면** shows just the slide at the largest size that preserves its
-16:9 proportions. Use arrow keys to navigate and **Esc** to return to the controls
-and open panels. The **⛶** button keeps the usual controls visible in fullscreen.
-Fullscreen buttons are hidden on touch-only mobile devices. Rotate a phone sideways
-to fit the slide to the available browser height, with controls at the sides and
-questions and notes below the slide.
+Run `npm run build` and serve the contents of `dist/` at the website root.
+Only that directory is published. The build uses the slide source and public
+assets, excluding private notes and presenter files. To check the built site
+locally, run `npm run preview`.
 
-Use **목차**, **발표 노트**, and **질문** to review the presentation with its panels.
-The menu stays open after selection and scrolls manually. Menu and question-panel
-visibility, along with unfinished question drafts, survive refresh. Check layouts
-with panels both open and closed.
-
-Presenter annotations support pen and inline text. **Cmd+Z / Ctrl+Z** undo the last
-visible annotation; text fields keep normal text undo. Enter or clicking away saves
-annotation text, Shift+Enter adds a line, and Escape cancels it.
-
-## Hosting
-
-The presentation is hosted at [lecture-presentation.chris-ryu.workers.dev](https://lecture-presentation.chris-ryu.workers.dev/).
-Open [/presenter](https://lecture-presentation.chris-ryu.workers.dev/presenter) for presenter controls.
-Access keys are stored in ignored `.dev.vars` locally and Cloudflare secrets in
-production. Run `npm run deploy` to validate and publish changes when requested.
-Local previews use a separate database.
+For [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/),
+point an assets-only Worker configuration at `./dist`. Use a separate Worker name
+to preview the static build. For a later cutover at the
+[existing URL](https://lecture-presentation.chris-ryu.workers.dev/), use the existing
+account and Worker name, `lecture-presentation`. The live Worker owns the
+`LectureSession` Durable Object class, so check its
+[class migration requirements](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/)
+before switching. Deleting that class also deletes its stored session data.
+The static viewer does not need the D1 database.
 
 ## Commands
 
@@ -150,20 +140,19 @@ Local previews use a separate database.
 | `node scripts/audit-lecture.mjs` | Check slide IDs, note titles, and file/order connections |
 | `npm run typecheck` | Check source and test types |
 | `npm run build` | Build the presentation |
-| `npx vitest run --config vitest.ui.config.ts` | Run slide and frontend interaction tests |
-| `npm test` | Run backend and frontend tests |
+| `npm test` | Run deck and slide tests |
 | `npm run test:browser:install` | Install Chromium and WebKit for desktop and mobile browser checks |
 | `npm run test:browser` | Review every slide/reveal and interactions on desktop and narrow screens |
 | `npm run test:browser:report` | Open the last browser report and screenshots |
-| `npm run verify` | Generate types, type-check, test, build, and check deployment packaging without publishing |
+| `npm run verify` | Type-check, run tests, and build the static site |
 
 Choose checks appropriate to the change. Copy and source updates need content and
 visual review; component/reveal changes also need type checks and relevant tests.
 Shared behavior changes warrant broader checks. Ordinary copy edits do not need new
 tests. Browser checks run separately from `verify` and use port 4173, which must be
-free; they keep their cache separate from the working preview.
+free. They run against the production build.
 
-Keep credentials, local data, test reports, and generated output out of Git.
+Keep private files, test reports, and generated output out of Git.
 Deployment is a separate task and requires an explicit request.
 
 ## License

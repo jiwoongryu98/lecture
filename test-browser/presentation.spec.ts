@@ -1,77 +1,41 @@
 import { expect, test } from '@playwright/test';
 
-test('offline viewers start on the first slide and can open direct links without following', async ({ page }) => {
-  await page.goto('/');
-  await expect(page.getByRole('status', { name: '연결됨', exact: true })).toBeVisible();
-  await expect(page.locator('article.slide')).toHaveAttribute('data-index', '1');
-  await expect(page.getByRole('button', { name: '재생', exact: true })).toBeDisabled();
-
-  await page.goto('/?index=7&step=1');
-  await expect(page.getByRole('status', { name: '연결됨', exact: true })).toBeVisible();
-  await expect(page.locator('article.slide')).toHaveAttribute('data-index', '7');
-  await expect(page.locator('article.slide')).toHaveAttribute('data-step', '1');
-  await expect(page.getByRole('button', { name: '재생', exact: true })).toBeDisabled();
-  await page.keyboard.press('Space');
-  await expect(page.locator('article.slide')).toHaveAttribute('data-step', '1');
-  await page.getByRole('button', { name: '다음 단계', exact: true }).click();
-  await expect(page.locator('article.slide')).toHaveAttribute('data-step', '2');
-});
-
-test('public viewer connects and navigates independently', async ({ page }) => {
+test('the built viewer opens direct links and navigates without a backend', async ({ page }) => {
+  const backendRequests: string[] = [];
   const errors: string[] = [];
+  page.on('request', (request) => {
+    if (new URL(request.url()).pathname.startsWith('/api/')) backendRequests.push(request.url());
+  });
+  page.on('websocket', (socket) => backendRequests.push(socket.url()));
   page.on('pageerror', (error) => errors.push(error.message));
-  await page.goto('/');
-  await expect(page.getByRole('status', { name: '연결됨', exact: true })).toBeVisible();
-  await expect(page.getByRole('complementary', { name: '질문 게시판' })).toBeVisible();
 
+  await page.goto('/');
   const slide = page.locator('article.slide');
-  await expect(slide.getByRole('heading', { level: 1 })).toBeVisible();
-  const before = await slide.evaluate((element) => ({
-    id: element.getAttribute('data-index'),
-    step: element.getAttribute('data-step'),
-  }));
-  const next = page.getByRole('button', { name: '다음 단계', exact: true });
   const previous = page.getByRole('button', { name: '이전 단계', exact: true });
-  const forward = await next.isEnabled();
-  await (forward ? next : previous).click();
-  await expect(page.getByRole('button', { name: '재생', exact: true })).toBeVisible();
-  await expect.poll(async () => slide.evaluate((element) => ({
-    id: element.getAttribute('data-index'),
-    step: element.getAttribute('data-step'),
-  }))).not.toEqual(before);
+  const next = page.getByRole('button', { name: '다음 단계', exact: true });
+  await expect(slide).toHaveAttribute('data-index', '1');
+  await expect(previous).toBeDisabled();
 
-  // Return through the reverse control without relying on a particular deck order.
-  await (forward ? previous : next).click();
-  await expect(slide).toHaveAttribute('data-index', before.id!);
-  await expect(slide).toHaveAttribute('data-step', before.step!);
+  await page.goto('/?index=7&step=1&key=legacy#key=legacy');
+  await expect(slide).toHaveAttribute('data-index', '7');
+  await expect(slide).toHaveAttribute('data-step', '1');
+  await expect(page).toHaveURL(/\/?\?index=7&step=1$/);
+  await next.click();
+  await expect(slide).toHaveAttribute('data-step', '2');
+  await page.reload();
+  await expect(slide).toHaveAttribute('data-step', '2');
+  await previous.click();
+  await expect(slide).toHaveAttribute('data-step', '1');
+
+  await page.getByRole('button', { name: '목차 펼치기', exact: true }).click();
+  const menu = page.getByRole('navigation', { name: '슬라이드 목차' });
+  await menu.getByRole('button', { name: '3부 · 커리어를 설계하다', exact: true }).click();
+  await expect(slide).toHaveAttribute('data-index', '49');
+  await expect(slide).toHaveAttribute('data-step', '0');
+  await expect(menu.locator('[aria-current=page]')).toContainText('기획·조율·구현의 경계가 겹칩니다');
+  await page.reload();
+  await expect(menu).toBeVisible();
+  await expect(slide).toHaveAttribute('data-index', '49');
+  expect(backendRequests).toEqual([]);
   expect(errors).toEqual([]);
-});
-
-test('slide keeps its frame with questions expanded and collapsed', async ({ page }, testInfo) => {
-  await page.goto('/');
-  await expect(page.getByRole('status', { name: '연결됨', exact: true })).toBeVisible();
-  const pause = page.getByRole('button', { name: '정지', exact: true });
-  if (await pause.isVisible()) await pause.click();
-  const slide = page.locator('article.slide');
-
-  for (const expanded of [true, false]) {
-    if (!expanded) await page.getByRole('button', { name: '질문 접기', exact: true }).click();
-    await expect(page.getByRole('button', { name: expanded ? '질문 접기' : '질문 펼치기', exact: true }))
-      .toHaveAttribute('aria-expanded', String(expanded));
-    const frame = await slide.boundingBox();
-    expect(frame).not.toBeNull();
-    expect(frame!.width / frame!.height).toBeCloseTo(16 / 9, 1);
-    expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
-    await testInfo.attach(`slide-questions-${expanded ? 'expanded' : 'collapsed'}`, {
-      body: await slide.screenshot({ animations: 'disabled' }),
-      contentType: 'image/png',
-    });
-  }
-  await page.reload();
-  await expect(page.getByRole('button', { name: '질문 펼치기', exact: true })).toHaveAttribute('aria-expanded', 'false');
-  await expect(page.locator('#question-panel')).toBeHidden();
-  await page.getByRole('button', { name: '질문 펼치기', exact: true }).click();
-  await page.reload();
-  await expect(page.getByRole('button', { name: '질문 접기', exact: true })).toHaveAttribute('aria-expanded', 'true');
-  await expect(page.getByRole('complementary', { name: '질문 게시판' })).toBeVisible();
 });

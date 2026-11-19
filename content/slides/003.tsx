@@ -11,7 +11,7 @@ export const metadata = {
 } satisfies SlideMetadata;
 
 export default function Slide003({ step, instant }: SlideProps) {
-  const showParticipation = step >= 1;
+  const showDetails = step >= 1;
 
   return <div className="industry-content introduction-website">
     <Heading eyebrow="시작하기 / 이 웹사이트">이 웹사이트도 AI와 함께 만들었습니다</Heading>
@@ -19,12 +19,12 @@ export default function Slide003({ step, instant }: SlideProps) {
     <div className="website-intro-layout">
       <figure className="website-intro-screen">
         <img
-          src="/shared/lecture-website.png"
-          alt="이 발표 웹사이트의 실제 화면. 왼쪽에 슬라이드와 이동 버튼, 오른쪽에 질문 패널이 있다."
+          src="/slides/003/static-viewer.png"
+          alt="슬라이드와 목차, 이전·다음 버튼이 보이는 발표 자료 웹사이트 화면."
           width="1600"
           height="900"
         />
-        <figcaption>지금 접속한 발표 웹사이트의 실제 화면</figcaption>
+        <figcaption>발표 자료를 보는 화면</figcaption>
       </figure>
 
       <div className="website-intro-context">
@@ -35,12 +35,12 @@ export default function Slide003({ step, instant }: SlideProps) {
         </div>
 
         <div className="website-intro-hosting">
-          <p className="website-intro-label">인프라 스택</p>
+          <p className="website-intro-label">정적 호스팅</p>
           <h2><ReferenceLink to="Cloudflare">Cloudflare</ReferenceLink></h2>
-          <p className="website-intro-detail"><ReferenceLink to="Cloudflare Workers">Workers</ReferenceLink> · <ReferenceLink to="Cloudflare D1">D1</ReferenceLink> · <ReferenceLink to="Cloudflare Durable Objects">Durable Objects</ReferenceLink></p>
+          <p className="website-intro-detail"><ReferenceLink to="Cloudflare Static Assets">Workers Static Assets</ReferenceLink></p>
         </div>
 
-        <div className="website-intro-source" style={reveal(showParticipation, instant)} aria-hidden={!showParticipation}>
+        <div className="website-intro-source" style={reveal(showDetails, instant)} aria-hidden={!showDetails}>
           <div>
             <p className="website-intro-label">소스 코드 · <ReferenceLink to="발표 웹사이트 라이선스">MIT 라이선스</ReferenceLink></p>
             <p className="website-intro-source-link">
@@ -51,8 +51,8 @@ export default function Slide003({ step, instant }: SlideProps) {
       </div>
     </div>
 
-    <div className="website-intro-participation" style={reveal(showParticipation, instant, 'translateY(6px)')} aria-hidden={!showParticipation}>
-      <p><strong>재생</strong>으로 발표 따라가기 <span aria-hidden="true">·</span> <strong>질문 패널</strong>로 함께 참여하기</p>
+    <div className="website-intro-navigation" style={reveal(showDetails, instant, 'translateY(6px)')} aria-hidden={!showDetails}>
+      <p><strong>목차</strong>에서 원하는 슬라이드로 이동 <span aria-hidden="true">·</span> <strong>화살표</strong>로 앞뒤 단계 보기</p>
     </div>
   </div>;
 }

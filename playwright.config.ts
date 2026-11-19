@@ -17,12 +17,11 @@ export default defineConfig({
   projects: [
     { name: 'chromium-desktop', use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 } } },
     { name: 'chromium-narrow', use: { ...devices['Desktop Chrome'], viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true } },
-    { name: 'webkit-iphone', testMatch: 'mobile-layout.spec.ts', use: { ...devices['iPhone 13'] } },
+    { name: 'webkit-iphone', testMatch: ['mobile-layout.spec.ts', 'presentation.spec.ts'], use: { ...devices['iPhone 13'] } },
   ],
   webServer: {
-    env: { PLAYWRIGHT_TEST: '1' },
-    command: 'npm run dev -- --host 127.0.0.1 --port 4173 --strictPort',
-    url: `${baseURL}/api/health`,
+    command: 'npm run preview -- --port 4173 --strictPort',
+    url: baseURL,
     reuseExistingServer: false,
     timeout: 120_000,
   },

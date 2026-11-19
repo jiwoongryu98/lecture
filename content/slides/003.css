@@ -61,7 +61,7 @@
   white-space: nowrap;
 }
 .introduction-website .website-intro-source-link span { margin-left: .25cqw; }
-.introduction-website .website-intro-participation { margin-top: .9cqw; }
-.introduction-website .website-intro-participation p { margin: 0; color: var(--ink); font-size: 1.18cqw; line-height: 1.5; }
-.introduction-website .website-intro-participation strong { color: var(--green); font-weight: 750; }
-.introduction-website .website-intro-participation p > span { margin: 0 .8cqw; color: #92a49e; }
+.introduction-website .website-intro-navigation { margin-top: .9cqw; }
+.introduction-website .website-intro-navigation p { margin: 0; color: var(--ink); font-size: 1.18cqw; line-height: 1.5; }
+.introduction-website .website-intro-navigation strong { color: var(--green); font-weight: 750; }
+.introduction-website .website-intro-navigation p > span { margin: 0 .8cqw; color: #92a49e; }

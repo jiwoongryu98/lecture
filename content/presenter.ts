@@ -11,9 +11,7 @@ interface PresenterProfile {
   }[];
 }
 
-// Personal details stay in an optional, Git-ignored file. Public checkouts use placeholders.
-const profiles = import.meta.glob<PresenterProfile>('./private/presenter.json', { eager: true, import: 'default' });
-export const presenterProfile: PresenterProfile = profiles['./private/presenter.json'] ?? {
+export const presenterProfile: PresenterProfile = {
   name: '[발표자 이름]',
   role: '[현재 역할]',
   organization: '[현재 소속]',

@@ -2,7 +2,6 @@ import { expect, test } from '@playwright/test';
 
 test('slide changes animate inside a stationary board, while reveals and rapid jumps stay responsive', async ({ page }) => {
   await page.goto('/?index=1&step=0');
-  await expect(page.getByRole('status', { name: '연결됨', exact: true })).toBeVisible();
   expect(await page.locator('.slide-page').evaluate((node) => node.getAnimations().length)).toBe(0);
 
   async function navigate(label: string, menu = false) {

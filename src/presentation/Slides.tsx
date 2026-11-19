@@ -1,7 +1,6 @@
 import type { Position } from '../../shared/presentation';
 import { useDeck } from './Deck';
 import { useLayoutEffect, useRef } from 'react';
-import type { ReactNode } from 'react';
 import type { SlideTransition } from './slide';
 
 function SlideLabel({ text, instant, className }: { text: string; instant: boolean; className?: string }) {
@@ -22,35 +21,31 @@ function SlideLabel({ text, instant, className }: { text: string; instant: boole
   return <span className={`slide-label ${className ?? ''}`} ref={label}>{text}</span>;
 }
 
-export function Slides({ position, instant, transition = 'none', children }: {
-  position: Position; instant: boolean; transition?: SlideTransition; children?: ReactNode;
+export function Slides({ position, instant, transition = 'none' }: {
+  position: Position; instant: boolean; transition?: SlideTransition;
 }) {
   const { slides, renderers, presentation } = useDeck();
   const index = position.index - 1;
   const definition = slides[index];
   const Slide = renderers[position.index];
   const page = useRef<HTMLDivElement>(null);
-  const annotations = useRef<HTMLDivElement>(null);
   const previousIndex = useRef(position.index);
-  const running = useRef<Animation[]>([]);
+  const running = useRef<Animation | null>(null);
 
   useLayoutEffect(() => {
     const changed = previousIndex.current !== position.index;
     previousIndex.current = position.index;
     if (!changed && !instant && transition !== 'none') return;
-    running.current.forEach((animation) => animation.cancel());
-    running.current = [];
+    running.current?.cancel();
+    running.current = null;
     if (!changed || instant || transition === 'none') return;
     const offset = transition === 'forward' ? 10 : transition === 'backward' ? -10 : 0;
-    for (const element of [page.current, annotations.current]) {
-      const animation = element?.animate?.([
-        { opacity: 0, transform: `translateY(${offset}px)` },
-        { opacity: 1, transform: 'translateY(0px)' },
-      ], { duration: 200, easing: 'cubic-bezier(.2,.7,.2,1)' });
-      if (animation) running.current.push(animation);
-    }
+    running.current = page.current?.animate?.([
+      { opacity: 0, transform: `translateY(${offset}px)` },
+      { opacity: 1, transform: 'translateY(0px)' },
+    ], { duration: 200, easing: 'cubic-bezier(.2,.7,.2,1)' }) ?? null;
   }, [position.index, instant, transition]);
-  useLayoutEffect(() => () => running.current.forEach((animation) => animation.cancel()), []);
+  useLayoutEffect(() => () => running.current?.cancel(), []);
 
   return <div className="slide-frame">
     <article className="slide" aria-labelledby="slide-title" data-index={position.index} data-step={position.step}>
@@ -71,7 +66,6 @@ export function Slides({ position, instant, transition = 'none', children }: {
         </div>
         <SlideLabel text={String(index + 1).padStart(2, '0')} instant={instant} className="slide-number" />
       </footer>
-      <div className="slide-annotations" ref={annotations}>{children}</div>
     </article>
   </div>;
 }

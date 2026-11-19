@@ -1,6 +1,5 @@
 import { expect, it } from 'vitest';
-import { initialPosition, isPosition, move, positionFromSearch, slides, viewerReducer } from '../shared/deck';
-import type { ViewerState } from '../shared/deck';
+import { initialPosition, isPosition, move, positionFromSearch, slides } from '../shared/deck';
 
 it('moves through the whole deck and reverses each slide boundary', () => {
   expect(move(initialPosition, -1)).toBe(initialPosition);
@@ -28,23 +27,4 @@ it('validates positions and safely handles malformed links', () => {
   for (const index of ['0', '-1', '1.5', '9999', 'NaN']) {
     expect(positionFromSearch(`?index=${index}&step=0`)).toEqual(initialPosition);
   }
-});
-
-it('follows by default, pauses for navigation, catches up on Play, and ignores stale snapshots', () => {
-  let state: ViewerState = { position: initialPosition, following: true, latest: null };
-  const snapshot = { index: 5, step: 1, revision: 1, updatedAt: 1 };
-  state = viewerReducer(state, { type: 'snapshot', state: snapshot });
-  expect(state.position).toEqual(snapshot);
-  state = viewerReducer(state, { type: 'navigate', position: initialPosition });
-  expect(state.following).toBe(false);
-  state = viewerReducer(state, { type: 'snapshot', state: { ...snapshot, step: 3, revision: 2 } });
-  expect(state.position).toEqual(initialPosition);
-  state = viewerReducer(state, { type: 'play' });
-  expect(state.position.step).toBe(3);
-  expect(state.following).toBe(true);
-  expect(viewerReducer(state, { type: 'snapshot', state: snapshot })).toBe(state);
-  state = viewerReducer(state, { type: 'pause' });
-  const position = state.position;
-  state = viewerReducer(state, { type: 'snapshot', state: { ...snapshot, step: 0, revision: 3 } });
-  expect(state.position).toBe(position);
 });

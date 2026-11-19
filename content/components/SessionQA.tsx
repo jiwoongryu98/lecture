@@ -8,8 +8,5 @@ export default function SessionQA() {
       <h1 id="slide-title">Q<span>&amp;</span>A</h1>
       <p className="session-qa-invitation">궁금한 점을 함께 이야기해요.</p>
     </div>
-    <div className="session-qa-footer">
-      <p className="session-qa-participation">질문 패널에 남겨주셔도 좋습니다.</p>
-    </div>
   </div>;
 }

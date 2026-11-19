@@ -2,7 +2,6 @@ import { expect, test } from '@playwright/test';
 
 test('logos, cards, and SVG research links open a new tab without moving the slide', async ({ page, context }) => {
   await page.addInitScript(() => {
-    localStorage.setItem('questions-expanded', 'false');
     localStorage.setItem('slide-menu-expanded', 'false');
   });
   // Exercise native browser links without depending on third-party page availability.

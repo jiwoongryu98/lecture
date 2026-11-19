@@ -2,7 +2,7 @@
 import slides from 'virtual:slide-catalog';
 import { createDeckRules } from './presentation';
 
-// Build-time composition adapter shared by the client and Worker.
+// Build-time composition adapter for the viewer.
 export { slides };
-export type { Position, LectureState, Question, QuestionPage, ViewerState, ViewerAction } from './presentation';
-export const { initialPosition, isPosition, move, positionFromSearch, viewerReducer } = createDeckRules(slides);
+export type { Position } from './presentation';
+export const { initialPosition, isPosition, move, positionFromSearch } = createDeckRules(slides);

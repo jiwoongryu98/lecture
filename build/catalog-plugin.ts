@@ -15,17 +15,17 @@ export function slideCatalog(): Plugin {
     load(id) {
       if (id !== resolvedId) return;
       const slides = readCatalog(root);
-      for (const slide of slides) for (const path of [`content/slides/${slide.number}.tsx`, `content/slides/${slide.number}.css`, `notes/${slide.number}.md`]) {
+      for (const slide of slides) for (const path of [`content/slides/${slide.number}.tsx`, `content/slides/${slide.number}.css`]) {
         const file = resolve(root, path);
         if (existsSync(file)) this.addWatchFile(file);
       }
       return `export default ${JSON.stringify(slides)};`;
     },
     configureServer(server) {
-      const folders = [resolve(root, 'content/slides'), resolve(root, 'notes')];
-      server.watcher.add(folders);
+      const slidesFolder = resolve(root, 'content/slides');
+      server.watcher.add(slidesFolder);
       const refresh = (file: string) => {
-        if (!folders.some((folder) => file.startsWith(folder + '/'))) return;
+        if (!file.startsWith(slidesFolder + '/')) return;
         for (const environment of Object.values(server.environments)) {
           const module = environment.moduleGraph.getModuleById(resolvedId);
           if (module) environment.moduleGraph.invalidateModule(module);
@@ -36,7 +36,7 @@ export function slideCatalog(): Plugin {
       server.httpServer?.once('close', () => { server.watcher.off('add', refresh).off('unlink', refresh); });
     },
     handleHotUpdate(context) {
-      if (!context.file.startsWith(resolve(root, 'content/slides') + '/') && !context.file.startsWith(resolve(root, 'notes') + '/')) return;
+      if (!context.file.startsWith(resolve(root, 'content/slides') + '/')) return;
       readCatalog(root);
       const module = context.server.moduleGraph.getModuleById(resolvedId);
       if (module) { context.server.moduleGraph.invalidateModule(module); return [...context.modules, module]; }

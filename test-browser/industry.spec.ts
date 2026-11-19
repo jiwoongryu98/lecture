@@ -7,13 +7,10 @@ test('all authored slides render every step and fit their frame', async ({ page 
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/');
-  await expect(page.getByRole('status', { name: '연결됨', exact: true })).toBeVisible();
-  const pause = page.getByRole('button', { name: '정지', exact: true });
-  if (await pause.isVisible()) await pause.click();
   const slide = page.locator('article.slide');
 
   for (const definition of slides) {
-    // Exercise the existing URL/popstate navigation while paused. No preview-only app route.
+    // Exercise the production URL and browser history handling.
     for (let step = 0; step <= definition.maxStep; step++) {
       await page.evaluate(({ index, step }) => {
         history.replaceState(null, '', `?index=${index}&step=${step}`);

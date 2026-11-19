@@ -8,23 +8,6 @@ export interface SlideMetadata {
 export interface SlideDefinition extends SlideMetadata { number: string }
 
 export interface Position { index: number; step: number }
-export interface LectureState extends Position { revision: number; updatedAt: number }
-export interface Question {
-  id: number;
-  index: number;
-  step: number;
-  name: string | null;
-  body: string;
-  createdAt: number;
-}
-export interface QuestionPage { questions: Question[]; nextCursor: number; hasMore: boolean }
-export interface ViewerState {
-  following: boolean;
-  position: Position;
-  latest: LectureState | null;
-}
-export type ViewerAction = { type: 'snapshot'; state: LectureState }
-  | { type: 'navigate'; position: Position } | { type: 'pause' } | { type: 'play' };
 
 export function createDeckRules(slides: readonly SlideDefinition[]) {
   if (!slides.length) throw new Error('A presentation requires at least one slide');
@@ -57,16 +40,7 @@ export function createDeckRules(slides: readonly SlideDefinition[]) {
     return isPosition(position) ? position : initialPosition;
   }
 
-  function viewerReducer(state: ViewerState, action: ViewerAction): ViewerState {
-    if (action.type === 'pause') return { ...state, following: false };
-    if (action.type === 'navigate') return { ...state, following: false, position: action.position };
-    if (action.type === 'play') return { ...state, following: true, position: state.latest ?? state.position };
-    if (!isPosition(action.state) || !Number.isSafeInteger(action.state.revision)
-      || action.state.revision < 0 || (state.latest && action.state.revision < state.latest.revision)) return state;
-    return { ...state, latest: action.state, position: state.following ? action.state : state.position };
-  }
-
-  return { initialPosition, isPosition, move, positionFromSearch, viewerReducer };
+  return { initialPosition, isPosition, move, positionFromSearch };
 }
 
 export function groupSections(slides: readonly SlideDefinition[]) {

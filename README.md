@@ -34,23 +34,23 @@ and connect their existing experience to meaningful projects and career choices.
 The three-hour format is three sessions of **45 minutes of presentation + 15 minutes
 for Q&A and a break combined**. The introduction is included in the first session's
 presentation time, and closing remarks fit within the final Q&A block.
-The current deck contains 64 slides, including the opening and session Q&As.
-The opening follows title → presenter → website → session agenda.
+The current deck contains 63 slides, including the opening and session Q&As.
+The opening follows title → website → session agenda.
 
 Session 3 uses the same experience records throughout portfolio, resume, and
 interview preparation. Suggested pacing for its 45-minute presentation is:
 
 | Slides | Topic | Minutes |
 | --- | --- | --- |
-| 049 | 역할의 변화: overlapping responsibilities | 3 |
-| 050–052 | 영역별 역량: product development, model experiments, and computing/infrastructure experience | 8 |
-| 053–054 | 문제 정의와 실행 계획: choosing a problem and planning implementation and validation | 7 |
-| 055–056 | 포트폴리오: connecting the problem, execution, and validation evidence | 6 |
-| 057–058 | 오픈소스: real requirements, testing evidence, and the community review loop | 5 |
-| 059–061 | 이력서: hiring-side AI, AI-assisted drafting and editing, and LaTeX/PDF | 9 |
-| 062 | 면접: AI mock interviews with follow-up questions and feedback | 5 |
-| 063 | 학습: learning continuously and adapting to change | 2 |
-| 064 | Q&A 및 휴식 | 15 |
+| 048 | 역할의 변화: overlapping responsibilities | 3 |
+| 049–051 | 영역별 역량: product development, model experiments, and computing/infrastructure experience | 8 |
+| 052–053 | 문제 정의와 실행 계획: choosing a problem and planning implementation and validation | 7 |
+| 054–055 | 포트폴리오: connecting the problem, execution, and validation evidence | 6 |
+| 056–057 | 오픈소스: real requirements, testing evidence, and the community review loop | 5 |
+| 058–060 | 이력서: hiring-side AI, AI-assisted drafting and editing, and LaTeX/PDF | 9 |
+| 061 | 면접: AI mock interviews with follow-up questions and feedback | 5 |
+| 062 | 학습: learning continuously and adapting to change | 2 |
+| 063 | Q&A 및 휴식 | 15 |
 
 ### Teaching principles
 
@@ -75,16 +75,13 @@ facts. Explain technical detail only as far as it serves the audience and messag
   material. Retain source records and credits for downloaded images.
 - **Shared presentation material:** `content/components/`, `content/theme.css`, and
   `content/presentation.ts` contain reusable visuals, styling, and presentation labels.
-- **Presenter details:** the static introduction uses generic placeholders.
-  Keep original résumés and other personal details in the Git-ignored
-  `content/private/` directory.
 
 Use `step` to determine reveals and honor `instant` so direct links and backward navigation
 restore the correct state. For example, `maxStep: 2` means steps 0, 1, and 2.
 
 When adding or reordering slides, move the matching CSS/import, notes, and asset
-references together. Keep numbering contiguous. URLs and saved slide references
-use presentation indices, so recheck links after changing the order.
+references together. Keep numbering contiguous and recheck shared slide links
+after changing the order.
 
 Review affected slides alongside their neighbors. Check readability, overflow,
 initial/intermediate/final reveals, forward/backward navigation, desktop and narrow
@@ -108,7 +105,9 @@ to `0.0.0.0` for access from other devices. The viewer runs entirely in the brow
 Open `/` for the title slide or share a specific reveal with a link such as
 `/?index=5&step=2`. Use the arrow keys or the previous and next buttons to move
 through reveals, and use **목차** to jump to a slide. The menu stays open after
-selection and remembers whether it was open the next time you visit.
+selection and remembers whether it was open the next time you visit. Slide links
+use the original lecture numbers so shared URLs keep working. The old introduction
+link (`?index=2`) opens the website overview.
 
 On desktop, **슬라이드 전체 화면** fills the available screen with the slide.
 Use **Esc** to return to the controls. The **⛶** button keeps the controls visible

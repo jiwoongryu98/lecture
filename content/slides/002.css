@@ -1,39 +1,67 @@
-.presenter-intro .presenter-intro-layout {
-  flex: 1;
-  min-height: 0;
+.introduction-website .industry-heading h1 { font-size: 3.2cqw; }
+.introduction-website .website-intro-layout {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 54cqw minmax(0, 1fr);
+  gap: 3.8cqw;
   align-items: center;
-  gap: 4cqw;
+  margin-top: 1.8cqw;
 }
-.presenter-intro .presenter-intro-identity { padding: 1cqw 0 2cqw; }
-.presenter-intro .presenter-intro-greeting {
-  margin: 0 0 3cqw;
-  color: var(--muted);
-  font-size: 1.8cqw;
-  letter-spacing: -.04em;
+.introduction-website .website-intro-screen { margin: 0; min-width: 0; }
+.introduction-website .website-intro-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #d9e2df;
+  border-radius: .65cqw;
+  box-shadow: 0 .65cqw 1.6cqw #22354a12;
 }
-.presenter-intro .industry-eyebrow { margin-bottom: 1.2cqw; }
-.presenter-intro .industry-heading h1 { font-size: 4.25cqw; letter-spacing: -.055em; }
-.presenter-intro .presenter-intro-current { margin-top: 2.4cqw; }
-.presenter-intro .presenter-intro-current-label { margin: 0 0 .5cqw; color: var(--green); font-size: 1.05cqw; font-weight: 650; }
-.presenter-intro .presenter-intro-organization { margin: 0; color: var(--green); font-size: 2.45cqw; letter-spacing: -.04em; font-weight: 650; line-height: 1.4; }
-.presenter-intro .presenter-intro-role {
-  margin: .6cqw 0 0;
+.introduction-website .website-intro-screen figcaption {
+  margin-top: .7cqw;
   color: var(--muted);
-  font-size: 1.35cqw;
-  letter-spacing: -.04em;
+  font-size: .9cqw;
+  line-height: 1.4;
+}
+.introduction-website .website-intro-context { min-width: 0; padding-bottom: 1.7cqw; }
+.introduction-website .website-intro-label {
+  margin: 0 0 .5cqw;
+  color: var(--muted);
+  font-size: 1cqw;
+  line-height: 1.4;
+}
+.introduction-website .website-intro-context h2 {
+  margin: 0;
+  color: var(--green);
+  font-size: 2.65cqw;
+  line-height: 1.2;
+  letter-spacing: -.045em;
+}
+.introduction-website .website-intro-detail {
+  margin: .7cqw 0 0;
+  color: var(--ink);
+  font-size: 1.12cqw;
   line-height: 1.6;
 }
-.presenter-intro .presenter-intro-focus { margin: 1cqw 0 0; color: var(--ink); font-size: 1.55cqw; font-weight: 550; line-height: 1.5; letter-spacing: -.035em; }
-.presenter-intro .presenter-intro-experience {
-  border-left: 2px solid #c9ddd2;
-  padding: 1cqw 0 1cqw 2.8cqw;
+.introduction-website .website-intro-hosting { margin-top: 2.1cqw; }
+.introduction-website .website-intro-hosting h2 { color: #bd6225; letter-spacing: -.025em; }
+.introduction-website .website-intro-source {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1cqw;
+  margin-top: 2.1cqw;
+  padding-top: 1.3cqw;
+  border-top: 1px solid var(--line);
 }
-.presenter-intro .presenter-intro-highlights { margin: 0; padding: 0; list-style: none; }
-.presenter-intro .presenter-intro-highlights > li { padding: 1cqw 0; }
-.presenter-intro .presenter-intro-highlights > li + li { border-top: 1px solid var(--line); }
-.presenter-intro .presenter-intro-highlights > li + li:nth-last-child(-n + 2) { border-top-color: #c9ddd2; }
-.presenter-intro .presenter-intro-experience h2 { margin: 0; font-size: 2.15cqw; font-weight: 650; line-height: 1.4; letter-spacing: -.04em; }
-.presenter-intro .presenter-intro-experience p { margin: .5cqw 0 0; color: var(--muted); font-size: 1.25cqw; letter-spacing: -.025em; line-height: 1.75; white-space: pre-line; }
-.presenter-intro[data-instant="true"] * { transition: none !important; }
+.introduction-website .website-intro-source-link {
+  margin: 0;
+  color: var(--green);
+  font-size: 1.3cqw;
+  font-weight: 650;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.introduction-website .website-intro-source-link span { margin-left: .25cqw; }
+.introduction-website .website-intro-navigation { margin-top: .9cqw; }
+.introduction-website .website-intro-navigation p { margin: 0; color: var(--ink); font-size: 1.18cqw; line-height: 1.5; }
+.introduction-website .website-intro-navigation strong { color: var(--green); font-weight: 750; }
+.introduction-website .website-intro-navigation p > span { margin: 0 .8cqw; color: #92a49e; }

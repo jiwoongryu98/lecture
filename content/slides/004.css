@@ -1,9 +1,52 @@
-.lecture-agenda .industry-heading h1 { font-size: 3.7cqw; }
-.lecture-agenda .agenda-sessions { flex: 1; display: flex; flex-direction: column; justify-content: center; margin: 1.7cqw 0; padding: 0; list-style: none; }
-.lecture-agenda .agenda-sessions li { display: grid; grid-template-columns: 5cqw 28cqw 1fr; gap: 1.8cqw; align-items: center; padding: 2.9cqw 0; border-bottom: 1px solid var(--line); }
-.lecture-agenda .agenda-sessions li:first-child { border-top: 1px solid var(--line); }
-.lecture-agenda .agenda-session-number { color: var(--green); font-size: 1.2cqw; font-weight: 650; }
-.lecture-agenda .agenda-sessions h2 { margin: 0; color: var(--ink); font-size: 2.7cqw; font-weight: 650; letter-spacing: -.045em; }
-.lecture-agenda .agenda-sessions p { margin: 0; color: var(--muted); font-size: 1.45cqw; line-height: 1.6; letter-spacing: -.035em; }
-.lecture-agenda .agenda-pacing { margin: 0 0 .5cqw; color: var(--muted); font-size: 1.1cqw; line-height: 1.6; }
-.lecture-agenda .agenda-pacing strong { color: var(--green); font-weight: 550; }
+.industry-s01 .s01-focus { position: relative; flex: 0 0 9.8cqw; margin-top: 1.25cqw; }
+.industry-s01 .s01-epoch { position: absolute; inset: 0; display: grid; grid-template-columns: 12cqw 1fr 25cqw; gap: 1.6cqw; align-items: center; }
+.industry-s01 .s01-year { align-self: center; color: var(--green); font-size: 5.3cqw; font-weight: 680; line-height: 1; letter-spacing: -.07em; }
+.industry-s01 .s01-year span { display: block; color: var(--muted); font-size: .93cqw; font-weight: 500; letter-spacing: -.025em; margin-top: 1cqw; }
+.industry-s01 .s01-epoch-copy h2 { margin: 0; color: var(--ink); font-size: 2.05cqw; line-height: 1.35; letter-spacing: -.045em; word-break: keep-all; }
+.industry-s01 .s01-epoch-copy p { max-width: 40cqw; margin: .8cqw 0 0; color: var(--muted); font-size: 1.17cqw; line-height: 1.65; }
+.industry-s01 .s01-epoch-diagram { display: block; width: 25cqw; height: 9.5cqw; overflow: visible; }
+.industry-s01 .s01-diagram-small { font-size: 15px; fill: var(--ink); font-weight: 600; }
+.industry-s01 .s01-diagram-caption { font-size: 12px; fill: var(--muted); }
+.industry-s01 .s01-fill-pale { fill: #eef1ef; }
+.industry-s01 .s01-fill-blue { fill: #e2ebf6; }
+.industry-s01 .s01-fill-green { fill: var(--green); }
+.industry-s01 .s01-text-light { fill: #fffefa; }
+.industry-s01 .s01-fill-amber { fill: #e6c280; }
+.industry-s01 .s01-link { fill: none; stroke: var(--blue); stroke-width: 1.7; }
+.industry-s01 .s01-link-bold { stroke-width: 6; }
+.industry-s01 .s01-link-faint { opacity: .28; }
+.industry-s01 .s01-diagram-rule { stroke: var(--line); stroke-width: 1; }
+.industry-s01 .s01-noise { fill: var(--blue); opacity: .8; }
+.industry-s01 .s01-image-outline { fill: #f0f5ee; stroke: var(--green); stroke-width: 1.2; }
+.industry-s01 .s01-landscape { fill: #bdd6c3; }
+.industry-s01 .s01-chat { fill: #e3f0e9; stroke: var(--green); stroke-width: 1.2; }
+.industry-s01 .s01-chat-lines { stroke: var(--green); stroke-width: 4; stroke-linecap: round; }
+.industry-s01 .s01-terminal { fill: var(--ink); }
+.industry-s01 .s01-terminal-dot { fill: #bfd4c8; }
+.industry-s01 .s01-terminal-lines { fill: none; stroke: #c8e2d3; stroke-width: 1.7; }
+.industry-s01 .s01-timeline-wrap { margin-top: .45cqw; min-height: 0; }
+.industry-s01 .s01-timeline-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: .65cqw; border-bottom: 1px solid var(--line); font-size: 1.05cqw; color: var(--muted); }
+.industry-s01 .s01-legend { display: flex; align-items: center; gap: 1.3cqw; font-size: .95cqw; }
+.industry-s01 .s01-legend span { display: inline-flex; gap: .45cqw; align-items: center; }
+.industry-s01 .s01-legend i { display: inline-block; width: .58cqw; height: .58cqw; }
+.industry-s01 .s01-legend .is-research { border: .12cqw solid var(--ink); border-radius: 50%; }
+.industry-s01 .s01-legend .is-model { background: var(--blue); transform: rotate(45deg); }
+.industry-s01 .s01-legend .is-product { background: var(--green); border-radius: .1cqw; }
+.industry-s01 .s01-timeline { display: block; width: 100%; height: 18.9cqw; margin-top: .5cqw; overflow: visible; }
+.industry-s01 .s01-current-band { fill: #eaf1e9; }
+.industry-s01 .s01-track { fill: none; stroke: #d5dfdc; stroke-width: 2; }
+.industry-s01 .s01-track-progress { fill: none; stroke-width: 2; transition: d 480ms ease; }
+.industry-s01 .s01-language-progress { stroke: #7590ad; }
+.industry-s01 .s01-image-progress { stroke: #93ac96; }
+.industry-s01 .s01-track-name { fill: var(--muted); font-size: 14px; font-weight: 600; }
+.industry-s01 .s01-mark { stroke-width: 2.1; }
+.industry-s01 .s01-research { fill: #fffefa; stroke: var(--ink); }
+.industry-s01 .s01-model { fill: var(--blue); stroke: var(--blue); }
+.industry-s01 .s01-product { fill: var(--green); stroke: var(--green); }
+.industry-s01 .s01-milestone.is-past { opacity: .65 !important; }
+.industry-s01 .s01-milestone-label { font-size: 14px; font-weight: 650; fill: var(--ink); }
+.industry-s01 .s01-milestone-secondary { font-size: 11.6px; font-weight: 550; fill: var(--ink); }
+.industry-s01 .s01-axis-year text { font-size: 18px; font-weight: 600; fill: #a4afad; transition: fill 350ms ease; }
+.industry-s01 .s01-axis-year.is-current text { fill: var(--green); font-weight: 750; }
+.industry-s01 .s01-timeline-caption { font-size: .9cqw; line-height: 1.4; color: var(--muted); margin: .2cqw 0 0; }
+.industry-s01[data-instant='true'] *, .industry-s01[data-instant='true'] *::before, .industry-s01[data-instant='true'] *::after { transition: none !important; }

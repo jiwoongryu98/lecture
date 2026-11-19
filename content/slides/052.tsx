@@ -1,52 +1,51 @@
-import { CareerDomainNav } from '../components/CareerDomainNav';
 import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
-import type { SlideMetadata } from '../../shared/presentation';
 import './052.css';
+import type { SlideMetadata } from '../../shared/presentation';
 
-// Performance measurement background: https://docs.vllm.ai/en/latest/benchmarking/
-// https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/
 export const metadata = {
-  id: 'career-infrastructure-experience',
-  title: '인프라는 시스템을 이해하고 병목을 줄입니다',
-  section: '3부 · 커리어를 설계하다',
-  subsection: '영역별 역량',
-  maxStep: 2,
+  "id": "career-domain",
+  "title": "문제를 정의하는 능력이 더 중요해집니다",
+  "section": "3부 · 커리어를 설계하다",
+  "maxStep": 2,
+  "subsection": "역할의 변화"
 } satisfies SlideMetadata;
 
 export default function Slide052({ step, instant }: SlideProps) {
-  return <div className="industry-content career-domain-slide career-infra-experience">
-    <Heading eyebrow="영역별 역량 / AI 컴퓨팅·인프라">인프라는 시스템을 이해하고 병목을 줄입니다</Heading>
-    <CareerDomainNav active="infra" />
+  const showDefinition = step >= 1;
+  const showCriteria = step >= 2;
 
-    <div className="career-infra-layout">
-      <section className="career-infra-question">
-        <p className="career-domain-label">시스템을 보는 질문</p>
-        <h2>시간은 어디에 쓰이고,<br />자원은 어떻게 움직일까?</h2>
-        <div className="career-infra-observe">
-          <svg viewBox="0 0 96 96" aria-hidden="true">
-            <rect x="24" y="24" width="48" height="48" rx="5" />
-            <path d="M36 24V12M48 24V12M60 24V12M36 72V84M48 72V84M60 72V84M24 36H12M24 48H12M24 60H12M72 36H84M72 48H84M72 60H84" />
-            <path className="career-infra-chip-code" d="M42 39L33 48L42 57M54 39L63 48L54 57" />
-          </svg>
-          <p><strong>실행을 측정하고</strong><br />병목의 원인을 찾습니다.</p>
-        </div>
-        <p className="career-infra-condition" style={reveal(step >= 2, instant, 'none')} aria-hidden={step < 2}>측정 조건 명시 · 정확성 유지</p>
-      </section>
+  return <div className="industry-content career-s05">
+    <Heading eyebrow="역할의 변화 / 무엇을 풀 것인가" subtitle="실행이 쉬워질수록, 풀어야 할 문제를 정확히 정하는 일이 중요합니다.">문제를 정의하는 능력이 더 중요해집니다</Heading>
 
-      <section className="career-domain-foundation career-infra-skills" style={reveal(step >= 1, instant, 'translateY(8px)')} aria-hidden={step < 1}>
-        <p className="career-domain-label">더 깊게 배울 기반</p>
-        <h2>로우레벨·시스템 지식</h2>
-        <ul>
-          <li>C/C++ · <ReferenceLink to="CUDA">CUDA</ReferenceLink> · 컴파일러</li>
-          <li>메모리 · 병렬 처리</li>
-          <li>운영체제 · 네트워크 · 분산 시스템</li>
-          <li>컴퓨터 구조 · 반도체 설계</li>
-        </ul>
-      </section>
+    <div className="c05-composition">
+      <div className="c05-possibilities">
+        <p className="c05-label">넓어진 실행 범위</p>
+        <h2>AI로 무엇을<br />만들 수 있을까?</h2>
+        <p className="c05-examples">코드 · 문서 · 화면 · 자동화</p>
+      </div>
+
+      <svg className="c05-arrow" viewBox="0 0 80 60" aria-hidden="true" style={reveal(showDefinition, instant, 'none')}>
+        <path d="M7 30H69M53 14L69 30L53 46" />
+      </svg>
+
+      <div className="c05-answer">
+        <ReferenceLink to="곡성 명대사" className="c05-meme" style={reveal(!showDefinition, instant, 'none')} aria-hidden={showDefinition}>
+          <img src="/slides/052/what-matters-meme.jpg" width="300" height="171" alt="곡성에서 아버지를 바라보는 김환희" />
+          <span>뭣이 중헌디?</span>
+        </ReferenceLink>
+        <section className="c05-definition" aria-label="문제 정의에서 답할 질문" style={reveal(showDefinition, instant, 'translateY(6px)')} aria-hidden={!showDefinition}>
+          <header><p className="c05-label">무엇을 해결해야 할까?</p><h2>문제 정의</h2></header>
+          <dl>
+            <div><dt>대상과 불편</dt><dd>누가, 어떤 불편을 겪는가?</dd></div>
+            <div><dt>원하는 변화</dt><dd>무엇이 달라져야 하는가?</dd></div>
+            <div className="c05-criteria" style={reveal(showCriteria, instant, 'translateY(5px)')} aria-hidden={!showCriteria}><dt>확인 기준</dt><dd>어떤 결과로 확인할 것인가?</dd></div>
+          </dl>
+        </section>
+      </div>
     </div>
 
-    <div className="career-domain-evidence" style={reveal(step >= 2, instant, 'translateY(6px)')} aria-hidden={step < 2}>
-      <span>역량을 보여 줄 경험</span><p>병목 분석 · <strong>개선 전후 측정</strong> · 테스트 기록</p>
-    </div>
+    <p className="c05-takeaway" style={reveal(showCriteria, instant, 'translateY(6px)')} aria-hidden={!showCriteria}>
+      AI와 실행할 방향을 정하는 역량, <strong>문제 정의 능력</strong>이 중요해집니다.
+    </p>
   </div>;
 }

@@ -3,94 +3,77 @@ import './023.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "industry-firmware-compiler",
-  "title": "장치를 제어하고 연산을 최적화하기",
+  "id": "industry-hardware",
+  "title": "가속기, HBM, SRAM",
   "section": "1부 · 산업을 읽다",
-  "maxStep": 1,
+  "maxStep": 2,
   "subsection": "인프라"
 } satisfies SlideMetadata;
 
 export default function Slide023({ step, instant }: SlideProps) {
-  const showFirmware = step >= 1;
-  const laneStyle = {
-    transform: showFirmware ? 'translateY(0)' : 'translateY(54px)',
-    transition: instant ? 'none' : 'transform 550ms cubic-bezier(.2,.7,.2,1)',
-  };
+  const memoryPath = step >= 1;
+  const balanced = step >= 2;
 
-  return <div className="industry-content industry-s19" data-instant={instant} data-step={showFirmware ? 1 : 0}>
-    <Heading eyebrow="AI 인프라 / Firmware & Compiler">하드웨어 실행에도 소프트웨어가 필요합니다</Heading>
+  return <div className="industry-content industry-s20" data-instant={instant} data-balanced={balanced}>
+    <Heading eyebrow="AI 인프라 / 하드웨어">계산만큼 중요한 데이터 공급</Heading>
 
-    <div className="industry-visual s19-visual">
-      <svg viewBox="0 0 1040 360" role="group" aria-labelledby="s19-title s19-desc">
-        <title id="s19-title">모델 연산을 바꾸는 컴파일러와 장치를 제어하는 펌웨어</title>
-        <desc id="s19-desc">XLA 같은 ML 컴파일러는 모델의 연산을 대상 하드웨어에 맞게 변환하고 최적화합니다. 연산 묶기는 그 방법 중 하나입니다.{showFirmware ? ' GPU 내부에서 실행되는 NVIDIA GSP 펌웨어는 GPU 초기화와 관리를 담당합니다. 컴파일러와 펌웨어는 서로 다른 역할입니다.' : ''}</desc>
-        <defs>
-          <marker id="s19-arrow" viewBox="0 0 8 8" refX="6.5" refY="4" markerWidth="6" markerHeight="6" orient="auto" overflow="visible">
-            <path d="M1 1 L7 4 L1 7" fill="none" stroke="context-stroke" strokeWidth="1.5" />
-          </marker>
-        </defs>
+    <div className="s20-hardware">
+      <figure className="s20-hbm">
+        <div className="s20-photo">
+          <ReferenceLink to="삼성전자 HBM" className="reference-block"><img src="/shared/samsung-hbm4.png" alt="삼성전자가 공개한 HBM4 메모리 제품 이미지" /></ReferenceLink>
+        </div>
+        <figcaption>삼성전자 HBM4 · 공식 제품 이미지</figcaption>
+        <div className="s20-memory-label"><h2>HBM</h2><p>데이터를 공급하는<br />고대역폭 적층 DRAM</p></div>
+        <p className="s20-companies"><ReferenceLink to="삼성전자 HBM">삼성전자</ReferenceLink>{' · '}<ReferenceLink to="SK hynix">SK hynix</ReferenceLink></p>
+      </figure>
 
-        <g className="s19-device">
-          <rect className="s19-device-outline" x="796" y="40" width="218" height="274" rx="22" />
-          {[81, 124, 167, 210, 253, 296].map(y => <path key={y} d={`M783 ${y} H796 M1014 ${y} H1027`} />)}
-          {[832, 875, 918, 961].map(x => <path key={x} d={`M${x} 27 V40 M${x} 314 V327`} />)}
-          <text className="s19-device-label" x="905" y="72" textAnchor="middle">GPU</text>
-        </g>
+      <div className="s20-chip-region">
+        <p className="s20-accelerator-label"><strong>GPU 가속기</strong><span><ReferenceLink to="NVIDIA">NVIDIA</ReferenceLink>{' · '}<ReferenceLink to="AMD">AMD</ReferenceLink></span></p>
+        <svg viewBox="0 0 700 310" role="img" aria-labelledby="s20-title s20-description">
+          <title id="s20-title">HBM과 GPU 내부 SRAM, 연산부의 관계</title>
+          <desc id="s20-description">HBM은 GPU 칩 외부의 메모리입니다. GPU 칩 내부에는 연산부와, 캐시 및 가까운 작업 공간으로 쓰이는 SRAM이 있습니다. 양쪽 화살표는 데이터의 이동을 단순화합니다. 실제 배치나 모든 메모리 계층을 나타내지 않습니다.</desc>
+          <defs>
+            <marker id="s20-arrow" viewBox="0 0 8 8" refX="6.8" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse" overflow="visible">
+              <path d="M1 1 L7 4 L1 7" fill="none" stroke="#b87927" strokeWidth="1.5" />
+            </marker>
+          </defs>
 
-        <g className="s19-compiler-lane" style={laneStyle}>
-          <text className="s19-lane-heading" x="146" y="48" textAnchor="middle">모델의 연산</text>
-          <text className="s19-role" x="405" y="48" textAnchor="middle">ML 컴파일러</text>
-          <ReferenceLink to="XLA"><text className="s19-source" x="405" y="73" textAnchor="middle">OpenXLA · XLA</text></ReferenceLink>
+          <path className="s20-chip-shadow" d="M136 48H641L666 73V276H161L136 251Z" />
+          <rect className="s20-chip-outline" x="124" y="37" width="516" height="216" rx="19" />
+          <g className="s20-pins" aria-hidden="true">
+            {[164, 212, 260, 308, 356, 404, 452, 500, 548, 596].map(x => <path key={x} d={`M${x} 24V37M${x} 253V267`} />)}
+            {[77, 112, 147, 182, 217].map(y => <path key={y} d={`M111 ${y}H124M640 ${y}H653`} />)}
+          </g>
+          <text className="s20-boundary-label" x="151" y="66">GPU 칩 내부</text>
 
-          <g className="s19-operation-chain">
-            {[62, 146, 230].map((x, index) => <g key={x}>
-              <circle cx={x} cy="126" r="29" />
-              <text x={x} y="133" textAnchor="middle">연산</text>
-              {index < 2 && <path className="s19-flow" d={`M${x + 30} 126 H${x + 49}`} markerEnd="url(#s19-arrow)" />}
-            </g>)}
+          <g className="s20-compute">
+            <g className="s20-compute-array" aria-hidden="true">
+              {[0, 1, 2].flatMap(row => [0, 1, 2, 3].map(column => <rect key={`${row}-${column}`} x={448 + column * 35} y={91 + row * 29} width="25" height="19" rx="3" />))}
+            </g>
+            <text className="s20-compute-title" x="513" y="207" textAnchor="middle">연산부</text>
           </g>
 
-          <path className="s19-flow s19-main-flow" d="M270 126 H326" markerEnd="url(#s19-arrow)" />
-          <path className="s19-compiler-mark" d="M357 99 L380 126 L357 153 M398 99 L421 126 L398 153 M439 99 L462 126 L439 153" />
-          <path className="s19-flow s19-main-flow" d="M483 126 H530" markerEnd="url(#s19-arrow)" />
-
-          <text className="s19-lane-heading" x="638" y="48" textAnchor="middle">하드웨어에 맞게</text>
-          <rect className="s19-fused-outline" x="552" y="93" width="173" height="66" rx="33" />
-          <g className="s19-fused-operations" aria-hidden="true">
-            <path d="M592 126 H685" />
-            {[592, 638, 685].map(x => <circle key={x} cx={x} cy="126" r="9" />)}
+          <g className="s20-sram" style={reveal(memoryPath, instant, 'none')} aria-hidden={!memoryPath}>
+            <rect className="s20-sram-outline" x="177" y="91" width="151" height="130" rx="12" />
+            <path className="s20-sram-lines" d="M195 109H310M195 117H310M195 125H310" aria-hidden="true" />
+            <text className="s20-sram-title" x="252" y="166" textAnchor="middle">SRAM</text>
+            <text className="s20-sram-copy" x="252" y="193" textAnchor="middle">가까운 작업 공간</text>
           </g>
-          <text className="s19-detail" x="638" y="191" textAnchor="middle">연산 묶기 등으로 최적화</text>
-          <path className="s19-flow s19-main-flow" d="M737 126 H825" markerEnd="url(#s19-arrow)" />
 
-          <g className="s19-execution">
-            <path d="M849 99 H965 M849 153 H965" />
-            <text x="906" y="134" textAnchor="middle">연산 실행</text>
+          <g className="s20-data-path" style={reveal(memoryPath, instant, 'none')} aria-hidden={!memoryPath}>
+            <path d="M12 155H162" markerStart="url(#s20-arrow)" markerEnd="url(#s20-arrow)" />
+            <path d="M344 155H428" markerStart="url(#s20-arrow)" markerEnd="url(#s20-arrow)" />
+            <text className="s20-transfer-label" x="62" y="128" textAnchor="middle">데이터 이동</text>
           </g>
-          <text className="s19-detail" x="405" y="191" textAnchor="middle">변환 · 최적화</text>
-        </g>
 
-        <g className="s19-firmware-lane" style={reveal(showFirmware, instant, 'translateY(10px)')} aria-hidden={!showFirmware}>
-          <path className="s19-separator" d="M33 220 H739" />
-          <text className="s19-role s19-firmware-role" x="34" y="269">펌웨어</text>
-          <text className="s19-firmware-copy" x="34" y="300">장치 초기화 · 관리</text>
-          <text className="s19-control-caption" x="536" y="263" textAnchor="middle">장치 내부를 제어</text>
-          <path className="s19-control-flow" d="M282 283 H830" markerEnd="url(#s19-arrow)" />
-          <rect className="s19-gsp" x="843" y="237" width="126" height="60" rx="12" />
-          <ReferenceLink to="NVIDIA GSP"><text className="s19-gsp-label" x="906" y="261" textAnchor="middle">NVIDIA GSP</text></ReferenceLink>
-          <text className="s19-gsp-detail" x="906" y="284" textAnchor="middle">펌웨어</text>
-          <path className="s19-internal-control" d="M906 227 V177" markerEnd="url(#s19-arrow)" />
-        </g>
-      </svg>
+          <text className="s20-diagram-caption" x="382" y="300" textAnchor="middle">메모리 관계를 단순화한 개념도 · 실제 배치·비율과 다름</text>
+        </svg>
+      </div>
     </div>
 
-    <div className="s19-takeaway">
-      <p style={reveal(!showFirmware, instant)} aria-hidden={showFirmware}>
-        <strong>컴파일러는 연산을 변환</strong>하고, 하드웨어에 맞게 최적화합니다.
-      </p>
-      <p style={reveal(showFirmware, instant)} aria-hidden={!showFirmware}>
-        <strong>컴파일러는 연산을 변환</strong>하고, <span>펌웨어는 장치를 제어합니다.</span>
-      </p>
+    <div className="s20-balance" style={reveal(balanced, instant, 'translateY(8px)')} aria-hidden={!balanced}>
+      <p>함께 봐야 할 것</p>
+      <div><strong>연산 성능</strong><span aria-hidden="true">/</span><strong>메모리 용량·대역폭</strong><span aria-hidden="true">/</span><strong>데이터 이동</strong></div>
     </div>
   </div>;
 }

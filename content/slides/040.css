@@ -1,25 +1,22 @@
-.workflow-s13 .industry-heading h1 { font-size: 3.3cqw; }
-.workflow-s13 .w13-visual { flex: 1; min-height: 0; display: flex; align-items: center; margin-top: .7cqw; }
-.workflow-s13 .w13-visual svg { display: block; width: 100%; height: 30cqw; overflow: visible; }
-.workflow-s13 .w13-track-title { font-size: 25px; font-weight: 750; letter-spacing: -.5px; }
-.workflow-s13 .w13-green { fill: var(--green); }
-.workflow-s13 .w13-blue { fill: var(--blue); }
-.workflow-s13 .w13-person { fill: #eaf3ed; stroke: #739580; stroke-width: 2.5; stroke-linecap: round; }
-.workflow-s13 .w13-person-label { fill: var(--ink); font-size: 24px; font-weight: 600; letter-spacing: -.5px; }
-.workflow-s13 .w13-request { fill: none; stroke: #82a493; stroke-width: 2.5; }
-.workflow-s13 .w13-flow-label { fill: var(--muted); font-size: 22px; font-weight: 550; }
-.workflow-s13 .w13-agent { fill: #eaf3ed; stroke: #a2bfad; stroke-width: 2; }
-.workflow-s13 .w13-agent-title { fill: var(--green); font-size: 28px; font-weight: 750; }
-.workflow-s13 .w13-agent-detail { fill: var(--ink); font-size: 22px; letter-spacing: -.5px; }
-.workflow-s13 .w13-output { fill: none; stroke: #789586; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
-.workflow-s13 .w13-divider { fill: none; stroke: var(--line); stroke-width: 1.5; }
-.workflow-s13 .w13-users { fill: #edf2fa; stroke: #8ca6c9; stroke-width: 2.2; stroke-linecap: round; }
-.workflow-s13 .w13-service-request { fill: none; stroke: var(--blue); stroke-width: 2.5; }
-.workflow-s13 .w13-service-response { fill: none; stroke: var(--green); stroke-width: 2.5; }
-.workflow-s13 .w13-service { fill: #edf2fa; stroke: #94adcf; stroke-width: 2; }
-.workflow-s13 .w13-service-title { fill: var(--blue); font-size: 27px; font-weight: 750; letter-spacing: -.8px; }
-.workflow-s13 .w13-service-detail { fill: var(--ink); font-size: 22px; letter-spacing: -.6px; }
-.workflow-s13 .w13-api-label { fill: var(--blue); font-size: 23px; font-weight: 700; }
-.workflow-s13 .w13-model { fill: #eaf3ed; stroke: #8eaf9a; stroke-width: 2; }
-.workflow-s13 .w13-model-label { fill: var(--green); font-size: 27px; font-weight: 750; letter-spacing: -.6px; }
-.workflow-s13 .w13-caption { margin: .8cqw 0 .4cqw; border-top: 1px solid var(--line); padding-top: 1.05cqw; color: var(--ink); font-size: 1.45cqw; line-height: 1.6; letter-spacing: -.035em; }
+.workflow-s14 .industry-heading h1 { font-size: 3.4cqw; }
+.workflow-s14 .w14-architecture { flex: 1; min-height: 0; display: flex; align-items: center; margin-top: .8cqw; }
+.workflow-s14 .w14-architecture svg { display: block; width: 100%; height: 30cqw; overflow: visible; }
+.workflow-s14 .w14-trigger circle, .workflow-s14 .w14-trigger path { fill: none; stroke: var(--green); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-s14 .w14-trigger text { fill: var(--green); font-size: 28px; font-weight: 650; letter-spacing: -1px; }
+.workflow-s14 .w14-start { fill: none; stroke: var(--green); stroke-width: 2.5; }
+.workflow-s14 .w14-job { fill: #e4f0e9; stroke: #8caf9b; stroke-width: 2; }
+.workflow-s14 .w14-job-symbol { fill: #177c68; }
+.workflow-s14 .w14-job-title { fill: var(--green); font-size: 29px; font-weight: 700; letter-spacing: -1.2px; }
+.workflow-s14 .w14-tickets rect { fill: #fffefa; stroke: #9baea3; stroke-width: 2; }
+.workflow-s14 .w14-tickets path { fill: none; stroke: #94a89c; stroke-width: 2.5; stroke-linecap: round; }
+.workflow-s14 .w14-node-title { fill: var(--ink); font-size: 28px; font-weight: 650; letter-spacing: -1px; }
+.workflow-s14 .w14-data, .workflow-s14 .w14-request, .workflow-s14 .w14-output { fill: none; stroke: var(--green); stroke-width: 2.5; }
+.workflow-s14 .w14-data-label, .workflow-s14 .w14-request-label { fill: var(--green); font-size: 23px; font-weight: 600; letter-spacing: -.7px; }
+.workflow-s14 .w14-api { fill: #edf2f8; stroke: #a8bdd6; stroke-width: 2; }
+.workflow-s14 .w14-api-title { fill: var(--blue); font-size: 28px; font-weight: 700; letter-spacing: -.8px; }
+.workflow-s14 .w14-answer { fill: none; stroke: var(--blue); stroke-width: 2.5; }
+.workflow-s14 .w14-answer-label { fill: var(--blue); font-size: 23px; font-weight: 600; }
+.workflow-s14 .w14-output-title { fill: var(--ink); font-size: 28px; font-weight: 650; letter-spacing: -1px; }
+.workflow-s14 .w14-storage path, .workflow-s14 .w14-storage ellipse { fill: none; stroke: var(--green); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-s14 .w14-takeaway { margin: .6cqw 0 .3cqw; font-size: 1.45cqw; line-height: 1.6; letter-spacing: -.035em; }
+.workflow-s14 .w14-takeaway strong { color: var(--green); font-weight: 750; }

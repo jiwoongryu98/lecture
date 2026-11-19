@@ -1,27 +1,18 @@
-.career-contribution-flow .industry-heading h1 { font-size: 3.3cqw; }
-.career-contribution-flow .oss-flow-composition { flex: 1; min-height: 0; display: grid; align-items: center; margin-top: .8cqw; }
-.career-contribution-flow .oss-flow-composition > * { grid-area: 1 / 1; }
-.career-contribution-flow .oss-flow-meme { display: block; width: 55.7cqw; justify-self: center; border-radius: .5cqw; overflow: hidden; }
-.career-contribution-flow .oss-flow-meme img { display: block; width: 100%; height: auto; }
-.career-contribution-flow .oss-flow-composition svg { display: block; width: 100%; height: 29.7cqw; overflow: visible; }
-.career-contribution-flow .oss-flow-phase { fill: var(--muted); font-size: 21px; font-weight: 650; }
-.career-contribution-flow .oss-flow-rail { fill: none; stroke: #d4e0d7; stroke-width: 2; }
-.career-contribution-flow .oss-flow-number-bg { fill: #f0f5ef; stroke: #b2c8b8; stroke-width: 1.5; }
-.career-contribution-flow .oss-flow-number { fill: var(--green); font-size: 22px; font-weight: 700; }
-.career-contribution-flow .oss-flow-title { fill: var(--ink); font-size: 25px; font-weight: 700; letter-spacing: -.7px; }
-.career-contribution-flow .oss-flow-green { fill: var(--green); }
-.career-contribution-flow .oss-flow-detail { fill: var(--muted); font-size: 19px; letter-spacing: -.35px; }
-.career-contribution-flow .oss-flow-small { fill: var(--muted); font-size: 17px; letter-spacing: -.3px; }
-.career-contribution-flow .oss-flow-forward { fill: none; stroke: #7eaa93; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-.career-contribution-flow .oss-flow-paper { fill: #fbfdf8; stroke: #b0c6b6; stroke-width: 1.7; }
-.career-contribution-flow .oss-flow-paper-rule { fill: none; stroke: #d1ded4; stroke-width: 1.5; }
-.career-contribution-flow .oss-flow-paper-dot { fill: #b0c6b6; }
-.career-contribution-flow .oss-flow-pr { fill: var(--green); font-size: 42px; font-weight: 750; }
-.career-contribution-flow .oss-flow-paper-ink { fill: none; stroke: #bed1c3; stroke-width: 3; stroke-linecap: round; }
-.career-contribution-flow .oss-flow-review-number { fill: #e6f0e8; stroke: #9bbba7; }
-.career-contribution-flow .oss-flow-approval { fill: var(--green); font-size: 21px; font-weight: 650; letter-spacing: -.5px; }
-.career-contribution-flow .oss-flow-return { fill: none; stroke: #9bb5a4; stroke-width: 2; stroke-dasharray: 5 7; stroke-linecap: round; stroke-linejoin: round; }
-.career-contribution-flow .oss-flow-footer { display: flex; align-items: baseline; justify-content: space-between; gap: 2cqw; border-top: 1px solid var(--line); padding-top: 1cqw; margin: .7cqw 0 .3cqw; }
-.career-contribution-flow .oss-flow-footer p { margin: 0; font-size: 1.4cqw; line-height: 1.6; letter-spacing: -.035em; }
-.career-contribution-flow .oss-flow-footer strong { color: var(--green); }
-.career-contribution-flow .oss-flow-footer > a { flex-shrink: 0; color: var(--muted); font-size: .9cqw; line-height: 1.5; }
+.career-s14 .industry-heading h1 { font-size: 3.3cqw; }
+.career-s14 .industry-subtitle { margin-top: .8cqw; font-size: 1.35cqw; }
+.career-s14 .c14-case { flex: 1; min-height: 0; display: grid; grid-template-columns: 16cqw minmax(0, 1fr); align-items: center; gap: 3cqw; margin: 1.1cqw 2.5cqw .4cqw; }
+.career-s14 .c14-source { margin: 0; transform: rotate(-2deg); }
+.career-s14 .c14-source > a { display: block; padding: .45cqw; background: #fff; border: 1px solid #d8dfe4; box-shadow: 0 .35cqw 1cqw #263c4810; }
+.career-s14 .c14-source img { display: block; width: 100%; height: auto; }
+.career-s14 .c14-source figcaption { display: flex; justify-content: space-between; gap: .5cqw; margin-top: .8cqw; color: var(--muted); font-size: 1.02cqw; line-height: 1.5; }
+.career-s14 .c14-source figcaption > a { color: var(--green); text-decoration: none; border-bottom: 1px solid #b4cbbb; white-space: nowrap; }
+.career-s14 .c14-explanation { min-width: 0; }
+.career-s14 .c14-explanation svg { display: block; width: 100%; height: 22.8cqw; overflow: visible; }
+.career-s14 .c14-inputs > text { fill: var(--ink); font-family: inherit; font-size: 28px; font-weight: 500; letter-spacing: -.025em; }
+.career-s14 .c14-inputs > .c14-paper-title { fill: var(--green); font-size: 25px; font-weight: 650; }
+.career-s14 .c14-ai-label { fill: var(--green); font-family: inherit; font-size: 29px; font-weight: 700; }
+.career-s14 .c14-ai-title { fill: var(--ink); font-family: inherit; font-size: 29px; font-weight: 650; letter-spacing: -.04em; }
+.career-s14 .c14-scope { margin: .1cqw 0 0 2.3cqw; color: var(--muted); font-size: 1.05cqw; line-height: 1.5; letter-spacing: -.025em; }
+.career-s14 .c14-advice { display: flex; flex-shrink: 0; align-items: baseline; justify-content: center; gap: 1.7cqw; margin: .8cqw 2.5cqw .5cqw; padding: 1.2cqw 0 .4cqw; border-top: 1px solid var(--line); line-height: 1.5; letter-spacing: -.035em; }
+.career-s14 .c14-advice > span { color: var(--muted); font-size: 1.1cqw; }
+.career-s14 .c14-advice > strong { color: var(--ink); font-size: 1.8cqw; font-weight: 650; }

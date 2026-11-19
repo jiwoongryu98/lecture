@@ -1,9 +1,10 @@
 [
   {
-    "file": "di-system-map.png",
-    "credit": "Distributed Inference Field Guide · chrislryu",
-    "sourcePage": "https://chrislryu.github.io/di/",
-    "capturedAt": "2026-11-16",
-    "capture": "Playwright screenshot of the upper system map; network-integration section is outside the captured area."
+    "file": "roles.svg",
+    "sourceFile": "roles.dot",
+    "credit": "Lecture diagram generated with Graphviz",
+    "sourcePage": "https://chrislryu.github.io/di/architecture/vllm/",
+    "tool": "https://graphviz.org/",
+    "note": "A simplified teaching diagram of GPU communication and optional KV transfer; not an image or modification of the original Field Guide."
   }
 ]

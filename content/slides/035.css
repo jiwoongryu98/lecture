@@ -1,32 +1,49 @@
-.workflow-s08 .industry-heading h1 { font-size: 3.4cqw; }
-.workflow-s08 .w08-diagram { flex: 1; min-height: 0; display: flex; align-items: center; margin-top: .8cqw; }
-.workflow-s08 .w08-diagram svg { display: block; width: 100%; height: 29cqw; overflow: visible; }
-.workflow-s08 .w08-host { fill: #fafbf8; stroke: #9eb6ab; stroke-width: 2; }
-.workflow-s08 .w08-host-rule { stroke: #d5e1da; stroke-width: 1.5; }
-.workflow-s08 .w08-host-title { fill: var(--ink); font-size: 29px; font-weight: 700; letter-spacing: -1px; }
-.workflow-s08 .w08-model { fill: #edf1f7; stroke: #b1c0d2; stroke-width: 2; }
-.workflow-s08 .w08-model-title { fill: var(--blue); font-size: 27px; font-weight: 650; letter-spacing: -1px; }
-.workflow-s08 .w08-inner-link { fill: none; stroke: #a8bcb1; stroke-width: 2; }
-.workflow-s08 .w08-client { fill: #e8f2ed; stroke: #8eb5a2; stroke-width: 2; }
-.workflow-s08 .w08-client-top { fill: var(--green); font-size: 22px; font-weight: 700; }
-.workflow-s08 .w08-client-title { fill: var(--green); font-size: 21px; font-weight: 600; letter-spacing: -1px; }
-.workflow-s08 .w08-guide { fill: none; stroke: #d9e2df; stroke-width: 2; stroke-dasharray: 6 7; }
-.workflow-s08 .w08-server-base { fill: #f4f6f3; stroke: #b5c7bd; stroke-width: 2; }
-.workflow-s08 .w08-server-active { fill: #e4f0e9; stroke: #177c68; stroke-width: 2.5; }
-.workflow-s08 .w08-server-title { fill: var(--green); font-size: 28px; font-weight: 700; letter-spacing: -1px; }
-.workflow-s08 .w08-zone-label { fill: var(--muted); font-size: 21px; letter-spacing: -.5px; }
-.workflow-s08 .w08-tool circle { fill: #f2f5ee; stroke: #b6c6ac; stroke-width: 2; }
-.workflow-s08 .w08-tool path { fill: none; stroke: #738b5a; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-.workflow-s08 .w08-resource circle { fill: #edf2f8; stroke: #b4c3d8; stroke-width: 2; }
-.workflow-s08 .w08-resource path { fill: none; stroke: var(--blue); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-.workflow-s08 .w08-end-title { fill: var(--ink); font-size: 28px; font-weight: 650; letter-spacing: -1px; }
-.workflow-s08 .w08-end-detail { fill: var(--muted); font-size: 22px; letter-spacing: -.8px; }
-.workflow-s08 .w08-service-link { fill: none; stroke: #8cab9a; stroke-width: 2.5; }
-.workflow-s08 .w08-protocol-label { fill: var(--green); font-size: 23px; font-weight: 650; letter-spacing: -.7px; }
-.workflow-s08 .w08-connection { fill: none; stroke: var(--green); stroke-width: 3; }
-.workflow-s08 .w08-request { fill: none; stroke: var(--green); stroke-width: 2.5; }
-.workflow-s08 .w08-result { fill: none; stroke: var(--blue); stroke-width: 2.5; }
-.workflow-s08 .w08-request-label { fill: var(--green); font-size: 23px; font-weight: 650; }
-.workflow-s08 .w08-result-label { fill: var(--blue); font-size: 23px; font-weight: 650; }
-.workflow-s08 .w08-takeaway { margin: .7cqw 0 .5cqw; font-size: 1.5cqw; line-height: 1.6; letter-spacing: -.035em; }
-.workflow-s08 .w08-takeaway strong { color: var(--green); font-weight: 750; }
+.workflow-s09 .industry-heading h1 { font-size: 3.3cqw; }
+.workflow-s09 .w09-composition {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.1cqw;
+}
+.workflow-s09 .w09-notebook {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 79cqw;
+  min-height: 27cqw;
+  background: #fffefa;
+  border: 1px solid #ccd9d0;
+  border-bottom: .45cqw solid #c8d9cc;
+  border-radius: .4cqw 1.1cqw 1.1cqw .4cqw;
+  box-shadow: 0 .7cqw 1.4cqw #22354a0b;
+}
+.workflow-s09 .w09-notebook::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 50%;
+  width: 1.8cqw;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, #d9e3db66 48%, #b6c8ba66 50%, transparent);
+}
+.workflow-s09 .w09-identity-page { padding: 2.2cqw 3.2cqw 2cqw; }
+.workflow-s09 .w09-file-label { margin: 0 0 1.1cqw; color: var(--green); font-size: 1.2cqw; font-weight: 750; letter-spacing: .08em; }
+.workflow-s09 .w09-identity-page h2 { margin: 0; color: var(--ink); font-size: 2.55cqw; line-height: 1.35; letter-spacing: -.045em; }
+.workflow-s09 .w09-skill-name { margin: .65cqw 0 0; color: var(--muted); font-size: 1.1cqw; font-family: ui-monospace, monospace; }
+.workflow-s09 .w09-trigger { margin-top: 2.2cqw; }
+.workflow-s09 .w09-small-label { margin: 0 0 .55cqw; color: var(--muted); font-size: 1.05cqw; line-height: 1.4; }
+.workflow-s09 .w09-trigger > p:last-child { margin: 0; color: var(--ink); font-size: 1.5cqw; line-height: 1.6; letter-spacing: -.035em; }
+.workflow-s09 .w09-tool-reference { margin-top: 2cqw; padding-left: 1cqw; border-left: 2px solid #a1c1ad; }
+.workflow-s09 .w09-tool-reference code { display: block; color: var(--green); font-size: 1.12cqw; line-height: 1.7; white-space: nowrap; }
+.workflow-s09 .w09-procedure-page { position: relative; padding: 3cqw 2.6cqw 2cqw 3.2cqw; }
+.workflow-s09 .w09-procedure-label { margin: 0 0 1.45cqw; color: var(--green); font-size: 1.3cqw; font-weight: 700; letter-spacing: -.035em; }
+.workflow-s09 .w09-procedure-page ol { list-style: none; padding: 0; margin: 0; position: relative; transform-origin: left center; }
+.workflow-s09 .w09-procedure-page li { display: flex; align-items: center; min-height: 4cqw; gap: 1.1cqw; border-bottom: 1px solid #e0e7df; }
+.workflow-s09 .w09-procedure-page li > span { color: #86a491; font-size: 1.05cqw; font-variant-numeric: tabular-nums; font-weight: 650; }
+.workflow-s09 .w09-procedure-page li > p { margin: 0; color: var(--ink); font-size: 1.45cqw; line-height: 1.5; letter-spacing: -.04em; }
+.workflow-s09 .w09-reference { margin: 2.7cqw 0 0; color: var(--muted); font-size: 1.05cqw; line-height: 1.5; letter-spacing: -.025em; }
+.workflow-s09 .w09-artifact-caption { margin: .75cqw 0 0; color: var(--muted); font-size: 1.05cqw; line-height: 1.5; }
+.workflow-s09 .w09-takeaway { margin: 1cqw 0 .4cqw; font-size: 1.45cqw; line-height: 1.55; letter-spacing: -.035em; }
+.workflow-s09 .w09-takeaway strong { color: var(--green); font-weight: 750; }

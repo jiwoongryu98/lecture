@@ -1,73 +1,67 @@
-import { Heading, ReferenceLink, reveal, Takeaway, type SlideProps } from '../components/kit';
+import { Heading, ReferenceLink, Takeaway, type SlideProps } from '../components/kit';
 import './013.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "industry-product-decisions",
-  "title": "Zoom의 회의 전사·AI 요약",
+  "id": "industry-product-tech",
+  "title": "AI 제품의 기술과 도구",
   "section": "1부 · 산업을 읽다",
-  "maxStep": 3,
+  "maxStep": 0,
   "subsection": "제품"
 } satisfies SlideMetadata;
 
-export default function Slide013({ step, instant }: SlideProps) {
-  const showInteraction = step >= 1;
-  const showImplementation = step >= 2;
-  const showConditions = step >= 3;
+const groups = [
+  {
+    role: '자료를 생성에 활용',
+    kind: '방법',
+    tools: [{ name: 'RAG', note: '검색한 자료를 답변 생성에 활용' }],
+  },
+  {
+    role: '앱·에이전트 구성',
+    kind: '프레임워크',
+    tools: [
+      { name: 'LangChain', note: '모델·도구·프롬프트 조합' },
+      { name: 'LangGraph', note: '상태를 갖는 작업 흐름 구성' },
+      { name: 'LlamaIndex', note: '문서·데이터를 AI 작업에 연결' },
+    ],
+  },
+  {
+    role: '관련 자료 검색',
+    kind: '검색 소프트웨어',
+    tools: [
+      { name: 'pgvector', note: 'PostgreSQL에 벡터 검색 추가' },
+      { name: 'Qdrant', note: '벡터 유사도 검색·조건 필터링' },
+    ],
+  },
+  {
+    role: '구조 검증·관찰',
+    kind: '검증 라이브러리 · 관찰 도구',
+    tools: [
+      { name: 'Pydantic', note: '데이터의 형식·타입 검증' },
+      { name: 'Langfuse', note: '실행 기록·비용·평가 관찰' },
+    ],
+  },
+] as const;
 
-  return <div className="industry-content industry-s09" data-instant={instant} data-complete={showConditions}>
-    <Heading eyebrow="제품·활용 / 실제 제품 사례">회의 내용을 전사와 요약으로 남깁니다</Heading>
+export default function Slide013(_props: SlideProps) {
+  return <div className="industry-content industry-s10">
+    <Heading eyebrow="제품·활용 / 기술 찾아보기">제품을 구현하는 기술들</Heading>
 
-    <div className="industry-visual s09-case">
-      <figure className="s09-screen">
-        <div className="s09-screen-image">
-          <ReferenceLink to="Zoom AI Companion" className="reference-block"><img
-            src="/slides/013/zoom-meeting-assets-email.png"
-            alt="Zoom 공식 도움말의 회의 요약 메일 화면. Meeting summary 아래 Quick recap과 Next steps가 표시되어 있다."
-            width="2516"
-            height="1658"
-          /></ReferenceLink>
-          <div className="s09-summary-focus" style={reveal(showInteraction, instant, 'none')} aria-hidden="true" />
+    <div className="industry-visual s10-index" aria-label="AI 제품 개발에 쓰이는 방법과 소프트웨어의 역할별 예시">
+      {groups.map(({ role, kind, tools }) => <section className="s10-group" key={role} aria-label={role}>
+        <div className="s10-role">
+          <p className="s10-kind">{kind}</p>
+          <h2>{role}</h2>
         </div>
-        <figcaption>Zoom 공식 도움말 · 회의 요약 메일 화면</figcaption>
-      </figure>
-
-      <div className="s09-explanation">
-        <p className="s09-product"><ReferenceLink to="Zoom AI Companion">Zoom <strong>회의 전사·AI 요약</strong></ReferenceLink></p>
-        <h2>회의에 집중하고,<br /><strong>핵심은 요약으로 남기고</strong></h2>
-
-        <div className="s09-public-facts" aria-label="Zoom 공식 문서에 공개된 회의 요약 기능과 처리 흐름">
-          <div className="s09-fact s09-interaction" style={reveal(showInteraction, instant)} aria-hidden={!showInteraction}>
-            <span className="s09-step-mark" aria-hidden="true">01</span>
-            <div>
-              <p className="s09-question">사용자가 만나는 기능</p>
-              <p className="s09-feature"><strong>회의 전사·핵심 요약</strong></p>
-              <p className="s09-options">자동 시작·전사 저장은 설정에 따라</p>
-            </div>
-          </div>
-
-          <div className="s09-fact s09-models" style={reveal(showImplementation, instant)} aria-hidden={!showImplementation}>
-            <span className="s09-step-mark" aria-hidden="true">02</span>
-            <div>
-              <p className="s09-question">공개된 처리 흐름</p>
-              <p>회의 음성 <span className="s09-plus">→</span> 텍스트 정보</p>
-              <p><strong>텍스트 정보로 요약 생성</strong></p>
-            </div>
-          </div>
-
-          <div className="s09-fact s09-conditions" style={reveal(showConditions, instant)} aria-hidden={!showConditions}>
-            <span className="s09-step-mark" aria-hidden="true">03</span>
-            <div>
-              <p className="s09-question">업무로 이어지는 기능</p>
-              <p className="s09-quality"><strong>호스트 편집</strong><span>·</span><strong>공유 대상 설정</strong></p>
-            </div>
-          </div>
-        </div>
-      </div>
+        <dl className="s10-tools">
+          {tools.map(({ name, note }) => <div className="s10-tool" key={name}>
+            <dt><ReferenceLink to={name}>{name}</ReferenceLink></dt>
+            <dd>{note}</dd>
+          </div>)}
+        </dl>
+      </section>)}
     </div>
 
-    <div className="s09-takeaway" style={reveal(showConditions, instant)} aria-hidden={!showConditions}>
-      <Takeaway>익숙한 회의 흐름 안에, <strong>전사·요약·공유</strong>를 연결합니다.</Takeaway>
-    </div>
+    <Takeaway>제품에 필요한 <strong>자료 연결·작업 흐름·검색·검증</strong>의 역할에 맞춰 선택합니다.</Takeaway>
   </div>;
 }

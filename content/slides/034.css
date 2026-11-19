@@ -1,28 +1,32 @@
-.workflow-s07 .industry-heading h1 { font-size: 3.3cqw; }
-.workflow-s07 .w07-composition { flex: 1; min-height: 0; display: grid; grid-template-columns: 26cqw minmax(0, 1fr); gap: 5cqw; align-items: center; margin-top: 1.1cqw; }
-.workflow-s07 .w07-question-label { margin: 0 0 1.6cqw; color: var(--green); font-size: 1.1cqw; font-weight: 650; }
-.workflow-s07 .w07-question-scene { display: grid; align-items: center; min-height: 11.6cqw; }
-.workflow-s07 .w07-question-scene > * { grid-area: 1 / 1; }
-.workflow-s07 .w07-question-scene .w07-meme { margin: 0; color: var(--ink); font-size: 3.05cqw; line-height: 1.4; font-weight: 750; letter-spacing: -.065em; white-space: nowrap; }
-.workflow-s07 .w07-question h2 { margin: 0; font-size: 2.65cqw; color: var(--ink); line-height: 1.45; letter-spacing: -.055em; font-weight: 500; }
-.workflow-s07 .w07-question h2 strong { color: var(--green); font-weight: 750; }
-.workflow-s07 .w07-artifact-label { margin: 1.65cqw 0 0; color: var(--muted); font-size: 1.15cqw; line-height: 1.7; letter-spacing: -.035em; }
-.workflow-s07 .w07-manual { background: #fffefa; border: 1px solid #bdccc5; border-radius: .6cqw; box-shadow: .65cqw .75cqw 0 #eef2ed; padding: 1.7cqw 2.1cqw 1.2cqw; }
-.workflow-s07 .w07-manual-heading { display: flex; align-items: center; gap: 1.2cqw; }
-.workflow-s07 .w07-manual-mark { width: 3.5cqw; height: 3.5cqw; display: grid; place-items: center; flex-shrink: 0; background: #e8f2ed; border-radius: .6cqw; color: var(--green); font-family: ui-monospace, monospace; font-size: 1.6cqw; font-weight: 650; }
-.workflow-s07 .w07-manual-heading p { margin: 0 0 .4cqw; color: var(--muted); font-size: .95cqw; }
-.workflow-s07 .w07-manual-heading h2 { margin: 0; font-size: 1.8cqw; line-height: 1.3; color: var(--ink); letter-spacing: -.045em; }
-.workflow-s07 .w07-command { display: block; margin: 1.45cqw 0 0; padding: 1.05cqw 1.2cqw; border: 1px solid #dbe3de; background: #f2f5f1; border-radius: .35cqw; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 1.32cqw; line-height: 1.35; color: var(--ink); }
-.workflow-s07 .w07-definition-area { position: relative; height: 15cqw; margin-top: 1.1cqw; }
-.workflow-s07 .w07-undefined { position: absolute; inset: 0; padding-top: 1.1cqw; }
-.workflow-s07 .w07-undefined p { margin: 0 0 1.9cqw; color: var(--muted); font-size: 1.4cqw; }
-.workflow-s07 .w07-undefined span { display: block; height: .55cqw; margin-bottom: 1.7cqw; background: #e8eeea; border-radius: .3cqw; width: 83%; }
-.workflow-s07 .w07-undefined span:nth-of-type(2) { width: 66%; }
-.workflow-s07 .w07-undefined span:nth-of-type(3) { width: 75%; }
-.workflow-s07 .w07-definition { position: absolute; inset: 0; margin: 0; }
-.workflow-s07 .w07-definition > div { display: grid; grid-template-columns: 10.1cqw minmax(0, 1fr); gap: 1cqw; padding: 1.08cqw 0; align-items: baseline; }
-.workflow-s07 .w07-definition > div + div { border-top: 1px solid var(--line); }
-.workflow-s07 .w07-definition dt { color: var(--green); font-size: 1.14cqw; line-height: 1.45; font-weight: 650; }
-.workflow-s07 .w07-definition dd { margin: 0; color: var(--ink); font-size: 1.3cqw; line-height: 1.45; letter-spacing: -.035em; word-break: keep-all; }
-.workflow-s07 .w07-takeaway { flex-shrink: 0; border-top: 1px solid var(--line); margin: 1cqw 0 .4cqw; padding-top: 1.1cqw; font-size: 1.5cqw; line-height: 1.5; letter-spacing: -.035em; }
-.workflow-s07 .w07-takeaway strong { color: var(--green); font-weight: 700; }
+.workflow-s08 .industry-heading h1 { font-size: 3.4cqw; }
+.workflow-s08 .w08-diagram { flex: 1; min-height: 0; display: flex; align-items: center; margin-top: .8cqw; }
+.workflow-s08 .w08-diagram svg { display: block; width: 100%; height: 29cqw; overflow: visible; }
+.workflow-s08 .w08-host { fill: #fafbf8; stroke: #9eb6ab; stroke-width: 2; }
+.workflow-s08 .w08-host-rule { stroke: #d5e1da; stroke-width: 1.5; }
+.workflow-s08 .w08-host-title { fill: var(--ink); font-size: 29px; font-weight: 700; letter-spacing: -1px; }
+.workflow-s08 .w08-model { fill: #edf1f7; stroke: #b1c0d2; stroke-width: 2; }
+.workflow-s08 .w08-model-title { fill: var(--blue); font-size: 27px; font-weight: 650; letter-spacing: -1px; }
+.workflow-s08 .w08-inner-link { fill: none; stroke: #a8bcb1; stroke-width: 2; }
+.workflow-s08 .w08-client { fill: #e8f2ed; stroke: #8eb5a2; stroke-width: 2; }
+.workflow-s08 .w08-client-top { fill: var(--green); font-size: 22px; font-weight: 700; }
+.workflow-s08 .w08-client-title { fill: var(--green); font-size: 21px; font-weight: 600; letter-spacing: -1px; }
+.workflow-s08 .w08-guide { fill: none; stroke: #d9e2df; stroke-width: 2; stroke-dasharray: 6 7; }
+.workflow-s08 .w08-server-base { fill: #f4f6f3; stroke: #b5c7bd; stroke-width: 2; }
+.workflow-s08 .w08-server-active { fill: #e4f0e9; stroke: #177c68; stroke-width: 2.5; }
+.workflow-s08 .w08-server-title { fill: var(--green); font-size: 28px; font-weight: 700; letter-spacing: -1px; }
+.workflow-s08 .w08-zone-label { fill: var(--muted); font-size: 21px; letter-spacing: -.5px; }
+.workflow-s08 .w08-tool circle { fill: #f2f5ee; stroke: #b6c6ac; stroke-width: 2; }
+.workflow-s08 .w08-tool path { fill: none; stroke: #738b5a; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-s08 .w08-resource circle { fill: #edf2f8; stroke: #b4c3d8; stroke-width: 2; }
+.workflow-s08 .w08-resource path { fill: none; stroke: var(--blue); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-s08 .w08-end-title { fill: var(--ink); font-size: 28px; font-weight: 650; letter-spacing: -1px; }
+.workflow-s08 .w08-end-detail { fill: var(--muted); font-size: 22px; letter-spacing: -.8px; }
+.workflow-s08 .w08-service-link { fill: none; stroke: #8cab9a; stroke-width: 2.5; }
+.workflow-s08 .w08-protocol-label { fill: var(--green); font-size: 23px; font-weight: 650; letter-spacing: -.7px; }
+.workflow-s08 .w08-connection { fill: none; stroke: var(--green); stroke-width: 3; }
+.workflow-s08 .w08-request { fill: none; stroke: var(--green); stroke-width: 2.5; }
+.workflow-s08 .w08-result { fill: none; stroke: var(--blue); stroke-width: 2.5; }
+.workflow-s08 .w08-request-label { fill: var(--green); font-size: 23px; font-weight: 650; }
+.workflow-s08 .w08-result-label { fill: var(--blue); font-size: 23px; font-weight: 650; }
+.workflow-s08 .w08-takeaway { margin: .7cqw 0 .5cqw; font-size: 1.5cqw; line-height: 1.6; letter-spacing: -.035em; }
+.workflow-s08 .w08-takeaway strong { color: var(--green); font-weight: 750; }

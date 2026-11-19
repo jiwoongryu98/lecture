@@ -1,67 +1,9 @@
-.introduction-website .industry-heading h1 { font-size: 3.2cqw; }
-.introduction-website .website-intro-layout {
-  display: grid;
-  grid-template-columns: 54cqw minmax(0, 1fr);
-  gap: 3.8cqw;
-  align-items: center;
-  margin-top: 1.8cqw;
-}
-.introduction-website .website-intro-screen { margin: 0; min-width: 0; }
-.introduction-website .website-intro-screen img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: 1px solid #d9e2df;
-  border-radius: .65cqw;
-  box-shadow: 0 .65cqw 1.6cqw #22354a12;
-}
-.introduction-website .website-intro-screen figcaption {
-  margin-top: .7cqw;
-  color: var(--muted);
-  font-size: .9cqw;
-  line-height: 1.4;
-}
-.introduction-website .website-intro-context { min-width: 0; padding-bottom: 1.7cqw; }
-.introduction-website .website-intro-label {
-  margin: 0 0 .5cqw;
-  color: var(--muted);
-  font-size: 1cqw;
-  line-height: 1.4;
-}
-.introduction-website .website-intro-context h2 {
-  margin: 0;
-  color: var(--green);
-  font-size: 2.65cqw;
-  line-height: 1.2;
-  letter-spacing: -.045em;
-}
-.introduction-website .website-intro-detail {
-  margin: .7cqw 0 0;
-  color: var(--ink);
-  font-size: 1.12cqw;
-  line-height: 1.6;
-}
-.introduction-website .website-intro-hosting { margin-top: 2.1cqw; }
-.introduction-website .website-intro-hosting h2 { color: #bd6225; letter-spacing: -.025em; }
-.introduction-website .website-intro-source {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1cqw;
-  margin-top: 2.1cqw;
-  padding-top: 1.3cqw;
-  border-top: 1px solid var(--line);
-}
-.introduction-website .website-intro-source-link {
-  margin: 0;
-  color: var(--green);
-  font-size: 1.3cqw;
-  font-weight: 650;
-  line-height: 1.5;
-  white-space: nowrap;
-}
-.introduction-website .website-intro-source-link span { margin-left: .25cqw; }
-.introduction-website .website-intro-navigation { margin-top: .9cqw; }
-.introduction-website .website-intro-navigation p { margin: 0; color: var(--ink); font-size: 1.18cqw; line-height: 1.5; }
-.introduction-website .website-intro-navigation strong { color: var(--green); font-weight: 750; }
-.introduction-website .website-intro-navigation p > span { margin: 0 .8cqw; color: #92a49e; }
+.lecture-agenda .industry-heading h1 { font-size: 3.7cqw; }
+.lecture-agenda .agenda-sessions { flex: 1; display: flex; flex-direction: column; justify-content: center; margin: 1.7cqw 0; padding: 0; list-style: none; }
+.lecture-agenda .agenda-sessions li { display: grid; grid-template-columns: 5cqw 28cqw 1fr; gap: 1.8cqw; align-items: center; padding: 2.9cqw 0; border-bottom: 1px solid var(--line); }
+.lecture-agenda .agenda-sessions li:first-child { border-top: 1px solid var(--line); }
+.lecture-agenda .agenda-session-number { color: var(--green); font-size: 1.2cqw; font-weight: 650; }
+.lecture-agenda .agenda-sessions h2 { margin: 0; color: var(--ink); font-size: 2.7cqw; font-weight: 650; letter-spacing: -.045em; }
+.lecture-agenda .agenda-sessions p { margin: 0; color: var(--muted); font-size: 1.45cqw; line-height: 1.6; letter-spacing: -.035em; }
+.lecture-agenda .agenda-pacing { margin: 0 0 .5cqw; color: var(--muted); font-size: 1.1cqw; line-height: 1.6; }
+.lecture-agenda .agenda-pacing strong { color: var(--green); font-weight: 550; }

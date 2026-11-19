@@ -17,7 +17,7 @@ test('logos, cards, and SVG research links open a new tab without moving the sli
   for (const { index, step, selector, url, keyboard } of cases) {
     await page.goto(`/?index=${index}&step=${step}`);
     const slide = page.locator('article.slide');
-    await expect(slide).toHaveAttribute('data-index', String(index));
+    await expect(slide).toHaveAttribute('data-index', String(index - 1));
     await expect(slide).toHaveAttribute('data-step', String(step));
     const reference = slide.locator(selector);
     const popupPromise = page.waitForEvent('popup');
@@ -31,7 +31,7 @@ test('logos, cards, and SVG research links open a new tab without moving the sli
     await expect(popup).toHaveURL(url);
     expect(await popup.evaluate(() => window.opener)).toBeNull();
     await popup.close();
-    await expect(slide).toHaveAttribute('data-index', String(index));
+    await expect(slide).toHaveAttribute('data-index', String(index - 1));
     await expect(slide).toHaveAttribute('data-step', String(step));
     await expect(page).toHaveURL(new RegExp(`\\?index=${index}&step=${step}$`));
   }

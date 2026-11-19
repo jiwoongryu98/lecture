@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { move, positionFromSearch } from '../../shared/deck';
 import type { Position } from '../../shared/deck';
+import { toLinkIndex } from '../../shared/presentation';
 import type { SlideTransition } from './slide';
 
 interface PresentationState {
@@ -25,7 +26,7 @@ export function usePresentation() {
       fragment.delete('key');
       url.hash = fragment.toString();
     }
-    url.searchParams.set('index', String(state.position.index));
+    url.searchParams.set('index', String(toLinkIndex(state.position.index)));
     url.searchParams.set('step', String(state.position.step));
     if (url.href !== location.href) history.replaceState(null, '', url);
   }, [state.position]);

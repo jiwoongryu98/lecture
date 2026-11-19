@@ -1,33 +1,78 @@
-.industry-s08 .industry-heading h1 { font-size: 3.5cqw; }
-.industry-s08 .industry-subtitle { font-size: 1.12cqw; }
-.industry-s08 .s08-role-map { flex: 0 0 auto; margin: 1.05cqw 0 0; }
-.industry-s08 .s08-role-map svg { display: block; width: 100%; height: 24.8cqw; overflow: visible; }
-.industry-s08 .s08-role-map figcaption { margin: .1cqw 0 0; font-size: .85cqw; color: var(--muted); text-align: right; line-height: 1.4; }
-.industry-s08 .s08-ground-link { fill: none; stroke: #dae3df; stroke-width: 2; stroke-dasharray: 5 8; }
-.industry-s08 .s08-context-ground { fill: #eff5ed; }
-.industry-s08 .s08-tech-ground { fill: #edf2f9; }
-.industry-s08 .s08-customer-building { fill: #fffefa; stroke: #81a58b; stroke-width: 2.2; stroke-linejoin: round; }
-.industry-s08 .s08-running-system rect { fill: #fffefa; stroke: #7f9ec6; stroke-width: 2.1; }
-.industry-s08 .s08-running-system path { fill: none; stroke: #7f9ec6; stroke-width: 2; stroke-linecap: round; }
-.industry-s08 .s08-end-title { font-size: 22px; font-weight: 750; fill: var(--ink); letter-spacing: -.04em; }
-.industry-s08 .s08-end-detail { font-size: 15px; fill: var(--muted); letter-spacing: -.025em; }
-.industry-s08 .s08-connection { fill: none; stroke: var(--green); stroke-width: 3.3; }
-.industry-s08 .s08-feedback { fill: none; stroke: #b3cec0; stroke-width: 1.8; }
-.industry-s08 .s08-role-label { fill: var(--green); font-size: 22px; font-weight: 700; letter-spacing: -.04em; }
-.industry-s08 .s08-role-leader { fill: none; stroke: #b6cdc0; stroke-width: 1.5; }
-.industry-s08 .s08-fde-halo { fill: #fffefa; }
-.industry-s08 .s08-fde-core { fill: #e3f0e8; stroke: #7da991; stroke-width: 2; }
-.industry-s08 .s08-fde-name { fill: var(--green); font-size: 51px; font-weight: 780; letter-spacing: -.05em; }
-.industry-s08 .s08-fde-action { fill: #4e7562; font-size: 18px; font-weight: 600; letter-spacing: -.04em; }
-.industry-s08 .s08-evidence { display: grid; grid-template-columns: 17cqw minmax(0, 1fr); gap: 1.5cqw; align-items: center; border-top: 1px solid var(--line); padding-top: .9cqw; margin-top: .8cqw; }
-.industry-s08 .s08-evidence > div { display: flex; align-items: baseline; gap: .85cqw; }
-.industry-s08 .s08-evidence > div span { font-size: .95cqw; color: var(--muted); }
-.industry-s08 .s08-evidence > div strong { font-size: 1.4cqw; color: var(--ink); letter-spacing: -.04em; }
-.industry-s08 .s08-evidence p { margin: 0; display: flex; flex-direction: column; gap: .25cqw; }
-.industry-s08 .s08-evidence p strong { color: var(--ink); font-size: 1.15cqw; font-weight: 650; letter-spacing: -.025em; line-height: 1.4; }
-.industry-s08 .s08-evidence p span { color: var(--muted); font-size: .95cqw; line-height: 1.4; }
-.industry-s08 .s08-viewpoint { display: flex; gap: 1.4cqw; align-items: baseline; margin-top: 1cqw; }
-.industry-s08 .s08-viewpoint > span { color: var(--green); font-size: .95cqw; font-weight: 700; white-space: nowrap; }
-.industry-s08 .s08-viewpoint p { margin: 0; color: var(--ink); font-size: 1.35cqw; line-height: 1.5; letter-spacing: -.035em; }
-.industry-s08 .s08-viewpoint p strong { color: var(--green); }
-.industry-s08[data-instant="true"] * { transition: none !important; }
+.industry-s09 .industry-heading h1 { font-size: 3.35cqw; }
+.industry-s09 .s09-case {
+  display: grid;
+  grid-template-columns: 45cqw minmax(0, 1fr);
+  align-items: start;
+  column-gap: 2.8cqw;
+  flex: 0 0 auto;
+  margin-top: 1.8cqw;
+}
+.industry-s09 .s09-screen { margin: 0; }
+.industry-s09 .s09-screen-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: .55cqw;
+  background: #f2f5fa;
+  box-shadow: 0 .55cqw 1.6cqw #22354a16;
+}
+.industry-s09 .s09-screen img { display: block; width: 100%; height: auto; }
+.industry-s09 .s09-summary-focus {
+  position: absolute;
+  top: 44.5%;
+  left: 37.5%;
+  width: 54%;
+  height: 12%;
+  border: .18cqw solid #a6e2cd;
+  border-radius: .4cqw;
+  box-shadow: 0 0 0 .18cqw #177c682b;
+  pointer-events: none;
+}
+.industry-s09 .s09-screen figcaption {
+  margin-top: .65cqw;
+  color: var(--muted);
+  font-size: .9cqw;
+  line-height: 1.4;
+}
+.industry-s09 .s09-explanation { padding-top: .2cqw; min-width: 0; }
+.industry-s09 .s09-product { margin: 0; color: var(--green); font-size: 1.05cqw; line-height: 1.4; }
+.industry-s09 .s09-product strong { font-weight: 800; }
+.industry-s09 .s09-explanation h2 {
+  margin: .7cqw 0 0;
+  color: var(--ink);
+  font-size: 2.05cqw;
+  line-height: 1.38;
+  letter-spacing: -.05em;
+  font-weight: 500;
+  word-break: keep-all;
+}
+.industry-s09 .s09-explanation h2 strong { color: var(--green); font-weight: 800; }
+.industry-s09 .s09-public-facts { position: relative; margin-top: 1.55cqw; }
+.industry-s09 .s09-fact {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.2cqw minmax(0, 1fr);
+  gap: .65cqw;
+  padding: .75cqw 0 .9cqw;
+  border-top: 1px solid var(--line);
+}
+.industry-s09 .s09-step-mark {
+  padding-top: .06cqw;
+  color: #8c9b9f;
+  font-size: .92cqw;
+  font-weight: 700;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+.industry-s09 .s09-fact p { margin: 0; font-size: 1.18cqw; line-height: 1.6; color: var(--ink); }
+.industry-s09 .s09-fact .s09-question { margin-bottom: .35cqw; color: var(--muted); font-size: .95cqw; line-height: 1.4; }
+.industry-s09 .s09-fact .s09-feature { color: var(--green); font-size: 1.35cqw; }
+.industry-s09 .s09-fact .s09-options { margin-top: .3cqw; color: var(--muted); font-size: 1cqw; }
+.industry-s09 .s09-plus { color: #89979e; font-weight: 500; }
+.industry-s09 .s09-models strong { color: var(--blue); font-weight: 750; }
+.industry-s09 .s09-conditions { border-top-color: #93b8a6; padding-top: .85cqw; }
+.industry-s09 .s09-conditions .s09-step-mark { color: var(--green); }
+.industry-s09 .s09-fact .s09-quality { display: flex; align-items: center; gap: .65cqw; color: var(--green); font-size: 1.35cqw; }
+.industry-s09 .s09-quality > span { color: #7ca48e; }
+.industry-s09 .s09-takeaway { margin-top: 1.3cqw; padding-top: .2cqw; border-top: 1px solid var(--line); }
+.industry-s09 .industry-takeaway { margin-top: .75cqw; text-align: center; font-size: 1.25cqw; }
+.industry-s09[data-instant="true"] * { transition: none !important; }

@@ -3,69 +3,38 @@ import './055.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "career-goals",
-  "title": "포트폴리오는 문제 선택에서 시작합니다",
+  "id": "career-portfolio",
+  "title": "포트폴리오에 문제·실행·검증을 담습니다",
   "section": "3부 · 커리어를 설계하다",
   "maxStep": 2,
   "subsection": "포트폴리오"
 } satisfies SlideMetadata;
 
 export default function Slide055({ step, instant }: SlideProps) {
-  const goal = step >= 1;
-  const judgment = step >= 2;
-
-  return <div className="industry-content career-s01">
-    <Heading eyebrow="포트폴리오 / 목표와 문제 선택">포트폴리오는 문제 선택에서 시작합니다</Heading>
-
-    <div className="c01-composition">
-      <svg viewBox="0 0 1100 360" role="img" aria-label="다양한 코드와 문서, 화면을 만들 수 있을 때, 풀고 싶은 문제를 정해 방향을 선택하는 모습">
-        <defs>
-          <marker id="career-s01-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-            <path d="M2 1L8 5L2 9" fill="none" stroke="#177c68" strokeWidth="1.8" />
-          </marker>
-        </defs>
-
-        <g className="c01-outputs">
-          <g className="c01-screen" transform="translate(85 47)">
-            <rect width="218" height="124" rx="12" />
-            <path d="M0 31H218" />
-            <circle cx="17" cy="16" r="3" />
-            <circle cx="29" cy="16" r="3" />
-            <circle cx="41" cy="16" r="3" />
-            <path className="c01-screen-ink" d="M23 56H126M23 76H159M23 96H113" />
-          </g>
-          <g className="c01-code" transform="translate(94 207)">
-            <rect width="218" height="85" rx="11" />
-            <path d="M45 28L29 43L45 58M89 28L105 43L89 58M73 22L61 64M129 36H180M129 53H161" />
-          </g>
-          <g className="c01-document" transform="translate(245 107) rotate(6 49 70)">
-            <path d="M0 0H65L96 31V137H0ZM65 0V31H96" />
-            <path className="c01-document-ink" d="M20 54H76M20 75H63M20 96H76M20 117H51" />
-          </g>
-        </g>
-        <text className="c01-outputs-label" x="213" y="337" textAnchor="middle">코드·문서·화면</text>
-
-        <circle className="c01-origin" cx="385" cy="181" r="8" />
-        <path className="c01-route-guide" d="M397 181C530 181 651 144 829 144M397 181C529 181 654 285 829 285" />
-        <circle className="c01-option-end" cx="840" cy="285" r="7" />
-        <text className="c01-options-label" x="653" y="325" textAnchor="middle">넓어진 선택의 범위</text>
-
-        <g style={reveal(goal, instant, 'none')} aria-hidden={!goal}>
-          <path className="c01-chosen-route" d="M397 181C530 181 651 144 829 144" markerEnd="url(#career-s01-arrow)" />
-          <path className="c01-flag-pole" d="M871 66V185M846 186H896" />
-          <path className="c01-flag" d="M871 67L946 82L871 112Z" />
-          <text className="c01-goal-label" x="892" y="228" textAnchor="middle">풀고 싶은 문제</text>
-          <text className="c01-goal-question" x="892" y="267" textAnchor="middle">누구의 문제인가?</text>
-        </g>
-
-        <g style={reveal(judgment, instant, 'translateY(6px)')} aria-hidden={!judgment}>
-          <text className="c01-choice-label" x="600" y="103" textAnchor="middle">먼저 방향을 정합니다</text>
+  return <div className="industry-content career-s03">
+    <Heading eyebrow="포트폴리오 / 앞에서 배운 역량을 한눈에">포트폴리오에 문제·실행·검증을 담습니다</Heading>
+    <div className="c03-composition">
+      <svg viewBox="0 0 1100 390" role="img" aria-label="포트폴리오에 문제 정의, 실행 설계, 검증 근거를 연결하고, 자신이 맡은 일과 결과를 보여 준다.">
+        <rect className="c03-paper-back" x="403" y="32" width="294" height="153" rx="9" transform="rotate(4 550 110)" />
+        <rect className="c03-paper" x="400" y="24" width="300" height="153" rx="9" />
+        <path className="c03-paper-line" d="M400 58H700" />
+        <circle className="c03-dot" cx="421" cy="41" r="3" /><circle className="c03-dot" cx="434" cy="41" r="3" /><circle className="c03-dot" cx="447" cy="41" r="3" />
+        <text className="c03-output" x="550" y="109" textAnchor="middle">포트폴리오</text>
+        <text className="c03-output-detail" x="550" y="145" textAnchor="middle">내가 맡은 일과 결과</text>
+        <g style={reveal(step >= 1, instant, 'none')} aria-hidden={step < 1}>
+          <path className="c03-branch" d="M550 188V216M190 251V229Q190 216 203 216H550M550 216V251M550 216H897Q910 216 910 229V251" />
+          <circle className="c03-blue-dot" cx="190" cy="256" r="5" />
+          <circle className="c03-green-dot" cx="550" cy="256" r="5" />
+          <text className="c03-label c03-blue" x="190" y="304" textAnchor="middle">문제 정의</text>
+          <text className="c03-detail" x="190" y="342" textAnchor="middle">왜 이 문제를 골랐나?</text>
+          <text className="c03-label c03-green" x="550" y="304" textAnchor="middle">실행 설계</text>
+          <text className="c03-detail" x="550" y="342" textAnchor="middle">어떤 도구·방법을 썼나?</text>
+          <circle className="c03-amber-dot" cx="910" cy="256" r="5" />
+          <text className="c03-label c03-amber" x="910" y="304" textAnchor="middle">검증 근거</text>
+          <text className="c03-detail" x="910" y="342" textAnchor="middle">무엇으로 확인했나?</text>
         </g>
       </svg>
     </div>
-
-    <p className="c01-takeaway" style={reveal(judgment, instant, 'translateY(6px)')} aria-hidden={!judgment}>
-      포트폴리오에는 <strong>누구의 문제를 왜 골랐는지</strong> 담습니다.
-    </p>
+    <p className="c03-takeaway" style={reveal(step >= 2, instant, 'translateY(5px)')} aria-hidden={step < 2}>작업 중 남긴 <strong>선택 이유 · 내 역할 · 확인 자료</strong>를 결과물과 함께 보여줍니다.</p>
   </div>;
 }

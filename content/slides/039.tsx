@@ -3,78 +3,82 @@ import './039.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "workflow-remote",
-  "title": "실행은 서버에서, 확인은 어디서든",
+  "id": "workflow-product",
+  "title": "나를 돕는 AI에서, 서비스 속의 AI로",
   "section": "2부 · 실무를 만나다",
-  "maxStep": 2,
-  "subsection": "원격 실행"
+  "maxStep": 1,
+  "subsection": "자동화"
 } satisfies SlideMetadata;
 
 export default function Slide039({ step, instant }: SlideProps) {
-  const connected = step >= 1;
-  const mobile = step >= 2;
+  const showProduct = step >= 1;
 
-  return <div className="industry-content workflow-s12">
-    <Heading eyebrow="원격 실행 / 접속과 실행을 나누기" subtitle={<><ReferenceLink to="Orca">Orca</ReferenceLink>의 원격 실행 · 모바일 연결</>}>
-      실행은 서버에서, 확인은 어디서든
-    </Heading>
+  return <div className="industry-content workflow-s13">
+    <Heading eyebrow="활용 범위 넓히기 / 개인 도구와 서비스">나를 돕는 AI에서, 서비스 속의 AI로</Heading>
 
-    <div className="w12-composition">
-      <svg viewBox="0 0 1100 365" role="img" aria-label={mobile
-        ? '데스크톱 앱과 모바일에서 원격 서버의 에이전트 작업에 접속한다. 작업은 서버에서 계속 실행된다.'
-        : '데스크톱 앱은 작업을 요청하고 진행을 확인하며, 에이전트와 작업 파일·실행 도구는 원격 서버에 있다.'}>
+    <div className="w13-visual">
+      <svg viewBox="0 0 1100 380" role="group" aria-label={showProduct
+        ? '개인이 AI 도구에 직접 요청하고 결과를 확인하는 방식과, 사용자가 이용하는 서비스가 API로 모델을 연결하고 도구와 결과 확인을 담당하는 방식을 비교한다.'
+        : '내 작업을 위해 Claude Code나 Codex 같은 AI 도구에 직접 요청하고 결과를 검토한다.'}>
         <defs>
-          <marker id="workflow-s12-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" strokeWidth="1.8" />
+          <marker id="workflow-s13-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" strokeWidth="1.7" />
           </marker>
         </defs>
 
-        <text className="w12-place-label" x="175" y="28" textAnchor="middle">접속하는 기기</text>
-        <text className="w12-place-label w12-blue" x="905" y="28" textAnchor="middle">작업이 실행되는 곳</text>
+        <text className="w13-track-title w13-green" x="48" y="30">내 작업을 돕는 AI</text>
 
-        <g style={{ opacity: mobile ? .4 : 1, transition: instant ? 'none' : 'opacity 380ms ease' }}>
-          <rect className="w12-laptop" x="50" y="66" width="250" height="143" rx="11" />
-          <rect className="w12-screen" x="64" y="80" width="222" height="115" rx="4" />
-          <path className="w12-command" d="M93 108L109 121L93 134M128 134H167M93 158H249" />
-          <path className="w12-laptop-base" d="M35 210H315L298 229H52Z" />
-          <text className="w12-device-label" x="175" y="269" textAnchor="middle">데스크톱 앱</text>
+        <g className="w13-person">
+          <circle cx="150" cy="95" r="16" />
+          <path d="M119 141V131C119 107 181 107 181 131V141" />
         </g>
+        <text className="w13-person-label" x="150" y="173" textAnchor="middle">나</text>
 
-        <g className="w12-server">
-          <rect className="w12-server-body" x="780" y="66" width="250" height="223" rx="15" />
-          <path className="w12-server-header" d="M795 66H1015Q1030 66 1030 81V118H780V81Q780 66 795 66Z" />
-          <text className="w12-server-title" x="905" y="102" textAnchor="middle">원격 서버</text>
-          <rect className="w12-agent" x="802" y="139" width="206" height="55" rx="10" />
-          <text className="w12-agent-title" x="905" y="175" textAnchor="middle">AI 에이전트</text>
-          <text className="w12-server-detail" x="905" y="226" textAnchor="middle">작업 파일 · 실행 도구</text>
-          <g style={reveal(connected, instant, 'none')} aria-hidden={!connected}>
-            <circle className="w12-running-dot" cx="832" cy="260" r="5" />
-            <text className="w12-running-label" x="850" y="268">작업 실행 중</text>
+        <path className="w13-request" d="M205 111H365" markerEnd="url(#workflow-s13-arrow)" />
+        <text className="w13-flow-label" x="285" y="92" textAnchor="middle">직접 요청</text>
+        <rect className="w13-agent" x="385" y="65" width="260" height="104" rx="12" />
+        <text className="w13-agent-title" x="515" y="107" textAnchor="middle">AI 도구</text>
+        <text className="w13-agent-detail" x="515" y="143" textAnchor="middle"><ReferenceLink to="Claude Code">Claude Code</ReferenceLink>{' · '}<ReferenceLink to="Codex">Codex</ReferenceLink></text>
+        <path className="w13-request" d="M665 111H830" markerEnd="url(#workflow-s13-arrow)" />
+        <text className="w13-flow-label" x="748" y="92" textAnchor="middle">결과</text>
+
+        <g className="w13-output">
+          <path d="M855 79H887L901 93V143H855ZM887 79V94H901M866 105H890M866 117H890M866 129H883" />
+        </g>
+        <text className="w13-person-label" x="878" y="173" textAnchor="middle">내가 검토·활용</text>
+
+        <g style={reveal(showProduct, instant, 'translateY(7px)')} aria-hidden={!showProduct}>
+          <path className="w13-divider" d="M48 206H1052" />
+          <text className="w13-track-title w13-blue" x="48" y="240">서비스 속의 AI</text>
+
+          <g className="w13-users">
+            <circle cx="126" cy="294" r="12" />
+            <circle cx="158" cy="284" r="14" />
+            <circle cx="190" cy="294" r="12" />
+            <path d="M105 330V321C105 304 143 304 146 319M136 330V316C136 295 180 295 180 316V330M176 319C179 304 211 304 211 321V330" />
           </g>
-        </g>
+          <text className="w13-person-label" x="158" y="366" textAnchor="middle">사용자</text>
 
-        <g style={reveal(connected, instant, 'none')} aria-hidden={!connected}>
-          <path className="w12-request" d="M327 128H750" markerEnd="url(#workflow-s12-arrow)" />
-          <text className="w12-route-label" x="534" y="111" textAnchor="middle">작업 요청</text>
-          <path className="w12-response" d="M750 190H327" markerEnd="url(#workflow-s12-arrow)" />
-          <text className="w12-route-label w12-blue" x="534" y="225" textAnchor="middle">진행 · 결과 확인</text>
-        </g>
+          <path className="w13-service-request" d="M235 300H365" markerEnd="url(#workflow-s13-arrow)" />
+          <path className="w13-service-response" d="M365 332H235" markerEnd="url(#workflow-s13-arrow)" />
+          <text className="w13-flow-label" x="300" y="280" textAnchor="middle">이용</text>
+          <text className="w13-flow-label" x="300" y="362" textAnchor="middle">결과</text>
 
-        <g style={reveal(mobile, instant, 'translateY(8px)')} aria-hidden={!mobile}>
-          <rect className="w12-phone" x="395" y="244" width="76" height="114" rx="13" />
-          <path className="w12-phone-speaker" d="M424 254H442" />
-          <rect className="w12-phone-screen" x="404" y="267" width="58" height="68" rx="3" />
-          <path className="w12-phone-lines" d="M414 283H451M414 296H442M414 310H451" />
-          <circle className="w12-phone-button" cx="433" cy="347" r="3" />
-          <path className="w12-mobile-link" d="M486 282H650Q664 282 664 268V267Q664 253 678 253H751" markerStart="url(#workflow-s12-arrow)" markerEnd="url(#workflow-s12-arrow)" />
-          <text className="w12-mobile-label" x="510" y="326">모바일에서도 연결</text>
-          <text className="w12-away-label" x="175" y="310" textAnchor="middle">노트북을 닫아도</text>
+          <rect className="w13-service" x="385" y="265" width="260" height="104" rx="12" />
+          <text className="w13-service-title" x="515" y="307" textAnchor="middle">서비스의 업무 흐름</text>
+          <text className="w13-service-detail" x="515" y="343" textAnchor="middle">요청 · 도구 · 결과 확인</text>
+
+          <path className="w13-service-request" d="M665 300H825" markerEnd="url(#workflow-s13-arrow)" />
+          <path className="w13-service-response" d="M825 332H665" markerEnd="url(#workflow-s13-arrow)" />
+          <text className="w13-api-label" x="745" y="280" textAnchor="middle">API</text>
+          <circle className="w13-model" cx="890" cy="316" r="61" />
+          <text className="w13-model-label" x="890" y="325" textAnchor="middle">AI 모델</text>
         </g>
       </svg>
     </div>
 
-    <p className="w12-takeaway" style={reveal(mobile, instant, 'translateY(6px)')} aria-hidden={!mobile}>
-      접속하는 기기가 바뀌어도, <strong>작업은 서버에서 이어집니다.</strong>
-    </p>
+    <p className="w13-caption">{showProduct
+      ? '서비스가 요청과 결과를 연결하고, 사용자는 기능을 이용합니다.'
+      : '내가 요청하고, 내가 결과를 확인합니다.'}</p>
   </div>;
 }

@@ -3,60 +3,72 @@ import './032.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "workflow-sample-check",
-  "title": "샘플로 무엇을 확인할까요?",
+  "id": "workflow-tools",
+  "title": "AI는 도구를 통해 행동합니다",
   "section": "2부 · 실무를 만나다",
   "maxStep": 2,
-  "subsection": "샘플"
+  "subsection": "도구"
 } satisfies SlideMetadata;
 
 export default function Slide032({ step, instant }: SlideProps) {
-  const showScope = step >= 1;
-  const showCriterion = step >= 2;
+  const showResult = step >= 1;
+  const closeLoop = step >= 2;
 
-  return <div className="industry-content workflow-s05">
-    <Heading eyebrow="샘플 / 무엇을 알아낼 것인가">샘플로 무엇을 확인할까요?</Heading>
+  return <div className="industry-content workflow-s06">
+    <Heading eyebrow="할 수 있는 일 넓히기 / Tool">AI는 도구를 통해 행동합니다</Heading>
 
-    <div className="w05-workbench">
-      <svg viewBox="0 0 1100 370" role="img" aria-label="확인할 질문을 중심으로 샘플의 범위를 정하고, 결과를 판단할 기준을 연결하는 개념도">
-        <rect className="w05-paper-shadow" x="398" y="85" width="330" height="245" rx="8" />
-        <rect className="w05-paper" x="388" y="75" width="330" height="245" rx="8" />
-        <path className="w05-paper-rule" d="M388 138H718" />
-        <text className="w05-sample-title" x="553" y="117" textAnchor="middle">샘플</text>
+    <div className="w06-visual">
+      <svg viewBox="0 0 1100 390" role="img" aria-label={closeLoop
+        ? 'AI가 도구를 선택하고, 도구가 실행한 결과를 관찰해 다음 행동을 정하는 순환 구조.'
+        : showResult
+          ? 'AI가 도구를 선택하면 파일·웹·명령 도구가 실행되고 결과 정보가 돌아온다.'
+          : 'AI는 필요한 행동을 판단하고, 선택한 도구가 실제 작업을 실행한다.'}>
+        <defs>
+          <marker id="workflow-s06-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" strokeWidth="1.7" />
+          </marker>
+        </defs>
 
-        <path className="w05-quiet-line" d="M589 172H686M589 194H668M589 216H680M421 278H685" />
-        <rect className="w05-sample-area" x="420" y="160" width="143" height="90" rx="7" />
+        <path className="w06-select" d="M335 140C445 90 545 104 668 104" markerEnd="url(#workflow-s06-arrow)" />
+        <text className="w06-action-label" x="487" y="63" textAnchor="middle">필요한 도구 선택</text>
 
-        <path className="w05-question-leader" d="M292 82H344L388 109" />
-        <circle className="w05-question-point" cx="388" cy="109" r="5" />
-        <text className="w05-label w05-blue" x="40" y="69">확인할 질문</text>
-        <text className="w05-detail" x="40" y="109">무엇이 불확실한가?</text>
+        <circle className="w06-model" cx="235" cy="185" r="97" />
+        <text className="w06-model-label" x="235" y="145" textAnchor="middle">AI 모델</text>
+        <text className="w06-model-title" x="235" y="195" textAnchor="middle">판단</text>
+        <text className="w06-model-detail" x="235" y="232" textAnchor="middle">무엇을 할까?</text>
 
-        <g style={reveal(showScope, instant, 'none')} aria-hidden={!showScope}>
-          <rect className="w05-focus-area" x="420" y="160" width="143" height="90" rx="7" />
-          <text className="w05-focus-text" x="491.5" y="212" textAnchor="middle">확인할 부분</text>
-          <path className="w05-scope-leader" d="M292 285H352L420 234" />
-          <circle className="w05-scope-point" cx="420" cy="234" r="5" />
-          <text className="w05-label w05-green" x="40" y="268">샘플의 범위</text>
-          <text className="w05-detail" x="40" y="308">무엇까지 만들까?</text>
+        <text className="w06-tools-title" x="830" y="30" textAnchor="middle">Tool · 도구</text>
+        <rect className="w06-tool-surface" x="680" y="49" width="300" height="128" rx="14" />
+        <g className="w06-tool-icons">
+          <path d="M716 77H741L752 88V120H716ZM740 77V89H752M725 98H743M725 108H739" />
+          <rect x="803" y="78" width="47" height="37" rx="4" />
+          <path d="M803 89H850M812 84H813M819 84H820M826 84H827" />
+          <rect x="892" y="78" width="47" height="37" rx="4" />
+          <path d="M903 89L912 96L903 103M918 103H927" />
+        </g>
+        <g className="w06-tool-labels">
+          <text x="735" y="154" textAnchor="middle">파일</text>
+          <text x="827" y="154" textAnchor="middle">웹</text>
+          <text x="916" y="154" textAnchor="middle">명령</text>
         </g>
 
-        <g style={reveal(showCriterion, instant, 'none')} aria-hidden={!showCriterion}>
-          <path className="w05-criterion-leader" d="M718 192H783L812 169" />
-          <circle className="w05-criterion-point" cx="718" cy="192" r="5" />
-          <text className="w05-label w05-amber" x="835" y="165">판단 기준</text>
-          <text className="w05-detail" x="835" y="205">
-            <tspan x="835">어떤 결과면</tspan>
-            <tspan x="835" dy="35">다음 단계로 갈까?</tspan>
-          </text>
-          <circle className="w05-check-circle" cx="685" cy="297" r="23" />
-          <path className="w05-check" d="M674 297L682 305L696 288" />
+        <g style={reveal(showResult, instant, 'translateY(7px)')} aria-hidden={!showResult}>
+          <path className="w06-execute" d="M830 187V253" markerEnd="url(#workflow-s06-arrow)" />
+          <text className="w06-execute-label" x="862" y="225">실행</text>
+          <rect className="w06-result" x="665" y="270" width="330" height="83" rx="12" />
+          <text className="w06-result-title" x="830" y="300" textAnchor="middle">돌아온 정보</text>
+          <text className="w06-result-detail" x="830" y="333" textAnchor="middle">내용 · 실행 상태 · 오류</text>
+        </g>
+
+        <g style={reveal(closeLoop, instant, 'none')} aria-hidden={!closeLoop}>
+          <path className="w06-observe" d="M651 312C507 393 335 379 285 282" markerEnd="url(#workflow-s06-arrow)" />
+          <text className="w06-observe-label" x="442" y="326" textAnchor="middle">관찰하고 다시 판단</text>
         </g>
       </svg>
     </div>
 
-    <p className="w05-takeaway" style={reveal(showCriterion, instant, 'translateY(5px)')} aria-hidden={!showCriterion}>
-      <strong>무엇을 확인할지 정하면,</strong> 샘플의 범위가 정해집니다.
+    <p className="w06-takeaway" style={reveal(closeLoop, instant, 'translateY(6px)')} aria-hidden={!closeLoop}>
+      <strong>도구의 결과를 다음 행동에 연결합니다.</strong>
     </p>
   </div>;
 }

@@ -1,113 +1,96 @@
-import { Heading, ReferenceLink, Takeaway, reveal, type SlideProps } from '../components/kit';
+import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
 import './022.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "industry-serving",
-  "title": "모델을 서비스로 실행하기",
+  "id": "industry-firmware-compiler",
+  "title": "장치를 제어하고 연산을 최적화하기",
   "section": "1부 · 산업을 읽다",
-  "maxStep": 2,
+  "maxStep": 1,
   "subsection": "인프라"
 } satisfies SlideMetadata;
 
-function Model({ label }: { label: string }) {
-  return <>
-    <path className="s18-pins" d="M647 136h-12m12 24h-12m12 24h-12m168-48h12m-12 24h12m-12 24h12" />
-    <rect className="s18-model" x="647" y="117" width="156" height="86" rx="15" />
-    <path className="s18-matrix" d="M670 139h9m7 0h9m-25 10h9m7 0h9m-25 10h9m7 0h9" />
-    <text className="s18-model-label" x="725" y="184" textAnchor="middle">{label}</text>
-  </>;
-}
-
 export default function Slide022({ step, instant }: SlideProps) {
-  const serving = step >= 1;
-  const distributed = step >= 2;
+  const showFirmware = step >= 1;
+  const laneStyle = {
+    transform: showFirmware ? 'translateY(0)' : 'translateY(54px)',
+    transition: instant ? 'none' : 'transform 550ms cubic-bezier(.2,.7,.2,1)',
+  };
 
-  return <div className="industry-content industry-s18" data-instant={instant}>
-    <Heading eyebrow="AI 인프라 / 서빙">서빙은 모델이 요청에 응답하게 합니다</Heading>
+  return <div className="industry-content industry-s19" data-instant={instant} data-step={showFirmware ? 1 : 0}>
+    <Heading eyebrow="AI 인프라 / Firmware & Compiler">하드웨어 실행에도 소프트웨어가 필요합니다</Heading>
 
-    <div className="industry-visual s18-flow">
-      <svg viewBox="0 0 1100 350" role="img" aria-label={serving
-        ? (distributed ? '요청을 대기열에서 배치로 묶고 여러 장비에 분배해 실행한 뒤 응답하는 서빙 흐름' : '요청을 대기열에서 배치로 묶어 모델을 실행하고 응답하는 서빙 흐름')
-        : '여러 요청과 모델 가중치 사이에 요청을 관리하고 실행하는 연결이 필요한 상태'}>
+    <div className="industry-visual s19-visual">
+      <svg viewBox="0 0 1040 360" role="group" aria-labelledby="s19-title s19-desc">
+        <title id="s19-title">모델 연산을 바꾸는 컴파일러와 장치를 제어하는 펌웨어</title>
+        <desc id="s19-desc">XLA 같은 ML 컴파일러는 모델의 연산을 대상 하드웨어에 맞게 변환하고 최적화합니다. 연산 묶기는 그 방법 중 하나입니다.{showFirmware ? ' GPU 내부에서 실행되는 NVIDIA GSP 펌웨어는 GPU 초기화와 관리를 담당합니다. 컴파일러와 펌웨어는 서로 다른 역할입니다.' : ''}</desc>
         <defs>
-          <marker id="s18-arrow" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto">
-            <path d="M1 1l5 3-5 3" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <marker id="s19-arrow" viewBox="0 0 8 8" refX="6.5" refY="4" markerWidth="6" markerHeight="6" orient="auto" overflow="visible">
+            <path d="M1 1 L7 4 L1 7" fill="none" stroke="context-stroke" strokeWidth="1.5" />
           </marker>
         </defs>
 
-        <g className="s18-serving-region" style={reveal(serving, instant, 'none')} aria-hidden={!serving}>
-          <rect x="279" y="57" width="580" height="223" rx="25" />
-          <text x="301" y="42">서빙: 요청을 받아 실행을 관리</text>
+        <g className="s19-device">
+          <rect className="s19-device-outline" x="796" y="40" width="218" height="274" rx="22" />
+          {[81, 124, 167, 210, 253, 296].map(y => <path key={y} d={`M783 ${y} H796 M1014 ${y} H1027`} />)}
+          {[832, 875, 918, 961].map(x => <path key={x} d={`M${x} 27 V40 M${x} 314 V327`} />)}
+          <text className="s19-device-label" x="905" y="72" textAnchor="middle">GPU</text>
         </g>
 
-        <text className="s18-stage" x="121" y="43" textAnchor="middle">들어오는 요청</text>
-        <g className="s18-requests">
-          {[96, 160, 224].map((y, i) => <g key={y}>
-            <rect x={i === 1 ? 97 : 55} y={y - 19} width="88" height="38" rx="19" />
-            <text x={i === 1 ? 141 : 99} y={y + 7} textAnchor="middle">요청</text>
-          </g>)}
-          <path className="s18-incoming" d="M153 96h32q35 0 35 32v32h55M195 160h80M153 224h32q35 0 35-32v-32" />
-        </g>
+        <g className="s19-compiler-lane" style={laneStyle}>
+          <text className="s19-lane-heading" x="146" y="48" textAnchor="middle">모델의 연산</text>
+          <text className="s19-role" x="405" y="48" textAnchor="middle">ML 컴파일러</text>
+          <ReferenceLink to="XLA"><text className="s19-source" x="405" y="73" textAnchor="middle">OpenXLA · XLA</text></ReferenceLink>
 
-        <g style={reveal(!serving, instant, 'none')} aria-hidden={serving}>
-          <path className="s18-gap-line" d="M297 160H607" />
-          <circle className="s18-gap" cx="440" cy="160" r="30" />
-          <text className="s18-question" x="440" y="169" textAnchor="middle">?</text>
-          <text className="s18-gap-label" x="440" y="229" textAnchor="middle">누가, 어떤 순서로 실행할까?</text>
-          <text className="s18-gap-caption" x="725" y="244" textAnchor="middle">파일 보유 ≠ 서비스 제공</text>
-        </g>
-
-        <g className="s18-batching" style={reveal(serving, instant, 'none')} aria-hidden={!serving}>
-          <path className="s18-queue-rail" d="M310 128v64h184v-64" />
-          {[334, 386, 438].map(x => <g key={x}>
-            <rect x={x} y="138" width="39" height="39" rx="8" />
-            <path d={`M${x + 11} 151h17m-17 9h12`} />
-          </g>)}
-          <text className="s18-stage" x="403" y="235" textAnchor="middle">대기 → 배치</text>
-          <text className="s18-small" x="403" y="258" textAnchor="middle">요청을 묶어 실행</text>
-        </g>
-
-        <g className="s18-route" style={reveal(serving && !distributed, instant, 'none')} aria-hidden={!serving || distributed}>
-          <path d="M503 160H623" markerEnd="url(#s18-arrow)" />
-          <path d="M824 160H943" markerEnd="url(#s18-arrow)" />
-        </g>
-        <g className="s18-route" style={reveal(distributed, instant, 'none')} aria-hidden={!distributed}>
-          <path d="M503 160h51q21 0 21-21v-18q0-21 21-21h27" markerEnd="url(#s18-arrow)" />
-          <path d="M554 160q21 0 21 21v18q0 21 21 21h27" markerEnd="url(#s18-arrow)" />
-          <path d="M824 100h35q22 0 22 22v16q0 22 22 22h40" markerEnd="url(#s18-arrow)" />
-          <path d="M824 220h35q22 0 22-22v-16q0-22 22-22" />
-          <text className="s18-small" x="569" y="307" textAnchor="middle">여러 장비로 분배·확장</text>
-        </g>
-
-        <g className="s18-model-unit" style={{
-          transform: distributed ? 'translateY(-60px)' : 'translateY(0)',
-          transition: instant ? 'none' : 'transform 480ms cubic-bezier(.2,.7,.2,1)',
-        }}>
-          <Model label={serving ? '모델 실행' : '모델 가중치'} />
-        </g>
-        <g transform="translate(0 60)">
-          <g style={reveal(distributed, instant, 'translateY(-60px)')} aria-hidden={!distributed}>
-            <Model label="모델 실행" />
+          <g className="s19-operation-chain">
+            {[62, 146, 230].map((x, index) => <g key={x}>
+              <circle cx={x} cy="126" r="29" />
+              <text x={x} y="133" textAnchor="middle">연산</text>
+              {index < 2 && <path className="s19-flow" d={`M${x + 30} 126 H${x + 49}`} markerEnd="url(#s19-arrow)" />}
+            </g>)}
           </g>
+
+          <path className="s19-flow s19-main-flow" d="M270 126 H326" markerEnd="url(#s19-arrow)" />
+          <path className="s19-compiler-mark" d="M357 99 L380 126 L357 153 M398 99 L421 126 L398 153 M439 99 L462 126 L439 153" />
+          <path className="s19-flow s19-main-flow" d="M483 126 H530" markerEnd="url(#s19-arrow)" />
+
+          <text className="s19-lane-heading" x="638" y="48" textAnchor="middle">하드웨어에 맞게</text>
+          <rect className="s19-fused-outline" x="552" y="93" width="173" height="66" rx="33" />
+          <g className="s19-fused-operations" aria-hidden="true">
+            <path d="M592 126 H685" />
+            {[592, 638, 685].map(x => <circle key={x} cx={x} cy="126" r="9" />)}
+          </g>
+          <text className="s19-detail" x="638" y="191" textAnchor="middle">연산 묶기 등으로 최적화</text>
+          <path className="s19-flow s19-main-flow" d="M737 126 H825" markerEnd="url(#s19-arrow)" />
+
+          <g className="s19-execution">
+            <path d="M849 99 H965 M849 153 H965" />
+            <text x="906" y="134" textAnchor="middle">연산 실행</text>
+          </g>
+          <text className="s19-detail" x="405" y="191" textAnchor="middle">변환 · 최적화</text>
         </g>
 
-        <g className="s18-responses" style={reveal(serving, instant, 'none')} aria-hidden={!serving}>
-          <text className="s18-stage" x="1004" y="43" textAnchor="middle">응답</text>
-          {[96, 160, 224].map(y => <g key={y}>
-            <rect x="960" y={y - 19} width="88" height="38" rx="19" />
-            <path d={`M976 ${y}l5 5 9-10`} />
-            <text x="1015" y={y + 6} textAnchor="middle">결과</text>
-          </g>)}
-        </g>
-
-        <g style={reveal(distributed, instant, 'none')} aria-hidden={!distributed}>
-          <text className="s18-tradeoff" x="550" y="336" textAnchor="middle">한 번에 더 많이 처리하기 ↔ 각 요청을 더 빨리 응답하기</text>
+        <g className="s19-firmware-lane" style={reveal(showFirmware, instant, 'translateY(10px)')} aria-hidden={!showFirmware}>
+          <path className="s19-separator" d="M33 220 H739" />
+          <text className="s19-role s19-firmware-role" x="34" y="269">펌웨어</text>
+          <text className="s19-firmware-copy" x="34" y="300">장치 초기화 · 관리</text>
+          <text className="s19-control-caption" x="536" y="263" textAnchor="middle">장치 내부를 제어</text>
+          <path className="s19-control-flow" d="M282 283 H830" markerEnd="url(#s19-arrow)" />
+          <rect className="s19-gsp" x="843" y="237" width="126" height="60" rx="12" />
+          <ReferenceLink to="NVIDIA GSP"><text className="s19-gsp-label" x="906" y="261" textAnchor="middle">NVIDIA GSP</text></ReferenceLink>
+          <text className="s19-gsp-detail" x="906" y="284" textAnchor="middle">펌웨어</text>
+          <path className="s19-internal-control" d="M906 227 V177" markerEnd="url(#s19-arrow)" />
         </g>
       </svg>
     </div>
 
-    <p className="s18-tools"><span>실제 도구</span> <strong><ReferenceLink to="vLLM">vLLM</ReferenceLink></strong><small>오픈소스 프로젝트</small><i aria-hidden="true">·</i><strong><ReferenceLink to="NVIDIA Triton Inference Server">NVIDIA Triton Inference Server</ReferenceLink></strong><small>추론 서버</small></p>
-    <Takeaway>모델을 호출 가능하게 연결하고, <strong>응답 시간·처리량·비용의 균형</strong>을 설계합니다.</Takeaway>
+    <div className="s19-takeaway">
+      <p style={reveal(!showFirmware, instant)} aria-hidden={showFirmware}>
+        <strong>컴파일러는 연산을 변환</strong>하고, 하드웨어에 맞게 최적화합니다.
+      </p>
+      <p style={reveal(showFirmware, instant)} aria-hidden={!showFirmware}>
+        <strong>컴파일러는 연산을 변환</strong>하고, <span>펌웨어는 장치를 제어합니다.</span>
+      </p>
+    </div>
   </div>;
 }

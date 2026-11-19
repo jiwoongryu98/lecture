@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { readCatalog } from '../build/catalog';
+import { toLinkIndex } from '../shared/presentation';
 const slides = readCatalog();
 
 test('all authored slides render every step and fit their frame', async ({ page }, testInfo) => {
@@ -15,7 +16,7 @@ test('all authored slides render every step and fit their frame', async ({ page 
       await page.evaluate(({ index, step }) => {
         history.replaceState(null, '', `?index=${index}&step=${step}`);
         dispatchEvent(new PopStateEvent('popstate'));
-      }, { index: Number(definition.number), step });
+      }, { index: toLinkIndex(Number(definition.number)), step });
       await expect(slide).toHaveAttribute('data-index', String(Number(definition.number)));
       await expect(slide).toHaveAttribute('data-step', String(step));
       // The title slide also uses the injected renderer.

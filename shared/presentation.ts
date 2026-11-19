@@ -9,6 +9,13 @@ export interface SlideDefinition extends SlideMetadata { number: string }
 
 export interface Position { index: number; step: number }
 
+// Shared links retain their original indices, with the removed second slide reserved.
+const removedSlideIndex = 2;
+
+export function toLinkIndex(index: number) {
+  return index < removedSlideIndex ? index : index + 1;
+}
+
 export function createDeckRules(slides: readonly SlideDefinition[]) {
   if (!slides.length) throw new Error('A presentation requires at least one slide');
   const initialPosition: Position = { index: 1, step: 0 };
@@ -35,7 +42,11 @@ export function createDeckRules(slides: readonly SlideDefinition[]) {
   function positionFromSearch(search: string): Position {
     const params = new URLSearchParams(search);
     const rawIndex = params.get('index');
-    const index = rawIndex !== null && /^\d+$/.test(rawIndex) ? Number(rawIndex) : 0;
+    const linkIndex = rawIndex !== null && /^\d+$/.test(rawIndex) ? Number(rawIndex) : 0;
+    if (linkIndex === removedSlideIndex && slides.length >= removedSlideIndex) {
+      return { index: removedSlideIndex, step: 0 };
+    }
+    const index = linkIndex > removedSlideIndex ? linkIndex - 1 : linkIndex;
     const position = { index, step: Number(params.get('step') ?? 0) };
     return isPosition(position) ? position : initialPosition;
   }

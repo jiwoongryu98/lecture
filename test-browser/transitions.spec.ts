@@ -40,7 +40,7 @@ test('slide changes animate inside a stationary board, while reveals and rapid j
   expect(forward.frames[0]).toMatchObject({ opacity: '0', transform: 'translateY(10px)' });
   expect(forward.before).toEqual(forward.after);
   expect(forward.chromeBefore).toEqual(forward.chromeDuring);
-  expect(forward.labels.map((label) => label.text)).toEqual(['발표자', '02']);
+  expect(forward.labels.map((label) => label.text)).toEqual(['웹사이트', '02']);
   expect(forward.labels.every((label) => label.duration === 140)).toBe(true);
   expect(forward.labels[0].frames[0]).toMatchObject({ filter: 'blur(2px)' });
   const reveal = await navigate('다음 단계');
@@ -56,7 +56,7 @@ test('slide changes animate inside a stationary board, while reveals and rapid j
 
   await page.getByRole('button', { name: '목차 펼치기', exact: true }).click();
   const jump = await navigate('1부 · 산업을 읽다', true);
-  expect(jump.index).toBe('5');
+  expect(jump.index).toBe('4');
   expect(jump.frames[0]).toMatchObject({ transform: 'translateY(0px)' });
   expect(jump.before).toEqual(jump.after);
   expect(jump.chromeBefore).toEqual(jump.chromeDuring);
@@ -72,5 +72,5 @@ test('slide changes animate inside a stationary board, while reveals and rapid j
     for (const animation of animations) animation.finish();
     return result;
   });
-  expect(rapid).toEqual({ index: '28', count: 1 });
+  expect(rapid).toEqual({ index: '27', count: 1 });
 });

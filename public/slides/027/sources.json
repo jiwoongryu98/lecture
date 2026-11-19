@@ -1,0 +1,21 @@
+[
+  {
+    "file": "s01-claude-code.png",
+    "credit": "Anthropic",
+    "sourcePage": "https://code.claude.com/docs/en/overview",
+    "originalUrl": "https://code.claude.com/docs/mintlify-assets/_mintlify/favicons/claude-code/pLsy-mRpNksna2sx/_generated/favicon/android-chrome-192x192.png"
+  },
+  {
+    "file": "s01-openai.png",
+    "credit": "OpenAI",
+    "sourcePage": "https://developers.openai.com/codex",
+    "originalUrl": "https://developers.openai.com/favicon.png",
+    "note": "Official provider site icon; not labeled as a dedicated Codex app logo."
+  },
+  {
+    "file": "s01-antigravity.png",
+    "credit": "Google Antigravity",
+    "sourcePage": "https://antigravity.google/",
+    "originalUrl": "https://antigravity.google/assets/image/antigravity-logo.png"
+  }
+]

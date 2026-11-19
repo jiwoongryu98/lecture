@@ -1,116 +1,104 @@
-import { Heading, ReferenceLink, reveal, Takeaway, type SlideProps } from '../components/kit';
-import { ProductUsageNav } from '../components/ProductUsageNav';
+import { Heading, ReferenceLink, reveal, type SlideProps } from '../components/kit';
 import './010.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "industry-api",
-  "title": "API로 연결하는 AI",
+  "id": "industry-adoption",
+  "title": "활용의 장벽과 AX",
   "section": "1부 · 산업을 읽다",
-  "maxStep": 2,
+  "maxStep": 3,
   "subsection": "제품"
 } satisfies SlideMetadata;
 
+const viewpoints = [
+  '가능한 기능을 실제 활용으로 연결하려면, 일하는 방식과의 접점이 필요합니다.',
+  '새 도구를 쓰려면, 작업을 맡기고 확인하는 방식도 배워야 합니다.',
+  '익숙한 방법을 바꾸는 데에는 학습과 전환의 부담이 있습니다.',
+  'AX의 중요한 역할은, 더 많은 사람이 AI를 쉽게 활용할 업무 환경을 만드는 것입니다.',
+];
+
 export default function Slide010({ step, instant }: SlideProps) {
-  const showManaged = step >= 1;
-  const showProduct = step >= 2;
+  const phase = Math.max(0, Math.min(step, 3));
+  const detour = phase === 1 || phase === 2;
+  const connected = phase === 3;
 
-  return <div className="industry-content industry-s06" data-instant={instant} data-product={showProduct}>
-    <Heading eyebrow="제품·활용 / 활용 방식">모델의 기능을 서비스에 연결합니다</Heading>
-    <ProductUsageNav active="api" />
+  return <div className="industry-content industry-s07" data-instant={instant} data-connected={connected}>
+    <Heading eyebrow="제품·활용 / 관점 · 활용의 장벽과 AX">강력한 도구가 있어도, 활용에는 장벽이 있습니다</Heading>
 
-    <figure className="industry-visual s06-cutaway">
-      <svg viewBox="0 25 1200 335" role="group" aria-label={showProduct
-        ? '우리 팀의 서비스가 Claude API 또는 Amazon Bedrock으로 모델 기능에 연결되는 개념도. 사용자 화면, 데이터, 업무 흐름과 결과 검증은 서비스 안에서 연결한다.'
-        : showManaged
-          ? '모델 제공사의 Claude API에 직접 연결하거나, AWS의 Amazon Bedrock을 이용할 수 있다.'
-          : '우리 팀의 서비스에서 Anthropic의 Claude API로 요청을 보내고 응답을 받는다.'}>
+    <figure className="s07-workflow">
+      <svg viewBox="0 0 1000 340" role="group" aria-label={connected
+        ? 'AX의 역할을 설명하는 개념도. 익숙한 업무 경로에 AI를 연결하고 접점, 필요한 자료, 검토 흐름을 함께 설계한다.'
+        : '익숙한 업무 경로 밖에 AI 작업 도구가 있다. 새로운 사용법과 작업 방식으로 전환하는 부담을 설명하는 개념도.'}>
         <defs>
-          <marker id="s06-forward" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" overflow="visible">
-            <path d="M1 1L6 3.5L1 6" fill="none" stroke="#4269a5" strokeWidth="1.5" />
-          </marker>
-          <marker id="s06-back" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" overflow="visible">
-            <path d="M1 1L6 3.5L1 6" fill="none" stroke="#177c68" strokeWidth="1.5" />
+          <marker id="s07-flow-arrow" viewBox="0 0 8 8" refX="6.8" refY="4" markerWidth="6" markerHeight="6" orient="auto" overflow="visible">
+            <path d="M1 1L7 4L1 7" fill="none" stroke="context-stroke" strokeWidth="1.5" />
           </marker>
         </defs>
 
-        <path className="s06-service-shadow" d="M35 67H555V343H35Z" />
-        <rect className="s06-service-shell" x="20" y="45" width="525" height="278" rx="20" />
-        <text x="53" y="85" className="s06-service-title">우리 팀의 서비스</text>
-        <text x="512" y="82" textAnchor="end" className="s06-small s06-green">제품·업무 영역</text>
-        <path d="M52 102H513" className="s06-divider" />
+        <path className="s07-route-ground" d="M105 230H895" />
+        <path className="s07-familiar-line" d="M156 230H448" markerEnd="url(#s07-flow-arrow)" />
+        <path className="s07-familiar-line" d="M552 230H843" markerEnd="url(#s07-flow-arrow)" />
+        <text className="s07-route-label" x="105" y="177" textAnchor="middle">익숙한 업무</text>
 
-        <g className="s06-interface">
-          <rect x="59" y="124" width="145" height="86" rx="7" />
-          <path d="M59 144H204M73 135H78M87 135H92M102 135H107M74 160H144M74 173H123M74 188H188" />
-          <circle cx="174" cy="166" r="9" />
-          <path d="M159 193V188Q160 179 174 179Q188 179 189 188V193" />
-          <text x="230" y="163" className="s06-part-title">사용자 화면</text>
-          <text x="230" y="191" className="s06-small">우리 제품의 접점</text>
+        <g className="s07-file-node" transform="translate(105 230)">
+          <circle r="35" />
+          <path d="M-14-20H7L17-10V20H-14ZM7-20V-10H17M-6-1H9M-6 7H9" />
+        </g>
+        <text className="s07-task-label" x="105" y="310" textAnchor="middle">자료 확인</text>
+
+        <g style={reveal(!connected, instant, 'none')} aria-hidden={connected}>
+          <circle className="s07-work-node" cx="500" cy="230" r="35" />
+          <path className="s07-work-symbol" d="M480 230L493 217L506 230L493 243ZM509 218H524M509 230H530M509 242H524" />
+          <text className="s07-task-label" x="500" y="310" textAnchor="middle">작업</text>
         </g>
 
-        <g style={reveal(!showProduct, instant, 'none')} aria-hidden={showProduct}>
-          <text x="282" y="265" textAnchor="middle" className="s06-service-message">사용자는 우리 서비스를 이용</text>
-          <text x="282" y="293" textAnchor="middle" className="s06-small">모델의 기능은 그 안으로 연결</text>
+        <g className="s07-review-node" transform="translate(895 230)">
+          <circle r="35" />
+          <path d="M-15 0L-4 11L17-13" />
+        </g>
+        <text className="s07-task-label" x="895" y="310" textAnchor="middle">검토·다음 작업</text>
+
+        <g style={reveal(detour, instant, 'none')} aria-hidden={!detour}>
+          <path className="s07-detour" d="M265 230C304 230 310 85 420 85" markerEnd="url(#s07-flow-arrow)" />
+          <path className="s07-detour" d="M580 85C691 85 697 230 735 230" markerEnd="url(#s07-flow-arrow)" />
+          <text className="s07-detour-label" x="260" y="130" textAnchor="middle">새 사용법</text>
+          <text className="s07-detour-label" x="740" y="130" textAnchor="middle">자료·검토 연결</text>
         </g>
 
-        <g style={reveal(showProduct, instant, 'translateY(8px)')} aria-hidden={!showProduct}>
-          <path d="M53 228H512" className="s06-divider" />
-          <g className="s06-data-icon" transform="translate(78 247)">
-            <ellipse cx="21" cy="7" rx="21" ry="7" />
-            <path d="M0 7V34C0 44 42 44 42 34V7M0 20C0 30 42 30 42 20" />
-          </g>
-          <text x="133" y="272" className="s06-part-title">데이터</text>
-          <g className="s06-flow-icon" transform="translate(244 248)">
-            <path d="M0 7H36V31H13M26 21L36 31L26 41" />
-            <circle cx="0" cy="7" r="5" />
-            <circle cx="13" cy="31" r="5" />
-          </g>
-          <text x="295" y="272" className="s06-part-title">업무 흐름</text>
-          <g className="s06-check-icon" transform="translate(422 246)">
-            <circle cx="22" cy="22" r="21" />
-            <path d="M11 22L19 30L33 14" />
-          </g>
-          <text x="444" y="310" textAnchor="middle" className="s06-small s06-green">결과 검증</text>
+        <g className="s07-ai" style={{
+          transform: connected ? 'translateY(145px)' : 'translateY(0)',
+          transition: instant ? 'none' : 'transform 620ms cubic-bezier(.2,.7,.2,1)',
+        }}>
+          <text className="s07-tool-names" x="500" y="0" textAnchor="middle"><ReferenceLink to="Claude Code">Claude Code</ReferenceLink>{' · '}<ReferenceLink to="Codex">Codex</ReferenceLink></text>
+          <circle className="s07-ai-halo" cx="500" cy="85" r="76" />
+          <circle className="s07-ai-core" cx="500" cy="85" r="65" />
+          <text className="s07-ai-title" x="500" y="80" textAnchor="middle">AI 작업 도구</text>
+          <text className="s07-ai-detail" x="500" y="106" textAnchor="middle">읽기·수정·실행</text>
         </g>
 
-        <path d="M443 167H548" className="s06-wire-internal" />
-        <path d="M529 139H559V196H529" className="s06-plug" />
-        <path d="M557 151H578M557 184H578" className="s06-plug-pins" />
-        <text x="620" y="252" textAnchor="middle" className="s06-api-label">API</text>
-        <text x="620" y="277" textAnchor="middle" className="s06-api-caption">연결 규칙</text>
-
-        <g className="s06-primary-route">
-          <path d="M584 151H695Q711 151 711 135V111Q711 95 727 95H843" className="s06-request" markerEnd="url(#s06-forward)" />
-          <path d="M844 131H747Q734 131 734 145V168Q734 184 718 184H584" className="s06-response" markerEnd="url(#s06-back)" />
-          <text x="639" y="133" textAnchor="middle" className="s06-route-label s06-blue">요청</text>
-          <text x="639" y="211" textAnchor="middle" className="s06-route-label s06-green">응답</text>
+        <g style={reveal(phase === 2, instant, 'translateY(5px)')} aria-hidden={phase !== 2}>
+          <text className="s07-inertia-title" x="58" y="64">경로의존성</text>
+          <text className="s07-inertia-detail" x="58" y="93">익숙한 방식의 관성</text>
+          <path className="s07-inertia-loop" d="M163 261C200 300 273 291 274 243" markerEnd="url(#s07-flow-arrow)" />
         </g>
 
-        <g className="s06-provider-direct">
-          <ReferenceLink to="Anthropic"><text x="870" y="64" className="s06-provider">Anthropic</text></ReferenceLink>
-          <ReferenceLink to="Claude API"><text x="870" y="102" className="s06-provider-title">Claude API</text></ReferenceLink>
-          <text x="870" y="134" className="s06-model">모델 제공사에 직접 연결</text>
-          <path d="M869 151H1164" className="s06-provider-rule" />
-          <text x="870" y="174" className="s06-small">모델 기능을 API로 제공</text>
-        </g>
-
-        <g style={reveal(showManaged, instant, 'translateY(8px)')} aria-hidden={!showManaged}>
-          <path d="M596 151H684Q699 151 699 166V257Q699 272 714 272H844" className="s06-request s06-alternative" markerEnd="url(#s06-forward)" />
-          <path d="M844 303H698Q678 303 678 283V198Q678 184 664 184" className="s06-response s06-alternative" />
-          <text x="747" y="245" className="s06-small">다른 연결 경로</text>
-          <ReferenceLink to="AWS"><text x="870" y="231" className="s06-provider">Amazon · AWS</text></ReferenceLink>
-          <ReferenceLink to="Amazon Bedrock"><text x="870" y="269" className="s06-provider-title">Amazon Bedrock</text></ReferenceLink>
-          <text x="870" y="302" className="s06-model">클라우드로 여러 모델 이용</text>
-          <path d="M869 319H1164" className="s06-provider-rule" />
-          <text x="870" y="343" className="s06-small">모델을 선택해 앱에 연결</text>
+        <g className="s07-ax" style={reveal(connected, instant, 'translateY(6px)')} aria-hidden={!connected}>
+          <text className="s07-ax-title" x="500" y="43" textAnchor="middle">AX · AI를 익숙한 업무에 연결</text>
+          <text className="s07-ax-detail" x="270" y="113" textAnchor="middle">익숙한 접점</text>
+          <text className="s07-ax-detail" x="500" y="113" textAnchor="middle">필요한 자료 연결</text>
+          <text className="s07-ax-detail" x="730" y="113" textAnchor="middle">검토·다음 행동</text>
+          <path className="s07-ax-leader" d="M270 126V156L322 210M730 126V156L678 210" />
+          <path className="s07-connected-line" d="M156 230H420" markerEnd="url(#s07-flow-arrow)" />
+          <path className="s07-connected-line" d="M580 230H843" markerEnd="url(#s07-flow-arrow)" />
         </g>
       </svg>
-      <figcaption>공식 제품의 제공 관계를 단순화한 개념도 · 두 경로는 선택 가능한 예</figcaption>
+      <figcaption>익숙한 업무와 AI 활용의 관계를 설명하는 개념도</figcaption>
     </figure>
 
-    <div className="s06-takeaway" style={reveal(showProduct, instant)} aria-hidden={!showProduct}>
-      <Takeaway>API를 연결한 뒤에도 <strong>제품의 화면·데이터·업무 흐름·검증</strong>을 설계해야 합니다.</Takeaway>
+    <div className="s07-viewpoint">
+      <p className="s07-view-label">발표자의 관점</p>
+      <div className="s07-view-copy">{viewpoints.map((copy, index) => <p key={copy}
+        style={reveal(phase === index, instant, 'translateY(7px)')} aria-hidden={phase !== index}>{copy}</p>)}</div>
     </div>
   </div>;
 }

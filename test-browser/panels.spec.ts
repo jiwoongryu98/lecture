@@ -55,10 +55,10 @@ test('slide fullscreen fills the available screen, keeps navigation, and restore
     await expect(page.locator('.stage')).toHaveCSS('background-color', 'rgb(0, 0, 0)');
     if (viewport === originalViewport) await testInfo.attach('slide-fullscreen', { body: await page.screenshot(), contentType: 'image/png' });
     await page.keyboard.press('ArrowRight');
-    await expect(page.locator('article.slide')).toHaveAttribute('data-index', '64');
+    await expect(page.locator('article.slide')).toHaveAttribute('data-index', '63');
     await expect.poll(() => page.evaluate(() => document.fullscreenElement?.className)).toBe('stage');
     await page.keyboard.press('ArrowLeft');
-    await expect(page.locator('article.slide')).toHaveAttribute('data-index', '63');
+    await expect(page.locator('article.slide')).toHaveAttribute('data-index', '62');
     await page.keyboard.press('Escape');
     await expect.poll(() => page.evaluate(() => !!document.fullscreenElement)).toBe(false);
     await expect(button).toHaveAttribute('aria-pressed', 'false');

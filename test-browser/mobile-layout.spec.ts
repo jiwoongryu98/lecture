@@ -26,19 +26,19 @@ test('phone rotation maximizes the slide and keeps navigation usable without ful
     await expect(page.locator('.slide-fullscreen-button')).toBeHidden();
     await expect(page.locator('.app-fullscreen-button')).toBeHidden();
     await page.getByRole('button', { name: '다음 단계', exact: true }).click();
-    await expect(slide).toHaveAttribute('data-index', '5');
-    await page.getByRole('button', { name: '이전 단계', exact: true }).click();
     await expect(slide).toHaveAttribute('data-index', '4');
+    await page.getByRole('button', { name: '이전 단계', exact: true }).click();
+    await expect(slide).toHaveAttribute('data-index', '3');
     await testInfo.attach(`landscape-${viewport.width}-${viewport.height}`, { body: await page.screenshot(), contentType: 'image/png' });
   }
 
   await page.getByRole('button', { name: '목차 펼치기', exact: true }).click();
   const menu = page.getByRole('navigation', { name: '슬라이드 목차' });
   await menu.getByRole('button', { name: '3부 · 커리어를 설계하다', exact: true }).click();
-  await expect(slide).toHaveAttribute('data-index', '49');
+  await expect(slide).toHaveAttribute('data-index', '48');
   await menu.getByRole('button', { name: '목차 닫기', exact: true }).click();
   await page.setViewportSize(portrait);
-  await expect(slide).toHaveAttribute('data-index', '49');
+  await expect(slide).toHaveAttribute('data-index', '48');
   const frame = (await slide.boundingBox())!;
   expect(frame.width / frame.height).toBeCloseTo(16 / 9, 2);
   await expect(page.locator('.slide-fullscreen-button')).toBeHidden();

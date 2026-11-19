@@ -3,100 +3,78 @@ import './016.css';
 import type { SlideMetadata } from '../../shared/presentation';
 
 export const metadata = {
-  "id": "industry-frontier",
-  "title": "범용 모델의 기반 만들기",
+  "id": "industry-specialized",
+  "title": "특정 문제에 집중하는 모델",
   "section": "1부 · 산업을 읽다",
-  "maxStep": 2,
+  "maxStep": 1,
   "subsection": "모델"
 } satisfies SlideMetadata;
 
 export default function Slide016({ step, instant }: SlideProps) {
-  const directed = step >= 1;
-  const evaluated = step >= 2;
+  const showRequirements = step >= 1;
 
-  return <div className="industry-content industry-s12">
-    <Heading eyebrow="AI 모델 · 범용 모델 개발">넓게 배우고, 쓸 수 있게 다듬는다</Heading>
+  return <div className="industry-content industry-s13" data-instant={instant} data-focused={showRequirements}>
+    <Heading
+      eyebrow="모델 / 특화 개발"
+      subtitle="특화의 기준은 작업·자료의 형태·업무 분야입니다."
+    >어떤 문제를 잘 풀 것인가?</Heading>
 
-    <div className="industry-s12-visual">
-      <svg viewBox="0 0 1000 300" role="img" aria-labelledby="industry-s12-title industry-s12-description">
-        <title id="industry-s12-title">범용 모델의 능력을 만드는 학습과 개선</title>
-        <desc id="industry-s12-description">
-          다양한 자료의 사전학습으로 폭넓은 능력 기반을 만듭니다.
-          {directed && ' 후속 학습으로 지시 따르기와 과제 수행을 다듬습니다.'}
-          {evaluated && ' 실제 과제의 평가에서 찾은 약점을 개선에 반영합니다.'}
-          언어, 코드, 이미지 이해는 가능한 과제의 예이며 이미지 학습과 지원 여부는 모델마다 다릅니다.
-        </desc>
-        <defs>
-          <linearGradient id="industry-s12-core" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#5279b1" />
-            <stop offset="1" stopColor="#345782" />
-          </linearGradient>
-          <marker id="industry-s12-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse" overflow="visible">
-            <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#177c68" strokeWidth="1.7" />
-          </marker>
-        </defs>
+    <div className="industry-visual s13-perspectives">
+      <article className="s13-example s13-speech">
+        <div className="s13-example-heading">
+          <span className="s13-task">음성 인식</span>
+          <h2><ReferenceLink to="Whisper">OpenAI <strong>Whisper</strong></ReferenceLink></h2>
+        </div>
+        <figure>
+          <div className="s13-image-stage s13-speech-diagram">
+            <svg viewBox="0 0 500 170" role="group" aria-label="Whisper의 음성 파일을 텍스트로 옮기는 역할을 보여주는 개념도">
+              <rect x="54" y="29" width="32" height="58" rx="16" fill="#dce7f5" stroke="#4269a5" strokeWidth="2" />
+              <path d="M42 69V75A28 28 0 0 0 98 75V69M70 103V118M53 118H87" fill="none" stroke="#4269a5" strokeWidth="2.5" />
+              <path d="M121 74H177M167 67L177 74L167 81M320 74H375M365 67L375 74L365 81" fill="none" stroke="#8fa7c7" strokeWidth="2" />
+              <circle cx="249" cy="74" r="54" fill="#e6edf8" />
+              <ReferenceLink to="Whisper"><text x="249" y="82" textAnchor="middle" fill="#31598f" fontSize="25" fontWeight="700">Whisper</text></ReferenceLink>
+              <path d="M398 27H444L460 43V119H398ZM444 27V43H460M411 62H446M411 77H446M411 92H436" fill="#fffefa" stroke="#8fa7c7" strokeWidth="2" />
+              <text x="70" y="152" textAnchor="middle" fill="#667789" fontSize="17">음성 파일</text>
+              <text x="429" y="152" textAnchor="middle" fill="#667789" fontSize="17">텍스트</text>
+            </svg>
+          </div>
+          <figcaption>OpenAI 공개 음성 모델 · 역할 개념도</figcaption>
+        </figure>
+        <p className="s13-transformation"><span>음성 파일</span><span className="s13-arrow" aria-hidden="true">→</span><strong>텍스트</strong></p>
+        <div className="s13-requirement" style={reveal(showRequirements, instant)} aria-hidden={!showRequirements}>
+          <span className="s13-requirement-label">확인할 것</span>
+          <p>말한 내용을 <strong>글로 옮기는가?</strong></p>
+        </div>
+      </article>
 
-        <text className="industry-s12-stage" x="30" y="25">① 사전학습</text>
-        <text className="industry-s12-small" x="30" y="48">다양한 자료에서 패턴 학습</text>
+      <div className="s13-divider" aria-hidden="true" />
 
-        <g className="industry-s12-streams" fill="none" strokeLinecap="round">
-          <path d="M 156 93 C 245 93, 260 122, 385 128" stroke="#8ca8cf" strokeWidth="13" />
-          <path d="M 156 151 C 250 151, 280 151, 382 151" stroke="#4269a5" strokeWidth="13" />
-          <path d="M 156 209 C 245 209, 260 180, 385 174" stroke="#b8cae2" strokeWidth="13" />
-        </g>
-        <g className="industry-s12-input">
-          <text x="30" y="99">언어 자료</text>
-          <text x="30" y="157">코드</text>
-          <text x="30" y="215">이미지*</text>
-        </g>
-
-        <g fill="none" stroke="#b6c8df" strokeWidth="2">
-          <path d="M 552 116 C 650 116, 654 86, 741 86" />
-          <path d="M 561 151 H 741" />
-          <path d="M 552 186 C 650 186, 654 216, 741 216" />
-        </g>
-
-        <circle cx="473" cy="151" r="89" fill="url(#industry-s12-core)" />
-        <circle cx="473" cy="151" r="76" fill="none" stroke="#a7bedb" strokeWidth="1" opacity=".42" />
-        <g className="industry-s12-core-copy" textAnchor="middle">
-          <text x="473" y="136">폭넓은</text>
-          <text x="473" y="171">능력 기반</text>
-          <text className="industry-s12-core-label" x="473" y="202">범용 모델</text>
-        </g>
-
-        <g style={reveal(directed, instant, 'scale(.94)')} aria-hidden={!directed} className="industry-s12-direction">
-          <circle cx="473" cy="151" r="108" fill="none" stroke="#177c68" strokeWidth="5" />
-          <text className="industry-s12-stage industry-s12-green" x="473" y="25" textAnchor="middle">② 후속 학습</text>
-          <path d="M 473 31 V 43" stroke="#177c68" strokeWidth="2" />
-          <rect x="356" y="248" width="234" height="30" rx="15" fill="#edf5f0" />
-          <text className="industry-s12-direction-copy" x="473" y="268" textAnchor="middle">지시 따르기 · 과제 수행</text>
-        </g>
-
-        <g className="industry-s12-capabilities">
-          <text className="industry-s12-small" x="777" y="48">가능한 과제의 예</text>
-          <circle cx="755" cy="86" r="5" fill="#4269a5" />
-          <text x="777" y="92">언어 이해·생성</text>
-          <circle cx="755" cy="151" r="5" fill="#4269a5" />
-          <text x="777" y="157">코드 작성</text>
-          <circle cx="755" cy="216" r="5" fill="#4269a5" />
-          <text x="777" y="222">이미지 이해*</text>
-        </g>
-
-        <g style={reveal(evaluated, instant, 'translateY(6px)')} aria-hidden={!evaluated}>
-          <path d="M 938 232 V 266 Q 938 291, 911 291 H 670 C 630 291, 628 270, 568 225" fill="none" stroke="#177c68" strokeWidth="2.5" markerEnd="url(#industry-s12-arrow)" />
-          <rect x="678" y="275" width="191" height="25" fill="#fffefa" />
-          <text className="industry-s12-evaluation" x="774" y="293" textAnchor="middle">③ 평가 → 약점 개선</text>
-        </g>
-      </svg>
-      <p className="industry-s12-caveat">* 이미지 학습·지원 여부와 과제 범위는 모델마다 다름</p>
+      <article className="s13-example s13-generation">
+        <div className="s13-example-heading">
+          <span className="s13-task">이미지 생성</span>
+          <h2><ReferenceLink to="Stable Diffusion">Stability AI <strong>Stable Diffusion</strong></ReferenceLink></h2>
+        </div>
+        <figure>
+          <ReferenceLink to="Stable Diffusion" className="s13-image-stage s13-generation-image">
+            <img
+              src="/shared/stable-diffusion-2022.jpg"
+              alt="2022년 Stable Diffusion 공개 자료에 실린 생성 이미지 두 장: 터번을 쓴 인물과 갑옷을 입은 인물"
+              width="698"
+              height="515"
+            />
+          </ReferenceLink>
+          <figcaption>Stability AI 공식 공개 자료 · 2022</figcaption>
+        </figure>
+        <p className="s13-transformation"><span>텍스트 설명</span><span className="s13-arrow" aria-hidden="true">→</span><strong>이미지</strong></p>
+        <div className="s13-requirement" style={reveal(showRequirements, instant)} aria-hidden={!showRequirements}>
+          <span className="s13-requirement-label">확인할 것</span>
+          <p>설명한 <strong>시각 요소</strong>를 표현하는가?</p>
+        </div>
+      </article>
     </div>
 
-    <aside className="industry-s12-examples" aria-label="범용 모델 개발 사례">
-      <div className="industry-s12-model-example">
-        <span>모델 예</span>
-        <strong><ReferenceLink to="GPT">OpenAI · GPT</ReferenceLink></strong>
-      </div>
-      <p><ReferenceLink to="Claude">Anthropic · Claude</ReferenceLink> <span>/</span> <ReferenceLink to="Gemini">Google DeepMind · Gemini</ReferenceLink></p>
-    </aside>
+    <p className="s13-principle" style={reveal(showRequirements, instant)} aria-hidden={!showRequirements}>
+      평가의 기준도, <strong>선택한 문제의 요구사항</strong>에 맞춥니다.
+    </p>
   </div>;
 }
